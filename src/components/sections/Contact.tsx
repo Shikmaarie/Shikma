@@ -18,13 +18,13 @@ export default function Contact() {
             <Eyebrow>הצעד הבא</Eyebrow>
 
             <SectionTitle className="mt-6">
-              אם הגעת עד לכאן —
+              אם הגעתם עד לכאן —
               <br />
               <span className="text-gradient-gold">זה כבר לא במקרה.</span>
             </SectionTitle>
 
             <p className="mt-7 text-lg leading-relaxed text-mist/65">
-              בואי נבדוק ביחד מה נכון לך עכשיו. שיחת התאמה קצרה, בלי התחייבות
+              בואו נבדוק ביחד מה נכון לכם עכשיו. שיחת התאמה קצרה, בלי התחייבות
               ובלי מכירה בכוח.
             </p>
 
@@ -33,17 +33,17 @@ export default function Contact() {
                 href={`https://wa.me/${site.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-4 font-bold text-void shadow-[0_10px_45px_-12px_rgba(212,169,95,0.85)] transition hover:brightness-110"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-4 font-bold text-void shadow-[0_10px_45px_-12px_rgba(212,169,95,0.85)] transition hover:brightness-110"
               >
                 <MessageCircle className="size-5" aria-hidden="true" />
                 לשיחה בוואטסאפ
               </a>
 
               <Link
-                href="/store"
+                href="/contact"
                 className="group inline-flex items-center gap-2 rounded-full border border-gold/35 px-8 py-4 font-semibold text-mist transition hover:border-gold/70 hover:text-gold-lt"
               >
-                לעיון בכל התוכניות
+                לכל דרכי ההתקשרות
                 <ArrowLeft
                   className="size-4 transition-transform group-hover:-translate-x-1"
                   aria-hidden="true"

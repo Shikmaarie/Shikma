@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { Mail, Phone } from "lucide-react";
-import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/ui/BrandIcons";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  YoutubeIcon,
+} from "@/components/ui/BrandIcons";
 import { nav, site } from "@/data/site";
-import { products } from "@/data/products";
+import { purchasable } from "@/data/products";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -15,12 +19,11 @@ export default function Footer() {
             <p className="font-display text-3xl font-bold text-gradient-gold">
               {site.name}
             </p>
-            <p className="mt-2 text-sm tracking-[0.2em] text-gold/70">
+            <p className="mt-2 text-sm tracking-[0.16em] text-gold/70">
               {site.role}
             </p>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-mist/60">
-              עסק שמוכר בלי למכור, הכנסה יציבה, וחיים שחוזרים אלייך. זה כל מה
-              שאני עושה כאן.
+              להפסיק לרדוף אחרי הכסף — ולבנות אימפריה שמנוהלת מבפנים החוצה.
             </p>
 
             <div className="mt-6 flex gap-3">
@@ -36,7 +39,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <FooterCol title="ניווט">
+          <FooterCol title="קישורים מהירים">
             {nav.map((item) => (
               <FooterLink key={item.href} href={item.href}>
                 {item.label}
@@ -44,12 +47,13 @@ export default function Footer() {
             ))}
           </FooterCol>
 
-          <FooterCol title="התוכניות">
-            {products.slice(0, 5).map((p) => (
+          <FooterCol title="לרכישה מיידית">
+            {purchasable.slice(0, 5).map((p) => (
               <FooterLink key={p.slug} href={`/store/${p.slug}`}>
                 {p.name}
               </FooterLink>
             ))}
+            <FooterLink href="/store">לכל המוצרים</FooterLink>
           </FooterCol>
 
           <FooterCol title="יצירת קשר">
@@ -80,11 +84,24 @@ export default function Footer() {
           </FooterCol>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-gold/10 pt-8 text-xs text-mist/40 sm:flex-row sm:items-center sm:justify-between">
+        <p className="mt-14 rounded-2xl border border-gold/12 bg-void/40 px-5 py-4 text-xs leading-relaxed text-mist/45">
+          אתר זה מופעל עם מערכת „נגיש בקליק”. להצגת תפריט הנגישות יש ללחוץ{" "}
+          <kbd className="ltr-nums rounded border border-gold/25 px-1.5 py-0.5 text-gold/80">
+            Control-F10
+          </kbd>
+          , ולהפעלת קורא מסך{" "}
+          <kbd className="ltr-nums rounded border border-gold/25 px-1.5 py-0.5 text-gold/80">
+            Control-F11
+          </kbd>
+          .
+        </p>
+
+        <div className="mt-8 flex flex-col gap-4 border-t border-gold/10 pt-8 text-xs text-mist/40 sm:flex-row sm:items-center sm:justify-between">
           <p className="ltr-nums">
-            © {year} {site.name}. כל הזכויות שמורות.
+            © {year} {site.name} · כל הזכויות שמורות | עיצוב ובנייה:{" "}
+            {site.credit}
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-6">
             <Link href="/legal/terms" className="transition hover:text-gold-lt">
               תקנון ותנאי שימוש
             </Link>

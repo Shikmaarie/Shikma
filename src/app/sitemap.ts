@@ -8,12 +8,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    {
-      url: `${base}/store`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
+    ...["about", "programs", "wealth", "club", "books", "contact", "store"].map(
+      (path) => ({
+        url: `${base}/${path}`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: 0.9,
+      }),
+    ),
     ...products.map((p) => ({
       url: `${base}/store/${p.slug}`,
       lastModified: now,

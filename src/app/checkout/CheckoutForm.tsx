@@ -163,7 +163,7 @@ export default function CheckoutForm() {
           <h2 className="font-display text-xl font-bold text-mist">סיכום ההזמנה</h2>
 
           <ul className="mt-6 flex flex-col gap-4">
-            {lines.map(({ product, quantity }) => (
+            {lines.map(({ product, quantity, price }) => (
               <li
                 key={product.slug}
                 className="flex items-start justify-between gap-4 border-b border-gold/10 pb-4 last:border-0 last:pb-0"
@@ -175,7 +175,7 @@ export default function CheckoutForm() {
                   </p>
                 </div>
                 <span className="ltr-nums shrink-0 font-bold text-gold-lt">
-                  {formatILS(product.price * quantity)}
+                  {formatILS(price * quantity)}
                 </span>
               </li>
             ))}

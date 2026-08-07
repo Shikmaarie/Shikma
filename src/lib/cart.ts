@@ -57,18 +57,20 @@ export const useCart = create<CartState>()(
   ),
 );
 
-/** Resolves cart entries against the catalog, dropping any unknown slug. */
+/**
+ * Resolves cart entries against the catalog, dropping anything unknown or not
+ * actually purchasable — application-only and free items never carry a price.
+ */
 export function resolveCart(items: CartItem[]) {
   const lines = items.flatMap((item) => {
     const product = getProduct(item.slug);
-    if (!product) return [];
-    return [{ product, quantity: item.quantity }];
+    if (!product || product.mode !== "purchase" || product.price == null) {
+      return [];
+    }
+    return [{ product, quantity: item.quantity, price: product.price }];
   });
 
-  const subtotal = lines.reduce(
-    (sum, l) => sum + l.product.price * l.quantity,
-    0,
-  );
+  const subtotal = lines.reduce((sum, l) => sum + l.price * l.quantity, 0);
 
   // The instalment ceiling a mixed cart can offer is the lowest of its items.
   const maxPayments = lines.length

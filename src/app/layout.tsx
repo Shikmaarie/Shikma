@@ -23,18 +23,19 @@ const frank = Frank_Ruhl_Libre({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role} | ${site.tagline}`,
+    default: `${site.name} — ${site.role}`,
     template: `%s | ${site.name}`,
   },
   description:
-    "רחלי חדד מלווה נשים לעסק שמוכר בלי למכור, הכנסה יציבה וחופש כלכלי אמיתי. תוכניות ליווי, מועדון מאסטריות וקורסים דיגיטליים.",
+    "להפסיק לרדוף אחרי הכסף — ולבנות אימפריה שמנוהלת מבפנים החוצה. תוכניות ליווי עסקי, מסלולי שפע ומיינדסט, מועדון עסקים, ספרים ומדריכים.",
   keywords: [
     "רחלי חדד",
-    "מנטורית עסקית",
-    "ליווי עסקי לנשים",
+    "ליווי עסקי",
     "חופש כלכלי",
-    "DNA של עסק",
-    "מועדון מאסטריות",
+    "DNA של העסק",
+    "DNA של העושר",
+    "מועדון עסקים",
+    "פלטינום ביזנס",
   ],
   openGraph: {
     type: "website",
@@ -43,12 +44,12 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} — ${site.role}`,
     description:
-      "מעובדת לחופש כלכלי. עסק שמוכר בלי למכור, הכנסה יציבה, וחיים שחוזרים אלייך.",
+      "18 שנות ניסיון, 3 עסקים בשש ספרות בחודש, וחיים של חופש אמיתי. הגיע הזמן ללמוד את חוקי ה-DNA של העסק והעושר שלך.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — ${site.role}`,
-    description: "מעובדת לחופש כלכלי.",
+    description: "מעבר מהישרדות לשפע אמיתי.",
   },
   robots: { index: true, follow: true },
 };

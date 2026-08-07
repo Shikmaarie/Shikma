@@ -3,8 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react";
 import AddToCartButton from "@/components/store/AddToCartButton";
+import PriceTag from "@/components/store/PriceTag";
 import ProductCard from "@/components/store/ProductCard";
-import { categoryLabels, formatILS, getProduct, products } from "@/data/products";
+import {
+  categoryHrefs,
+  categoryLabels,
+  getProduct,
+  products,
+} from "@/data/products";
 import { site } from "@/data/site";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -30,21 +36,28 @@ export default async function ProductPage({ params }: Params) {
   const product = getProduct(slug);
   if (!product) notFound();
 
-  const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
+  const related = products
+    .filter((p) => p.slug !== product.slug && p.category === product.category)
+    .slice(0, 3);
 
+  // Only products with a real published price get Offer markup.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.summary,
     brand: { "@type": "Brand", name: site.name },
-    offers: {
-      "@type": "Offer",
-      price: product.price,
-      priceCurrency: "ILS",
-      availability: "https://schema.org/InStock",
-      url: `${site.url}/store/${product.slug}`,
-    },
+    ...(product.mode === "purchase" && product.price != null
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: product.price,
+            priceCurrency: "ILS",
+            availability: "https://schema.org/InStock",
+            url: `${site.url}/store/${product.slug}`,
+          },
+        }
+      : {}),
   };
 
   return (
@@ -57,18 +70,17 @@ export default async function ProductPage({ params }: Params) {
       <article className="px-5 pt-36 pb-24 sm:px-8">
         <div className="mx-auto w-full max-w-7xl">
           <Link
-            href="/store"
+            href={categoryHrefs[product.category]}
             className="group inline-flex items-center gap-2 text-sm text-mist/55 transition hover:text-gold-lt"
           >
             <ArrowRight
               className="size-4 transition-transform group-hover:translate-x-1"
               aria-hidden="true"
             />
-            חזרה לחנות
+            חזרה ל{categoryLabels[product.category]}
           </Link>
 
           <div className="mt-8 grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
-            {/* Main column */}
             <div>
               <span className="rounded-full border border-gold/25 bg-plum/40 px-4 py-1.5 text-[11px] font-bold tracking-[0.16em] text-gold/85">
                 {categoryLabels[product.category]}
@@ -85,10 +97,16 @@ export default async function ProductPage({ params }: Params) {
                 {product.summary}
               </p>
 
+              {product.detail && (
+                <p className="mt-4 leading-relaxed text-mist/55">
+                  {product.detail}
+                </p>
+              )}
+
               <section className="mt-14">
                 <h2 className="flex items-center gap-3 font-display text-2xl font-bold text-mist">
                   <Sparkles className="size-5 text-gold" aria-hidden="true" />
-                  מה כלול
+                  מה מקבלים
                 </h2>
                 <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                   {product.includes.map((item) => (
@@ -108,7 +126,7 @@ export default async function ProductPage({ params }: Params) {
 
               <section className="mt-14">
                 <h2 className="font-display text-2xl font-bold text-mist">
-                  למי זה מתאים
+                  למי זה מיועד
                 </h2>
                 <ul className="mt-6 flex flex-col gap-4">
                   {product.forWho.map((item, i) => (
@@ -135,40 +153,38 @@ export default async function ProductPage({ params }: Params) {
                   </span>
                 )}
 
-                <div className="flex items-baseline gap-3">
-                  <span className="ltr-nums font-display text-5xl font-black text-gradient-gold">
-                    {formatILS(product.price)}
-                  </span>
-                  {product.compareAt && (
-                    <span className="ltr-nums text-lg text-mist/35 line-through">
-                      {formatILS(product.compareAt)}
-                    </span>
-                  )}
-                </div>
+                <PriceTag product={product} size="lg" />
 
-                <p className="mt-2 text-sm text-mist/50">כולל מע״מ</p>
-
-                {product.recurring && (
-                  <p className="ltr-nums mt-4 rounded-2xl border border-gold/20 bg-void/40 px-4 py-3 text-sm text-mist/70">
-                    לאחר תקופת ההתנסות: {formatILS(product.recurring.amount)}{" "}
-                    לחודש. אפשר לבטל בכל עת.
-                  </p>
+                {product.mode === "purchase" && (
+                  <p className="mt-2 text-sm text-mist/50">כולל מע״מ</p>
                 )}
 
-                {product.maxPayments > 1 && (
-                  <p className="ltr-nums mt-4 text-sm text-mist/60">
-                    ניתן לפרוס עד {product.maxPayments} תשלומים — בחירת מספר
-                    התשלומים מתבצעת בעמוד הסליקה.
+                {product.recurring && (
+                  <p className="ltr-nums mt-4 rounded-2xl border border-gold/20 bg-void/40 px-4 py-3 text-sm leading-relaxed text-mist/70">
+                    לאחר החודש הראשון החיוב הוא{" "}
+                    {product.recurring.amount.toLocaleString("he-IL")} ₪ לחודש
+                    בהוראת קבע, וניתן לבטל בכל עת.
                   </p>
                 )}
 
                 <div className="mt-7">
-                  <AddToCartButton
-                    slug={product.slug}
-                    label="הוספה לעגלה"
-                    size="lg"
-                  />
+                  <AddToCartButton slug={product.slug} size="lg" />
                 </div>
+
+                {/* The notebook only makes sense alongside the book. */}
+                {product.slug === "first-100k-book" && (
+                  <div className="mt-4 rounded-2xl border border-gold/20 bg-void/40 p-4">
+                    <p className="text-sm text-mist/70">
+                      רוצים גם את מחברת ההשראה? אפשר להוסיף אותה ב-25 ₪.
+                    </p>
+                    <div className="mt-3">
+                      <AddToCartButton
+                        slug="inspiration-notebook"
+                        label="הוספת מחברת השראה"
+                      />
+                    </div>
+                  </div>
+                )}
 
                 <div className="mt-6 flex items-start gap-2.5 border-t border-gold/12 pt-5 text-xs leading-relaxed text-mist/50">
                   <ShieldCheck
@@ -176,28 +192,31 @@ export default async function ProductPage({ params }: Params) {
                     aria-hidden="true"
                   />
                   <span>
-                    התשלום מתבצע בעמוד סליקה מאובטח של קארדקום בתקן PCI-DSS.
-                    פרטי האשראי אינם עוברים דרך האתר ואינם נשמרים בו.
+                    {product.mode === "purchase"
+                      ? "התשלום מתבצע בעמוד סליקה מאובטח של קארדקום בתקן PCI-DSS. פרטי האשראי אינם עוברים דרך האתר ואינם נשמרים בו."
+                      : "נדבר בשיחה קצרה, נבין איפה אתם נמצאים, ורק אז נחליט ביחד אם זה מתאים."}
                   </span>
                 </div>
               </div>
             </aside>
           </div>
 
-          <section className="mt-24">
-            <h2 className="mb-8 flex items-center gap-4 font-display text-2xl font-bold text-mist sm:text-3xl">
-              אולי יתאים לך גם
-              <span
-                className="h-px flex-1 bg-gradient-to-l from-gold/40 to-transparent"
-                aria-hidden="true"
-              />
-            </h2>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {related.map((p) => (
-                <ProductCard key={p.slug} product={p} />
-              ))}
-            </div>
-          </section>
+          {related.length > 0 && (
+            <section className="mt-24">
+              <h2 className="mb-8 flex items-center gap-4 font-display text-2xl font-bold text-mist sm:text-3xl">
+                אולי יתאים לכם גם
+                <span
+                  className="h-px flex-1 bg-gradient-to-l from-gold/40 to-transparent"
+                  aria-hidden="true"
+                />
+              </h2>
+              <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {related.map((p) => (
+                  <ProductCard key={p.slug} product={p} />
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </article>
     </>

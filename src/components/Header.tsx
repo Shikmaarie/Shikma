@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { nav, site } from "@/data/site";
+import { headerCta, nav, site } from "@/data/site";
 import { useCart } from "@/lib/cart";
 
 export default function Header() {
@@ -91,10 +91,10 @@ export default function Header() {
             </button>
 
             <Link
-              href="/store"
+              href={headerCta.href}
               className="hidden rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-6 py-2.5 text-sm font-bold text-void shadow-[0_0_28px_-6px_rgba(212,169,95,0.65)] transition hover:brightness-110 md:inline-flex"
             >
-              לחנות
+              {headerCta.label}
             </Link>
 
             <button
@@ -151,11 +151,11 @@ export default function Header() {
               </ul>
 
               <Link
-                href="/store"
+                href={headerCta.href}
                 onClick={() => setMenuOpen(false)}
                 className="mt-8 flex items-center justify-center rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-6 py-4 font-bold text-void"
               >
-                לחנות
+                {headerCta.label}
               </Link>
             </nav>
           </motion.div>

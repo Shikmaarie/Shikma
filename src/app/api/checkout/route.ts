@@ -58,9 +58,10 @@ export async function POST(request: Request) {
   const lines: CheckoutLine[] = [];
   for (const raw of body.items) {
     const product = getProduct(str(raw?.slug));
-    if (!product) {
+    // Application-only and free items have no price and must never be charged.
+    if (!product || product.mode !== "purchase" || product.price == null) {
       return NextResponse.json(
-        { error: "אחד המוצרים בעגלה אינו זמין." },
+        { error: "אחד המוצרים בעגלה אינו זמין לרכישה." },
         { status: 400 },
       );
     }
@@ -83,6 +84,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "סכום לא תקין." }, { status: 400 });
   }
 
+  // A mixed cart can only offer the lowest instalment ceiling among its items.
   const maxPayments = Math.min(
     ...lines.map((l) => getProduct(l.slug)?.maxPayments ?? 1),
   );

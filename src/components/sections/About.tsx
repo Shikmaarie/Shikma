@@ -1,66 +1,70 @@
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Section, SectionTitle, Eyebrow } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
-import { about } from "@/data/site";
+import { aboutTeaser, hero } from "@/data/site";
 
 export default function About() {
   return (
-    <Section id="about" className="bg-gradient-to-b from-void via-night to-void">
-      <div className="grid gap-16 lg:grid-cols-[1fr_1.05fr] lg:items-start lg:gap-24">
+    <Section id="about" className="bg-gradient-to-b from-void via-plum/25 to-void">
+      <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-24">
         <div>
           <Reveal>
-            <Eyebrow>{about.eyebrow}</Eyebrow>
+            <Eyebrow>על רחלי חדד</Eyebrow>
           </Reveal>
 
           <Reveal delay={0.08}>
             <SectionTitle className="mt-6">
-              עברתי פשיטת רגל.
-              <br />
-              <span className="text-gradient-gold">ומשם בניתי אימפריה.</span>
+              לא סיסמאות.{" "}
+              <span className="text-gradient-gold">תכלס מהשטח.</span>
             </SectionTitle>
           </Reveal>
 
           <div className="mt-8 space-y-5">
-            {about.paragraphs.map((p, i) => (
+            {aboutTeaser.paragraphs.map((p, i) => (
               <Reveal key={i} delay={0.14 + i * 0.07}>
                 <p className="text-lg leading-relaxed text-mist/70">{p}</p>
               </Reveal>
             ))}
           </div>
 
-          <Reveal delay={0.4}>
-            <figure className="mt-10 border-r-2 border-gold/60 pr-6">
-              <blockquote className="font-display text-2xl leading-snug font-bold text-gold-lt">
-                „הכסף לא מגיע למי שעובדת הכי קשה. הוא מגיע למי שהראש שלה מוכן
-                לקבל אותו.”
-              </blockquote>
-            </figure>
+          <Reveal delay={0.38}>
+            <Link
+              href={aboutTeaser.cta.href}
+              className="group mt-9 inline-flex items-center gap-2 rounded-full border border-gold/35 px-8 py-3.5 font-semibold text-mist transition hover:border-gold/70 hover:text-gold-lt"
+            >
+              {aboutTeaser.cta.label}
+              <ArrowLeft
+                className="size-4 transition-transform group-hover:-translate-x-1"
+                aria-hidden="true"
+              />
+            </Link>
           </Reveal>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {about.pillars.map((pillar, i) => (
-            <Reveal key={pillar.title} delay={0.1 + i * 0.1}>
-              <article className="group relative h-full overflow-hidden rounded-4xl glass p-7 transition duration-500 hover:border-gold/45">
-                <span
-                  className="absolute -right-14 -top-14 size-36 rounded-full bg-gold/10 blur-2xl transition duration-500 group-hover:bg-gold/20"
-                  aria-hidden="true"
-                />
-                <span
-                  className="ltr-nums relative block font-display text-5xl font-black text-gold/25 transition group-hover:text-gold/45"
-                  aria-hidden="true"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="relative mt-4 font-display text-xl font-bold text-mist">
-                  {pillar.title}
-                </h3>
-                <p className="relative mt-3 text-sm leading-relaxed text-mist/60">
-                  {pillar.body}
-                </p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.2}>
+          <dl className="grid grid-cols-2 gap-5">
+            {hero.stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-4xl glass px-6 py-8 text-center"
+              >
+                <dt className="sr-only">{stat.label}</dt>
+                <dd>
+                  <span className="ltr-nums block font-display text-4xl font-black text-gradient-gold">
+                    {stat.value}
+                  </span>
+                  <span className="mt-2 block text-xs font-semibold text-gold/75">
+                    {stat.suffix}
+                  </span>
+                  <span className="mt-1.5 block text-xs leading-snug text-mist/50">
+                    {stat.label}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       </div>
     </Section>
   );

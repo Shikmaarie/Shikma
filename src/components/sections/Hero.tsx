@@ -51,18 +51,16 @@ export default function Hero() {
             {hero.eyebrow}
           </motion.p>
 
-          <h1 className="mt-7 font-display text-[3.1rem] leading-[1.02] font-black tracking-tight sm:text-7xl lg:text-[5.6rem]">
+          <h1 className="mt-7 font-display text-[2.7rem] leading-[1.06] font-black tracking-tight sm:text-6xl lg:text-[4.6rem]">
             {hero.title.map((line, i) => (
               <motion.span
-                key={line}
-                {...rise(0.15 + i * 0.12)}
+                key={line.text}
+                {...rise(0.15 + i * 0.1)}
                 className="block"
               >
-                {i === 2 ? (
-                  <span className="text-gradient-gold">{line}</span>
-                ) : (
-                  <span className="text-mist">{line}</span>
-                )}
+                <span className={line.gold ? "text-gradient-gold" : "text-mist"}>
+                  {line.text}
+                </span>
               </motion.span>
             ))}
           </h1>
@@ -127,17 +125,16 @@ function ScrollHint({ reduced }: { reduced: boolean }) {
   return (
     <div
       // Anchored to the far edge so it never collides with the stat row.
-      className="pointer-events-none absolute bottom-8 left-8 hidden flex-col items-center gap-2 xl:flex"
+      // Unlabelled on purpose — the travelling line reads as "scroll" on its
+      // own, and a rotated caption here fought the RTL text direction.
+      className="pointer-events-none absolute bottom-8 left-10 hidden xl:block"
       aria-hidden="true"
     >
-      <span className="text-[10px] whitespace-nowrap tracking-[0.3em] text-mist/40">
-        גללו
-      </span>
-      <span className="relative h-12 w-px overflow-hidden bg-gold/20">
+      <span className="relative block h-16 w-px overflow-hidden bg-gold/20">
         {!reduced && (
           <motion.span
             className="absolute inset-x-0 h-4 bg-gradient-to-b from-transparent via-gold to-transparent"
-            animate={{ y: [-16, 48] }}
+            animate={{ y: [-16, 64] }}
             transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
           />
         )}

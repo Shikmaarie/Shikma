@@ -90,7 +90,7 @@ export default function CartDrawer() {
             ) : (
               <>
                 <ul className="flex-1 overflow-y-auto px-6 py-5">
-                  {lines.map(({ product, quantity }) => (
+                  {lines.map(({ product, quantity, price }) => (
                     <li
                       key={product.slug}
                       className="border-b border-gold/10 py-5 first:pt-0 last:border-0"
@@ -145,7 +145,7 @@ export default function CartDrawer() {
                         </div>
 
                         <span className="ltr-nums font-display text-lg font-bold text-gold-lt">
-                          {formatILS(product.price * quantity)}
+                          {formatILS(price * quantity)}
                         </span>
                       </div>
                     </li>

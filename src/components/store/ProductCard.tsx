@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import AddToCartButton from "./AddToCartButton";
-import { categoryLabels, formatILS, type Product } from "@/data/products";
+import PriceTag from "./PriceTag";
+import { categoryLabels, type Product } from "@/data/products";
 
 const accentGlow: Record<Product["accent"], string> = {
   gold: "from-gold/18",
@@ -9,7 +10,15 @@ const accentGlow: Record<Product["accent"], string> = {
   orchid: "from-orchid/18",
 };
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({
+  product,
+  showIncludes = false,
+  showCategory = true,
+}: {
+  product: Product;
+  showIncludes?: boolean;
+  showCategory?: boolean;
+}) {
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl glass p-7 transition duration-500 hover:border-gold/45 hover:shadow-[0_30px_80px_-45px_rgba(212,169,95,0.75)]">
       <span
@@ -18,9 +27,13 @@ export default function ProductCard({ product }: { product: Product }) {
       />
 
       <div className="relative flex items-start justify-between gap-3">
-        <span className="rounded-full border border-gold/25 bg-void/40 px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-gold/80">
-          {categoryLabels[product.category]}
-        </span>
+        {showCategory ? (
+          <span className="rounded-full border border-gold/25 bg-void/40 px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-gold/80">
+            {categoryLabels[product.category]}
+          </span>
+        ) : (
+          <span />
+        )}
         {product.badge && (
           <span className="rounded-full bg-gold/15 px-3 py-1 text-[10px] font-bold text-gold-lt">
             {product.badge}
@@ -37,45 +50,45 @@ export default function ProductCard({ product }: { product: Product }) {
         {product.tagline}
       </p>
 
-      <p className="relative mt-5 flex-1 text-sm leading-relaxed text-mist/60">
+      <p className="relative mt-5 text-sm leading-relaxed text-mist/60">
         {product.summary}
       </p>
 
-      <div className="relative mt-7 border-t border-gold/12 pt-5">
-        <div className="flex items-baseline gap-3">
-          <span className="ltr-nums font-display text-3xl font-black text-gradient-gold">
-            {formatILS(product.price)}
-          </span>
-          {product.compareAt && (
-            <span className="ltr-nums text-sm text-mist/35 line-through">
-              {formatILS(product.compareAt)}
-            </span>
-          )}
-        </div>
-        {product.recurring && (
-          <p className="ltr-nums mt-1 text-xs text-mist/45">
-            ואז {formatILS(product.recurring.amount)} לחודש · ביטול בכל עת
-          </p>
-        )}
-        {!product.recurring && product.maxPayments > 1 && (
-          <p className="ltr-nums mt-1 text-xs text-mist/45">
-            עד {product.maxPayments} תשלומים
-          </p>
-        )}
+      {showIncludes && (
+        <ul className="relative mt-6 flex flex-col gap-2.5">
+          {product.includes.slice(0, 5).map((inc) => (
+            <li
+              key={inc}
+              className="flex items-start gap-2.5 text-sm text-mist/70"
+            >
+              <Check
+                className="mt-0.5 size-4 shrink-0 text-gold"
+                aria-hidden="true"
+              />
+              <span>{inc}</span>
+            </li>
+          ))}
+        </ul>
+      )}
 
-        {/* Sits above the card-wide link overlay so both stay clickable. */}
-        <div className="relative z-10 mt-5 flex flex-col gap-2.5">
-          <AddToCartButton slug={product.slug} />
-          <Link
-            href={`/store/${product.slug}`}
-            className="group/link inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-mist/55 transition hover:text-gold-lt"
-          >
-            כל הפרטים
-            <ArrowLeft
-              className="size-3.5 transition-transform group-hover/link:-translate-x-1"
-              aria-hidden="true"
-            />
-          </Link>
+      <div className="relative mt-auto pt-7">
+        <div className="border-t border-gold/12 pt-5">
+          <PriceTag product={product} />
+
+          {/* Sits above the card-wide link overlay so both stay clickable. */}
+          <div className="relative z-10 mt-5 flex flex-col gap-2.5">
+            <AddToCartButton slug={product.slug} />
+            <Link
+              href={`/store/${product.slug}`}
+              className="group/link inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-mist/55 transition hover:text-gold-lt"
+            >
+              כל הפרטים
+              <ArrowLeft
+                className="size-3.5 transition-transform group-hover/link:-translate-x-1"
+                aria-hidden="true"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </article>

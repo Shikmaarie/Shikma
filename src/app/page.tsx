@@ -1,7 +1,8 @@
 import Hero from "@/components/sections/Hero";
+import PainPromise from "@/components/sections/PainPromise";
+import Paths from "@/components/sections/Paths";
 import About from "@/components/sections/About";
-import Programs from "@/components/sections/Programs";
-import Results from "@/components/sections/Results";
+import Testimonials from "@/components/sections/Testimonials";
 import Podcast from "@/components/sections/Podcast";
 import Faq from "@/components/sections/Faq";
 import Contact from "@/components/sections/Contact";
@@ -38,9 +39,10 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
+      <PainPromise />
+      <Paths />
       <About />
-      <Programs />
-      <Results />
+      <Testimonials />
       <Podcast />
       <Faq />
       <Contact />
