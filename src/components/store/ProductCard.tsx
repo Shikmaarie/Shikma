@@ -2,13 +2,8 @@ import Link from "next/link";
 import { ArrowLeft, Check } from "lucide-react";
 import AddToCartButton from "./AddToCartButton";
 import PriceTag from "./PriceTag";
+import ProductSigil from "./ProductSigil";
 import { categoryLabels, type Product } from "@/data/products";
-
-const accentGlow: Record<Product["accent"], string> = {
-  gold: "from-gold/18",
-  rose: "from-rose/18",
-  orchid: "from-orchid/18",
-};
 
 export default function ProductCard({
   product,
@@ -20,12 +15,20 @@ export default function ProductCard({
   showCategory?: boolean;
 }) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl glass p-7 transition duration-500 hover:border-gold/45 hover:shadow-[0_30px_80px_-45px_rgba(212,169,95,0.75)]">
-      <span
-        className={`absolute inset-x-0 top-0 h-40 bg-gradient-to-b ${accentGlow[product.accent]} to-transparent opacity-60 transition duration-500 group-hover:opacity-100`}
-        aria-hidden="true"
-      />
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl glass transition duration-500 hover:border-gold/45 hover:shadow-[0_30px_80px_-45px_rgba(212,169,95,0.75)]">
+      {/* Generative cover — stands in for photography we don't have. */}
+      <div className="relative h-36 overflow-hidden border-b border-gold/10 bg-gradient-to-b from-plum/50 to-void/60">
+        <ProductSigil
+          product={product}
+          className="absolute inset-0 h-full w-full opacity-70 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+        />
+        <span
+          className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-void to-transparent"
+          aria-hidden="true"
+        />
+      </div>
 
+      <div className="relative flex flex-1 flex-col p-7">
       <div className="relative flex items-start justify-between gap-3">
         {showCategory ? (
           <span className="rounded-full border border-gold/25 bg-void/40 px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-gold/80">
@@ -41,7 +44,7 @@ export default function ProductCard({
         )}
       </div>
 
-      <h3 className="relative mt-6 font-display text-2xl font-bold text-mist">
+      <h3 className="relative mt-5 font-display text-2xl font-bold text-mist">
         <Link href={`/store/${product.slug}`} className="after:absolute after:inset-0">
           {product.name}
         </Link>
@@ -90,6 +93,7 @@ export default function ProductCard({
             </Link>
           </div>
         </div>
+      </div>
       </div>
     </article>
   );

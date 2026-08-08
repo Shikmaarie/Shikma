@@ -5,6 +5,7 @@ import { ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react";
 import AddToCartButton from "@/components/store/AddToCartButton";
 import PriceTag from "@/components/store/PriceTag";
 import ProductCard from "@/components/store/ProductCard";
+import ProductSigil from "@/components/store/ProductSigil";
 import {
   categoryHrefs,
   categoryLabels,
@@ -146,7 +147,20 @@ export default async function ProductPage({ params }: Params) {
 
             {/* Sticky purchase panel */}
             <aside className="lg:sticky lg:top-28 lg:self-start">
-              <div className="rounded-4xl glass p-8">
+              <div className="overflow-hidden rounded-4xl glass">
+                {/* Same generative motif as the product's card, for continuity. */}
+                <div className="relative h-40 border-b border-gold/10 bg-gradient-to-b from-plum/50 to-void/60">
+                  <ProductSigil
+                    product={product}
+                    className="absolute inset-0 h-full w-full"
+                  />
+                  <span
+                    className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-void to-transparent"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <div className="p-8">
                 {product.badge && (
                   <span className="mb-5 inline-block rounded-full bg-gold/15 px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-gold-lt">
                     {product.badge}
@@ -196,6 +210,7 @@ export default async function ProductPage({ params }: Params) {
                       ? "התשלום מתבצע בעמוד סליקה מאובטח של קארדקום בתקן PCI-DSS. פרטי האשראי אינם עוברים דרך האתר ואינם נשמרים בו."
                       : "נדבר בשיחה קצרה, נבין איפה אתם נמצאים, ורק אז נחליט ביחד אם זה מתאים."}
                   </span>
+                </div>
                 </div>
               </div>
             </aside>

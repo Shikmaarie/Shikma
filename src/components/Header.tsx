@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -10,8 +11,12 @@ import { useCart } from "@/lib/cart";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
   const items = useCart((s) => s.items);
   const openCart = useCart((s) => s.open);
+
+  const isCurrent = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   // Rendered only after mount so the server and client markup agree — the
   // cart count comes from localStorage and isn't known during SSR.
@@ -62,16 +67,30 @@ export default function Header() {
 
           <nav aria-label="ניווט ראשי" className="hidden lg:block">
             <ul className="flex items-center gap-1">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="relative rounded-full px-4 py-2 text-sm font-medium text-mist/75 transition hover:text-gold-lt"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {nav.map((item) => {
+                const current = isCurrent(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={current ? "page" : undefined}
+                      className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${
+                        current
+                          ? "text-gold-lt"
+                          : "text-mist/75 hover:text-gold-lt"
+                      }`}
+                    >
+                      {item.label}
+                      {current && (
+                        <span
+                          className="absolute inset-x-4 -bottom-0.5 h-px bg-gradient-to-l from-transparent via-gold to-transparent"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -142,7 +161,12 @@ export default function Header() {
                     <Link
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
-                      className="block border-b border-gold/10 py-4 font-display text-3xl font-bold text-mist transition hover:text-gold-lt"
+                      aria-current={isCurrent(item.href) ? "page" : undefined}
+                      className={`block border-b border-gold/10 py-4 font-display text-3xl font-bold transition ${
+                        isCurrent(item.href)
+                          ? "text-gradient-gold"
+                          : "text-mist hover:text-gold-lt"
+                      }`}
                     >
                       {item.label}
                     </Link>

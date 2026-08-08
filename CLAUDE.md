@@ -52,5 +52,10 @@
 - Next.js 15 (App Router) + React 19 + Tailwind v4. React 19 הוא חובה —
   App Router של Next 15 לא עובד עם React 18, ו-r3f חייב להיות v9 בהתאם.
 - אחרי שינוי מריצים `npx next build` לפני commit.
+- `src/lib/bidi.ts` הוא **רק** לתמונות OG, כי Satori לא מיישם bidi. אסור
+  להשתמש בו ב-HTML — דפדפנים עושים bidi נכון, וטקסט הפוך שם שובר בחירה,
+  חיפוש וקוראי מסך.
+- ב-SVG להשתמש ב-`gradientUnits="userSpaceOnUse"`. ברירת המחדל
+  (`objectBoundingBox`) מתמוטטת על קווים ישרים ומעלימה אותם.
 - הסליקה: הדפדפן שולח רק slug וכמות. השרת מתמחר מחדש מהקטלוג. לא לשנות
   את זה — זה מה שמונע זיוף סכומים.
