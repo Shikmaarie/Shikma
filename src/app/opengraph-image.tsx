@@ -38,7 +38,7 @@ export default async function Image() {
           textAlign: "right",
           padding: "0 90px",
           background:
-            "radial-gradient(1000px 600px at 78% 22%, #241738 0%, #0d0816 45%, #06040a 100%)",
+            "radial-gradient(1000px 600px at 78% 22%, #0f4a50 0%, #072428 45%, #04171a 100%)",
           fontFamily: "Heebo",
           position: "relative",
         }}
@@ -51,7 +51,7 @@ export default async function Image() {
             right: 0,
             width: 10,
             height: "100%",
-            background: "linear-gradient(#a67c33, #f4e2b6, #a67c33)",
+            background: "linear-gradient(#b08850, #edd4a2, #b08850)",
           }}
         />
 
@@ -61,7 +61,7 @@ export default async function Image() {
             fontSize: 26,
             letterSpacing: 4,
             whiteSpace: "nowrap",
-            color: "#d4a95f",
+            color: "#d3a96a",
             marginBottom: 26,
           }}
         >
@@ -75,7 +75,7 @@ export default async function Image() {
             alignItems: "flex-end",
             fontSize: 66,
             lineHeight: 1.2,
-            color: "#f7f3ec",
+            color: "#e9e2d7",
           }}
         >
           {/*
@@ -93,7 +93,7 @@ export default async function Image() {
               style={{
                 display: "flex",
                 whiteSpace: "nowrap",
-                color: line.gold ? "#f4e2b6" : "#f7f3ec",
+                color: line.gold ? "#edd4a2" : "#e9e2d7",
               }}
             >
               {visual(line.text)}
@@ -116,7 +116,7 @@ export default async function Image() {
               display: "flex",
               fontSize: 40,
               whiteSpace: "nowrap",
-              color: "#f7f3ec",
+              color: "#e9e2d7",
             }}
           >
             {visual(site.name)}
@@ -126,7 +126,7 @@ export default async function Image() {
               display: "flex",
               width: 2,
               height: 40,
-              background: "#d4a95f",
+              background: "#d3a96a",
               opacity: 0.6,
             }}
           />
@@ -135,7 +135,7 @@ export default async function Image() {
               display: "flex",
               fontSize: 28,
               whiteSpace: "nowrap",
-              color: "#d4a95f",
+              color: "#d3a96a",
             }}
           >
             {visual(site.role)}

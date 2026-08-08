@@ -13,10 +13,10 @@ export default function CheckoutPage() {
     <div className="px-5 pt-36 pb-24 sm:px-8">
       <div className="mx-auto w-full max-w-6xl">
         <Eyebrow>שלב אחרון</Eyebrow>
-        <h1 className="mt-6 font-display text-4xl font-black text-mist sm:text-5xl">
+        <h1 className="mt-6 font-display text-4xl font-black text-cream sm:text-5xl">
           כמעט <span className="text-gradient-gold">שם</span>
         </h1>
-        <p className="mt-4 max-w-xl text-mist/60">
+        <p className="mt-4 max-w-xl text-cream/60">
           עוד כמה פרטים ואת עוברת לעמוד התשלום המאובטח.
         </p>
 

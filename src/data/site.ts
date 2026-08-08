@@ -5,7 +5,9 @@
 
 export const site = {
   name: "רחלי חדד",
-  role: "מאסטרית בעסקים וחופש כלכלי",
+  /** The tagline from the official logo lockup. */
+  role: "מכפילה עסקים · בונה אימפריות",
+  roleParts: ["מכפילה עסקים", "בונה אימפריות"],
   url: "https://rachelihadad.co.il",
   email: "office@rachelihadad.co.il",
   phone: "+972-50-000-0000",
@@ -83,7 +85,7 @@ export const paths = {
       title: "מיינדסט, שפע ומשפחה",
       body: "המסע השנתי „ה-DNA של העושר”, כנס העומק „עושים אהבה עם הפחד מכסף” במכון וינגייט, ואתגר הכסף והשפע.",
       cta: { label: "למסלולי השפע והמיינדסט", href: "/wealth" },
-      accent: "orchid" as const,
+      accent: "peri" as const,
     },
     {
       icon: "🤝",
@@ -91,7 +93,7 @@ export const paths = {
       title: "מועדון העסקים החודשי",
       body: "זום שבועי ממוקד, מיני-פודקאסטים, וקהילה תומכת שתחזיק אתכם בתנועה עסקית מתמדת. בפחות מ-1.20 ₪ ליום.",
       cta: { label: "הצטרפו למועדון", href: "/club" },
-      accent: "rose" as const,
+      accent: "coral" as const,
     },
     {
       icon: "📚",

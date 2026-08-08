@@ -7,9 +7,9 @@ export default function Podcast() {
   return (
     <Section id="podcast" className="bg-void">
       <Reveal>
-        <div className="relative overflow-hidden rounded-5xl border border-gold/20 bg-gradient-to-bl from-plum via-night to-void px-7 py-16 sm:px-14 lg:px-20">
+        <div className="relative overflow-hidden rounded-5xl border border-gold/20 bg-gradient-to-bl from-teal via-night to-void px-7 py-16 sm:px-14 lg:px-20">
           <span
-            className="absolute -left-24 -top-24 size-80 rounded-full bg-orchid/12 blur-3xl"
+            className="absolute -left-24 -top-24 size-80 rounded-full bg-peri/12 blur-3xl"
             aria-hidden="true"
           />
           <span
@@ -20,10 +20,10 @@ export default function Podcast() {
           <div className="relative flex flex-col items-start gap-10 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-xl">
               <Eyebrow>{podcast.eyebrow}</Eyebrow>
-              <h2 className="mt-5 font-display text-4xl font-black text-mist sm:text-5xl">
+              <h2 className="mt-5 font-display text-4xl font-black text-cream sm:text-5xl">
                 {podcast.title}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-mist/65">
+              <p className="mt-5 text-lg leading-relaxed text-cream/65">
                 {podcast.body}
               </p>
 

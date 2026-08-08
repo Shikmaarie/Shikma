@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { BrandStar } from "@/components/ui/Wordmark";
 import HeroCanvas from "@/components/three/HeroCanvas";
 import { hero } from "@/data/site";
 
@@ -45,9 +46,9 @@ export default function Hero() {
         <div className="max-w-3xl">
           <motion.p
             {...rise(0.05)}
-            className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-plum/40 px-4 py-2 text-[11px] font-medium tracking-[0.18em] text-gold-lt backdrop-blur-md sm:text-xs"
+            className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-teal/40 px-4 py-2 text-[11px] font-medium tracking-[0.18em] text-gold-lt backdrop-blur-md sm:text-xs"
           >
-            <Sparkles className="size-3.5" aria-hidden="true" />
+            <BrandStar className="size-3 text-gold" />
             {hero.eyebrow}
           </motion.p>
 
@@ -58,7 +59,7 @@ export default function Hero() {
                 {...rise(0.15 + i * 0.1)}
                 className="block"
               >
-                <span className={line.gold ? "text-gradient-gold" : "text-mist"}>
+                <span className={line.gold ? "text-gradient-gold" : "text-cream"}>
                   {line.text}
                 </span>
               </motion.span>
@@ -67,7 +68,7 @@ export default function Hero() {
 
           <motion.p
             {...rise(0.55)}
-            className="mt-8 max-w-2xl text-lg leading-relaxed text-mist/70 sm:text-xl"
+            className="mt-8 max-w-2xl text-lg leading-relaxed text-cream/70 sm:text-xl"
           >
             {hero.sub}
           </motion.p>
@@ -86,7 +87,7 @@ export default function Hero() {
 
             <Link
               href={hero.ctaSecondary.href}
-              className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-plum/30 px-8 py-4 text-base font-semibold text-mist backdrop-blur-md transition hover:border-gold/70 hover:text-gold-lt"
+              className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-teal/30 px-8 py-4 text-base font-semibold text-cream backdrop-blur-md transition hover:border-gold/70 hover:text-gold-lt"
             >
               {hero.ctaSecondary.label}
             </Link>
@@ -106,7 +107,7 @@ export default function Hero() {
                   <span className="mt-1 block text-xs font-semibold text-gold/70">
                     {stat.suffix}
                   </span>
-                  <span className="mt-1 block text-xs leading-snug text-mist/50">
+                  <span className="mt-1 block text-xs leading-snug text-cream/50">
                     {stat.label}
                   </span>
                 </dd>

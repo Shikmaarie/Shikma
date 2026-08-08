@@ -17,7 +17,7 @@ export default function ProductCard({
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-4xl glass transition duration-500 hover:border-gold/45 hover:shadow-[0_30px_80px_-45px_rgba(212,169,95,0.75)]">
       {/* Generative cover — stands in for photography we don't have. */}
-      <div className="relative h-36 overflow-hidden border-b border-gold/10 bg-gradient-to-b from-plum/50 to-void/60">
+      <div className="relative h-36 overflow-hidden border-b border-gold/10 bg-gradient-to-b from-teal/50 to-void/60">
         <ProductSigil
           product={product}
           className="absolute inset-0 h-full w-full opacity-70 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
@@ -44,7 +44,7 @@ export default function ProductCard({
         )}
       </div>
 
-      <h3 className="relative mt-5 font-display text-2xl font-bold text-mist">
+      <h3 className="relative mt-5 font-display text-2xl font-bold text-cream">
         <Link href={`/store/${product.slug}`} className="after:absolute after:inset-0">
           {product.name}
         </Link>
@@ -53,7 +53,7 @@ export default function ProductCard({
         {product.tagline}
       </p>
 
-      <p className="relative mt-5 text-sm leading-relaxed text-mist/60">
+      <p className="relative mt-5 text-sm leading-relaxed text-cream/60">
         {product.summary}
       </p>
 
@@ -62,7 +62,7 @@ export default function ProductCard({
           {product.includes.slice(0, 5).map((inc) => (
             <li
               key={inc}
-              className="flex items-start gap-2.5 text-sm text-mist/70"
+              className="flex items-start gap-2.5 text-sm text-cream/70"
             >
               <Check
                 className="mt-0.5 size-4 shrink-0 text-gold"
@@ -83,7 +83,7 @@ export default function ProductCard({
             <AddToCartButton slug={product.slug} />
             <Link
               href={`/store/${product.slug}`}
-              className="group/link inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-mist/55 transition hover:text-gold-lt"
+              className="group/link inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-cream/55 transition hover:text-gold-lt"
             >
               כל הפרטים
               <ArrowLeft

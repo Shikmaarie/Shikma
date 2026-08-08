@@ -6,6 +6,7 @@ import {
   YoutubeIcon,
 } from "@/components/ui/BrandIcons";
 import { nav, site } from "@/data/site";
+import Wordmark from "@/components/ui/Wordmark";
 import { purchasable } from "@/data/products";
 
 export default function Footer() {
@@ -16,13 +17,8 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <p className="font-display text-3xl font-bold text-gradient-gold">
-              {site.name}
-            </p>
-            <p className="mt-2 text-sm tracking-[0.16em] text-gold/70">
-              {site.role}
-            </p>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-mist/60">
+            <Wordmark size="lg" className="!items-start" />
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/60">
               להפסיק לרדוף אחרי הכסף — ולבנות אימפריה שמנוהלת מבפנים החוצה.
             </p>
 
@@ -60,7 +56,7 @@ export default function Footer() {
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-2 text-sm text-mist/60 transition hover:text-gold-lt"
+                className="flex items-center gap-2 text-sm text-cream/60 transition hover:text-gold-lt"
               >
                 <Mail className="size-4 shrink-0" aria-hidden="true" />
                 <span className="ltr-nums">{site.email}</span>
@@ -69,14 +65,14 @@ export default function Footer() {
             <li>
               <a
                 href={`tel:${site.phone}`}
-                className="flex items-center gap-2 text-sm text-mist/60 transition hover:text-gold-lt"
+                className="flex items-center gap-2 text-sm text-cream/60 transition hover:text-gold-lt"
               >
                 <Phone className="size-4 shrink-0" aria-hidden="true" />
                 <span className="ltr-nums">{site.phone}</span>
               </a>
             </li>
             <li className="pt-3">
-              <p className="text-xs leading-relaxed text-mist/40">
+              <p className="text-xs leading-relaxed text-cream/40">
                 התשלומים באתר מתבצעים בעמוד סליקה מאובטח של קארדקום בתקן
                 PCI-DSS. פרטי האשראי אינם נשמרים באתר.
               </p>
@@ -84,7 +80,7 @@ export default function Footer() {
           </FooterCol>
         </div>
 
-        <p className="mt-14 rounded-2xl border border-gold/12 bg-void/40 px-5 py-4 text-xs leading-relaxed text-mist/45">
+        <p className="mt-14 rounded-2xl border border-gold/12 bg-void/40 px-5 py-4 text-xs leading-relaxed text-cream/45">
           אתר זה מופעל עם מערכת „נגיש בקליק”. להצגת תפריט הנגישות יש ללחוץ{" "}
           <kbd className="ltr-nums rounded border border-gold/25 px-1.5 py-0.5 text-gold/80">
             Control-F10
@@ -96,7 +92,7 @@ export default function Footer() {
           .
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-gold/10 pt-8 text-xs text-mist/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-4 border-t border-gold/10 pt-8 text-xs text-cream/40 sm:flex-row sm:items-center sm:justify-between">
           <p className="ltr-nums">
             © {year} {site.name} · כל הזכויות שמורות | עיצוב ובנייה:{" "}
             {site.credit}
@@ -149,7 +145,7 @@ function FooterLink({
     <li>
       <Link
         href={href}
-        className="text-sm text-mist/60 transition hover:text-gold-lt"
+        className="text-sm text-cream/60 transition hover:text-gold-lt"
       >
         {children}
       </Link>
@@ -172,7 +168,7 @@ function Social({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="grid size-10 place-items-center rounded-full border border-gold/25 text-mist/70 transition hover:border-gold/60 hover:text-gold-lt"
+      className="grid size-10 place-items-center rounded-full border border-gold/25 text-cream/70 transition hover:border-gold/60 hover:text-gold-lt"
     >
       {children}
     </a>

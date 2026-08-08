@@ -6,7 +6,7 @@ import { aboutTeaser, hero } from "@/data/site";
 
 export default function About() {
   return (
-    <Section id="about" className="bg-gradient-to-b from-void via-plum/25 to-void">
+    <Section id="about" className="bg-gradient-to-b from-void via-teal/25 to-void">
       <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-24">
         <div>
           <Reveal>
@@ -23,7 +23,7 @@ export default function About() {
           <div className="mt-8 space-y-5">
             {aboutTeaser.paragraphs.map((p, i) => (
               <Reveal key={i} delay={0.14 + i * 0.07}>
-                <p className="text-lg leading-relaxed text-mist/70">{p}</p>
+                <p className="text-lg leading-relaxed text-cream/70">{p}</p>
               </Reveal>
             ))}
           </div>
@@ -31,7 +31,7 @@ export default function About() {
           <Reveal delay={0.38}>
             <Link
               href={aboutTeaser.cta.href}
-              className="group mt-9 inline-flex items-center gap-2 rounded-full border border-gold/35 px-8 py-3.5 font-semibold text-mist transition hover:border-gold/70 hover:text-gold-lt"
+              className="group mt-9 inline-flex items-center gap-2 rounded-full border border-gold/35 px-8 py-3.5 font-semibold text-cream transition hover:border-gold/70 hover:text-gold-lt"
             >
               {aboutTeaser.cta.label}
               <ArrowLeft
@@ -57,7 +57,7 @@ export default function About() {
                   <span className="mt-2 block text-xs font-semibold text-gold/75">
                     {stat.suffix}
                   </span>
-                  <span className="mt-1.5 block text-xs leading-snug text-mist/50">
+                  <span className="mt-1.5 block text-xs leading-snug text-cream/50">
                     {stat.label}
                   </span>
                 </dd>

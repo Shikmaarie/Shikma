@@ -33,7 +33,7 @@ export type Product = {
   detail?: string;
   includes: string[];
   forWho: string[];
-  accent: "gold" | "rose" | "orchid";
+  accent: "gold" | "coral" | "peri";
 };
 
 export const products: Product[] = [
@@ -91,7 +91,7 @@ export const products: Product[] = [
       "מי שהעסק שלו רץ בלי בסיס יציב מתחתיו",
       "מי שרוצה לשנות את השורש ולא רק את הטקטיקה",
     ],
-    accent: "orchid",
+    accent: "peri",
   },
   {
     slug: "independence",
@@ -147,7 +147,7 @@ export const products: Product[] = [
       "משפחות שרוצות לבנות שפה משותפת סביב כסף",
       "מי שרוצה לעצור את הדפוס לפני שהוא עובר לילדים",
     ],
-    accent: "orchid",
+    accent: "peri",
   },
   {
     slug: "money-fear-event",
@@ -171,7 +171,7 @@ export const products: Product[] = [
       "מי שמתכווץ בכל פעם שהוא פותח את חשבון הבנק",
       "משפחות שרוצות לעבור את זה יחד",
     ],
-    accent: "rose",
+    accent: "coral",
   },
   {
     slug: "money-challenge",
@@ -227,7 +227,7 @@ export const products: Product[] = [
       "מי שצריך מסגרת שבועית שמחזיקה",
       "מי שרוצה להתחיל בעלות נמוכה",
     ],
-    accent: "rose",
+    accent: "coral",
   },
 
   /* ---------------- Books & guides ---------------- */
@@ -270,7 +270,7 @@ export const products: Product[] = [
       "מחברת ההשראה שנלווית לספר — לרשום בה את מה שעולה תוך כדי הקריאה, ולחזור אליו.",
     includes: ["מחברת השראה מודפסת", "נשלחת יחד עם הספר"],
     forWho: ["מי שמזמין את הספר ורוצה לעבוד איתו, לא רק לקרוא אותו"],
-    accent: "rose",
+    accent: "coral",
   },
   {
     slug: "seven-steps",
@@ -321,7 +321,7 @@ export const products: Product[] = [
       "מי שכבר מרוויח ורוצה להכפיל בלי להכפיל שעות",
       "מי שמרגיש שהוא עושה הכל לבד",
     ],
-    accent: "orchid",
+    accent: "peri",
   },
 ];
 

@@ -34,7 +34,7 @@ export default async function ContactPage({
       <Section className="bg-void !pt-6">
         {requested && (
           <Reveal>
-            <p className="mb-10 rounded-3xl border border-gold/30 bg-gold/8 px-6 py-5 text-center text-mist/85">
+            <p className="mb-10 rounded-3xl border border-gold/30 bg-gold/8 px-6 py-5 text-center text-cream/85">
               מתעניינים ב
               <span className="font-bold text-gold-lt">{requested.name}</span> —
               נהדר. ציינו את זה בפנייה ואחזור אליכם עם כל הפרטים.
@@ -77,10 +77,10 @@ export default async function ContactPage({
 
         <Reveal delay={0.2}>
           <div className="mt-14 rounded-5xl glass p-9 text-center sm:p-12">
-            <h2 className="font-display text-2xl font-bold text-mist sm:text-3xl">
+            <h2 className="font-display text-2xl font-bold text-cream sm:text-3xl">
               עדיין לא בטוחים מה מתאים לכם?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-mist/60">
+            <p className="mx-auto mt-4 max-w-xl leading-relaxed text-cream/60">
               התחילו במשהו קטן. אתגר הכסף והשפע או מועדון העסקים הם הדרך הכי
               פשוטה להכיר את הגישה — בלי התחייבות.
             </p>
@@ -94,7 +94,7 @@ export default async function ContactPage({
               </Link>
               <Link
                 href="/club"
-                className="rounded-full border border-gold/35 px-8 py-3.5 font-semibold text-mist transition hover:border-gold/70 hover:text-gold-lt"
+                className="rounded-full border border-gold/35 px-8 py-3.5 font-semibold text-cream transition hover:border-gold/70 hover:text-gold-lt"
               >
                 למועדון העסקים
               </Link>
@@ -133,8 +133,8 @@ function ContactCard({
         {icon}
       </span>
 
-      <h2 className="mt-6 font-display text-xl font-bold text-mist">{title}</h2>
-      <p className="ltr-nums mt-2 flex-1 leading-relaxed text-mist/60">{body}</p>
+      <h2 className="mt-6 font-display text-xl font-bold text-cream">{title}</h2>
+      <p className="ltr-nums mt-2 flex-1 leading-relaxed text-cream/60">{body}</p>
 
       <span className="mt-6 font-semibold text-gold-lt">{action} ←</span>
     </a>

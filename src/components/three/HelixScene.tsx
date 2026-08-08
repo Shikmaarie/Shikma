@@ -12,10 +12,10 @@ import * as THREE from "three";
  * calls regardless of node count.
  */
 
-const GOLD = new THREE.Color("#d4a95f");
-const GOLD_LIGHT = new THREE.Color("#f4e2b6");
-const ORCHID = new THREE.Color("#9a71d6");
-const ROSE = new THREE.Color("#e3a3b6");
+const GOLD = new THREE.Color("#d3a96a");
+const GOLD_LIGHT = new THREE.Color("#edd4a2");
+const TEAL = new THREE.Color("#14606a");
+const MINT = new THREE.Color("#85c9bc");
 
 type HelixConfig = {
   turns: number;
@@ -138,8 +138,8 @@ function Helix({ quality }: { quality: "low" | "high" }) {
       <Instances limit={rungs.length} range={rungs.length}>
         <cylinderGeometry args={[0.006, 0.006, 1, 6]} />
         <meshStandardMaterial
-          color={ROSE}
-          emissive={ORCHID}
+          color={MINT}
+          emissive={TEAL}
           emissiveIntensity={0.9}
           transparent
           opacity={0.3}
@@ -199,7 +199,7 @@ function Dust({ count }: { count: number }) {
       positions[i * 3 + 1] = (Math.random() - 0.5) * 16;
       positions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
 
-      const c = Math.random() > 0.78 ? ROSE : GOLD;
+      const c = Math.random() > 0.78 ? MINT : GOLD;
       colors[i * 3] = c.r;
       colors[i * 3 + 1] = c.g;
       colors[i * 3 + 2] = c.b;
@@ -270,12 +270,12 @@ export default function HelixScene({
       aria-hidden="true"
       style={{ pointerEvents: "none" }}
     >
-      <fog attach="fog" args={["#06040a", 9, 20]} />
+      <fog attach="fog" args={["#04171a", 9, 20]} />
 
       <ambientLight intensity={0.35} />
-      <pointLight position={[5, 4, 6]} intensity={55} color="#f4e2b6" distance={30} />
-      <pointLight position={[-6, -3, 3]} intensity={35} color="#9a71d6" distance={28} />
-      <pointLight position={[0, 6, -6]} intensity={22} color="#e3a3b6" distance={26} />
+      <pointLight position={[5, 4, 6]} intensity={55} color="#edd4a2" distance={30} />
+      <pointLight position={[-6, -3, 3]} intensity={35} color="#14606a" distance={28} />
+      <pointLight position={[0, 6, -6]} intensity={22} color="#85c9bc" distance={26} />
 
       <Helix quality={quality} />
       <Dust count={quality === "high" ? 500 : 220} />

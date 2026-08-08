@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <Section id="contact" className="bg-night">
       <Reveal>
-        <div className="relative overflow-hidden rounded-5xl border border-gold/25 bg-gradient-to-t from-void via-plum/50 to-void px-7 py-20 text-center sm:px-14">
+        <div className="relative overflow-hidden rounded-5xl border border-gold/25 bg-gradient-to-t from-void via-teal/50 to-void px-7 py-20 text-center sm:px-14">
           <span
             className="absolute left-1/2 top-0 h-64 w-[42rem] max-w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/12 blur-3xl"
             aria-hidden="true"
@@ -23,7 +23,7 @@ export default function Contact() {
               <span className="text-gradient-gold">זה כבר לא במקרה.</span>
             </SectionTitle>
 
-            <p className="mt-7 text-lg leading-relaxed text-mist/65">
+            <p className="mt-7 text-lg leading-relaxed text-cream/65">
               בואו נבדוק ביחד מה נכון לכם עכשיו. שיחת התאמה קצרה, בלי התחייבות
               ובלי מכירה בכוח.
             </p>
@@ -41,7 +41,7 @@ export default function Contact() {
 
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full border border-gold/35 px-8 py-4 font-semibold text-mist transition hover:border-gold/70 hover:text-gold-lt"
+                className="group inline-flex items-center gap-2 rounded-full border border-gold/35 px-8 py-4 font-semibold text-cream transition hover:border-gold/70 hover:text-gold-lt"
               >
                 לכל דרכי ההתקשרות
                 <ArrowLeft
@@ -51,7 +51,7 @@ export default function Contact() {
               </Link>
             </div>
 
-            <p className="mt-8 text-sm text-mist/45">
+            <p className="mt-8 text-sm text-cream/45">
               או במייל:{" "}
               <a
                 href={`mailto:${site.email}`}

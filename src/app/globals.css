@@ -1,18 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  /* ---- Brand palette: midnight plum + liquid gold ---- */
-  --color-void: #06040a;
-  --color-night: #0d0816;
-  --color-plum: #171029;
-  --color-plum-2: #241738;
-  --color-mist: #f7f3ec;
+  /* ---------------------------------------------------------------
+     Racheli's brand palette: deep teal + gold.
+     Sampled from the supplied logo, book cover and swatch sheet.
+     Verify against the brand book before launch — see README.
+     --------------------------------------------------------------- */
 
-  --color-gold: #d4a95f;
-  --color-gold-lt: #f4e2b6;
-  --color-gold-dp: #a67c33;
-  --color-rose: #e3a3b6;
-  --color-orchid: #9a71d6;
+  /* Neutrals, built down from the brand teal so the darks stay in family */
+  --color-void: #04171a;
+  --color-night: #072428;
+  --color-teal: #0f4a50; /* the brand teal from the swatch sheet */
+  --color-teal-2: #14606a;
+  --color-cream: #e9e2d7; /* brand cream — body text on dark */
+
+  /* Gold: the logo wordmark gradient runs dark → light → dark */
+  --color-gold: #d3a96a;
+  --color-gold-lt: #edd4a2;
+  --color-gold-dp: #b08850;
+
+  /* Secondary accents from the swatch sheet */
+  --color-coral: #f5877b;
+  --color-mint: #85c9bc;
+  --color-sage: #c7dad5;
+  --color-lavender: #d7cbe6;
+  --color-peri: #8e9bf6;
 
   --font-sans: var(--font-heebo), system-ui, sans-serif;
   --font-display: var(--font-frank), Georgia, serif;
@@ -53,7 +65,7 @@ html {
 
 body {
   background: var(--color-void);
-  color: var(--color-mist);
+  color: var(--color-cream);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -84,7 +96,7 @@ body {
 }
 
 @utility glass {
-  background: color-mix(in oklab, var(--color-plum) 45%, transparent);
+  background: color-mix(in oklab, var(--color-teal) 45%, transparent);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid color-mix(in oklab, var(--color-gold) 16%, transparent);
@@ -98,7 +110,7 @@ body {
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--color-void); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--color-gold-dp), var(--color-plum-2));
+  background: linear-gradient(var(--color-gold-dp), var(--color-teal-2));
   border-radius: 99px;
 }
 

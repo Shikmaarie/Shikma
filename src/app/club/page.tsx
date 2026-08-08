@@ -30,11 +30,11 @@ export default function ClubPage() {
       {/* The problem */}
       <Section className="bg-void !pt-6">
         <Reveal>
-          <div className="mx-auto max-w-3xl rounded-5xl border border-rose/25 bg-gradient-to-b from-plum/40 to-void px-8 py-10 text-center sm:px-12">
-            <h2 className="font-display text-2xl font-bold text-rose sm:text-3xl">
+          <div className="mx-auto max-w-3xl rounded-5xl border border-coral/25 bg-gradient-to-b from-teal/40 to-void px-8 py-10 text-center sm:px-12">
+            <h2 className="font-display text-2xl font-bold text-coral sm:text-3xl">
               {clubPage.problem.title}
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-mist/70">
+            <p className="mt-4 text-lg leading-relaxed text-cream/70">
               {clubPage.problem.body}
             </p>
           </div>
@@ -59,10 +59,10 @@ export default function ClubPage() {
             <Reveal key={item.title} delay={0.08 + i * 0.08}>
               <article className="h-full rounded-4xl glass p-8">
                 <Sparkles className="size-6 text-gold" aria-hidden="true" />
-                <h3 className="mt-5 font-display text-xl font-bold text-mist">
+                <h3 className="mt-5 font-display text-xl font-bold text-cream">
                   {item.title}
                 </h3>
-                <p className="mt-3 leading-relaxed text-mist/60">{item.body}</p>
+                <p className="mt-3 leading-relaxed text-cream/60">{item.body}</p>
               </article>
             </Reveal>
           ))}
@@ -73,14 +73,14 @@ export default function ClubPage() {
       {club && (
         <Section className="bg-void">
           <Reveal>
-            <div className="relative mx-auto max-w-3xl overflow-hidden rounded-5xl border border-gold/30 bg-gradient-to-t from-void via-plum/50 to-void px-8 py-12 text-center sm:px-14">
+            <div className="relative mx-auto max-w-3xl overflow-hidden rounded-5xl border border-gold/30 bg-gradient-to-t from-void via-teal/50 to-void px-8 py-12 text-center sm:px-14">
               <span
                 className="absolute left-1/2 top-0 h-56 w-[38rem] max-w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/14 blur-3xl"
                 aria-hidden="true"
               />
 
               <div className="relative">
-                <h2 className="font-display text-3xl font-black text-mist sm:text-4xl">
+                <h2 className="font-display text-3xl font-black text-cream sm:text-4xl">
                   מחיר השקה מיוחד
                 </h2>
 
@@ -101,7 +101,7 @@ export default function ClubPage() {
                   {clubPage.bonus}
                 </p>
 
-                <p className="mt-5 text-xs text-mist/45">
+                <p className="mt-5 text-xs text-cream/45">
                   התשלום מתבצע בעמוד סליקה מאובטח של קארדקום.
                 </p>
               </div>

@@ -54,11 +54,11 @@ export default function CartDrawer() {
             transition={{ type: "spring", damping: 32, stiffness: 280 }}
           >
             <header className="flex items-center justify-between border-b border-gold/12 px-6 py-5">
-              <h2 className="flex items-center gap-2 font-display text-xl font-bold text-mist">
+              <h2 className="flex items-center gap-2 font-display text-xl font-bold text-cream">
                 <ShoppingBag className="size-5 text-gold" aria-hidden="true" />
                 העגלה שלי
                 {count > 0 && (
-                  <span className="ltr-nums text-sm font-normal text-mist/45">
+                  <span className="ltr-nums text-sm font-normal text-cream/45">
                     ({count})
                   </span>
                 )}
@@ -66,7 +66,7 @@ export default function CartDrawer() {
               <button
                 type="button"
                 onClick={close}
-                className="rounded-full border border-gold/25 p-2 text-mist/80 transition hover:border-gold/60"
+                className="rounded-full border border-gold/25 p-2 text-cream/80 transition hover:border-gold/60"
                 aria-label="סגירת העגלה"
               >
                 <X className="size-4" aria-hidden="true" />
@@ -75,10 +75,10 @@ export default function CartDrawer() {
 
             {lines.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-5 px-8 text-center">
-                <span className="grid size-20 place-items-center rounded-full border border-gold/20 bg-plum/40">
+                <span className="grid size-20 place-items-center rounded-full border border-gold/20 bg-teal/40">
                   <ShoppingBag className="size-8 text-gold/50" aria-hidden="true" />
                 </span>
-                <p className="text-mist/60">העגלה עדיין ריקה.</p>
+                <p className="text-cream/60">העגלה עדיין ריקה.</p>
                 <Link
                   href="/store"
                   onClick={close}
@@ -100,7 +100,7 @@ export default function CartDrawer() {
                           <Link
                             href={`/store/${product.slug}`}
                             onClick={close}
-                            className="font-bold text-mist transition hover:text-gold-lt"
+                            className="font-bold text-cream transition hover:text-gold-lt"
                           >
                             {product.name}
                           </Link>
@@ -111,7 +111,7 @@ export default function CartDrawer() {
                         <button
                           type="button"
                           onClick={() => remove(product.slug)}
-                          className="shrink-0 rounded-full p-2 text-mist/45 transition hover:bg-plum hover:text-rose"
+                          className="shrink-0 rounded-full p-2 text-cream/45 transition hover:bg-teal hover:text-coral"
                           aria-label={`הסרת ${product.name} מהעגלה`}
                         >
                           <Trash2 className="size-4" aria-hidden="true" />
@@ -123,13 +123,13 @@ export default function CartDrawer() {
                           <button
                             type="button"
                             onClick={() => setQuantity(product.slug, quantity - 1)}
-                            className="grid size-7 place-items-center rounded-full text-mist/80 transition hover:bg-plum"
+                            className="grid size-7 place-items-center rounded-full text-cream/80 transition hover:bg-teal"
                             aria-label={`הפחתת כמות של ${product.name}`}
                           >
                             <Minus className="size-3.5" aria-hidden="true" />
                           </button>
                           <span
-                            className="ltr-nums w-8 text-center text-sm font-bold text-mist"
+                            className="ltr-nums w-8 text-center text-sm font-bold text-cream"
                             aria-live="polite"
                           >
                             {quantity}
@@ -137,7 +137,7 @@ export default function CartDrawer() {
                           <button
                             type="button"
                             onClick={() => setQuantity(product.slug, quantity + 1)}
-                            className="grid size-7 place-items-center rounded-full text-mist/80 transition hover:bg-plum"
+                            className="grid size-7 place-items-center rounded-full text-cream/80 transition hover:bg-teal"
                             aria-label={`הגדלת כמות של ${product.name}`}
                           >
                             <Plus className="size-3.5" aria-hidden="true" />
@@ -154,13 +154,13 @@ export default function CartDrawer() {
 
                 <footer className="border-t border-gold/15 bg-void/60 px-6 py-6">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-sm text-mist/60">סה״כ לתשלום</span>
+                    <span className="text-sm text-cream/60">סה״כ לתשלום</span>
                     <span className="ltr-nums font-display text-3xl font-black text-gradient-gold">
                       {formatILS(subtotal)}
                     </span>
                   </div>
                   {maxPayments > 1 && (
-                    <p className="ltr-nums mt-1 text-left text-xs text-mist/45">
+                    <p className="ltr-nums mt-1 text-left text-xs text-cream/45">
                       ניתן לפרוס עד {maxPayments} תשלומים
                     </p>
                   )}
@@ -173,7 +173,7 @@ export default function CartDrawer() {
                     למעבר לתשלום
                   </Link>
 
-                  <p className="mt-3 text-center text-[11px] text-mist/40">
+                  <p className="mt-3 text-center text-[11px] text-cream/40">
                     התשלום מתבצע בעמוד מאובטח של קארדקום
                   </p>
                 </footer>

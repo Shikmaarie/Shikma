@@ -68,7 +68,7 @@ export default function CheckoutForm() {
   if (lines.length === 0) {
     return (
       <div className="flex flex-col items-center gap-6 rounded-4xl glass px-8 py-20 text-center">
-        <p className="text-lg text-mist/65">העגלה שלך ריקה.</p>
+        <p className="text-lg text-cream/65">העגלה שלך ריקה.</p>
         <Link
           href="/store"
           className="rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-3.5 font-bold text-void"
@@ -82,8 +82,8 @@ export default function CheckoutForm() {
   return (
     <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
       <form onSubmit={handleSubmit} className="rounded-4xl glass p-7 sm:p-9">
-        <h2 className="font-display text-2xl font-bold text-mist">הפרטים שלך</h2>
-        <p className="mt-2 text-sm text-mist/55">
+        <h2 className="font-display text-2xl font-bold text-cream">הפרטים שלך</h2>
+        <p className="mt-2 text-sm text-cream/55">
           נשתמש בהם להנפקת החשבונית ולשליחת הגישה.
         </p>
 
@@ -123,7 +123,7 @@ export default function CheckoutForm() {
         {error && (
           <p
             role="alert"
-            className="mt-6 flex items-start gap-2.5 rounded-2xl border border-rose/40 bg-rose/10 px-4 py-3 text-sm text-rose"
+            className="mt-6 flex items-start gap-2.5 rounded-2xl border border-coral/40 bg-coral/10 px-4 py-3 text-sm text-coral"
           >
             <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
             {error}
@@ -148,7 +148,7 @@ export default function CheckoutForm() {
           )}
         </button>
 
-        <p className="mt-4 text-center text-xs leading-relaxed text-mist/45">
+        <p className="mt-4 text-center text-xs leading-relaxed text-cream/45">
           בלחיצה על הכפתור תועברו לעמוד הסליקה המאובטח של קארדקום. בביצוע
           ההזמנה אתם מאשרים את{" "}
           <Link href="/legal/terms" className="text-gold-lt hover:underline">
@@ -160,7 +160,7 @@ export default function CheckoutForm() {
 
       <aside className="lg:sticky lg:top-28 lg:self-start">
         <div className="rounded-4xl glass p-7 sm:p-8">
-          <h2 className="font-display text-xl font-bold text-mist">סיכום ההזמנה</h2>
+          <h2 className="font-display text-xl font-bold text-cream">סיכום ההזמנה</h2>
 
           <ul className="mt-6 flex flex-col gap-4">
             {lines.map(({ product, quantity, price }) => (
@@ -169,8 +169,8 @@ export default function CheckoutForm() {
                 className="flex items-start justify-between gap-4 border-b border-gold/10 pb-4 last:border-0 last:pb-0"
               >
                 <div className="min-w-0">
-                  <p className="font-semibold text-mist">{product.name}</p>
-                  <p className="ltr-nums mt-1 text-xs text-mist/45">
+                  <p className="font-semibold text-cream">{product.name}</p>
+                  <p className="ltr-nums mt-1 text-xs text-cream/45">
                     כמות: {quantity}
                   </p>
                 </div>
@@ -182,21 +182,21 @@ export default function CheckoutForm() {
           </ul>
 
           <div className="mt-6 flex items-baseline justify-between border-t border-gold/15 pt-5">
-            <span className="text-sm text-mist/60">סה״כ לתשלום</span>
+            <span className="text-sm text-cream/60">סה״כ לתשלום</span>
             <span className="ltr-nums font-display text-3xl font-black text-gradient-gold">
               {formatILS(subtotal)}
             </span>
           </div>
-          <p className="mt-1 text-left text-xs text-mist/45">כולל מע״מ</p>
+          <p className="mt-1 text-left text-xs text-cream/45">כולל מע״מ</p>
 
           {maxPayments > 1 && (
-            <p className="ltr-nums mt-4 rounded-2xl border border-gold/20 bg-void/40 px-4 py-3 text-xs leading-relaxed text-mist/60">
+            <p className="ltr-nums mt-4 rounded-2xl border border-gold/20 bg-void/40 px-4 py-3 text-xs leading-relaxed text-cream/60">
               ניתן לפרוס עד {maxPayments} תשלומים. את מספר התשלומים בוחרים בעמוד
               הסליקה.
             </p>
           )}
 
-          <div className="mt-6 flex items-start gap-2.5 text-xs leading-relaxed text-mist/50">
+          <div className="mt-6 flex items-start gap-2.5 text-xs leading-relaxed text-cream/50">
             <ShieldCheck
               className="mt-0.5 size-4 shrink-0 text-gold/70"
               aria-hidden="true"
@@ -226,7 +226,7 @@ function Field({
     <div className={className}>
       <label
         htmlFor={name}
-        className="mb-2 block text-sm font-medium text-mist/75"
+        className="mb-2 block text-sm font-medium text-cream/75"
       >
         {label}
         {props.required && <span className="text-gold"> *</span>}
@@ -234,7 +234,7 @@ function Field({
       <input
         id={name}
         name={name}
-        className="w-full rounded-2xl border border-gold/20 bg-void/50 px-4 py-3 text-mist placeholder:text-mist/30 transition focus:border-gold/60 focus:outline-none"
+        className="w-full rounded-2xl border border-gold/20 bg-void/50 px-4 py-3 text-cream placeholder:text-cream/30 transition focus:border-gold/60 focus:outline-none"
         {...props}
       />
     </div>

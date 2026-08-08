@@ -6,9 +6,9 @@ import { paths } from "@/data/site";
 
 const accentRing: Record<string, string> = {
   gold: "hover:border-gold/60 hover:shadow-[0_28px_80px_-40px_rgba(212,169,95,0.7)]",
-  rose: "hover:border-rose/60 hover:shadow-[0_28px_80px_-40px_rgba(227,163,182,0.6)]",
-  orchid:
-    "hover:border-orchid/60 hover:shadow-[0_28px_80px_-40px_rgba(154,113,214,0.6)]",
+  coral: "hover:border-coral/60 hover:shadow-[0_28px_80px_-40px_rgba(227,163,182,0.6)]",
+  peri:
+    "hover:border-peri/60 hover:shadow-[0_28px_80px_-40px_rgba(154,113,214,0.6)]",
 };
 
 export default function Paths() {
@@ -25,7 +25,7 @@ export default function Paths() {
           </SectionTitle>
         </Reveal>
         <Reveal delay={0.14}>
-          <p className="mt-6 text-lg leading-relaxed text-mist/60">
+          <p className="mt-6 text-lg leading-relaxed text-cream/60">
             {paths.sub}
           </p>
         </Reveal>
@@ -50,7 +50,7 @@ export default function Paths() {
                 {card.kicker}
               </p>
 
-              <h3 className="relative mt-3 font-display text-2xl font-bold text-mist sm:text-3xl">
+              <h3 className="relative mt-3 font-display text-2xl font-bold text-cream sm:text-3xl">
                 <Link
                   href={card.cta.href}
                   className="after:absolute after:inset-0"
@@ -59,7 +59,7 @@ export default function Paths() {
                 </Link>
               </h3>
 
-              <p className="relative mt-4 flex-1 leading-relaxed text-mist/60">
+              <p className="relative mt-4 flex-1 leading-relaxed text-cream/60">
                 {card.body}
               </p>
 

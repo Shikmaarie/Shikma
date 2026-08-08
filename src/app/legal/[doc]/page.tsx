@@ -120,7 +120,7 @@ export default async function LegalPage({ params }: Params) {
   return (
     <article className="px-5 pt-36 pb-24 sm:px-8">
       <div className="mx-auto w-full max-w-3xl">
-        <h1 className="font-display text-4xl font-black text-mist sm:text-5xl">
+        <h1 className="font-display text-4xl font-black text-cream sm:text-5xl">
           {entry.title}
         </h1>
 
@@ -130,12 +130,12 @@ export default async function LegalPage({ params }: Params) {
               <h2 className="font-display text-xl font-bold text-gold-lt">
                 {section.h}
               </h2>
-              <p className="mt-3 leading-relaxed text-mist/65">{section.p}</p>
+              <p className="mt-3 leading-relaxed text-cream/65">{section.p}</p>
             </section>
           ))}
         </div>
 
-        <p className="mt-16 rounded-2xl border border-gold/20 bg-void/50 px-5 py-4 text-sm text-mist/45">
+        <p className="mt-16 rounded-2xl border border-gold/20 bg-void/50 px-5 py-4 text-sm text-cream/45">
           המסמך מעודכן לאחרונה בתאריך העלאת האתר. לשאלות ניתן לפנות לכתובת{" "}
           <a href={`mailto:${site.email}`} className="ltr-nums text-gold-lt">
             {site.email}

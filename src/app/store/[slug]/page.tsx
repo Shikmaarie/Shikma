@@ -72,7 +72,7 @@ export default async function ProductPage({ params }: Params) {
         <div className="mx-auto w-full max-w-7xl">
           <Link
             href={categoryHrefs[product.category]}
-            className="group inline-flex items-center gap-2 text-sm text-mist/55 transition hover:text-gold-lt"
+            className="group inline-flex items-center gap-2 text-sm text-cream/55 transition hover:text-gold-lt"
           >
             <ArrowRight
               className="size-4 transition-transform group-hover:translate-x-1"
@@ -83,29 +83,29 @@ export default async function ProductPage({ params }: Params) {
 
           <div className="mt-8 grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
             <div>
-              <span className="rounded-full border border-gold/25 bg-plum/40 px-4 py-1.5 text-[11px] font-bold tracking-[0.16em] text-gold/85">
+              <span className="rounded-full border border-gold/25 bg-teal/40 px-4 py-1.5 text-[11px] font-bold tracking-[0.16em] text-gold/85">
                 {categoryLabels[product.category]}
               </span>
 
-              <h1 className="mt-6 font-display text-4xl leading-[1.1] font-black text-mist sm:text-5xl lg:text-6xl">
+              <h1 className="mt-6 font-display text-4xl leading-[1.1] font-black text-cream sm:text-5xl lg:text-6xl">
                 {product.name}
               </h1>
               <p className="mt-4 text-lg font-medium text-gold/80">
                 {product.tagline}
               </p>
 
-              <p className="mt-8 text-lg leading-relaxed text-mist/70">
+              <p className="mt-8 text-lg leading-relaxed text-cream/70">
                 {product.summary}
               </p>
 
               {product.detail && (
-                <p className="mt-4 leading-relaxed text-mist/55">
+                <p className="mt-4 leading-relaxed text-cream/55">
                   {product.detail}
                 </p>
               )}
 
               <section className="mt-14">
-                <h2 className="flex items-center gap-3 font-display text-2xl font-bold text-mist">
+                <h2 className="flex items-center gap-3 font-display text-2xl font-bold text-cream">
                   <Sparkles className="size-5 text-gold" aria-hidden="true" />
                   מה מקבלים
                 </h2>
@@ -113,7 +113,7 @@ export default async function ProductPage({ params }: Params) {
                   {product.includes.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 rounded-2xl glass px-5 py-4 text-sm leading-relaxed text-mist/75"
+                      className="flex items-start gap-3 rounded-2xl glass px-5 py-4 text-sm leading-relaxed text-cream/75"
                     >
                       <Check
                         className="mt-0.5 size-4 shrink-0 text-gold"
@@ -126,7 +126,7 @@ export default async function ProductPage({ params }: Params) {
               </section>
 
               <section className="mt-14">
-                <h2 className="font-display text-2xl font-bold text-mist">
+                <h2 className="font-display text-2xl font-bold text-cream">
                   למי זה מיועד
                 </h2>
                 <ul className="mt-6 flex flex-col gap-4">
@@ -138,7 +138,7 @@ export default async function ProductPage({ params }: Params) {
                       >
                         {i + 1}
                       </span>
-                      <span className="text-mist/70">{item}</span>
+                      <span className="text-cream/70">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -149,7 +149,7 @@ export default async function ProductPage({ params }: Params) {
             <aside className="lg:sticky lg:top-28 lg:self-start">
               <div className="overflow-hidden rounded-4xl glass">
                 {/* Same generative motif as the product's card, for continuity. */}
-                <div className="relative h-40 border-b border-gold/10 bg-gradient-to-b from-plum/50 to-void/60">
+                <div className="relative h-40 border-b border-gold/10 bg-gradient-to-b from-teal/50 to-void/60">
                   <ProductSigil
                     product={product}
                     className="absolute inset-0 h-full w-full"
@@ -170,11 +170,11 @@ export default async function ProductPage({ params }: Params) {
                 <PriceTag product={product} size="lg" />
 
                 {product.mode === "purchase" && (
-                  <p className="mt-2 text-sm text-mist/50">כולל מע״מ</p>
+                  <p className="mt-2 text-sm text-cream/50">כולל מע״מ</p>
                 )}
 
                 {product.recurring && (
-                  <p className="ltr-nums mt-4 rounded-2xl border border-gold/20 bg-void/40 px-4 py-3 text-sm leading-relaxed text-mist/70">
+                  <p className="ltr-nums mt-4 rounded-2xl border border-gold/20 bg-void/40 px-4 py-3 text-sm leading-relaxed text-cream/70">
                     לאחר החודש הראשון החיוב הוא{" "}
                     {product.recurring.amount.toLocaleString("he-IL")} ₪ לחודש
                     בהוראת קבע, וניתן לבטל בכל עת.
@@ -188,7 +188,7 @@ export default async function ProductPage({ params }: Params) {
                 {/* The notebook only makes sense alongside the book. */}
                 {product.slug === "first-100k-book" && (
                   <div className="mt-4 rounded-2xl border border-gold/20 bg-void/40 p-4">
-                    <p className="text-sm text-mist/70">
+                    <p className="text-sm text-cream/70">
                       רוצים גם את מחברת ההשראה? אפשר להוסיף אותה ב-25 ₪.
                     </p>
                     <div className="mt-3">
@@ -200,7 +200,7 @@ export default async function ProductPage({ params }: Params) {
                   </div>
                 )}
 
-                <div className="mt-6 flex items-start gap-2.5 border-t border-gold/12 pt-5 text-xs leading-relaxed text-mist/50">
+                <div className="mt-6 flex items-start gap-2.5 border-t border-gold/12 pt-5 text-xs leading-relaxed text-cream/50">
                   <ShieldCheck
                     className="mt-0.5 size-4 shrink-0 text-gold/70"
                     aria-hidden="true"
@@ -218,7 +218,7 @@ export default async function ProductPage({ params }: Params) {
 
           {related.length > 0 && (
             <section className="mt-24">
-              <h2 className="mb-8 flex items-center gap-4 font-display text-2xl font-bold text-mist sm:text-3xl">
+              <h2 className="mb-8 flex items-center gap-4 font-display text-2xl font-bold text-cream sm:text-3xl">
                 אולי יתאים לכם גם
                 <span
                   className="h-px flex-1 bg-gradient-to-l from-gold/40 to-transparent"

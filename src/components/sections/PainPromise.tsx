@@ -24,7 +24,7 @@ export default function PainPromise() {
                 className={
                   i === 1
                     ? "border-r-2 border-gold/60 pr-6 font-display text-2xl leading-snug font-bold text-gold-lt"
-                    : "text-lg leading-relaxed text-mist/70"
+                    : "text-lg leading-relaxed text-cream/70"
                 }
               >
                 {p}

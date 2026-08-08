@@ -26,7 +26,7 @@ export default function StorePage() {
               <Link
                 key={category}
                 href={categoryHrefs[category]}
-                className="rounded-full border border-gold/25 px-5 py-2 text-sm font-medium text-mist/75 transition hover:border-gold/60 hover:text-gold-lt"
+                className="rounded-full border border-gold/25 px-5 py-2 text-sm font-medium text-cream/75 transition hover:border-gold/60 hover:text-gold-lt"
               >
                 {categoryLabels[category]}
               </Link>

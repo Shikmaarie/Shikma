@@ -18,7 +18,7 @@ export default function Faq() {
             </SectionTitle>
           </Reveal>
           <Reveal delay={0.14}>
-            <p className="mt-6 text-mist/60">
+            <p className="mt-6 text-cream/60">
               לא מצאת את מה שחיפשת? כתבי לי ואענה אישית.
             </p>
           </Reveal>
@@ -29,7 +29,7 @@ export default function Faq() {
             <Reveal key={item.q} delay={0.06 * i}>
               <details className="group rounded-3xl glass px-6 py-5 transition hover:border-gold/40 [&_summary::-webkit-details-marker]:hidden">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                  <h3 className="text-base font-bold text-mist sm:text-lg">
+                  <h3 className="text-base font-bold text-cream sm:text-lg">
                     {item.q}
                   </h3>
                   <span
@@ -40,7 +40,7 @@ export default function Faq() {
                     <span className="absolute h-3 w-px bg-current" />
                   </span>
                 </summary>
-                <p className="mt-4 text-sm leading-relaxed text-mist/65">
+                <p className="mt-4 text-sm leading-relaxed text-cream/65">
                   {item.a}
                 </p>
               </details>

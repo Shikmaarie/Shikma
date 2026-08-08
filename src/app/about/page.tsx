@@ -33,7 +33,7 @@ export default function AboutPage() {
                   <h2 className="font-display text-2xl font-bold text-gold-lt">
                     {chapter.label}
                   </h2>
-                  <p className="mt-3 text-lg leading-relaxed text-mist/70">
+                  <p className="mt-3 text-lg leading-relaxed text-cream/70">
                     {chapter.body}
                   </p>
                 </li>
@@ -44,10 +44,10 @@ export default function AboutPage() {
           <div className="flex flex-col gap-6 lg:sticky lg:top-28 lg:self-start">
             <Reveal>
               <div className="rounded-5xl glass p-8">
-                <h2 className="font-display text-xl font-bold text-mist">
+                <h2 className="font-display text-xl font-bold text-cream">
                   {aboutPage.creed.label}
                 </h2>
-                <p className="mt-4 leading-relaxed text-mist/70">
+                <p className="mt-4 leading-relaxed text-cream/70">
                   {aboutPage.creed.body}
                 </p>
               </div>
@@ -68,7 +68,7 @@ export default function AboutPage() {
                       <span className="mt-1.5 block text-[11px] font-semibold text-gold/75">
                         {stat.suffix}
                       </span>
-                      <span className="mt-1 block text-[11px] leading-snug text-mist/50">
+                      <span className="mt-1 block text-[11px] leading-snug text-cream/50">
                         {stat.label}
                       </span>
                     </dd>

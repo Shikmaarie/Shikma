@@ -6,8 +6,8 @@ import type { Product } from "@/data/products";
 
 const accentBorder: Record<Product["accent"], string> = {
   gold: "hover:border-gold/45",
-  rose: "hover:border-rose/45",
-  orchid: "hover:border-orchid/45",
+  coral: "hover:border-coral/45",
+  peri: "hover:border-peri/45",
 };
 
 /**
@@ -47,7 +47,7 @@ export default function ProgramDetail({
             )}
           </div>
 
-          <h2 className="mt-3 font-display text-3xl font-black text-mist sm:text-4xl">
+          <h2 className="mt-3 font-display text-3xl font-black text-cream sm:text-4xl">
             <Link
               href={`/store/${product.slug}`}
               className="transition hover:text-gold-lt"
@@ -57,12 +57,12 @@ export default function ProgramDetail({
           </h2>
           <p className="mt-2 font-medium text-gold/80">{product.tagline}</p>
 
-          <p className="mt-6 text-lg leading-relaxed text-mist/70">
+          <p className="mt-6 text-lg leading-relaxed text-cream/70">
             {product.summary}
           </p>
 
           {product.detail && (
-            <p className="mt-4 leading-relaxed text-mist/55">{product.detail}</p>
+            <p className="mt-4 leading-relaxed text-cream/55">{product.detail}</p>
           )}
 
           <div className="mt-9 grid gap-8 sm:grid-cols-2">
@@ -74,7 +74,7 @@ export default function ProgramDetail({
                 {product.includes.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-sm leading-relaxed text-mist/70"
+                    className="flex items-start gap-2.5 text-sm leading-relaxed text-cream/70"
                   >
                     <Check
                       className="mt-0.5 size-4 shrink-0 text-gold"
@@ -94,7 +94,7 @@ export default function ProgramDetail({
                 {product.forWho.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-sm leading-relaxed text-mist/70"
+                    className="flex items-start gap-2.5 text-sm leading-relaxed text-cream/70"
                   >
                     <span
                       className="mt-1.5 size-1.5 shrink-0 rounded-full bg-gold/70"
@@ -117,7 +117,7 @@ export default function ProgramDetail({
               <AddToCartButton slug={product.slug} size="lg" />
               <Link
                 href={`/store/${product.slug}`}
-                className="group/link inline-flex items-center justify-center gap-2 text-sm font-semibold text-mist/60 transition hover:text-gold-lt"
+                className="group/link inline-flex items-center justify-center gap-2 text-sm font-semibold text-cream/60 transition hover:text-gold-lt"
               >
                 כל הפרטים
                 <ArrowLeft

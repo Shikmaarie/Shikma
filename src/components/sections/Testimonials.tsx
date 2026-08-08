@@ -32,20 +32,20 @@ export default function Testimonials() {
                 ”
               </span>
 
-              <blockquote className="relative mt-2 flex-1 font-display text-xl leading-relaxed text-mist/85 sm:text-2xl">
+              <blockquote className="relative mt-2 flex-1 font-display text-xl leading-relaxed text-cream/85 sm:text-2xl">
                 {t.quote}
               </blockquote>
 
               <figcaption className="relative mt-8 flex items-center gap-3.5 border-t border-gold/12 pt-5">
                 <span
-                  className="grid size-11 shrink-0 place-items-center rounded-full border border-gold/30 bg-plum font-display text-lg font-bold text-gold-lt"
+                  className="grid size-11 shrink-0 place-items-center rounded-full border border-gold/30 bg-teal font-display text-lg font-bold text-gold-lt"
                   aria-hidden="true"
                 >
                   {t.name.charAt(0)}
                 </span>
                 <span>
-                  <span className="block font-bold text-mist">{t.name}</span>
-                  <span className="block text-sm text-mist/50">{t.role}</span>
+                  <span className="block font-bold text-cream">{t.name}</span>
+                  <span className="block text-sm text-cream/50">{t.role}</span>
                 </span>
               </figcaption>
             </figure>

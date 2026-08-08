@@ -13,9 +13,9 @@ import type { Product } from "@/data/products";
  */
 
 const palette = {
-  gold: { a: "#d4a95f", b: "#f4e2b6" },
-  rose: { a: "#e3a3b6", b: "#f4d8e0" },
-  orchid: { a: "#9a71d6", b: "#c9aef0" },
+  gold: { a: "#d3a96a", b: "#edd4a2" },
+  coral: { a: "#f5877b", b: "#ffc3ba" },
+  peri: { a: "#85c9bc", b: "#c7dad5" },
 } as const;
 
 /** Small stable hash so the variation survives rebuilds. */

@@ -23,7 +23,7 @@ export default function PageHeader({
       <div className="relative mx-auto w-full max-w-7xl">
         <Eyebrow>{eyebrow}</Eyebrow>
 
-        <h1 className="mt-6 max-w-4xl font-display text-4xl leading-[1.1] font-black text-mist sm:text-5xl lg:text-6xl">
+        <h1 className="mt-6 max-w-4xl font-display text-4xl leading-[1.1] font-black text-cream sm:text-5xl lg:text-6xl">
           {title}
           {accent && (
             <>
@@ -34,7 +34,7 @@ export default function PageHeader({
         </h1>
 
         {sub && (
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mist/65">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream/65">
             {sub}
           </p>
         )}

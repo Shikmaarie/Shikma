@@ -19,7 +19,7 @@ export default function PriceTag({
         <p className="font-display text-2xl font-bold text-gold-lt">
           בשיחת התאמה
         </p>
-        <p className="mt-1 text-xs text-mist/50">
+        <p className="mt-1 text-xs text-cream/50">
           המסלול והתשלום נקבעים יחד, לפי השלב שבו אתם נמצאים.
         </p>
       </div>
@@ -41,20 +41,20 @@ export default function PriceTag({
           {formatILS(product.price)}
         </span>
         {product.compareAt && (
-          <span className="ltr-nums text-sm text-mist/35 line-through">
+          <span className="ltr-nums text-sm text-cream/35 line-through">
             {formatILS(product.compareAt)}
           </span>
         )}
       </div>
 
       {product.priceNote && (
-        <p className="ltr-nums mt-1.5 text-xs leading-relaxed text-mist/55">
+        <p className="ltr-nums mt-1.5 text-xs leading-relaxed text-cream/55">
           {product.priceNote}
         </p>
       )}
 
       {!product.priceNote && product.maxPayments > 1 && (
-        <p className="ltr-nums mt-1 text-xs text-mist/45">
+        <p className="ltr-nums mt-1 text-xs text-cream/45">
           עד {product.maxPayments} תשלומים
         </p>
       )}

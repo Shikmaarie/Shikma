@@ -21,10 +21,10 @@ export default function Error({
         <p className="font-display text-7xl font-black text-gradient-gold">
           אופס
         </p>
-        <h1 className="mt-6 font-display text-3xl font-bold text-mist sm:text-4xl">
+        <h1 className="mt-6 font-display text-3xl font-bold text-cream sm:text-4xl">
           משהו נשבר כאן
         </h1>
-        <p className="mt-4 leading-relaxed text-mist/60">
+        <p className="mt-4 leading-relaxed text-cream/60">
           זו תקלה אצלנו, לא אצלכם. נסו לרענן — ואם זה חוזר, נשמח שתספרו לנו.
         </p>
 
@@ -39,14 +39,14 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="rounded-full border border-gold/30 px-8 py-3.5 font-semibold text-mist transition hover:border-gold/70 hover:text-gold-lt"
+            className="rounded-full border border-gold/30 px-8 py-3.5 font-semibold text-cream transition hover:border-gold/70 hover:text-gold-lt"
           >
             לעמוד הבית
           </Link>
         </div>
 
         {error.digest && (
-          <p className="ltr-nums mt-8 text-xs text-mist/35">
+          <p className="ltr-nums mt-8 text-xs text-cream/35">
             קוד שגיאה: {error.digest}
           </p>
         )}

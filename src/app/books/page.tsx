@@ -53,10 +53,10 @@ export default function BooksPage() {
               <article className="flex h-full flex-col rounded-4xl glass p-8">
                 <BookOpen className="size-6 text-gold" aria-hidden="true" />
 
-                <h3 className="mt-5 font-display text-xl font-bold text-mist">
+                <h3 className="mt-5 font-display text-xl font-bold text-cream">
                   {training.title}
                 </h3>
-                <p className="mt-3 flex-1 leading-relaxed text-mist/60">
+                <p className="mt-3 flex-1 leading-relaxed text-cream/60">
                   {training.body}
                 </p>
 
@@ -68,7 +68,7 @@ export default function BooksPage() {
                   href={`https://wa.me/${site.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center justify-center rounded-full border border-gold/40 px-6 py-3 text-sm font-bold text-mist transition hover:border-gold/80 hover:text-gold-lt"
+                  className="mt-5 inline-flex items-center justify-center rounded-full border border-gold/40 px-6 py-3 text-sm font-bold text-cream transition hover:border-gold/80 hover:text-gold-lt"
                 >
                   {training.cta}
                 </a>

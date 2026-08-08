@@ -7,10 +7,10 @@ export default function NotFound() {
         <p className="ltr-nums font-display text-8xl font-black text-gradient-gold">
           404
         </p>
-        <h1 className="mt-6 font-display text-3xl font-bold text-mist sm:text-4xl">
+        <h1 className="mt-6 font-display text-3xl font-bold text-cream sm:text-4xl">
           העמוד הזה לא קיים
         </h1>
-        <p className="mt-4 text-mist/60">
+        <p className="mt-4 text-cream/60">
           יכול להיות שהקישור השתנה, או שהגעת לכאן בטעות.
         </p>
 
@@ -23,7 +23,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/store"
-            className="rounded-full border border-gold/30 px-8 py-3.5 font-semibold text-mist transition hover:border-gold/70 hover:text-gold-lt"
+            className="rounded-full border border-gold/30 px-8 py-3.5 font-semibold text-cream transition hover:border-gold/70 hover:text-gold-lt"
           >
             לחנות
           </Link>

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { headerCta, nav, site } from "@/data/site";
+import Wordmark, { BrandStar } from "@/components/ui/Wordmark";
 import { useCart } from "@/lib/cart";
 
 export default function Header() {
@@ -55,13 +56,8 @@ export default function Header() {
             aria-label={`${site.name} — לעמוד הבית`}
           >
             <Monogram />
-            <span className="hidden flex-col leading-none sm:flex">
-              <span className="font-display text-lg font-bold tracking-wide text-mist">
-                {site.name}
-              </span>
-              <span className="mt-1 text-[10px] tracking-[0.24em] text-gold/70">
-                {site.role}
-              </span>
+            <span className="hidden sm:block">
+              <Wordmark size="md" />
             </span>
           </Link>
 
@@ -77,7 +73,7 @@ export default function Header() {
                       className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${
                         current
                           ? "text-gold-lt"
-                          : "text-mist/75 hover:text-gold-lt"
+                          : "text-cream/75 hover:text-gold-lt"
                       }`}
                     >
                       {item.label}
@@ -98,7 +94,7 @@ export default function Header() {
             <button
               type="button"
               onClick={openCart}
-              className="relative rounded-full border border-gold/25 p-2.5 text-mist/85 transition hover:border-gold/60 hover:text-gold-lt"
+              className="relative rounded-full border border-gold/25 p-2.5 text-cream/85 transition hover:border-gold/60 hover:text-gold-lt"
               aria-label={`עגלת קניות${mounted && count ? `, ${count} פריטים` : ", ריקה"}`}
             >
               <ShoppingBag className="size-5" aria-hidden="true" />
@@ -119,7 +115,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="rounded-full border border-gold/25 p-2.5 text-mist/85 transition hover:border-gold/60 lg:hidden"
+              className="rounded-full border border-gold/25 p-2.5 text-cream/85 transition hover:border-gold/60 lg:hidden"
               aria-label="פתיחת תפריט"
             >
               <Menu className="size-5" aria-hidden="true" />
@@ -142,7 +138,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}
-                className="rounded-full border border-gold/25 p-2.5 text-mist"
+                className="rounded-full border border-gold/25 p-2.5 text-cream"
                 aria-label="סגירת תפריט"
               >
                 <X className="size-5" aria-hidden="true" />
@@ -165,7 +161,7 @@ export default function Header() {
                       className={`block border-b border-gold/10 py-4 font-display text-3xl font-bold transition ${
                         isCurrent(item.href)
                           ? "text-gradient-gold"
-                          : "text-mist hover:text-gold-lt"
+                          : "text-cream hover:text-gold-lt"
                       }`}
                     >
                       {item.label}
@@ -192,11 +188,11 @@ export default function Header() {
 function Monogram() {
   return (
     <span
-      className="relative grid size-11 shrink-0 place-items-center rounded-full border border-gold/40 bg-gradient-to-br from-plum to-void"
+      className="relative grid size-11 shrink-0 place-items-center rounded-full border border-gold/40 bg-gradient-to-br from-teal to-void"
       aria-hidden="true"
     >
-      <span className="font-display text-lg font-black text-gradient-gold">ר</span>
-      <span className="absolute inset-0 rounded-full shadow-[inset_0_0_18px_-6px_rgba(212,169,95,0.85)]" />
+      <BrandStar className="size-5 text-gold-lt" />
+      <span className="absolute inset-0 rounded-full shadow-[inset_0_0_18px_-6px_rgba(211,169,106,0.85)]" />
     </span>
   );
 }
