@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
       }),
     ),
+    {
+      url: `${base}/event/independence`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
     ...products.map((p) => ({
       url: `${base}/store/${p.slug}`,
       lastModified: now,
