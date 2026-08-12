@@ -1,8 +1,16 @@
 import Link from "next/link";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
+/**
+ * The global 404 renders outside every route group, so it has to pull in the
+ * site chrome itself rather than inheriting it from `(site)/layout.tsx`.
+ */
 export default function NotFound() {
   return (
-    <div className="flex min-h-[80vh] items-center px-5 pt-32 pb-20 sm:px-8">
+    <>
+      <Header />
+      <main id="main" className="flex min-h-[80vh] items-center px-5 pt-32 pb-20 sm:px-8">
       <div className="mx-auto w-full max-w-xl text-center">
         <p className="ltr-nums font-display text-8xl font-black text-gradient-gold">
           404
@@ -29,6 +37,8 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </div>
+      </main>
+      <Footer />
+    </>
   );
 }

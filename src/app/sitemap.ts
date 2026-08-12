@@ -16,6 +16,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
       }),
     ),
+    // The US seminar landing page. Remove this entry once the dates have passed.
+    {
+      url: `${base}/usa`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
     ...products.map((p) => ({
       url: `${base}/store/${p.slug}`,
       lastModified: now,

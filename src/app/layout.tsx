@@ -2,9 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import CartDrawer from "@/components/store/CartDrawer";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -60,6 +57,11 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/**
+ * Document shell only. The site chrome — header, footer, cart — lives in
+ * `(site)/layout.tsx`, so standalone landing pages such as `/usa` can opt out
+ * of it simply by sitting outside that route group.
+ */
 export default function RootLayout({
   children,
 }: {
@@ -67,18 +69,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="he" dir="rtl" className={`${heebo.variable} ${frank.variable}`}>
-      <body className="min-h-screen antialiased">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:right-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-gold focus:px-5 focus:py-2 focus:font-bold focus:text-void"
-        >
-          דילוג לתוכן הראשי
-        </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-        <CartDrawer />
-      </body>
+      <body className="min-h-screen antialiased">{children}</body>
     </html>
   );
 }
