@@ -63,10 +63,13 @@ export default function UsaSeminarPage() {
       },
       performer: { "@type": "Person", name: site.name },
       organizer: { "@type": "Person", name: site.name, url: site.url },
+      // Spans the whole ticket range: $35 regular through $120 VIP couple.
       offers: {
-        "@type": "Offer",
-        price: "35",
+        "@type": "AggregateOffer",
+        lowPrice: "35",
+        highPrice: "120",
         priceCurrency: "USD",
+        offerCount: 4,
         availability: "https://schema.org/InStock",
         url: `${site.url}/usa#register`,
       },

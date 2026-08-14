@@ -76,6 +76,20 @@ export default function UsaTickets() {
                 </p>
                 <p className="mt-2 text-sm text-cream/50">{ticket.priceNote}</p>
 
+                {ticket.pitch && (
+                  <div className="mt-6 rounded-3xl border border-peri/30 bg-peri/8 p-5">
+                    <p className="font-display text-base font-bold text-lavender">
+                      {ticket.pitch.title}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-cream/75">
+                      {ticket.pitch.body}
+                    </p>
+                    <p className="mt-3 text-sm font-semibold leading-relaxed text-lavender/90">
+                      {ticket.pitch.kicker}
+                    </p>
+                  </div>
+                )}
+
                 <ul className="mt-7 flex grow flex-col gap-3 border-t border-gold/12 pt-7">
                   {ticket.perks.map((perk) => (
                     <li key={perk} className="flex items-start gap-3">

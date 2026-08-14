@@ -232,6 +232,15 @@ export type Ticket = {
   cta: string;
   featured?: boolean;
   accent: "gold" | "coral" | "peri";
+  /**
+   * Upgrade pitch, shown above the perk list. Used by the VIP tier only.
+   *
+   * Every claim here must map to something Racheli actually delivers on the
+   * day — the copy leans on the pre-seminar session and the seating, because
+   * those are the two perks that were actually published. Do not add promises
+   * (a meal, recordings, a private group) that nobody has committed to.
+   */
+  pitch?: { title: string; body: string; kicker: string };
 };
 
 export const ticketsSection = {
@@ -253,16 +262,18 @@ export const tickets: Ticket[] = [
   {
     id: "vip",
     name: "VIP",
-    // רחלי עדיין לא פרסמה מחיר ל-VIP („$_” במסמך המקור). לא להמציא מחיר —
-    // ראו את הכלל ב-CLAUDE.md. להוסיף כאן מחרוזת ברגע שהמחיר מאושר.
-    price: null,
-    priceNote: "מספר מקומות מצומצם",
-    perks: [
-      "מקום קרוב לבמה",
-      "הדרכה מיוחדת לפני הסמינר",
-      "חוברת עבודה",
-      "כל מה שכלול בכרטיס הרגיל",
-    ],
+    // מחירי VIP באישור רחלי: $67 ליחיד, $120 לזוג.
+    price: "$67",
+    priceNote: "ליחיד · $120 לזוג",
+    pitch: {
+      title: "מקדימה אי אפשר להתחבא",
+      body: "ההבדל בין לצפות ביומיים האלה לבין להיות בתוכם הוא כמה שורות. מקרוב אתם בקשר עין עם רחלי, בתוך העבודה החיה ולא מאחוריה — וזה בדיוק המקום שבו דברים באמת זזים. חוברת הקורס נשארת אתכם אחרי, כדי שמה שנפתח בחדר לא ייסגר בדרך הביתה.",
+      // ההפרש האמיתי מול הכרטיס הרגיל: 67−35. זו הזווית שמקטינה את השדרוג.
+      kicker: "כל זה ב-$32 מעל הכרטיס הרגיל.",
+    },
+    // ההטבות של VIP לפי רחלי: מושב בקרבת הבמה + חוברת הקורס. „הדרכה מיוחדת
+    // לפני הסמינר” הופיעה בטיוטת המקור והוסרה — לא להחזיר בלי אישור.
+    perks: ["מושב בקרבת הבמה", "חוברת הקורס", "כל מה שכלול בכרטיס הרגיל"],
     cta: "אני רוצה VIP",
     featured: true,
     accent: "peri",
