@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>שקמה אושרי אריה — עיצוב ובניית אתרים</title>
+<meta name="description" content="תיק עבודות של שקמה אושרי אריה — עיצוב ובניית אתרים בעברית: ממשק, טיפוגרפיה RTL, ופיתוח Front-end מלא.">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="שקמה אושרי אריה — עיצוב ובניית אתרים">
+<meta property="og:description" content="תיק עבודות: ממשק, טיפוגרפיה RTL, ופיתוח Front-end מלא.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- טוקנים ---------- */
+  :root{
+    --ink:#0d0f11;
+    --ink-2:#14181b;
+    --ink-3:#1c2126;
+    --line:#2a3138;
+    --paper:#f2efe9;
+    --muted:#9aa4ad;
+    --clay:#c8714c;        /* צבע ההדגשה של שקמה — לא הזהב של רחלי */
+    --clay-soft:#e0946f;
+    --max:1120px;
+    --r:14px;
+    --font:"Heebo",-apple-system,"Segoe UI",Arial,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font);
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  .wrap{width:min(100% - 2.5rem,var(--max));margin-inline:auto}
+
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{line-height:1.15;margin:0;font-weight:800;letter-spacing:-.01em}
+  p{margin:0}
+
+  /* ---------- ניווט ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--ink) 82%,transparent);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease;
+  }
+  header.stuck{border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+  .mark{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:-.02em;font-size:1.02rem}
+  .mark svg{flex:none}
+  .nav-links{display:flex;gap:1.7rem;font-size:.94rem;color:var(--muted)}
+  .nav-links a{position:relative;transition:color .2s ease}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--paper)}
+  .nav-links a::after{
+    content:"";position:absolute;inset-inline:0;bottom:-5px;height:1px;
+    background:var(--clay);transform:scaleX(0);transform-origin:right;transition:transform .25s ease;
+  }
+  .nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+  @media (max-width:720px){.nav-links{display:none}}
+
+  /* ---------- כפתורים ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    padding:.72rem 1.35rem;border-radius:999px;
+    font-weight:500;font-size:.95rem;
+    border:1px solid var(--line);
+    transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--clay);border-color:var(--clay);color:#160d08;font-weight:700}
+  .btn-primary:hover{background:var(--clay-soft);border-color:var(--clay-soft)}
+  .btn-ghost:hover{border-color:var(--paper)}
+
+  :focus-visible{outline:2px solid var(--clay-soft);outline-offset:3px;border-radius:4px}
+
+  /* ---------- הירו ---------- */
+  .hero{position:relative;padding:clamp(4.5rem,11vw,8.5rem) 0 clamp(3.5rem,8vw,6rem);overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset-inline-start:-14%;top:-38%;
+    width:min(680px,90vw);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle,rgba(200,113,76,.20),transparent 66%);
+    pointer-events:none;
+  }
+  .hero > .wrap{position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-size:.82rem;letter-spacing:.12em;color:var(--clay-soft);
+    text-transform:none;margin-bottom:1.4rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--clay)}
+  .hero h1{font-size:clamp(2.6rem,7.5vw,4.6rem)}
+  .hero h1 em{font-style:normal;color:var(--clay-soft)}
+  .lead{margin-top:1.5rem;max-width:44ch;font-size:clamp(1.05rem,2.1vw,1.24rem);color:#cfd6dc;font-weight:300}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.4rem}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);
+    margin-top:clamp(3rem,7vw,4.5rem);overflow:hidden;
+  }
+  .stat{background:var(--ink-2);padding:1.4rem 1.5rem}
+  .stat b{display:block;font-size:1.75rem;font-weight:800;letter-spacing:-.02em}
+  .stat span{font-size:.87rem;color:var(--muted)}
+
+  /* ---------- מבנה סקשן ---------- */
+  section{padding:clamp(3.5rem,9vw,6.5rem) 0}
+  .sec-head{margin-bottom:2.8rem;max-width:60ch}
+  .sec-num{font-size:.8rem;letter-spacing:.16em;color:var(--clay-soft);display:block;margin-bottom:.7rem}
+  .sec-head h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+  .sec-head p{margin-top:.9rem;color:var(--muted);font-weight:300}
+
+  /* ---------- עבודות ---------- */
+  .work{display:grid;gap:1.4rem}
+  .card{
+    background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);
+    padding:clamp(1.6rem,4vw,2.6rem);
+    transition:border-color .25s ease,background-color .25s ease;
+  }
+  .card:hover{border-color:#3a444d;background:var(--ink-3)}
+  .card-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.6rem}
+  .card h3{font-size:clamp(1.25rem,2.6vw,1.6rem)}
+  .card-year{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+  .card-role{margin-top:.35rem;font-size:.92rem;color:var(--clay-soft)}
+  .card p.body{margin-top:1.1rem;color:#c3ccd3;font-weight:300;max-width:65ch}
+  .bullets{margin:1.3rem 0 0;padding:0;list-style:none;display:grid;gap:.55rem}
+  .bullets li{position:relative;padding-inline-start:1.15rem;font-size:.95rem;color:#c3ccd3;font-weight:300}
+  .bullets li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--clay)}
+  .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.6rem}
+  .tag{font-size:.79rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.28rem .75rem}
+
+  .card.placeholder{border-style:dashed;background:transparent}
+  .card.placeholder h3{color:var(--muted)}
+  .card.placeholder p{color:var(--muted);font-size:.94rem;margin-top:.7rem;font-weight:300}
+  .work-pair{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+  /* ---------- יכולות ---------- */
+  .grid-3{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .cap{border-top:1px solid var(--line);padding-top:1.3rem}
+  .cap h3{font-size:1.08rem;font-weight:700}
+  .cap p{margin-top:.55rem;color:var(--muted);font-size:.94rem;font-weight:300}
+
+  /* ---------- תהליך ---------- */
+  .steps{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));counter-reset:s}
+  .step{position:relative;padding-top:2.6rem}
+  .step::before{
+    counter-increment:s;content:"0" counter(s);
+    position:absolute;top:0;inset-inline-start:0;
+    font-size:1.5rem;font-weight:800;color:var(--clay);opacity:.5;
+    font-variant-numeric:tabular-nums;
+  }
+  .step h3{font-size:1.05rem;font-weight:700}
+  .step p{margin-top:.5rem;color:var(--muted);font-size:.93rem;font-weight:300}
+
+  /* ---------- יצירת קשר ---------- */
+  .cta{
+    border:1px solid var(--line);border-radius:var(--r);
+    background:linear-gradient(160deg,var(--ink-3),var(--ink-2));
+    padding:clamp(2.2rem,6vw,4rem);text-align:center;
+  }
+  .cta h2{font-size:clamp(1.7rem,4.2vw,2.6rem)}
+  .cta p{margin-top:1rem;color:var(--muted);font-weight:300;max-width:48ch;margin-inline:auto}
+  .cta .btn{margin-top:2rem}
+
+  footer{border-top:1px solid var(--line);padding:2.2rem 0;margin-top:clamp(3rem,8vw,5rem)}
+  .foot{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;align-items:center;color:var(--muted);font-size:.87rem}
+
+  /* ---------- חשיפה בגלילה ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .btn:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="top-bar">
+  <div class="wrap nav">
+    <a class="mark" href="#top" aria-label="שקמה אושרי אריה — לראש העמוד">
+      <!-- כוכב ארבע־קצוות — אלמנט משלה, לא של מותג הלקוחה -->
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 0 L14.4 9.6 L24 12 L14.4 14.4 L12 24 L9.6 14.4 L0 12 L9.6 9.6 Z" fill="#c8714c"/>
+      </svg>
+      שקמה אושרי אריה
+    </a>
+    <nav class="nav-links" aria-label="ניווט ראשי">
+      <a href="#work">עבודות</a>
+      <a href="#capabilities">מה אני עושה</a>
+      <a href="#process">איך עובדים</a>
+      <a href="#contact">יצירת קשר</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== הירו ===== -->
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">עיצוב ובניית אתרים</span>
+      <h1>אתרים בעברית<br>שנראים כמו שהם <em>עובדים</em>.</h1>
+      <p class="lead">
+        אני מעצבת ובונה אתרים מקצה לקצה — מהמסך הריק ועד לאתר חי בפרודקשן.
+        ממשק, טיפוגרפיה, קוד ותשלומים, מאותה יד אחת.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">לעבודות</a>
+        <a class="btn btn-ghost" href="#contact">בואו נדבר</a>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><b>עיצוב + קוד</b><span>אותה בעלת מקצוע לשני הצדדים</span></div>
+        <div class="stat"><b>RTL</b><span>עברית כברירת מחדל, לא כתוספת</span></div>
+        <div class="stat"><b>איקומרס</b><span>חנות וסליקה מאובטחת</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== עבודות ===== -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">01 — עבודות</span>
+        <h2>פרויקטים נבחרים</h2>
+        <p>כל פרויקט כאן עוצב ונבנה על ידי, מהמיתוג במסך ועד ל-deploy.</p>
+      </div>
+
+      <div class="work">
+        <!-- מקרה בוחן אמיתי: הפרטים נלקחו מהריפו של הפרויקט -->
+        <article class="card reveal">
+          <div class="card-top">
+            <h3>רחלי חדד — אתר תדמית וחנות</h3>
+            <span class="card-year">2026</span>
+          </div>
+          <p class="card-role">עיצוב, מיתוג דיגיטלי ופיתוח מלא</p>
+          <p class="body">
+            אתר תדמית ומכירות למאסטרית לעסקים וחופש כלכלי: עמוד בית עם סצנה
+            תלת־ממדית, עמודי תוכניות ותוכן, חנות מלאה ותהליך רכישה עם סליקה.
+            כל הטקסטים והמחירים יושבים בשכבת דאטה אחת, כך שאפשר לעדכן תוכן
+            בלי לגעת ברכיבים.
+          </p>
+          <ul class="bullets">
+            <li>13 מסכים, כולם RTL — כולל חנות, עמודי מוצר, עגלה ומסכי הצלחה וכישלון.</li>
+            <li>סליקה מאובטחת: הדפדפן שולח רק מזהה מוצר וכמות, והשרת מתמחר מחדש מהקטלוג — מה שמונע זיוף סכומים.</li>
+            <li>תמונות שיתוף (OG) שנוצרות בצד השרת, עם טיפול ידני ב-bidi שהמנוע לא מבצע.</li>
+            <li>סצנת הירו תלת־ממדית קלה, עם נפילה חיננית למכשירים חלשים ולמצב "פחות תנועה".</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Next.js 15</span>
+            <span class="tag">React 19</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Tailwind v4</span>
+            <span class="tag">Three.js</span>
+            <span class="tag">סליקת קארדקום</span>
+          </div>
+        </article>
+
+        <!-- TODO(שקמה): להחליף את שני הכרטיסים האלה בפרויקטים אמיתיים.
+             לא ממציאים לקוחות, מספרים או המלצות — רק מה שבאמת נעשה. -->
+        <div class="work-pair">
+          <article class="card placeholder reveal">
+            <h3>הפרויקט הבא שלך</h3>
+            <p>מקום לפרויקט נוסף — שם הלקוח, מה נדרש, מה נבנה ומה יצא מזה.</p>
+          </article>
+          <article class="card placeholder reveal">
+            <h3>ועוד אחד</h3>
+            <p>שלושה פרויקטים מסופרים טוב עדיפים על עשרה בלי הקשר.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== יכולות ===== -->
+  <section id="capabilities">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">02 — מה אני עושה</span>
+        <h2>מהמסך הריק ועד לאוויר</h2>
+        <p>אין העברה בין מעצבת למפתח, ואין מה שהלך לאיבוד בדרך.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="cap reveal">
+          <h3>עיצוב ממשק וחוויה</h3>
+          <p>מסכים, היררכיה, טיפוגרפיה עברית ומערכת צבע עקבית — עיצוב שנשען על הקריאוּת, לא על אפקטים.</p>
+        </div>
+        <div class="cap reveal">
+          <h3>פיתוח Front-end</h3>
+          <p>React ו-Next.js, קוד נקי ומתוחזק, ביצועים ונגישות — לא רק תמונה יפה של אתר.</p>
+        </div>
+        <div class="cap reveal">
+          <h3>חנויות וסליקה</h3>
+          <p>קטלוג, עגלה ותהליך רכישה מול מסלקה ישראלית, כולל אימות סכומים בצד השרת.</p>
+        </div>
+        <div class="cap reveal">
+          <h3>מיתוג דיגיטלי</h3>
+          <p>הרחבת שפה מותגית קיימת למסך: צבע, טיפוגרפיה, אלמנטים ותמונות שיתוף.</p>
+        </div>
+        <div class="cap reveal">
+          <h3>עברית ו-RTL</h3>
+          <p>כיווניות, ניקוד תווים, מספרים ומטבע — כל הדברים הקטנים ששוברים אתרים בעברית.</p>
+        </div>
+        <div class="cap reveal">
+          <h3>העלאה לאוויר</h3>
+          <p>בנייה, דומיין, משתני סביבה ובדיקות לפני עלייה — עד שהאתר באמת חי.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== תהליך ===== -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">03 — איך עובדים</span>
+        <h2>ארבעה שלבים, בלי הפתעות</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <h3>שיחה</h3>
+          <p>מי הקהל, מה צריך לקרות באתר, ומה מגדיר הצלחה.</p>
+        </div>
+        <div class="step reveal">
+          <h3>עיצוב</h3>
+          <p>מסכים ראשונים לאישור — שפה, מבנה ותוכן אמיתי, לא טקסט ממלא.</p>
+        </div>
+        <div class="step reveal">
+          <h3>בנייה</h3>
+          <p>מהעיצוב לקוד, עם קישור לצפייה חיה בכל שלב.</p>
+        </div>
+        <div class="step reveal">
+          <h3>עלייה לאוויר</h3>
+          <p>בדיקות, דומיין, ומסירה — כולל איך לעדכן תוכן לבד.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== יצירת קשר ===== -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta reveal">
+        <h2>יש לך פרויקט באוויר?</h2>
+        <p>ספרי לי מה את רוצה לבנות, ואחזור אליך עם הצעה ולוח זמנים.</p>
+        <!-- TODO(שקמה): להחליף בכתובת המייל / הוואטסאפ שאת רוצה לפרסם. -->
+        <a class="btn btn-primary" href="mailto:PLACEHOLDER@example.com">לכתוב לי</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>שקמה אושרי אריה — עיצוב ובניית אתרים</span>
+    <span>© <span id="year">2026</span></span>
+  </div>
+</footer>
+
+<script>
+  // שנה בפוטר
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // קו הפרדה בניווט רק אחרי גלילה
+  var bar = document.getElementById("top-bar");
+  var onScroll = function(){ bar.classList.toggle("stuck", window.scrollY > 8); };
+  onScroll();
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  // חשיפה עדינה בגלילה
+  var items = document.querySelectorAll(".reveal");
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, {rootMargin:"0px 0px -10% 0px", threshold:0.08});
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add("in"); });
+  }
+</script>
+</body>
+</html>
