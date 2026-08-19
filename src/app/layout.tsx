@@ -5,6 +5,7 @@ import { site } from "@/data/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/store/CartDrawer";
+import RefCapture from "@/components/RefCapture";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <CartDrawer />
+        <RefCapture />
       </body>
     </html>
   );

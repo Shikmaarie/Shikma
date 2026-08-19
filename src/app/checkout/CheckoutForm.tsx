@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AlertCircle, Loader2, Lock, ShieldCheck } from "lucide-react";
 import { resolveCart, useCart } from "@/lib/cart";
 import { formatILS } from "@/data/products";
+import { getRef } from "@/lib/ref";
 
 export default function CheckoutForm() {
   const items = useCart((s) => s.items);
@@ -36,6 +37,7 @@ export default function CheckoutForm() {
             phone: data.get("phone"),
             idNumber: data.get("idNumber"),
           },
+          ref: getRef(),
         }),
       });
 

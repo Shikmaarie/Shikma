@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getProduct } from "@/data/products";
+import { sanitizeRef } from "@/lib/ref";
 import {
   CardcomNotConfiguredError,
   createLowProfileSession,
@@ -17,6 +18,7 @@ type Body = {
     phone?: unknown;
     idNumber?: unknown;
   };
+  ref?: unknown;
 };
 
 const MAX_QTY_PER_LINE = 10;
@@ -101,6 +103,9 @@ export async function POST(request: Request) {
       maxPayments,
       lines,
       customer,
+      // Re-sanitised here: the browser supplies the referral, so it never
+      // reaches Cardcom's reports unchecked.
+      ref: sanitizeRef(body.ref),
       origin: resolveOrigin(request),
     });
 

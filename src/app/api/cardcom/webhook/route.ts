@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { getLowProfileResult, isCardcomConfigured } from "@/lib/cardcom";
+import {
+  getLowProfileResult,
+  isCardcomConfigured,
+  parseReturnValue,
+} from "@/lib/cardcom";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -26,18 +30,19 @@ export async function POST(request: Request) {
   try {
     const result = await getLowProfileResult(lowProfileId);
     const paid = result.ResponseCode === 0;
-    const orderId = result.ReturnValue ?? "unknown";
+    const { orderId, ref } = parseReturnValue(result.ReturnValue);
 
     if (paid) {
       await fulfilOrder({
-        orderId,
+        orderId: orderId || "unknown",
+        ref,
         lowProfileId,
         amount: result.Amount ?? 0,
         transactionId: result.TranzactionId,
       });
     } else {
       console.warn(
-        `[cardcom-webhook] order ${orderId} not paid: ${result.ResponseCode} ${result.Description ?? ""}`,
+        `[cardcom-webhook] order ${orderId || "unknown"} not paid: ${result.ResponseCode} ${result.Description ?? ""}`,
       );
     }
 
@@ -87,11 +92,13 @@ async function extractLowProfileId(request: Request): Promise<string> {
  */
 async function fulfilOrder(order: {
   orderId: string;
+  ref: string;
   lowProfileId: string;
   amount: number;
   transactionId?: number;
 }) {
   console.info(
-    `[cardcom-webhook] PAID order=${order.orderId} amount=${order.amount} tx=${order.transactionId ?? "-"}`,
+    `[cardcom-webhook] PAID order=${order.orderId} amount=${order.amount} ` +
+      `tx=${order.transactionId ?? "-"} ref=${order.ref || "-"}`,
   );
 }

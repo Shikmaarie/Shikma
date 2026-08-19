@@ -6,6 +6,8 @@
  *   2. Server re-prices every line from the local catalog — the client never
  *      supplies an amount — and opens a LowProfile session with Cardcom.
  *   3. Server returns the hosted payment page URL; the browser redirects there.
+ *   3b. A ?ref= referral travels in ReturnValue, so the deal itself records
+ *      which partner brought the sale (see src/lib/ref.ts).
  *   4. Cardcom redirects the payer back to /checkout/success | /checkout/failed
  *      and independently calls /api/cardcom/webhook server-to-server.
  *   5. The webhook re-verifies the deal against Cardcom before fulfilment,
@@ -42,6 +44,8 @@ export type CreateLowProfileArgs = {
   maxPayments: number;
   lines: CheckoutLine[];
   customer: CheckoutCustomer;
+  /** Partner slug from ?ref=, or "" when the visit was not referred. */
+  ref?: string;
   origin: string;
 };
 
@@ -93,13 +97,13 @@ export async function createLowProfileSession(
   args: CreateLowProfileArgs,
 ): Promise<{ url: string; lowProfileId: string }> {
   const { terminalNumber, apiName } = getCardcomConfig();
-  const { orderId, amount, maxPayments, lines, customer, origin } = args;
+  const { orderId, amount, maxPayments, lines, customer, ref, origin } = args;
 
   const payload = {
     TerminalNumber: terminalNumber,
     ApiName: apiName,
     Operation: "ChargeOnly",
-    ReturnValue: orderId,
+    ReturnValue: buildReturnValue(orderId, ref),
     Amount: amount,
     ISOCoinId: ISO_ILS,
     Language: "he",
@@ -181,6 +185,23 @@ export async function getLowProfileResult(
 
   if (!res.ok) throw new Error(`Cardcom HTTP ${res.status}`);
   return (await res.json()) as LowProfileResult;
+}
+
+/**
+ * Cardcom echoes ReturnValue back in the webhook and shows it on the deal in
+ * the back office, so it is where the referral rides along with the order id.
+ * Format: "RH-XXXX" for a direct sale, "RH-XXXX|ref=inbal" for a referred one.
+ */
+export function buildReturnValue(orderId: string, ref?: string): string {
+  return ref ? `${orderId}|ref=${ref}` : orderId;
+}
+
+export function parseReturnValue(value: string | undefined): {
+  orderId: string;
+  ref: string;
+} {
+  const [orderId = "", tail = ""] = (value ?? "").split("|");
+  return { orderId, ref: tail.startsWith("ref=") ? tail.slice(4) : "" };
 }
 
 function buildProductName(lines: CheckoutLine[]): string {
