@@ -1,12 +1,11 @@
-import Hero from "@/components/sections/Hero";
-import PainPromise from "@/components/sections/PainPromise";
-import Paths from "@/components/sections/Paths";
-import About from "@/components/sections/About";
-import Testimonials from "@/components/sections/Testimonials";
-import Podcast from "@/components/sections/Podcast";
-import Faq from "@/components/sections/Faq";
-import Contact from "@/components/sections/Contact";
-import { faq, site } from "@/data/site";
+import HomeHero from "@/components/sections/home/HomeHero";
+import GiftsIntro from "@/components/sections/home/GiftsIntro";
+import Gifts from "@/components/sections/home/Gifts";
+import VideoFeature from "@/components/sections/home/VideoFeature";
+import Greeting from "@/components/sections/home/Greeting";
+import SuccessStories from "@/components/sections/home/SuccessStories";
+import CommunityCta from "@/components/sections/home/CommunityCta";
+import { site } from "@/data/site";
 
 export default function HomePage() {
   const jsonLd = {
@@ -18,15 +17,8 @@ export default function HomePage() {
         jobTitle: site.role,
         url: site.url,
         email: site.email,
+        telephone: site.phone,
         sameAs: Object.values(site.social),
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: faq.map((item) => ({
-          "@type": "Question",
-          name: item.q,
-          acceptedAnswer: { "@type": "Answer", text: item.a },
-        })),
       },
     ],
   };
@@ -38,14 +30,13 @@ export default function HomePage() {
         // Content is authored in this repo, not user input.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Hero />
-      <PainPromise />
-      <Paths />
-      <About />
-      <Testimonials />
-      <Podcast />
-      <Faq />
-      <Contact />
+      <HomeHero />
+      <GiftsIntro />
+      <Gifts />
+      <VideoFeature />
+      <Greeting />
+      <SuccessStories />
+      <CommunityCta />
     </>
   );
 }

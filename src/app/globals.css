@@ -26,6 +26,22 @@
   --color-lavender: #d7cbe6;
   --color-peri: #8e9bf6;
 
+  /* ---------------------------------------------------------------
+     Light surfaces. Sampled from rachelihadad.co.il itself (the live
+     site), so these are firmer evidence than the dark tokens above —
+     which were eyeballed from the logo and swatch sheet. The home page
+     is the only light surface today; every other route stays dark, so
+     these are additive and nothing above changes.
+     --------------------------------------------------------------- */
+  --color-ivory: #fcfcfc; /* page ground */
+  --color-linen: #e8e3d9; /* cards on a light ground */
+  --color-shell: #f4f2ee; /* alternating light bands — solid on purpose:
+                             body is dark, so a translucent section tint
+                             composites over it and goes muddy */
+  --color-tiber: #0a3e43; /* deep teal — headings on light, hero ground */
+  --color-bluestone: #006161; /* teal used for buttons and the footer */
+  --color-laser: #c7a86b; /* gold, as published */
+
   --font-sans: var(--font-heebo), system-ui, sans-serif;
   --font-display: var(--font-frank), Georgia, serif;
 

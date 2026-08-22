@@ -9,15 +9,21 @@ export const site = {
   role: "מכפילה עסקים · בונה אימפריות",
   roleParts: ["מכפילה עסקים", "בונה אימפריות"],
   url: "https://rachelihadad.co.il",
-  email: "office@rachelihadad.co.il",
-  phone: "+972-50-000-0000",
-  whatsapp: "972500000000",
+  /* Contact details and handles below are the ones Racheli publishes on the
+     live site — they replaced placeholders that were standing in here. */
+  email: "racheli@rachelihadad.co.il",
+  phone: "+972-50-672-6746",
+  whatsapp: "972506726746",
   credit: "שקמה אושרי אריה",
+  legal: {
+    companyId: "516754785",
+    address: "סוקולוב 34, כפר יונה 4035090",
+  },
   social: {
-    instagram: "https://www.instagram.com/rachelihadad/",
-    facebook: "https://www.facebook.com/rachelihadad",
-    youtube: "https://www.youtube.com/@rachelihadad",
-    spotify: "https://creators.spotify.com/pod/profile/rachli",
+    instagram: "https://www.instagram.com/rachelyhadad",
+    facebook: "https://www.facebook.com/rachli01",
+    youtube: "https://www.youtube.com/@Rachlihadad",
+    spotify: "https://open.spotify.com/show/115dMH8i4a6f9mASjtex9g",
   },
 } as const;
 
