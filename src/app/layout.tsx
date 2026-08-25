@@ -5,6 +5,7 @@ import { site } from "@/data/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/store/CartDrawer";
+import ChromeGate from "@/components/ui/ChromeGate";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -74,9 +75,16 @@ export default function RootLayout({
         >
           דילוג לתוכן הראשי
         </a>
-        <Header />
+        <ChromeGate>
+          <Header />
+        </ChromeGate>
+
         <main id="main">{children}</main>
-        <Footer />
+
+        <ChromeGate>
+          <Footer />
+        </ChromeGate>
+
         <CartDrawer />
       </body>
     </html>

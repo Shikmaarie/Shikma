@@ -16,6 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
       }),
     ),
+    // Campaign landing page: indexable, but it doesn't outrank the site's
+    // evergreen pages.
+    {
+      url: `${base}/partnerships`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
     ...products.map((p) => ({
       url: `${base}/store/${p.slug}`,
       lastModified: now,

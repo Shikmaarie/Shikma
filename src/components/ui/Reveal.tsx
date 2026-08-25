@@ -12,18 +12,27 @@ export default function Reveal({
   delay = 0,
   y = 26,
   className,
+  as = "div",
 }: {
   children: ReactNode;
   delay?: number;
   y?: number;
   className?: string;
+  /**
+   * The element to render. `span` exists for places where a div would be
+   * invalid markup — inside a heading, for instance. Style it `block`
+   * yourself; this only picks the tag.
+   */
+  as?: "div" | "span";
 }) {
   const reduced = useReducedMotion();
+  const Tag = as === "span" ? "span" : "div";
+  const Motion = as === "span" ? motion.span : motion.div;
 
-  if (reduced) return <div className={className}>{children}</div>;
+  if (reduced) return <Tag className={className}>{children}</Tag>;
 
   return (
-    <motion.div
+    <Motion
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -31,6 +40,6 @@ export default function Reveal({
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
-    </motion.div>
+    </Motion>
   );
 }
