@@ -133,12 +133,16 @@
         padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,4vw,3rem)}
   .reg h2{text-align:center;font-size:clamp(1.6rem,3.6vw,3rem);color:var(--forest)}
   .reg form{margin:2.5rem auto 0;max-width:32rem;display:grid;gap:1rem}
-  .reg label{display:block}
-  .reg label span{display:block;margin-bottom:.4rem;font-size:.9rem;font-weight:700;color:var(--forest)}
+  .reg label:not(.consent){display:block}
+  .reg label:not(.consent) span{display:block;margin-bottom:.4rem;font-size:.9rem;font-weight:700;color:var(--forest)}
   .reg input{width:100%;border:1px solid var(--sand-lt);border-radius:.75rem;background:#fff;
         padding:.8rem 1rem;font:inherit;color:var(--forest-dp)}
   .reg input:focus{outline:2px solid var(--forest);outline-offset:2px}
   .reg button{margin-top:.5rem;width:100%;justify-content:center}
+  .reg .consent{display:flex;align-items:flex-start;gap:.6rem;font-size:.875rem;color:rgba(9,63,57,.9)}
+  .reg .consent.muted{color:rgba(9,63,57,.8)}
+  .reg .consent input{margin-top:.25rem;flex:0 0 auto;width:1rem;height:1rem;accent-color:var(--forest)}
+  .reg .consent a{color:var(--forest-lt);font-weight:700}
   .reg .note{margin-top:2rem;text-align:center;font-size:.85rem;color:rgba(9,63,57,.7)}
 
   /* ---- 8 closing ---- */
@@ -269,6 +273,10 @@
         <label><span>שם מלא</span><input type="text" name="name" autocomplete="name" required></label>
         <label><span>טלפון</span><input type="tel" name="phone" autocomplete="tel" required></label>
         <label><span>אימייל</span><input type="email" name="email" autocomplete="email" required></label>
+        <label class="consent"><input type="checkbox" name="privacy" required>
+          <span>קראתי ואני מאשר/ת את <a href="/privacy">מדיניות הפרטיות</a></span></label>
+        <label class="consent muted"><input type="checkbox" name="marketing">
+          <span>אני מאשר/ת לקבל תכנים ועדכונים שיווקיים במייל, ב-SMS ובוואטסאפ (לא חובה, ניתן להסיר בכל עת)</span></label>
         <button class="pill cta-forest" type="submit">שמרו לי מקום</button>
       </form>
       <p class="note">השתתפות ללא עלות | בהרשמה מראש | מספר המקומות מוגבל — נשלח לכם את הקישור והתזכורת במייל</p>

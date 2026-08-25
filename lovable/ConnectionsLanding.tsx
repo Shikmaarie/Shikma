@@ -94,6 +94,15 @@ const FORM = {
   ],
   submit: "שמרו לי מקום",
   note: "השתתפות ללא עלות | בהרשמה מראש | מספר המקומות מוגבל — נשלח לכם את הקישור והתזכורת במייל",
+  /**
+   * הסכמת הדיוור נפרדת מאישור המדיניות ואינה חובה — סעיף 30א לחוק
+   * התקשורת דורש הסכמה מפורשת ונפרדת לתוכן שיווקי.
+   */
+  consent: {
+    privacy: "קראתי ואני מאשר/ת את",
+    privacyLink: { label: "מדיניות הפרטיות", href: "/privacy" },
+    marketing: "אני מאשר/ת לקבל תכנים ועדכונים שיווקיים במייל, ב-SMS ובוואטסאפ (לא חובה, ניתן להסיר בכל עת)",
+  },
 };
 
 const QUOTE = ["חיבור אחד יכול לשנות", "את כל השנה הבאה שלכם"];
@@ -379,6 +388,21 @@ export default function ConnectionsLanding() {
                 <Input type={field.type} name={field.name} autoComplete={field.autoComplete} required className="border-sand-lt bg-white" />
               </label>
             ))}
+            <label className="flex items-start gap-2.5 text-sm text-forest-dp/90">
+              <input type="checkbox" name="privacy" required className="mt-1 size-4 shrink-0 accent-[hsl(var(--forest))]" />
+              <span>
+                {FORM.consent.privacy}{" "}
+                <a href={FORM.consent.privacyLink.href} className="font-bold text-forest-lt underline underline-offset-2">
+                  {FORM.consent.privacyLink.label}
+                </a>
+              </span>
+            </label>
+
+            <label className="flex items-start gap-2.5 text-sm text-forest-dp/80">
+              <input type="checkbox" name="marketing" className="mt-1 size-4 shrink-0 accent-[hsl(var(--forest))]" />
+              <span>{FORM.consent.marketing}</span>
+            </label>
+
             <Button type="submit" size="lg" className="mt-2 w-full rounded-full bg-forest font-bold text-parchment hover:bg-forest-dp">
               {FORM.submit}
             </Button>
