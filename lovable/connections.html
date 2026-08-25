@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>רחלי חדד — קשרים ושת״פים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#0c544c; --forest-dp:#093f39; --forest-lt:#16706a;
+    --parchment:#fdf9ee; --sand:#c5a469; --sand-lt:#eadfc8; --gold-lt:#edd4a2;
+    --card-1:#7fb5ac; --card-2:#4b8f86; --card-3:#2c7168;
+    --shell:min(1200px,100%);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--forest-dp);
+       font-family:Heebo,system-ui,sans-serif;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  h1,h2,h3{margin:0;font-weight:900;line-height:1.25}
+  p{margin:0}
+
+  /* ---- image slots: the dashed box shows the filename until the file exists ---- */
+  .slot{position:relative;background:var(--sand-lt);overflow:hidden}
+  .slot-note{position:absolute;inset:0;display:grid;place-content:center;gap:.4rem;
+             text-align:center;padding:1rem;color:var(--forest);z-index:0}
+  .slot-note b{font-size:clamp(.8rem,1.6vw,1.05rem);letter-spacing:.02em}
+  .slot-note span{font-size:clamp(.68rem,1.2vw,.82rem);opacity:.7}
+  .slot > img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover}
+
+  .wrap{width:var(--shell);margin-inline:auto;padding-inline:clamp(1rem,4vw,2rem)}
+  .pill{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;
+        font-weight:700;text-decoration:none;border:0;cursor:pointer}
+  .cta-forest{background:var(--forest);color:var(--parchment);
+              padding:clamp(.9rem,2vw,1.15rem) clamp(1.7rem,4vw,2.6rem);
+              font-size:clamp(1rem,1.8vw,1.15rem)}
+  .cta-sand{background:var(--sand);color:var(--forest-dp);padding:.6rem 1.2rem;font-size:.9rem}
+
+  /* ---- 1 hero ---- */
+  .hero{position:relative;background:var(--forest);text-align:center;
+        padding:clamp(4.5rem,9vw,6rem) 0 clamp(2.5rem,5vw,4rem)}
+  .hero .cta-sand{position:absolute;top:clamp(1rem,3vw,1.75rem);left:clamp(1rem,3vw,2rem)}
+  .hero h1{font-size:clamp(1.75rem,4.4vw,3.25rem);color:#fff}
+  .hero h1 .gold{display:block;color:var(--sand);font-size:1.1em;margin-top:.15em}
+  .hero .banner{margin-top:clamp(2rem,4vw,3rem);background:var(--sand);color:var(--forest-dp);
+        border-radius:999px;padding:clamp(.9rem,2vw,1.15rem) clamp(1.5rem,4vw,2.5rem);
+        font-size:clamp(1rem,1.9vw,1.3rem);font-weight:500}
+  .hero .meta{margin-top:1.5rem;font-style:italic;color:rgba(253,249,238,.72);
+        font-size:clamp(.85rem,1.5vw,1rem)}
+
+  /* ---- 2 photo band ---- */
+  .band{background:var(--forest)}
+  .band-photo{position:relative}
+  .band-photo .slot{aspect-ratio:16/9}
+  .band-photo > .slot > .slot-note{align-content:start;padding-top:clamp(1.5rem,4vw,3rem)}
+  .cutout{position:absolute;left:50%;bottom:-14%;height:116%;width:auto;
+          transform:translateX(-50%);z-index:2;pointer-events:none}
+  .cutout-slot{position:absolute;left:50%;bottom:-14%;height:116%;aspect-ratio:2/3;
+          transform:translateX(-50%);z-index:2;border:2px dashed var(--forest-lt);
+          background:rgba(253,249,238,.92)}
+  .net{background:var(--parchment)}
+  .net svg{display:block;width:100%;height:clamp(6rem,10vw,12rem)}
+
+  /* ---- 3 club intro ---- */
+  .intro{background:var(--parchment);text-align:center;
+         padding:0 0 clamp(4rem,8vw,7rem)}
+  .intro h2{font-size:clamp(1.5rem,3.4vw,2.75rem);color:var(--forest)}
+  .intro .sub{margin-top:1.25rem;font-size:clamp(1.05rem,2.2vw,1.5rem);color:var(--forest-dp)}
+  .intro .body{margin-top:2rem;display:grid;gap:.5rem;
+        font-size:clamp(1rem,1.8vw,1.25rem);line-height:1.7;color:rgba(9,63,57,.9)}
+  .intro .cta-forest{margin-top:2.5rem}
+
+  /* ---- 4 two ways ---- */
+  .ways{background:#fff;padding:clamp(4rem,8vw,7rem) 0}
+  .ways h2,.curric h2{text-align:center;font-size:clamp(1.6rem,3.8vw,3rem);color:var(--forest)}
+  .ways .cards{margin-top:clamp(2.5rem,5vw,4rem);display:grid;gap:clamp(1.25rem,3vw,2rem);
+        max-width:860px;margin-inline:auto}
+  @media(min-width:640px){.ways .cards{grid-template-columns:1fr 1fr}}
+  .way{position:relative;border-radius:2rem;overflow:hidden;padding:clamp(1.75rem,3.5vw,2.5rem);
+       background-size:cover;background-position:center;min-height:24rem}
+  .way::before{content:"";position:absolute;inset:0;
+       background:linear-gradient(135deg,rgba(127,181,172,.9),rgba(75,143,134,.92) 50%,rgba(44,113,104,.95))}
+  .way::after{content:"";position:absolute;inset:0;
+       background:radial-gradient(120% 80% at 15% 0%,rgba(255,255,255,.3),transparent 60%)}
+  .way > *{position:relative;z-index:1}
+  .way .num{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:900;color:rgba(237,212,162,.85);line-height:1}
+  .way h3{margin-top:1.5rem;font-size:clamp(1.15rem,2.2vw,1.5rem);color:#fff}
+  .way p{margin-top:1rem;line-height:1.7;color:rgba(255,255,255,.9);font-size:clamp(.95rem,1.7vw,1.1rem)}
+  .way ul{margin:1.75rem 0 0;padding:0;list-style:none;display:grid;gap:.65rem}
+  .way li{display:flex;gap:.6rem;color:rgba(255,255,255,.9);font-size:clamp(.9rem,1.6vw,1.05rem)}
+  .way li::before{content:"";flex:0 0 auto;width:.4rem;height:.4rem;border-radius:999px;
+       background:rgba(255,255,255,.8);margin-top:.62em}
+
+  /* ---- 5 curriculum ---- */
+  .curric{background:#fff;padding:0 0 clamp(4rem,8vw,7rem)}
+  .curric .grid{margin-top:clamp(4rem,7vw,5.5rem);display:grid;gap:clamp(3.5rem,5vw,5rem) clamp(1.25rem,2.5vw,2rem)}
+  @media(min-width:640px){.curric .grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1024px){
+    .curric .grid{grid-template-columns:repeat(6,1fr)}
+    .curric .item{grid-column:span 2}
+    .curric .item:nth-child(4){grid-column:2/span 2}
+  }
+  .curric .item{position:relative;border:1px solid var(--sand-lt);border-radius:1.5rem;
+        background:#fff;text-align:center;padding:3rem 1.5rem 1.75rem;
+        box-shadow:0 2px 18px rgba(12,84,76,.07)}
+  .curric .dot{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);
+        width:4rem;height:4rem;border-radius:999px;background:var(--forest)}
+  .curric h3{font-size:clamp(1.05rem,1.9vw,1.25rem);color:var(--forest)}
+  .curric p{margin-top:.75rem;line-height:1.7;color:rgba(9,63,57,.8);font-size:clamp(.95rem,1.6vw,1.1rem)}
+
+  /* ---- 6 about ---- */
+  .about{background:var(--forest);padding:clamp(4rem,8vw,7rem) 0}
+  .about .cols{display:grid;gap:clamp(2.5rem,5vw,4rem);align-items:center;max-width:1000px;margin-inline:auto}
+  @media(min-width:1024px){.about .cols{grid-template-columns:1fr 1fr}}
+  .about h2{font-size:clamp(1.6rem,3.6vw,3rem);color:#fff}
+  .about .body{margin-top:2rem;display:grid;gap:1.25rem;line-height:1.75;
+        color:rgba(253,249,238,.85);font-size:clamp(1rem,1.7vw,1.15rem)}
+  .about .body b{color:var(--sand)}
+  .about .closer{font-weight:700;color:#fff}
+  .about .portrait{position:relative;max-width:22rem;margin-inline:auto;width:100%}
+  .about .portrait .slot{aspect-ratio:1;border-radius:99rem 99rem 2rem 2rem;background:rgba(197,164,105,.25)}
+  .badge{position:absolute;background:#fff;border-radius:1rem;padding:.6rem 1rem;text-align:center;
+         box-shadow:0 10px 24px rgba(0,0,0,.18)}
+  .badge b{display:block;font-size:.72rem;color:var(--forest-lt)}
+  .badge span{display:block;font-size:.9rem;font-weight:900;color:var(--forest)}
+  .badge.top{top:2rem;left:-.5rem}
+  .badge.bottom{bottom:2.5rem;left:-.5rem}
+
+  /* ---- 7 form ---- */
+  .reg{background:#fff;padding:0 0 clamp(4rem,8vw,7rem)}
+  .reg .panel{background:var(--parchment);border-radius:2.5rem;max-width:760px;margin-inline:auto;
+        padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,4vw,3rem)}
+  .reg h2{text-align:center;font-size:clamp(1.6rem,3.6vw,3rem);color:var(--forest)}
+  .reg form{margin:2.5rem auto 0;max-width:32rem;display:grid;gap:1rem}
+  .reg label{display:block}
+  .reg label span{display:block;margin-bottom:.4rem;font-size:.9rem;font-weight:700;color:var(--forest)}
+  .reg input{width:100%;border:1px solid var(--sand-lt);border-radius:.75rem;background:#fff;
+        padding:.8rem 1rem;font:inherit;color:var(--forest-dp)}
+  .reg input:focus{outline:2px solid var(--forest);outline-offset:2px}
+  .reg button{margin-top:.5rem;width:100%;justify-content:center}
+  .reg .note{margin-top:2rem;text-align:center;font-size:.85rem;color:rgba(9,63,57,.7)}
+
+  /* ---- 8 closing ---- */
+  .close{position:relative;background:var(--forest);overflow:hidden;text-align:center;
+         padding:clamp(4rem,8vw,7rem) 0 clamp(6rem,10vw,9rem)}
+  .close .mark{display:block;font-size:clamp(3rem,6vw,4.5rem);color:rgba(197,164,105,.5);
+         line-height:1;text-align:right}
+  .close .a{font-size:clamp(1.6rem,3.6vw,3rem);font-weight:900;color:#fff}
+  .close .b{margin-top:.25rem;font-size:clamp(1.25rem,2.8vw,2.25rem);font-weight:300;color:rgba(253,249,238,.9)}
+  .close .net-abs{position:absolute;inset-inline:0;bottom:0;opacity:.4}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="hero">
+  <a class="pill cta-sand" href="#register">להרשמה בחינם <span aria-hidden>←</span></a>
+  <div class="wrap">
+    <h1>
+      <span>הדרך להביא ערימות של</span><br>
+      <span>לקוחות, כסף והזדמנויות דרך</span><br>
+      <span>קשרים ושת״פים</span>
+      <span class="gold">בלי להוציא עוד שקל על פרסום</span>
+    </h1>
+    <p class="banner">הכסף האמיתי נמצא בקשרים העסקיים ובשת״פים שתבנו</p>
+    <p class="meta">השתתפות ללא עלות | בהרשמה מראש | מספר המקומות מוגבל</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="band">
+  <div class="band-photo">
+    <div class="slot">
+      <div class="slot-note"><b>lobby.png</b><span>תמונת האולם עם חמש הקשתות · 16:9 · רוחב מלא</span></div>
+      <img src="/lp/lobby.png" alt="רחלי חדד באולם כניסה מוזהב. מאחוריה חמש קשתות ועל כל אחת שלט: לקוחות, שיתוף פעולה, קהל חדש, עסקאות וקהילה" onerror="this.remove()">
+    </div>
+    <div class="cutout-slot">
+      <div class="slot-note"><b>racheli-yellow.png</b><span>רקע שקוף</span></div>
+      <img class="cutout" src="/lp/racheli-yellow.png" alt="" aria-hidden="true" onerror="this.remove()">
+    </div>
+  </div>
+  <div class="net" id="net-a"></div>
+</section>
+
+<!-- 3 -->
+<section class="intro">
+  <div class="wrap">
+    <h2><span>מועדון העסקים של רחלי חדד</span><br><span>פותח את שעריו ליום אחד</span></h2>
+    <p class="sub">אתם מוזמנים להיכנס להדרכה שלא תשכחו</p>
+    <div class="body">
+      <p>בדרך כלל ההדרכות, הכלים והאסטרטגיות שאנחנו מלמדות בתוך המועדון</p>
+      <p><b>שמורים לחברי המועדון בלבד.</b></p>
+      <p>הפעם החלטנו לעשות משהו אחר:</p>
+      <p><b>לפתוח את הדלתות ולאפשר גם לכם לקבל טעימה אמיתית ממה שקורה בפנים.</b></p>
+      <p>אנחנו מזמינות אתכם להדרכה מיוחדת ופתוחה,</p>
+      <p><b>ללא עלות</b>, בנושא שיכול לשנות את הדרך שבה אתם מגדילים את העסק.</p>
+    </div>
+    <a class="pill cta-forest" href="#register">כן, אני רוצה להיכנס להדרכה החינמית <span aria-hidden>←</span></a>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="ways">
+  <div class="wrap">
+    <h2><span>יש שתי דרכים לגדול</span><br><span>אפשר לעבוד קשה. ואפשר לעבוד נכון.</span></h2>
+    <div class="cards">
+      <article class="way" style="background-image:url('/lp/gold-money.png')">
+        <span class="num">1</span>
+        <h3>הדרך הארוכה</h3>
+        <p>לרדוף אחרי עוד לקוח, ועוד לקוח, ועוד אחד. כל חודש מתחילים מאפס, וכל לקוח חדש עולה עוד כסף בפרסום.</p>
+        <ul><li>התקציב לפרסום רק גדל</li><li>כל עסקה נסגרת בכוח</li><li>החשיפה נעצרת ברגע שמפסיקים לשלם</li></ul>
+      </article>
+      <article class="way" style="background-image:url('/lp/gold-money.png')">
+        <span class="num">2</span>
+        <h3>הדרך של הקשרים</h3>
+        <p>ליצור את החיבורים הנכונים – כאלה שפותחים בפניכם קהלים חדשים, הזדמנויות חדשות ודלתות שלא הייתם מגיעים אליהן לבד.</p>
+        <ul><li>חשיפה לקהל שכבר בנוי ובוטח</li><li>שני הצדדים מרוויחים, ולכן זה מחזיק</li><li>חיבור אחד ממשיך להחזיר שנים</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="curric">
+  <div class="wrap">
+    <h2>בהדרכה רחלי חדד תחשוף</h2>
+    <div class="grid">
+      <article class="item"><span class="dot"></span><h3>01 • לזהות את האנשים הנכונים</h3><p>מי בדיוק יכול לקדם את העסק שלכם ואיך מזהים אותם לפני כולם.</p></article>
+      <article class="item"><span class="dot"></span><h3>02 • ליצור קשר מאפס</h3><p>איך פונים ובונים קשר עסקי גם עם אנשים שעדיין לא מכירים אתכם.</p></article>
+      <article class="item"><span class="dot"></span><h3>03 • לבנות שת״פ שמחזיק</h3><p>המבנה של שיתוף פעולה שבו שני הצדדים באמת מרוויחים ולכן הוא ממשיך.</p></article>
+      <article class="item"><span class="dot"></span><h3>04 • להפוך חיבור לחשיפה</h3><p>איך חיבור אחד הופך לקהל חדש שלם ולשורה של הזדמנויות עסקיות.</p></article>
+      <article class="item"><span class="dot"></span><h3>05 • לבנות רשת שעובדת בשבילכם</h3><p>איך בונים סביבכם רשת קשרים שהופכת למנוע צמיחה משמעותי בעסק.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="about">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2><span>מי אני?</span><br><span>ואיך אני יכולה</span><br><span>לעזור לך?</span></h2>
+        <div class="body">
+          <p><b>התחלתי בגיל 20</b> בלי רקע עסקי, בלי עורף פיננסי, עברתי פשיטת רגל, ומשם בניתי הכל מחדש.</p>
+          <p><b>היום אני מנהלת 3 עסקים</b> שמכניסים 6 ספרות בחודש, ב-4 ימי עבודה בשבוע, תוך כדי טיולים בעולם.</p>
+          <p><b>בדרך לימדתי למעלה מ-1,000 בעלי עסקים ומשפחות</b> איך לבנות עסק שמכניס יותר, ואיך לפתוח דלתות דרך קשרים ושת״פים.</p>
+          <p class="closer">וזה בדיוק מה שאני מלמדת בהדרכה.</p>
+        </div>
+      </div>
+      <div class="portrait">
+        <div class="slot">
+          <div class="slot-note"><b>racheli-pink.png</b><span>פורטרט · ריבועי · רקע שקוף</span></div>
+          <img src="/lp/racheli-pink.png" alt="רחלי חדד" onerror="this.remove()">
+        </div>
+        <span class="badge top"><b>3 עסקים</b><span>6 ספרות בחודש</span></span>
+        <span class="badge bottom"><b>1,000+</b><span>למדו את השיטה</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="reg" id="register">
+  <div class="wrap">
+    <div class="panel">
+      <h2>שמרו לי מקום בהדרכה</h2>
+      <form>
+        <label><span>שם מלא</span><input type="text" name="name" autocomplete="name" required></label>
+        <label><span>טלפון</span><input type="tel" name="phone" autocomplete="tel" required></label>
+        <label><span>אימייל</span><input type="email" name="email" autocomplete="email" required></label>
+        <button class="pill cta-forest" type="submit">שמרו לי מקום</button>
+      </form>
+      <p class="note">השתתפות ללא עלות | בהרשמה מראש | מספר המקומות מוגבל — נשלח לכם את הקישור והתזכורת במייל</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="close">
+  <div class="wrap">
+    <blockquote style="margin:0">
+      <span class="mark" aria-hidden>&rdquo;</span>
+      <p class="a">חיבור אחד יכול לשנות</p>
+      <p class="b">את כל השנה הבאה שלכם</p>
+    </blockquote>
+  </div>
+  <div class="net-abs" id="net-b"></div>
+</section>
+
+<script>
+// The constellation is drawn from fixed points so it renders identically everywhere.
+const NODES=[[40,118],[132,62],[214,150],[296,40],[352,128],[440,78],[508,160],[596,52],[664,132],[744,68],[812,152],[900,46],[962,124],[1048,74],[1120,158],[1204,56],[1272,136],[1360,88]];
+const EDGES=[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,12],[12,13],[13,14],[14,15],[15,16],[16,17],[0,2],[1,4],[3,5],[4,6],[5,8],[7,9],[8,10],[9,12],[11,13],[12,14],[13,16],[15,17]];
+function net(h){
+  const l=EDGES.map(([a,b])=>`<line x1="${NODES[a][0]}" y1="${NODES[a][1]}" x2="${NODES[b][0]}" y2="${NODES[b][1]}"/>`).join('');
+  const c=NODES.map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="${i%3===0?9:6}"/>`).join('');
+  return `<svg viewBox="0 0 1400 200" preserveAspectRatio="none" aria-hidden="true" style="height:${h}">
+    <g stroke="#0c544c" stroke-width="1" opacity=".28">${l}</g><g fill="#0c544c" opacity=".42">${c}</g></svg>`;
+}
+document.getElementById('net-a').innerHTML=net('clamp(6rem,10vw,12rem)');
+document.getElementById('net-b').innerHTML=net('clamp(6rem,9vw,9rem)');
+</script>
+</body>
+</html>
