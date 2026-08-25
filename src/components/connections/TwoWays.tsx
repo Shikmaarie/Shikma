@@ -18,11 +18,18 @@ export default function TwoWays() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:mt-16 lg:gap-8">
           {connectionsTwoWays.cards.map((card, i) => (
             <Reveal key={card.number} delay={0.08 + i * 0.08}>
-              <article className="relative h-full overflow-hidden rounded-4xl bg-gradient-to-br from-[#7fb5ac] via-[#4b8f86] to-[#2c7168] p-8 sm:p-10 lg:min-h-[26rem]">
-                {/* The soft light sweep across the card face */}
+              <article
+                style={{ backgroundImage: `url(${connectionsTwoWays.background})` }}
+                className="relative h-full overflow-hidden rounded-4xl bg-cover bg-center p-8 sm:p-10 lg:min-h-[26rem]"
+              >
+                {/* The teal wash that turns the gold artwork into the card face */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_15%_0%,rgba(255,255,255,0.34),transparent_60%)]"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#7fb5ac]/90 via-[#4b8f86]/92 to-[#2c7168]/95"
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_15%_0%,rgba(255,255,255,0.3),transparent_60%)]"
                 />
 
                 <div className="relative">

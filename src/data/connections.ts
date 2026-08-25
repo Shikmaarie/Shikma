@@ -31,21 +31,26 @@ export const connectionsHero = {
 /**
  * The lobby photograph.
  *
- * `public/lp/lobby.svg` is a placeholder standing in for the real render until
- * it can be exported from Figma. Drop the photo in `public/lp/` and change the
- * path here — nothing else needs to move.
+ * The arch captions ("לקוחות", "שיתוף פעולה", "קהל חדש", "עסקאות", "קהילה")
+ * are part of the artwork itself, so they are described in `alt` rather than
+ * drawn over the image.
+ *
+ * `cutout` is the same figure again, layered on top so she breaks past the
+ * bottom edge of the photo and into the parchment below — the overlap in the
+ * design. It sits directly over the figure already in the photograph, so the
+ * two numbers below are the alignment: nudge them if she doubles up.
+ * Set `cutout: null` to drop the effect and use the photograph alone.
  */
 export const connectionsPhoto = {
-  src: "/lp/lobby.svg",
-  alt: "רחלי חדד עומדת באולם כניסה מוזהב, ומאחוריה חמש קשתות שכל אחת מובילה לחדר אחר",
-  /** Arch captions, positioned as a percentage of the photo's width. */
-  archways: [
-    { label: "לקוחות", x: 9 },
-    { label: "שיתוף פעולה", x: 28 },
-    { label: "קהל חדש", x: 50 },
-    { label: "עסקאות", x: 71 },
-    { label: "קהילה", x: 91 },
-  ],
+  src: "/lp/lobby.png",
+  alt: "רחלי חדד עומדת באולם כניסה מוזהב. מאחוריה חמש קשתות, ועל כל אחת שלט: לקוחות, שיתוף פעולה, קהל חדש, עסקאות וקהילה",
+  cutout: {
+    src: "/lp/racheli-yellow.png",
+    /** Height as a percentage of the photo band. */
+    heightPct: 116,
+    /** How far below the band's bottom edge she extends. */
+    bottomPct: -14,
+  },
 } as const;
 
 /** One rendered line of the intro paragraph. */
@@ -73,6 +78,8 @@ export const connectionsIntro = {
 } as const;
 
 export const connectionsTwoWays = {
+  /** Sits behind the teal gradient on both cards. */
+  background: "/lp/gold-money.png",
   title: ["יש שתי דרכים לגדול", "אפשר לעבוד קשה. ואפשר לעבוד נכון."],
   cards: [
     {
@@ -127,4 +134,73 @@ export const connectionsCurriculum = {
       body: "איך בונים סביבכם רשת קשרים שהופכת למנוע צמיחה משמעותי בעסק.",
     },
   ],
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* מי אני                                                              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * TODO — verify this copy against the Figma frame. It was transcribed from a
+ * low-resolution export of the full page, so the wording is a best reading.
+ * Every claim in it matches the verified facts in CLAUDE.md (started at 20,
+ * bankruptcy, 3 businesses at six figures a month, a 4-day week, 1,000+
+ * taught), so nothing here is invented — but the phrasing needs a check.
+ */
+export const connectionsAbout = {
+  title: ["מי אני?", "ואיך אני יכולה", "לעזור לך?"],
+  photo: {
+    src: "/lp/racheli-pink.png",
+    alt: "רחלי חדד",
+  },
+  /** The two figures pinned to the portrait. */
+  badges: [
+    { value: "3 עסקים", label: "6 ספרות בחודש" },
+    { value: "1,000+", label: "למדו את השיטה" },
+  ],
+  body: [
+    {
+      lead: "התחלתי בגיל 20",
+      text: " בלי רקע עסקי, בלי עורף פיננסי, עברתי פשיטת רגל, ומשם בניתי הכל מחדש.",
+    },
+    {
+      lead: "היום אני מנהלת 3 עסקים",
+      text: " שמכניסים 6 ספרות בחודש, ב-4 ימי עבודה בשבוע, תוך כדי טיולים בעולם.",
+    },
+    {
+      lead: "בדרך לימדתי למעלה מ-1,000 בעלי עסקים ומשפחות",
+      text: " איך לבנות עסק שמכניס יותר, ואיך לפתוח דלתות דרך קשרים ושת״פים.",
+    },
+  ],
+  closer: "וזה בדיוק מה שאני מלמדת בהדרכה.",
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* טופס ההרשמה                                                         */
+/* ------------------------------------------------------------------ */
+
+/**
+ * TODO — the form has no destination yet. `action` must point at the real
+ * lead handler (an API route here, or the external form provider) before this
+ * page goes live; until then the submit button is disabled rather than
+ * pretending to succeed.
+ */
+export const connectionsForm = {
+  title: "שמרו לי מקום בהדרכה",
+  action: "",
+  fields: [
+    { name: "name", label: "שם מלא", type: "text", autoComplete: "name" },
+    { name: "phone", label: "טלפון", type: "tel", autoComplete: "tel" },
+    { name: "email", label: "אימייל", type: "email", autoComplete: "email" },
+  ],
+  submit: "שמרו לי מקום",
+  note: "השתתפות ללא עלות | בהרשמה מראש | מספר המקומות מוגבל — נשלח לכם את הקישור והתזכורת במייל",
+} as const;
+
+/* ------------------------------------------------------------------ */
+/* הסיום                                                               */
+/* ------------------------------------------------------------------ */
+
+export const connectionsQuote = {
+  lines: ["חיבור אחד יכול לשנות", "את כל השנה הבאה שלכם"],
 } as const;
