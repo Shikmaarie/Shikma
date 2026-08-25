@@ -31,8 +31,9 @@ export default async function Image() {
           alignItems: "flex-end",
           textAlign: "right",
           padding: "0 88px",
+          // Light, to match the page it previews.
           background:
-            "radial-gradient(900px 560px at 22% 20%, #14606a 0%, #0f4a50 38%, #04171a 100%)",
+            "radial-gradient(900px 560px at 22% 18%, #fffdf9 0%, #faf6ef 45%, #f0e6d4 100%)",
           fontFamily: "Heebo",
           position: "relative",
         }}
@@ -44,7 +45,7 @@ export default async function Image() {
             right: 0,
             width: 10,
             height: "100%",
-            background: "linear-gradient(#b08850, #edd4a2, #b08850)",
+            background: "linear-gradient(#805c23, #c9a15a, #805c23)",
           }}
         />
 
@@ -54,8 +55,8 @@ export default async function Image() {
             fontSize: 26,
             letterSpacing: 3,
             whiteSpace: "nowrap",
-            color: "#edd4a2",
-            border: "2px solid rgba(211,169,106,0.55)",
+            color: "#805c23",
+            border: "2px solid rgba(128,92,35,0.45)",
             borderRadius: 999,
             padding: "10px 26px",
             marginBottom: 30,
@@ -83,7 +84,7 @@ export default async function Image() {
               style={{
                 display: "flex",
                 whiteSpace: "nowrap",
-                color: line.gold ? "#edd4a2" : "#e9e2d7",
+                color: line.gold ? "#805c23" : "#0a2b30",
               }}
             >
               {visual(line.text)}
@@ -105,20 +106,20 @@ export default async function Image() {
               display: "flex",
               fontSize: 34,
               whiteSpace: "nowrap",
-              color: "#e9e2d7",
+              color: "#0a2b30",
             }}
           >
             {visual("רחלי חדד")}
           </div>
           <div
-            style={{ display: "flex", width: 2, height: 34, background: "#d3a96a" }}
+            style={{ display: "flex", width: 2, height: 34, background: "#805c23" }}
           />
           <div
             style={{
               display: "flex",
               fontSize: 26,
               whiteSpace: "nowrap",
-              color: "#d3a96a",
+              color: "#805c23",
             }}
           >
             {visual("מועדון העסקים")}

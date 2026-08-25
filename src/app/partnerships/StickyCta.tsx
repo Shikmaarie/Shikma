@@ -44,15 +44,15 @@ export default function StickyCta() {
           animate={{ y: 0 }}
           exit={reduced ? undefined : { y: 90 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-gold/20 bg-void/92 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-xl lg:hidden"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-ink/10 bg-ivory/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-xl lg:hidden"
         >
           <a
             href="#register"
-            className="flex items-center justify-center rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-6 py-3.5 text-center text-base font-black text-void"
+            className="flex items-center justify-center rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-6 py-3.5 text-center text-base font-black text-ink"
           >
             {partnerships.ctaShort}
           </a>
-          <p className="mt-2 text-center text-[11px] text-cream/50">
+          <p className="mt-2 text-center text-[11px] text-ink-soft">
             ללא עלות · מספר המקומות מוגבל
           </p>
         </motion.div>

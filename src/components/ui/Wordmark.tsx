@@ -23,10 +23,17 @@ export function BrandStar({ className = "" }: { className?: string }) {
 
 export default function Wordmark({
   size = "md",
+  onLight = false,
   className = "",
 }: {
   /** `sm` drops the tagline — use it where vertical space is tight. */
   size?: "sm" | "md" | "lg";
+  /**
+   * Set on a light ground. The display gold the lockup normally uses sits at
+   * 3:1 on ivory, so this swaps in the deeper register of the same gradient
+   * and darkens the tagline with it.
+   */
+  onLight?: boolean;
   className?: string;
 }) {
   const name =
@@ -38,21 +45,33 @@ export default function Wordmark({
 
   return (
     <span className={`flex flex-col items-center leading-none ${className}`}>
-      <span className={`font-display font-black tracking-tight text-gradient-gold ${name}`}>
+      <span
+        className={`font-display font-black tracking-tight ${
+          onLight ? "text-gradient-gold-deep" : "text-gradient-gold"
+        } ${name}`}
+      >
         {site.name}
       </span>
 
       {size !== "sm" && (
         <span
-          className={`mt-2 flex items-center gap-2 text-gold/75 ${
+          className={`mt-2 flex items-center gap-2 ${
+            onLight ? "text-gold-ink" : "text-gold/75"
+          } ${
             size === "lg" ? "text-sm" : "text-[9px]"
           }`}
         >
-          <span className="h-px w-6 bg-gold/40 sm:w-10" aria-hidden="true" />
+          <span
+            className={`h-px w-6 sm:w-10 ${onLight ? "bg-gold-dp/50" : "bg-gold/40"}`}
+            aria-hidden="true"
+          />
           <span className="whitespace-nowrap">{site.roleParts[0]}</span>
           <BrandStar className={size === "lg" ? "size-3.5" : "size-2.5"} />
           <span className="whitespace-nowrap">{site.roleParts[1]}</span>
-          <span className="h-px w-6 bg-gold/40 sm:w-10" aria-hidden="true" />
+          <span
+            className={`h-px w-6 sm:w-10 ${onLight ? "bg-gold-dp/50" : "bg-gold/40"}`}
+            aria-hidden="true"
+          />
         </span>
       )}
     </span>

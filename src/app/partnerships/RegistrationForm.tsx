@@ -52,16 +52,16 @@ export default function RegistrationForm() {
         // role="status" so the confirmation is announced when it replaces the
         // form — the submit button that had focus is gone by then.
         role="status"
-        className="rounded-5xl border border-gold/35 bg-gradient-to-t from-void via-teal/45 to-void px-8 py-14 text-center sm:px-12"
+        className="rounded-5xl border border-gold-dp/40 bg-gradient-to-t from-shell to-[#fdf3e2] px-8 py-14 text-center shadow-[0_26px_55px_-30px_rgba(138,100,40,0.55)] sm:px-12"
       >
-        <span className="mx-auto grid size-16 place-items-center rounded-full border border-gold/40 bg-void/60 text-gold">
+        <span className="mx-auto grid size-16 place-items-center rounded-full border border-gold-dp/45 bg-ivory text-gold-ink">
           <Check className="size-8" aria-hidden="true" />
         </span>
 
-        <h3 className="mt-7 font-display text-2xl font-black text-gradient-gold sm:text-3xl">
+        <h3 className="mt-7 font-display text-2xl font-black text-gradient-gold-deep sm:text-3xl">
           {form.success.title}
         </h3>
-        <p className="mx-auto mt-4 max-w-md leading-relaxed text-cream/70">
+        <p className="mx-auto mt-4 max-w-md leading-relaxed text-ink-soft">
           {form.success.body}
         </p>
       </div>
@@ -71,7 +71,7 @@ export default function RegistrationForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-5xl border border-gold/25 bg-gradient-to-t from-void via-teal/40 to-void px-6 py-9 sm:px-10 sm:py-11"
+      className="rounded-5xl card-light px-6 py-9 sm:px-10 sm:py-11"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
@@ -102,7 +102,7 @@ export default function RegistrationForm() {
       {error && (
         <p
           role="alert"
-          className="mt-6 flex items-start gap-2.5 rounded-2xl border border-coral/40 bg-coral/10 px-4 py-3 text-sm text-coral"
+          className="mt-6 flex items-start gap-2.5 rounded-2xl border border-coral-ink/35 bg-coral-ink/8 px-4 py-3 text-sm text-coral-ink"
         >
           <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           {error}
@@ -112,7 +112,7 @@ export default function RegistrationForm() {
       <button
         type="submit"
         disabled={state === "sending"}
-        className="group mt-8 flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-7 py-4.5 text-base font-black text-void shadow-[0_16px_50px_-16px_rgba(212,169,95,0.9)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:text-lg"
+        className="group mt-8 flex w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-7 py-4.5 text-base font-black text-ink shadow-[0_16px_40px_-14px_rgba(138,100,40,0.55)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:text-lg"
       >
         {state === "sending" ? (
           <>
@@ -131,11 +131,11 @@ export default function RegistrationForm() {
         )}
       </button>
 
-      <p className="mt-5 text-center text-xs leading-relaxed text-cream/45">
+      <p className="mt-5 text-center text-xs leading-relaxed text-ink-soft">
         {form.consent}{" "}
         <Link
           href="/legal/privacy"
-          className="text-gold-lt underline-offset-4 hover:underline"
+          className="text-gold-ink underline-offset-4 hover:underline"
         >
           מדיניות הפרטיות
         </Link>
@@ -160,14 +160,14 @@ function Field({
 
   return (
     <div className={className}>
-      <label htmlFor={id} className="mb-2 block text-sm font-medium text-cream/75">
+      <label htmlFor={id} className="mb-2 block text-sm font-medium text-ink-soft">
         {label}
-        {props.required && <span className="text-gold"> *</span>}
+        {props.required && <span className="text-gold-ink"> *</span>}
       </label>
       <input
         id={id}
         name={name}
-        className="w-full rounded-2xl border border-gold/20 bg-void/60 px-4 py-3.5 text-cream transition placeholder:text-cream/30 focus:border-gold/60 focus:outline-none"
+        className="w-full rounded-2xl border border-ink/20 bg-ivory px-4 py-3.5 text-ink transition placeholder:text-ink-soft focus:border-gold-dp/70 focus:outline-none"
         {...props}
       />
     </div>

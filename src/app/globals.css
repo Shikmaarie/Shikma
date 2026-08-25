@@ -19,6 +19,21 @@
   --color-gold-lt: #edd4a2;
   --color-gold-dp: #b08850;
 
+  /* ---------------------------------------------------------------
+     Light surface set — the campaign landing pages run on a warm ivory
+     ground instead of the site's teal-black. Same two brand hues, roles
+     swapped: teal becomes the ink, gold stays the accent. Every pairing
+     below clears WCAG AA against ivory, which is why the gold used for
+     small text is a good deal deeper than the display gold above.
+     --------------------------------------------------------------- */
+  --color-ivory: #faf6ef; /* page ground */
+  --color-sand: #f2ebde; /* alternating band */
+  --color-shell: #fffdf9; /* raised cards */
+  --color-ink: #0a2b30; /* deep teal, near-black — headings (13:1) */
+  --color-ink-soft: #3f5f63; /* body copy (6.5:1) */
+  --color-gold-ink: #805c23; /* gold that survives at small sizes (5.1:1 on sand) */
+  --color-coral-ink: #a8392c; /* the error coral, darkened for ivory (5.9:1) */
+
   /* Secondary accents from the swatch sheet */
   --color-coral: #f5877b;
   --color-mint: #85c9bc;
@@ -93,6 +108,42 @@ body {
   background-clip: text;
   color: transparent;
   animation: shimmer 6s linear infinite;
+}
+
+/*
+ * The gold wordmark gradient, dropped into a register that reads on ivory.
+ * The display gold sits at 3:1 there — fine for large type, nowhere near
+ * enough for the rest — so the ends run down to a deep bronze.
+ */
+@utility text-gradient-gold-deep {
+  background-image: linear-gradient(
+    100deg,
+    #6f4e1c 0%,
+    #a87f45 25%,
+    #805c23 50%,
+    #a87f45 75%,
+    #6f4e1c 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* The light-ground counterpart to `glass`: a raised card, not a pane. */
+@utility card-light {
+  background: var(--color-shell);
+  border: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent);
+  box-shadow: 0 20px 45px -34px color-mix(in oklab, var(--color-ink) 60%, transparent);
+}
+
+/*
+ * Opts a subtree out of the document's dark `color-scheme`, so form controls,
+ * scrollbars and autofill inside a light page are drawn light too.
+ */
+@utility surface-light {
+  color-scheme: light;
 }
 
 @utility glass {

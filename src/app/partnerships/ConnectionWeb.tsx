@@ -92,19 +92,24 @@ export default function ConnectionWeb({ className = "" }: { className?: string }
           a perfectly horizontal or vertical line — zero height or width — and
           the stroke disappears. Several edges here are close to axis-aligned.
         */}
+        {/*
+          Drawn for the page's ivory ground: the edges darken toward the
+          centre instead of lighting up, and the core is a warm bloom rather
+          than a glare. On a dark ground these would need inverting.
+        */}
         <linearGradient id={id("cw-edge")} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="900" y2="760">
-          <stop offset="0%" stopColor="#14606a" stopOpacity="0.15" />
-          <stop offset="50%" stopColor="#d3a96a" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#14606a" stopOpacity="0.15" />
+          <stop offset="0%" stopColor="#0f4a50" stopOpacity="0.3" />
+          <stop offset="50%" stopColor="#805c23" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#0f4a50" stopOpacity="0.3" />
         </linearGradient>
 
         <radialGradient id={id("cw-core")} gradientUnits="userSpaceOnUse" cx="452" cy="372" r="120">
-          <stop offset="0%" stopColor="#edd4a2" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#edd4a2" stopOpacity="0" />
+          <stop offset="0%" stopColor="#d3a96a" stopOpacity="0.42" />
+          <stop offset="100%" stopColor="#d3a96a" stopOpacity="0" />
         </radialGradient>
 
         <filter id={id("cw-glow")} x="-60%" y="-60%" width="220%" height="220%">
-          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feGaussianBlur stdDeviation="4" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="SourceGraphic" />
@@ -163,7 +168,7 @@ export default function ConnectionWeb({ className = "" }: { className?: string }
             <motion.circle
               key={`${from}>${to}`}
               r="3"
-              fill="#edd4a2"
+              fill="#805c23"
               filter={`url(#${id("cw-glow")})`}
               initial={{ cx: a.x, cy: a.y, opacity: 0 }}
               animate={{
@@ -208,8 +213,8 @@ export default function ConnectionWeb({ className = "" }: { className?: string }
                 cy={node.y}
                 r={node.r + (isCore ? 14 : 8)}
                 fill="none"
-                stroke="#d3a96a"
-                strokeOpacity={isCore ? 0.35 : 0.16}
+                stroke="#805c23"
+                strokeOpacity={isCore ? 0.5 : 0.28}
                 strokeWidth="1"
                 vectorEffect="non-scaling-stroke"
               />
@@ -217,8 +222,8 @@ export default function ConnectionWeb({ className = "" }: { className?: string }
                 cx={node.x}
                 cy={node.y}
                 r={node.r}
-                fill={isCore ? "#edd4a2" : "#d3a96a"}
-                fillOpacity={isCore ? 1 : 0.75}
+                fill={isCore ? "#7a5620" : "#a87d43"}
+                fillOpacity={isCore ? 1 : 0.9}
                 filter={isCore ? `url(#${id("cw-glow")})` : undefined}
               />
             </motion.g>
