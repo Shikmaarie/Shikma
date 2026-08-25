@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Placeholder">
+  <defs>
+    <linearGradient id="floor" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="900">
+      <stop offset="0" stop-color="#f3e7cf"/>
+      <stop offset="0.62" stop-color="#e6d5b4"/>
+      <stop offset="1" stop-color="#d9c49c"/>
+    </linearGradient>
+    <linearGradient id="arch" gradientUnits="userSpaceOnUse" x1="0" y1="180" x2="0" y2="760">
+      <stop offset="0" stop-color="#d8b877"/>
+      <stop offset="1" stop-color="#b8965a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#floor)"/>
+  <g fill="url(#arch)" opacity="0.55">
+    <path d="M64 760V380a112 112 0 0 1 224 0v380z"/>
+    <path d="M368 760V340a120 120 0 0 1 240 0v420z"/>
+    <path d="M676 760V300a124 124 0 0 1 248 0v460z"/>
+    <path d="M992 760V340a120 120 0 0 1 240 0v420z"/>
+    <path d="M1312 760V380a112 112 0 0 1 224 0v380z"/>
+  </g>
+  <g fill="#fbf4e6" opacity="0.85">
+    <path d="M92 760V384a84 84 0 0 1 168 0v376z"/>
+    <path d="M396 760V344a92 92 0 0 1 184 0v416z"/>
+    <path d="M704 760V304a96 96 0 0 1 192 0v456z"/>
+    <path d="M1020 760V344a92 92 0 0 1 184 0v416z"/>
+    <path d="M1340 760V384a84 84 0 0 1 168 0v376z"/>
+  </g>
+  <rect y="760" width="1600" height="140" fill="#e4d2ae"/>
+  <text x="800" y="836" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" fill="#8a7444" opacity="0.55">placeholder</text>
+</svg>

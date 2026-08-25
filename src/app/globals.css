@@ -26,6 +26,19 @@
   --color-lavender: #d7cbe6;
   --color-peri: #8e9bf6;
 
+  /* ---------------------------------------------------------------
+     Landing-page palette (/connections). The landing pages run light —
+     forest green on parchment — while the main site runs dark, so these
+     sit alongside the site palette rather than replacing it.
+     Sampled from the Figma frame; verify against the brand book.
+     --------------------------------------------------------------- */
+  --color-forest: #0c544c;
+  --color-forest-dp: #093f39;
+  --color-forest-lt: #16706a;
+  --color-parchment: #fdf9ee;
+  --color-sand: #c5a469;
+  --color-sand-lt: #eadfc8;
+
   --font-sans: var(--font-heebo), system-ui, sans-serif;
   --font-display: var(--font-frank), Georgia, serif;
 
