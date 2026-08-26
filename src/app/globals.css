@@ -26,6 +26,26 @@
   --color-lavender: #d7cbe6;
   --color-peri: #8e9bf6;
 
+  /* ---------------------------------------------------------------
+     Kids palette — used only by the parent registration form
+     (/rishum). Light and playful on purpose; the marketing site
+     stays deep teal + gold.
+     --------------------------------------------------------------- */
+  --color-kid-bg: #fdf8f0;
+  --color-kid-bg-2: #eefaf8;
+  --color-kid-card: #ffffff;
+  --color-kid-ink: #2b2a4a; /* soft deep indigo, never pure black */
+  --color-kid-ink-soft: #6f6d8c;
+  --color-kid-line: #ece5db;
+  --color-kid-teal: #0e9f9b;
+  --color-kid-teal-lt: #d6f4f2;
+  --color-kid-sun: #ffc53d;
+  --color-kid-sun-dp: #ffa22b;
+  --color-kid-coral: #f4685a;
+  --color-kid-mint: #3fbf8f;
+  --color-kid-lilac: #8b6ee0;
+  --color-kid-lilac-lt: #ece5fd;
+
   --font-sans: var(--font-heebo), system-ui, sans-serif;
   --font-display: var(--font-frank), Georgia, serif;
 
@@ -70,6 +90,24 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* The registration form is a light island inside a dark-themed site.
+   Its own wrapper paints the page, and this keeps the body behind it
+   (and the browser's own form controls) light to match. */
+body:has(.kid-theme) {
+  background: var(--color-kid-bg);
+  color: var(--color-kid-ink);
+  color-scheme: light;
+}
+
+.kid-theme ::selection {
+  background: var(--color-kid-sun);
+  color: var(--color-kid-ink);
+}
+
+.kid-theme :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-kid-teal);
 }
 
 /* Hebrew numerals & mixed content stay LTR inside an RTL doc */

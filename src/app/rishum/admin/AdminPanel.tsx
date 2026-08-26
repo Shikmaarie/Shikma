@@ -64,11 +64,11 @@ export default function AdminPanel() {
 
   if (!sheet) {
     return (
-      <form onSubmit={load} className="mx-auto max-w-sm space-y-4">
-        <label
-          htmlFor="key"
-          className="block text-sm font-bold text-cream/80"
-        >
+      <form
+        onSubmit={load}
+        className="mx-auto max-w-sm space-y-4 rounded-[2rem] bg-kid-card p-7 shadow-[0_18px_40px_-28px_rgba(43,42,74,0.35)]"
+      >
+        <label htmlFor="key" className="block text-sm font-bold text-kid-ink">
           סיסמת ניהול
         </label>
         <input
@@ -77,13 +77,13 @@ export default function AdminPanel() {
           value={key}
           autoComplete="current-password"
           onChange={(e) => setKey(e.target.value)}
-          className="w-full rounded-2xl border border-gold/25 bg-void/50 px-4 py-3 text-cream outline-none transition focus:border-gold"
+          className="w-full rounded-2xl border-2 border-kid-line bg-kid-card px-4 py-3 text-kid-ink outline-none transition focus:border-kid-teal"
         />
-        {error && <p className="text-sm font-bold text-coral">{error}</p>}
+        {error && <p className="text-sm font-bold text-kid-coral">{error}</p>}
         <button
           type="submit"
           disabled={busy !== "none"}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3 font-black text-void transition hover:brightness-110 disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-kid-teal px-6 py-3 font-black text-white transition hover:brightness-110 disabled:opacity-60"
         >
           {busy === "loading" ? (
             <Loader2 className="h-5 w-5 animate-spin" />
@@ -98,7 +98,7 @@ export default function AdminPanel() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <p className="text-cream/70">
+        <p className="font-bold text-kid-ink-soft">
           {sheet.count === 0
             ? "עוד לא נרשם אף אחד."
             : `${sheet.count} רשומות (שורה לכל ילד/ה).`}
@@ -108,7 +108,7 @@ export default function AdminPanel() {
             type="button"
             onClick={() => load()}
             disabled={busy !== "none"}
-            className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-5 py-2.5 font-bold text-gold transition hover:bg-gold/10 disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-full bg-kid-teal-lt px-5 py-2.5 font-bold text-kid-teal transition hover:brightness-95 disabled:opacity-60"
           >
             <RefreshCw
               className={`h-4 w-4 ${busy === "loading" ? "animate-spin" : ""}`}
@@ -119,7 +119,7 @@ export default function AdminPanel() {
             type="button"
             onClick={download}
             disabled={busy !== "none" || sheet.count === 0}
-            className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 font-black text-void transition hover:brightness-110 disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-l from-kid-sun-dp via-kid-sun to-kid-sun-dp px-5 py-2.5 font-black text-kid-ink shadow-[0_10px_22px_-14px_rgba(255,162,43,0.9)] transition hover:brightness-105 disabled:opacity-50"
           >
             {busy === "downloading" ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -131,15 +131,20 @@ export default function AdminPanel() {
         </div>
       </div>
 
-      {error && <p className="text-sm font-bold text-coral">{error}</p>}
+      {error && <p className="text-sm font-bold text-kid-coral">{error}</p>}
 
       {sheet.count > 0 && (
-        <div className="overflow-x-auto rounded-3xl border border-gold/20">
+        <div className="overflow-x-auto rounded-[1.75rem] bg-kid-card p-2 shadow-[0_18px_40px_-28px_rgba(43,42,74,0.35)]">
           <table className="w-full min-w-[46rem] text-right text-sm">
-            <thead className="bg-teal/60 text-cream">
-              <tr>
-                {sheet.columns.map((column) => (
-                  <th key={column} className="px-4 py-3 font-bold">
+            <thead>
+              <tr className="bg-kid-teal text-white">
+                {sheet.columns.map((column, i) => (
+                  <th
+                    key={column}
+                    className={`px-4 py-3 font-bold ${i === 0 ? "rounded-r-2xl" : ""} ${
+                      i === sheet.columns.length - 1 ? "rounded-l-2xl" : ""
+                    }`}
+                  >
                     {column}
                   </th>
                 ))}
@@ -147,10 +152,7 @@ export default function AdminPanel() {
             </thead>
             <tbody>
               {sheet.rows.map((row, i) => (
-                <tr
-                  key={i}
-                  className="border-t border-gold/10 text-cream/85 odd:bg-night/40"
-                >
+                <tr key={i} className="text-kid-ink even:bg-kid-bg">
                   {row.map((cell, j) => (
                     <td key={j} className="px-4 py-2.5 whitespace-nowrap">
                       {cell}

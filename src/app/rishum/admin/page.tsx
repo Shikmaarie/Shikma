@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 export default function AdminPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-void via-night to-void px-5 py-14 sm:px-8">
+    <div className="kid-theme min-h-screen bg-gradient-to-b from-kid-bg via-kid-bg to-kid-bg-2 px-5 py-14 sm:px-8">
       <div className="mx-auto w-full max-w-5xl">
-        <h1 className="mb-8 text-center font-display text-3xl font-black text-gold-lt">
+        <h1 className="mb-8 text-center font-display text-3xl font-black text-kid-ink">
           הרשמות שהתקבלו
         </h1>
         <AdminPanel />

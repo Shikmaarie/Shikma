@@ -143,7 +143,7 @@ function esc(value: string): string {
   );
 }
 
-/** Style 1 is the header band (brand teal, white bold); style 2 is a data cell. */
+/** Style 1 is the header band (form teal, white bold); style 2 is a data cell. */
 const STYLES =
   `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
   `<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">` +
@@ -154,7 +154,7 @@ const STYLES =
   `<fills count="3">` +
   `<fill><patternFill patternType="none"/></fill>` +
   `<fill><patternFill patternType="gray125"/></fill>` +
-  `<fill><patternFill patternType="solid"><fgColor rgb="FF0F4A50"/><bgColor indexed="64"/></patternFill></fill>` +
+  `<fill><patternFill patternType="solid"><fgColor rgb="FF0E9F9B"/><bgColor indexed="64"/></patternFill></fill>` +
   `</fills>` +
   `<borders count="2">` +
   `<border><left/><right/><top/><bottom/><diagonal/></border>` +
