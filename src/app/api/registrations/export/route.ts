@@ -2,6 +2,7 @@ import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import {
   buildRegistrationsWorkbook,
+  deleteRegistration,
   listRegistrations,
   toRow,
   COLUMNS,
@@ -10,7 +11,7 @@ import {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-type Body = { key?: unknown; format?: unknown };
+type Body = { key?: unknown; format?: unknown; deleteId?: unknown };
 
 export async function POST(request: Request) {
   const password = process.env.REGISTRATIONS_ADMIN_PASSWORD ?? "";
@@ -36,6 +37,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "סיסמה שגויה." }, { status: 401 });
   }
 
+  if (typeof body.deleteId === "string" && body.deleteId) {
+    const removed = await deleteRegistration(body.deleteId);
+    if (!removed) {
+      return NextResponse.json({ error: "השורה כבר לא קיימת." }, { status: 404 });
+    }
+  }
+
   const entries = await listRegistrations();
   entries.sort((a, b) => a.submittedAt.localeCompare(b.submittedAt));
 
@@ -55,6 +63,7 @@ export async function POST(request: Request) {
   return NextResponse.json({
     columns: COLUMNS.map((c) => c.header),
     rows: entries.map(toRow),
+    ids: entries.map((entry) => entry.id),
     count: entries.length,
   });
 }

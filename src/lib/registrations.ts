@@ -182,31 +182,100 @@ const KV_TOKEN =
   process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN ?? "";
 const KV_KEY = process.env.REGISTRATIONS_KV_KEY || "registrations";
 
+const BLOB_STORE = process.env.REGISTRATIONS_BLOB_STORE || "registrations";
+
 const LOCAL_DIR = process.env.REGISTRATIONS_DIR || "data";
 const LOCAL_LOG = "registrations.jsonl";
 export const LOCAL_XLSX = "registrations.xlsx";
 
-export function storageBackend(): "kv" | "file" {
-  return KV_URL && KV_TOKEN ? "kv" : "file";
+export type Backend = "kv" | "blobs" | "file";
+
+/**
+ * Every backend stores one entry per child, and never rewrites a shared
+ * blob or file in place — two parents submitting at the same second must
+ * not overwrite each other.
+ */
+export function storageBackend(): Backend {
+  if (KV_URL && KV_TOKEN) return "kv";
+  // Netlify sets this on every function invocation; blobs need no keys.
+  if (process.env.NETLIFY) return "blobs";
+  return "file";
 }
 
 export async function appendRegistrations(
   entries: Registration[],
 ): Promise<void> {
-  if (storageBackend() === "kv") {
-    await kv("rpush", [KV_KEY, ...entries.map((e) => JSON.stringify(e))]);
-    return;
+  switch (storageBackend()) {
+    case "kv":
+      await kv("rpush", [KV_KEY, ...entries.map((e) => JSON.stringify(e))]);
+      return;
+    case "blobs": {
+      const store = await blobs();
+      await Promise.all(entries.map((e) => store.setJSON(e.id, e)));
+      return;
+    }
+    default:
+      await appendToFile(entries);
   }
-  await appendToFile(entries);
 }
 
 export async function listRegistrations(): Promise<Registration[]> {
-  if (storageBackend() === "kv") {
-    const result = await kv<string[]>("lrange", [KV_KEY, "0", "-1"]);
-    return result.flatMap(parseLine);
+  switch (storageBackend()) {
+    case "kv": {
+      const result = await kv<string[]>("lrange", [KV_KEY, "0", "-1"]);
+      return result.flatMap(parseLine);
+    }
+    case "blobs": {
+      const store = await blobs();
+      const { blobs: keys } = await store.list();
+      const entries = await Promise.all(
+        keys.map((blob) => store.get(blob.key, { type: "json" })),
+      );
+      return entries.filter(
+        (entry): entry is Registration =>
+          Boolean(entry) && typeof entry.childName === "string",
+      );
+    }
+    default:
+      return readFromFile();
   }
-  return readFromFile();
 }
+
+/** Removes a single row — a typo, or a family that asked to be taken off. */
+export async function deleteRegistration(id: string): Promise<boolean> {
+  switch (storageBackend()) {
+    case "kv": {
+      const stored = await kv<string[]>("lrange", [KV_KEY, "0", "-1"]);
+      const line = stored.find((raw) => parseLine(raw)[0]?.id === id);
+      if (!line) return false;
+      await kv("lrem", [KV_KEY, "1", line]);
+      return true;
+    }
+    case "blobs": {
+      const store = await blobs();
+      if (!(await store.get(id, { type: "json" }))) return false;
+      await store.delete(id);
+      return true;
+    }
+    default: {
+      const all = await readFromFile();
+      const kept = all.filter((entry) => entry.id !== id);
+      if (kept.length === all.length) return false;
+      await rewriteFile(kept);
+      return true;
+    }
+  }
+}
+
+/* ---- Netlify Blobs: no credentials, private to the site ---- */
+
+async function blobs() {
+  const { getStore } = await import("@netlify/blobs");
+  // Strong consistency: an export right after a submission must see it.
+  return getStore({ name: BLOB_STORE, consistency: "strong" });
+}
+
+/* ---- Vercel KV / Upstash Redis over REST ---- */
 
 async function kv<T>(command: string, args: string[]): Promise<T> {
   const response = await fetch(KV_URL, {
@@ -235,8 +304,10 @@ function parseLine(line: string): Registration[] {
   }
 }
 
+/* ---- Local disk: development and self-hosting ---- */
+
 async function appendToFile(entries: Registration[]): Promise<void> {
-  const { mkdir, appendFile, writeFile } = await import("node:fs/promises");
+  const { mkdir, appendFile } = await import("node:fs/promises");
   const { join } = await import("node:path");
   await mkdir(LOCAL_DIR, { recursive: true });
   await appendFile(
@@ -244,7 +315,25 @@ async function appendToFile(entries: Registration[]): Promise<void> {
     entries.map((e) => `${JSON.stringify(e)}\n`).join(""),
     "utf8",
   );
-  // Keep a real, always-current .xlsx next to the log.
+  await writeWorkbookFile();
+}
+
+async function rewriteFile(entries: Registration[]): Promise<void> {
+  const { mkdir, writeFile } = await import("node:fs/promises");
+  const { join } = await import("node:path");
+  await mkdir(LOCAL_DIR, { recursive: true });
+  await writeFile(
+    join(LOCAL_DIR, LOCAL_LOG),
+    entries.map((e) => `${JSON.stringify(e)}\n`).join(""),
+    "utf8",
+  );
+  await writeWorkbookFile();
+}
+
+/** Keeps a real, always-current .xlsx next to the log. */
+async function writeWorkbookFile(): Promise<void> {
+  const { writeFile } = await import("node:fs/promises");
+  const { join } = await import("node:path");
   const all = await readFromFile();
   await writeFile(join(LOCAL_DIR, LOCAL_XLSX), buildRegistrationsWorkbook(all));
 }

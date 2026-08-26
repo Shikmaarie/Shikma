@@ -1,9 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Loader2, RefreshCw } from "lucide-react";
+import { Download, Loader2, RefreshCw, Trash2 } from "lucide-react";
 
-type Sheet = { columns: string[]; rows: string[][]; count: number };
+type Sheet = {
+  columns: string[];
+  rows: string[][];
+  ids: string[];
+  count: number;
+};
 
 export default function AdminPanel() {
   const [key, setKey] = useState("");
@@ -11,7 +16,7 @@ export default function AdminPanel() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState<"none" | "loading" | "downloading">("none");
 
-  async function load(event?: React.FormEvent) {
+  async function load(event?: React.FormEvent, deleteId?: string) {
     event?.preventDefault();
     setError("");
     setBusy("loading");
@@ -19,7 +24,7 @@ export default function AdminPanel() {
       const response = await fetch("/api/registrations/export", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key }),
+        body: JSON.stringify(deleteId ? { key, deleteId } : { key }),
       });
       if (!response.ok) {
         const body = (await response.json()) as { error?: string };
@@ -33,6 +38,12 @@ export default function AdminPanel() {
     } finally {
       setBusy("none");
     }
+  }
+
+  function remove(index: number) {
+    const name = sheet?.rows[index]?.[5] ?? "";
+    if (!window.confirm(`למחוק את השורה של ${name}?`)) return;
+    void load(undefined, sheet?.ids[index]);
   }
 
   async function download() {
@@ -141,13 +152,14 @@ export default function AdminPanel() {
                 {sheet.columns.map((column, i) => (
                   <th
                     key={column}
-                    className={`px-4 py-3 font-bold ${i === 0 ? "rounded-r-2xl" : ""} ${
-                      i === sheet.columns.length - 1 ? "rounded-l-2xl" : ""
-                    }`}
+                    className={`px-4 py-3 font-bold ${i === 0 ? "rounded-r-2xl" : ""}`}
                   >
                     {column}
                   </th>
                 ))}
+                <th className="rounded-l-2xl px-4 py-3">
+                  <span className="sr-only">מחיקה</span>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -158,6 +170,17 @@ export default function AdminPanel() {
                       {cell}
                     </td>
                   ))}
+                  <td className="px-4 py-2.5">
+                    <button
+                      type="button"
+                      onClick={() => remove(i)}
+                      disabled={busy !== "none"}
+                      aria-label={`מחיקת השורה של ${row[5]}`}
+                      className="rounded-full p-1.5 text-kid-ink-soft transition hover:bg-kid-coral/10 hover:text-kid-coral disabled:opacity-40"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
