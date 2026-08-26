@@ -9,3 +9,6 @@ next-env.d.ts
 
 # local preview captures
 .preview/
+
+# collected registrations (local storage backend)
+data/

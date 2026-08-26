@@ -1,0 +1,15 @@
+# Netlify hosts the parent registration form (/rishum) and its admin page.
+# The Next.js runtime plugin is detected automatically; Netlify Blobs — where
+# the registrations are stored — needs no keys of its own.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# This deployment exists to serve the registration link, not as a second copy
+# of Racheli's site. Keep search engines out of it; remove this block if the
+# site itself is ever published from here.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
