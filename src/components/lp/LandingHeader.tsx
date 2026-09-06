@@ -24,7 +24,7 @@ export default function LandingHeader() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-gold/12 bg-void/85 backdrop-blur-xl"
+          ? "border-b border-gold-ink/25 bg-paper/90 backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
@@ -35,28 +35,26 @@ export default function LandingHeader() {
           aria-label={`${site.name} — לעמוד הבית`}
         >
           <span
-            className="relative grid size-11 shrink-0 place-items-center rounded-full border border-gold/40 bg-gradient-to-br from-teal to-void"
+            className="grid size-11 shrink-0 place-items-center rounded-full bg-ink"
             aria-hidden="true"
           >
-            <BrandStar className="size-5 text-gold-lt" />
+            <BrandStar className="size-5 text-gold-ink" />
           </span>
           <span className="flex flex-col leading-none">
-            <span className="font-display text-lg font-black text-gradient-gold">
-              {site.name}
-            </span>
-            <span className="mt-1.5 hidden text-[10px] tracking-[0.14em] text-gold/70 sm:block">
+            <span className="text-lg font-black text-ink">{site.name}</span>
+            <span className="mt-1.5 hidden text-[10px] tracking-[0.14em] text-ink-2 sm:block">
               {site.roleParts.join(" · ")}
             </span>
           </span>
         </Link>
 
         <div className="flex items-center gap-4">
-          <span className="hidden text-xs font-medium tracking-wide text-cream/55 md:inline">
+          <span className="hidden text-xs font-medium tracking-wide text-ink-2 md:inline">
             {moneyFearLanding.format}
           </span>
           <a
             href={registerAnchor}
-            className="rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-5 py-2.5 text-sm font-bold text-void shadow-[0_0_28px_-6px_rgba(212,169,95,0.65)] transition hover:brightness-110 sm:px-7"
+            className="rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-paper shadow-[0_10px_26px_-14px_rgba(3,61,75,0.9)] transition hover:bg-flame-dp sm:px-7"
           >
             {moneyFearLanding.cta.short}
           </a>

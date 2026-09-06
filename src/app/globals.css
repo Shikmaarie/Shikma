@@ -19,6 +19,21 @@
   --color-gold-lt: #edd4a2;
   --color-gold-dp: #b08850;
 
+  /* ---------------------------------------------------------------
+     Campaign light surface — sampled from the „עושים אהבה עם הפחד מכסף”
+     creative. Landing pages run on this ground so the page a viewer
+     lands on looks like the ad that sent them there. Same brand family:
+     deep teal ink, gold line art, coral as the accent.
+     --------------------------------------------------------------- */
+  --color-paper: #f7f3ea; /* cream ground */
+  --color-paper-2: #eef3ec; /* the mint tint the watercolor washes into */
+  --color-mist: #d7e6dd; /* highlight blocks behind text */
+  --color-ink: #033d4b; /* headlines and the CTA pill */
+  --color-ink-2: #3d5b66; /* body copy on paper */
+  --color-flame: #ef6a4d; /* the creative's coral, large text only */
+  --color-flame-dp: #cf4a2c; /* coral at body-text sizes */
+  --color-gold-ink: #c08a3c; /* gold that holds up on cream */
+
   /* Secondary accents from the swatch sheet */
   --color-coral: #f5877b;
   --color-mint: #85c9bc;
@@ -56,6 +71,27 @@
 
 :root {
   color-scheme: dark;
+}
+
+/* A landing page marks its own root `data-surface="light"`; the body sits
+   behind it, so the ground has to switch with it or the overscroll area and
+   the form controls stay dark. */
+:root:has([data-surface="light"]) {
+  color-scheme: light;
+}
+
+body:has([data-surface="light"]) {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body:has([data-surface="light"]) ::selection {
+  background: var(--color-flame);
+  color: var(--color-paper);
+}
+
+body:has([data-surface="light"]) :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline-color: var(--color-ink);
 }
 
 html {

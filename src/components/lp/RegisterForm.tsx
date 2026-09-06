@@ -50,18 +50,18 @@ export default function RegisterForm() {
     return (
       <div
         role="status"
-        className="rounded-4xl border border-gold/30 bg-void/50 p-9 text-center"
+        className="rounded-4xl border border-gold-ink/30 bg-white p-9 text-center shadow-[0_30px_60px_-45px_rgba(3,61,75,0.55)]"
       >
         <span
-          className="mx-auto grid size-14 place-items-center rounded-full border border-gold/40 bg-gold/10 text-gold-lt"
+          className="mx-auto grid size-14 place-items-center rounded-full bg-mist text-ink"
           aria-hidden="true"
         >
           <Check className="size-7" />
         </span>
-        <h3 className="mt-6 font-display text-3xl font-black text-gradient-gold">
+        <h3 className="mt-6 text-3xl font-black text-ink">
           {register.success.title}
         </h3>
-        <p className="mx-auto mt-3 max-w-sm leading-relaxed text-cream/70">
+        <p className="mx-auto mt-3 max-w-sm leading-relaxed text-ink-2">
           {register.success.body}
         </p>
       </div>
@@ -71,7 +71,7 @@ export default function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-4xl border border-gold/25 bg-void/50 p-7 backdrop-blur-md sm:p-9"
+      className="rounded-4xl border border-gold-ink/25 bg-white p-7 shadow-[0_30px_60px_-45px_rgba(3,61,75,0.55)] sm:p-9"
     >
       <div className="grid gap-5">
         <Field name="fullName" label="שם מלא" autoComplete="name" required />
@@ -97,7 +97,7 @@ export default function RegisterForm() {
       {error && (
         <p
           role="alert"
-          className="mt-6 flex items-start gap-2.5 rounded-2xl border border-coral/40 bg-coral/10 px-4 py-3 text-sm text-coral"
+          className="mt-6 flex items-start gap-2.5 rounded-2xl border border-flame/50 bg-flame/10 px-4 py-3 text-sm text-flame-dp"
         >
           <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
           <span>
@@ -115,7 +115,7 @@ export default function RegisterForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-4 text-base font-bold text-void shadow-[0_10px_45px_-12px_rgba(212,169,95,0.85)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-ink px-8 py-4 text-base font-bold text-paper shadow-[0_18px_36px_-20px_rgba(3,61,75,0.95)] transition hover:bg-flame-dp disabled:cursor-not-allowed disabled:opacity-60"
       >
         {submitting ? (
           <>
@@ -127,9 +127,9 @@ export default function RegisterForm() {
         )}
       </button>
 
-      <p className="mt-4 text-center text-xs leading-relaxed text-cream/45">
+      <p className="mt-4 text-center text-xs leading-relaxed text-ink-2/80">
         {register.fine}{" "}
-        <Link href="/legal/privacy" className="text-gold-lt hover:underline">
+        <Link href="/legal/privacy" className="text-flame-dp hover:underline">
           מדיניות הפרטיות
         </Link>
         .
@@ -148,17 +148,14 @@ function Field({
 } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div>
-      <label
-        htmlFor={name}
-        className="mb-2 block text-sm font-medium text-cream/75"
-      >
+      <label htmlFor={name} className="mb-2 block text-sm font-semibold text-ink">
         {label}
-        {props.required && <span className="text-gold"> *</span>}
+        {props.required && <span className="text-flame-dp"> *</span>}
       </label>
       <input
         id={name}
         name={name}
-        className="w-full rounded-2xl border border-gold/20 bg-void/60 px-4 py-3 text-cream placeholder:text-cream/30 transition focus:border-gold/60 focus:outline-none"
+        className="w-full rounded-2xl border border-ink/15 bg-paper-2/60 px-4 py-3 text-ink placeholder:text-ink-2/50 transition focus:border-ink/50 focus:bg-white focus:outline-none"
         {...props}
       />
     </div>

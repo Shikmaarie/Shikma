@@ -37,7 +37,13 @@ export const moneyFearLanding = {
       { text: "מ־2,000,000 ₪ חוב", gold: false },
       { text: "לחופש כלכלי", gold: true },
     ],
-    lead: "מה באמת מנהל את כמות הכסף שאתם מרוויחים — בלי שאתם בכלל מודעים לזה?",
+    /** Split the way the creative sets it: a marked phrase, then an
+     *  underlined question. */
+    lead: {
+      marker: "מה באמת מנהל",
+      middle: " את כמות הכסף שאתם מרוויחים ",
+      underline: "בלי שאתם בכלל מודעים לזה?",
+    },
     sub: "תנו לי יומיים ואגלה לכם את החוקים הסמויים שמנהלים את מערכת היחסים שלכם עם כסף.",
     facts: ["יומיים", "אונליין", "ללא עלות"],
     portrait: {
