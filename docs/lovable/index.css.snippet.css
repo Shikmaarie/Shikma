@@ -1,0 +1,106 @@
+/* ------------------------------------------------------------------ */
+/* Add to the top of src/index.css. @import must stay above every rule. */
+/* ------------------------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&family=Rubik+One&display=swap");
+
+@layer base {
+  :root {
+    /* Campaign palette, sampled from the creative */
+    --paper: 42 45% 94%;
+    --paper-2: 103 23% 94%;
+    --mist: 144 23% 87%;
+    --mint-wash: 144 27% 78%;
+    --ink: 192 92% 15%;
+    --ink-2: 196 25% 32%;
+    --flame: 11 84% 62%;
+    --flame-dp: 11 65% 49%;
+    --gold-ink: 35 52% 49%;
+
+    /* Running text is 12px per the brief. One number to change. */
+    --lp-body: 12px;
+  }
+
+  .lp-root {
+    background-color: hsl(var(--paper));
+    color: hsl(var(--ink));
+    font-family: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  /* Rubik One has no Hebrew cut, so it sits ahead of Rubik in the stack:
+     Latin runs get it, Hebrew falls through to Rubik Black. */
+  .lp-display {
+    font-family: "Rubik One", "Rubik", system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+  }
+
+  .lp-body {
+    font-size: var(--lp-body);
+    line-height: 2;
+  }
+
+  .lp-fine {
+    font-size: 11px;
+    line-height: 1.75;
+  }
+}
+
+@layer utilities {
+  /* The creative's ground: cream with watercolour mint bleeding in from the
+     corners. Applied per section — stretched over the whole scroll height the
+     gradient flattens out and disappears. */
+  .paper-wash {
+    background-color: hsl(var(--paper));
+    background-image:
+      radial-gradient(
+        116% 78% at 0% 0%,
+        hsl(var(--mint-wash) / 0.78) 0%,
+        hsl(var(--mint-wash) / 0.24) 42%,
+        transparent 68%
+      ),
+      radial-gradient(
+        70% 52% at 100% 108%,
+        hsl(var(--mint-wash) / 0.45) 0%,
+        transparent 62%
+      );
+  }
+
+  /* Mirrored, so neighbouring sections never repeat the same corner. */
+  .paper-wash-alt {
+    background-color: hsl(var(--paper));
+    background-image:
+      radial-gradient(
+        104% 72% at 100% 0%,
+        hsl(var(--mint-wash) / 0.62) 0%,
+        hsl(var(--mint-wash) / 0.2) 44%,
+        transparent 70%
+      ),
+      radial-gradient(
+        74% 56% at 0% 104%,
+        hsl(var(--mint-wash) / 0.52) 0%,
+        transparent 64%
+      );
+  }
+
+  .hero-scrim {
+    background-image: linear-gradient(
+      to top,
+      hsl(var(--paper)) 0%,
+      hsl(var(--paper) / 0.15) 45%,
+      transparent 100%
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .hero-scrim {
+      background-image: linear-gradient(
+        270deg,
+        hsl(var(--paper)) 0%,
+        hsl(var(--paper)) 31%,
+        hsl(var(--paper) / 0.8) 44%,
+        hsl(var(--paper) / 0.3) 60%,
+        transparent 76%
+      );
+    }
+  }
+}
