@@ -33,6 +33,7 @@
   --color-flame: #ef6a4d; /* the creative's coral, large text only */
   --color-flame-dp: #cf4a2c; /* coral at body-text sizes */
   --color-gold-ink: #c08a3c; /* gold that holds up on cream */
+  --color-mint-wash: #b9d7c5; /* the watercolour mint in the creative's corners */
 
   /* Secondary accents from the swatch sheet */
   --color-coral: #f5877b;
@@ -129,6 +130,42 @@ body {
   background-clip: text;
   color: transparent;
   animation: shimmer 6s linear infinite;
+}
+
+/* The creative's ground: a cream sheet with watercolour mint washing in from
+   the corners. Applied per section rather than once over the page — stretched
+   across six thousand pixels the wash would flatten out and disappear. */
+@utility paper-wash {
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(
+      116% 78% at 0% 0%,
+      color-mix(in oklab, var(--color-mint-wash) 78%, transparent) 0%,
+      color-mix(in oklab, var(--color-mint-wash) 24%, transparent) 42%,
+      transparent 68%
+    ),
+    radial-gradient(
+      70% 52% at 100% 108%,
+      color-mix(in oklab, var(--color-mint-wash) 45%, transparent) 0%,
+      transparent 62%
+    );
+}
+
+/* The same sheet mirrored, so consecutive sections don't repeat the corner. */
+@utility paper-wash-alt {
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(
+      104% 72% at 100% 0%,
+      color-mix(in oklab, var(--color-mint-wash) 62%, transparent) 0%,
+      color-mix(in oklab, var(--color-mint-wash) 20%, transparent) 44%,
+      transparent 70%
+    ),
+    radial-gradient(
+      74% 56% at 0% 104%,
+      color-mix(in oklab, var(--color-mint-wash) 52%, transparent) 0%,
+      transparent 64%
+    );
 }
 
 @utility glass {

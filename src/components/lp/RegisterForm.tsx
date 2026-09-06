@@ -50,7 +50,7 @@ export default function RegisterForm() {
     return (
       <div
         role="status"
-        className="rounded-4xl border border-gold-ink/30 bg-white p-9 text-center shadow-[0_30px_60px_-45px_rgba(3,61,75,0.55)]"
+        className="rounded-4xl border border-gold-ink/30 bg-paper/90 p-9 text-center shadow-[0_30px_60px_-45px_rgba(3,61,75,0.55)]"
       >
         <span
           className="mx-auto grid size-14 place-items-center rounded-full bg-mist text-ink"
@@ -71,7 +71,7 @@ export default function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-4xl border border-gold-ink/25 bg-white p-7 shadow-[0_30px_60px_-45px_rgba(3,61,75,0.55)] sm:p-9"
+      className="rounded-4xl border border-gold-ink/25 bg-paper/90 p-7 shadow-[0_30px_60px_-45px_rgba(3,61,75,0.55)] sm:p-9"
     >
       <div className="grid gap-5">
         <Field name="fullName" label="שם מלא" autoComplete="name" required />
@@ -155,7 +155,7 @@ function Field({
       <input
         id={name}
         name={name}
-        className="w-full rounded-2xl border border-ink/15 bg-paper-2/60 px-4 py-3 text-ink placeholder:text-ink-2/50 transition focus:border-ink/50 focus:bg-white focus:outline-none"
+        className="w-full rounded-2xl border border-ink/15 bg-white/70 px-4 py-3 text-ink placeholder:text-ink-2/50 transition focus:border-ink/50 focus:bg-paper focus:outline-none"
         {...props}
       />
     </div>

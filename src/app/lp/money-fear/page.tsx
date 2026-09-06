@@ -76,7 +76,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-paper-2 via-paper to-paper px-5 pt-32 pb-20 sm:px-8 lg:pt-40 lg:pb-28">
+    <section className="paper-wash relative overflow-hidden px-5 pt-32 pb-20 sm:px-8 lg:pt-40 lg:pb-28">
       <ArcScatter className="pointer-events-none absolute -right-24 -top-24 size-[30rem] opacity-70" />
       <span
         className="pointer-events-none absolute -left-40 top-1/3 size-[34rem] rounded-full bg-mist/50 blur-3xl"
@@ -170,7 +170,7 @@ function Hero() {
 
 function Story() {
   return (
-    <section className="relative bg-white px-5 py-24 sm:px-8 lg:py-28">
+    <section className="paper-wash-alt relative px-5 py-24 sm:px-8 lg:py-28">
       <div className="mx-auto w-full max-w-3xl">
         <Reveal>
           <Eyebrow>{lp.story.eyebrow}</Eyebrow>
@@ -195,7 +195,7 @@ function Story() {
         ))}
 
         <Reveal delay={0.4}>
-          <div className="mt-12 rounded-4xl border border-gold-ink/30 bg-paper-2 p-8 sm:p-10">
+          <div className="mt-12 rounded-4xl border border-gold-ink/30 bg-mist/55 p-8 sm:p-10">
             <p className="text-2xl leading-snug font-black text-flame sm:text-3xl">
               {lp.story.question}
             </p>
@@ -211,7 +211,7 @@ function Story() {
 
 function Why() {
   return (
-    <section className="relative overflow-hidden bg-paper px-5 py-24 sm:px-8 lg:py-32">
+    <section className="paper-wash relative overflow-hidden px-5 py-24 sm:px-8 lg:py-32">
       <ArcScatter className="pointer-events-none absolute -left-32 bottom-0 size-[26rem] opacity-50" />
 
       <div className="relative mx-auto w-full max-w-4xl text-center">
@@ -236,7 +236,7 @@ function Why() {
         <ul className="mx-auto mt-6 flex max-w-2xl flex-wrap justify-center gap-3">
           {lp.why.notList.map((item, i) => (
             <Reveal key={item} delay={0.22 + i * 0.06}>
-              <li className="rounded-full border border-ink/12 bg-white px-5 py-2.5 text-base text-ink-2 line-through decoration-flame decoration-2">
+              <li className="rounded-full border border-ink/12 bg-paper/80 px-5 py-2.5 text-base text-ink-2 line-through decoration-flame decoration-2">
                 {item}
               </li>
             </Reveal>
@@ -259,7 +259,7 @@ function Why() {
 
 function Agenda() {
   return (
-    <section className="relative bg-paper-2 px-5 py-24 sm:px-8 lg:py-32">
+    <section className="paper-wash-alt relative px-5 py-24 sm:px-8 lg:py-32">
       <div className="mx-auto w-full max-w-5xl">
         <Reveal>
           <Eyebrow>{lp.agenda.eyebrow}</Eyebrow>
@@ -286,7 +286,7 @@ function Agenda() {
         <ul className="mt-14 grid gap-5 sm:grid-cols-2">
           {lp.agenda.items.map((item, i) => (
             <Reveal key={item.n} delay={0.1 + i * 0.08} className="h-full">
-              <li className="flex h-full flex-col rounded-4xl border border-gold-ink/20 bg-white p-8 shadow-[0_30px_60px_-50px_rgba(3,61,75,0.6)]">
+              <li className="flex h-full flex-col rounded-4xl border border-gold-ink/20 bg-paper/85 p-8 shadow-[0_30px_60px_-50px_rgba(3,61,75,0.6)]">
                 <span
                   className="text-4xl font-black text-gold-ink/45"
                   aria-hidden="true"
@@ -309,20 +309,11 @@ function Agenda() {
         </Reveal>
 
         <Reveal delay={0.46}>
-          <div className="mt-10 flex flex-col gap-8 rounded-4xl bg-ink p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-            <p className="max-w-xl text-xl leading-snug font-bold text-paper sm:text-2xl">
+          <div className="mt-10 flex flex-col gap-8 rounded-4xl border border-gold-ink/30 bg-mist/55 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
+            <p className="max-w-xl text-xl leading-snug font-bold text-ink sm:text-2xl">
               {lp.agenda.promise}
             </p>
-            <a
-              href={registerAnchor}
-              className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-flame px-8 py-4 text-base font-bold text-white transition hover:brightness-105"
-            >
-              {lp.cta.short}
-              <ArrowLeft
-                className="size-5 transition-transform group-hover:-translate-x-1"
-                aria-hidden="true"
-              />
-            </a>
+            <Cta className="shrink-0">{lp.cta.short}</Cta>
           </div>
         </Reveal>
       </div>
@@ -332,7 +323,7 @@ function Agenda() {
 
 function Proof() {
   return (
-    <section className="bg-paper px-5 py-24 sm:px-8 lg:py-28">
+    <section className="paper-wash px-5 py-24 sm:px-8 lg:py-28">
       <div className="mx-auto w-full max-w-5xl">
         <div className="flex flex-col items-center text-center">
           <Reveal>
@@ -355,7 +346,7 @@ function Proof() {
               delay={0.1 + i * 0.08}
               className="w-full max-w-md"
             >
-              <figure className="overflow-hidden rounded-4xl border border-gold-ink/25 bg-white p-3 shadow-[0_30px_60px_-50px_rgba(3,61,75,0.6)]">
+              <figure className="overflow-hidden rounded-4xl border border-gold-ink/25 bg-paper/85 p-3 shadow-[0_30px_60px_-50px_rgba(3,61,75,0.6)]">
                 <Image
                   src={shot.src}
                   alt={shot.alt}
@@ -381,7 +372,7 @@ function Register() {
   return (
     <section
       id="register"
-      className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-paper-2 to-mist/60 px-5 py-24 sm:px-8 lg:py-32"
+      className="paper-wash-alt relative scroll-mt-24 overflow-hidden px-5 py-24 sm:px-8 lg:py-32"
     >
       <ArcScatter className="pointer-events-none absolute -right-28 top-10 size-[26rem] opacity-50" />
 
@@ -393,7 +384,7 @@ function Register() {
             width={1086}
             height={1448}
             sizes="(max-width: 1024px) 85vw, 38rem"
-            className="mx-auto w-full max-w-sm rounded-4xl shadow-[0_40px_80px_-50px_rgba(3,61,75,0.65)] lg:max-w-none"
+            className="mx-auto w-full max-w-sm rounded-4xl ring-1 ring-gold-ink/25 shadow-[0_40px_80px_-50px_rgba(3,61,75,0.65)] lg:max-w-none"
           />
         </Reveal>
 
