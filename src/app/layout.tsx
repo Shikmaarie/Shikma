@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
+import { Heebo, Frank_Ruhl_Libre, Rubik } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import Header from "@/components/Header";
@@ -11,6 +11,17 @@ const heebo = Heebo({
   subsets: ["hebrew", "latin"],
   weight: ["300", "400", "500", "700", "900"],
   variable: "--font-heebo",
+  display: "swap",
+});
+
+/**
+ * The campaign landing pages are set in Rubik, per the brief. Rubik One is not
+ * in next/font's catalogue and has no Hebrew cut anyway — `/lp/layout.tsx`
+ * links it from Google Fonts for the Latin runs that can use it.
+ */
+const rubik = Rubik({
+  subsets: ["hebrew", "latin"],
+  variable: "--font-rubik",
   display: "swap",
 });
 
@@ -67,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${frank.variable}`}>
+    <html lang="he" dir="rtl" className={`${heebo.variable} ${frank.variable} ${rubik.variable}`}>
       <body className="min-h-screen antialiased">
         <a
           href="#main"

@@ -76,14 +76,8 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 function Hero() {
   return (
-    <section className="paper-wash relative overflow-hidden px-5 pt-32 pb-20 sm:px-8 lg:pt-40 lg:pb-28">
-      <ArcScatter className="pointer-events-none absolute -right-24 -top-24 size-[30rem] opacity-70" />
-      <span
-        className="pointer-events-none absolute -left-40 top-1/3 size-[34rem] rounded-full bg-mist/50 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+    <section className="paper-wash relative overflow-hidden px-5 pt-28 sm:px-8 lg:px-0 lg:pt-0">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl lg:min-h-[44rem] lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:px-8 lg:py-28">
         <div>
           <Reveal>
             <p className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2 text-xs font-bold tracking-[0.1em] text-paper">
@@ -92,13 +86,13 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={0.06}>
-            <p className="mt-8 text-2xl leading-tight font-bold text-ink sm:text-3xl">
+            <p className="lp-display mt-7 text-2xl leading-tight text-ink sm:text-3xl">
               {lp.hero.kicker}{" "}
               <span className="text-flame">{lp.hero.kickerAccent}</span>
             </p>
           </Reveal>
 
-          <h1 className="mt-3 text-[2.6rem] leading-[1.06] font-black tracking-tight sm:text-6xl lg:text-[4rem]">
+          <h1 className="lp-display mt-3 text-[2.4rem] leading-[1.07] sm:text-5xl lg:text-[3.1rem] lg:whitespace-nowrap xl:text-[3.5rem]">
             {lp.hero.title.map((line, i) => (
               <Reveal key={line.text} delay={0.12 + i * 0.08}>
                 <span className="block">
@@ -111,11 +105,11 @@ function Hero() {
           </h1>
 
           <Reveal delay={0.26}>
-            <GoldRule className="my-8" />
+            <GoldRule className="my-7" />
           </Reveal>
 
           <Reveal delay={0.32}>
-            <p className="max-w-xl text-lg leading-loose font-semibold text-ink sm:text-xl">
+            <p className="max-w-xl text-lg leading-loose font-semibold text-balance text-ink">
               <Marker>{lp.hero.lead.marker}</Marker>
               {lp.hero.lead.middle}
               <span className="decoration-flame decoration-[3px] underline-offset-[6px] [text-decoration-line:underline]">
@@ -125,15 +119,13 @@ function Hero() {
           </Reveal>
 
           <Reveal delay={0.38}>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-ink-2 sm:text-lg">
-              {lp.hero.sub}
-            </p>
+            <p className="lp-body mt-5 max-w-xl text-ink-2">{lp.hero.sub}</p>
           </Reveal>
 
           <Reveal delay={0.46}>
-            <div className="mt-10 flex flex-wrap items-center gap-5">
+            <div className="mt-9 flex flex-wrap items-center gap-5">
               <Cta>{lp.cta.label}</Cta>
-              <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium text-ink-2">
+              <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold text-ink-2">
                 {lp.hero.facts.map((fact) => (
                   <li key={fact} className="flex items-center gap-2">
                     <span
@@ -147,22 +139,25 @@ function Hero() {
             </div>
           </Reveal>
         </div>
+      </div>
 
-        <Reveal delay={0.2}>
-          {/* The source frame is a tall banner crop; boxing it to 3:4 and
-              anchoring to the top keeps her face in view and stops the
-              portrait from setting the height of the whole hero. */}
-          <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2.5rem] shadow-[0_40px_80px_-50px_rgba(3,61,75,0.6)] lg:max-w-md">
-            <Image
-              src={lp.hero.portrait.src}
-              alt={lp.hero.portrait.alt}
-              fill
-              priority
-              sizes="(max-width: 1024px) 80vw, 28rem"
-              className="object-cover object-top"
-            />
-          </div>
-        </Reveal>
+      {/* One image, two roles: it stacks under the copy on a phone, and from
+          `lg` up it becomes the full-bleed backdrop with the headline sitting
+          in the empty half of the frame. */}
+      <div className="relative mt-10 -mx-5 sm:-mx-8 lg:absolute lg:inset-0 lg:m-0">
+        <Image
+          src={lp.hero.image.src}
+          alt={lp.hero.image.alt}
+          width={lp.hero.image.width}
+          height={lp.hero.image.height}
+          priority
+          sizes="100vw"
+          className="h-64 w-full object-cover object-[30%_top] sm:h-80 lg:h-full lg:object-[left_center]"
+        />
+        <span
+          className="absolute inset-0 bg-gradient-to-t from-paper via-paper/15 to-transparent lg:bg-[linear-gradient(270deg,var(--color-paper)_0%,var(--color-paper)_31%,color-mix(in_oklab,var(--color-paper)_80%,transparent)_44%,color-mix(in_oklab,var(--color-paper)_30%,transparent)_60%,transparent_76%)]"
+          aria-hidden="true"
+        />
       </div>
     </section>
   );
@@ -179,7 +174,7 @@ function Story() {
         <ul className="mt-7 flex flex-col gap-3">
           {lp.story.denials.map((line, i) => (
             <Reveal key={line} delay={0.06 * i}>
-              <li className="text-2xl font-black text-ink sm:text-4xl">{line}</li>
+              <li className="lp-display text-2xl text-ink sm:text-4xl">{line}</li>
             </Reveal>
           ))}
         </ul>
@@ -190,18 +185,16 @@ function Story() {
 
         {lp.story.paragraphs.map((p, i) => (
           <Reveal key={p} delay={0.24 + i * 0.06}>
-            <p className="mt-6 text-lg leading-loose text-ink-2">{p}</p>
+            <p className="lp-body mt-6 text-ink-2">{p}</p>
           </Reveal>
         ))}
 
         <Reveal delay={0.4}>
           <div className="mt-12 rounded-4xl border border-gold-ink/30 bg-mist/55 p-8 sm:p-10">
-            <p className="text-2xl leading-snug font-black text-flame sm:text-3xl">
+            <p className="lp-display text-2xl leading-snug text-flame sm:text-3xl">
               {lp.story.question}
             </p>
-            <p className="mt-4 text-lg leading-relaxed text-ink">
-              {lp.story.answer}
-            </p>
+            <p className="lp-body mt-4 text-ink">{lp.story.answer}</p>
           </div>
         </Reveal>
       </div>
@@ -220,7 +213,7 @@ function Why() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <blockquote className="mt-7 text-3xl leading-[1.25] font-black text-ink sm:text-5xl">
+          <blockquote className="lp-display mt-7 text-3xl leading-[1.25] text-ink sm:text-5xl">
             {lp.why.quote}
           </blockquote>
         </Reveal>
@@ -230,13 +223,13 @@ function Why() {
         </Reveal>
 
         <Reveal delay={0.18}>
-          <p className="text-lg font-semibold text-ink-2">{lp.why.intro}</p>
+          <p className="lp-body font-semibold text-ink-2">{lp.why.intro}</p>
         </Reveal>
 
         <ul className="mx-auto mt-6 flex max-w-2xl flex-wrap justify-center gap-3">
           {lp.why.notList.map((item, i) => (
             <Reveal key={item} delay={0.22 + i * 0.06}>
-              <li className="rounded-full border border-ink/12 bg-paper/80 px-5 py-2.5 text-base text-ink-2 line-through decoration-flame decoration-2">
+              <li className="lp-body rounded-full border border-ink/12 bg-paper/80 px-5 py-2.5 text-ink-2 line-through decoration-flame decoration-2">
                 {item}
               </li>
             </Reveal>
@@ -244,13 +237,13 @@ function Why() {
         </ul>
 
         <Reveal delay={0.5}>
-          <p className="mt-10 text-3xl font-black text-flame sm:text-4xl">
+          <p className="lp-display mt-10 text-3xl text-flame sm:text-4xl">
             {lp.why.turn}
           </p>
         </Reveal>
 
         <Reveal delay={0.58}>
-          <p className="mt-6 text-lg text-ink-2">{lp.why.close}</p>
+          <p className="lp-body mt-6 text-ink-2">{lp.why.close}</p>
         </Reveal>
       </div>
     </section>
@@ -266,7 +259,7 @@ function Agenda() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h2 className="mt-7 max-w-3xl text-3xl leading-tight font-black text-ink sm:text-5xl">
+          <h2 className="lp-display mt-7 max-w-3xl text-3xl leading-tight text-ink sm:text-5xl">
             <span className="text-flame" aria-hidden="true">
               „
             </span>
@@ -278,9 +271,7 @@ function Agenda() {
         </Reveal>
 
         <Reveal delay={0.14}>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
-            {lp.agenda.lead}
-          </p>
+          <p className="lp-body mt-6 max-w-2xl text-ink-2">{lp.agenda.lead}</p>
         </Reveal>
 
         <ul className="mt-14 grid gap-5 sm:grid-cols-2">
@@ -288,29 +279,27 @@ function Agenda() {
             <Reveal key={item.n} delay={0.1 + i * 0.08} className="h-full">
               <li className="flex h-full flex-col rounded-4xl border border-gold-ink/20 bg-paper/85 p-8 shadow-[0_30px_60px_-50px_rgba(3,61,75,0.6)]">
                 <span
-                  className="text-4xl font-black text-gold-ink/45"
+                  className="lp-display text-4xl text-gold-ink/45"
                   aria-hidden="true"
                 >
                   {item.n}
                 </span>
-                <h3 className="mt-4 text-xl font-black text-ink sm:text-2xl">
+                <h3 className="lp-display mt-4 text-xl text-ink sm:text-2xl">
                   {item.title}
                 </h3>
-                <p className="mt-3 leading-relaxed text-ink-2">{item.body}</p>
+                <p className="lp-body mt-3 text-ink-2">{item.body}</p>
               </li>
             </Reveal>
           ))}
         </ul>
 
         <Reveal delay={0.4}>
-          <p className="mt-12 max-w-3xl text-lg leading-relaxed text-ink-2">
-            {lp.agenda.outro}
-          </p>
+          <p className="lp-body mt-12 max-w-3xl text-ink-2">{lp.agenda.outro}</p>
         </Reveal>
 
         <Reveal delay={0.46}>
           <div className="mt-10 flex flex-col gap-8 rounded-4xl border border-gold-ink/30 bg-mist/55 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10">
-            <p className="max-w-xl text-xl leading-snug font-bold text-ink sm:text-2xl">
+            <p className="lp-display max-w-xl text-xl leading-snug text-ink sm:text-2xl">
               {lp.agenda.promise}
             </p>
             <Cta className="shrink-0">{lp.cta.short}</Cta>
@@ -330,7 +319,7 @@ function Proof() {
             <Eyebrow>{lp.proof.eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="mt-5 text-3xl font-black text-ink sm:text-5xl">
+            <h2 className="lp-display mt-5 text-3xl text-ink sm:text-5xl">
               {lp.proof.title}
             </h2>
           </Reveal>
@@ -361,7 +350,7 @@ function Proof() {
         </div>
 
         <Reveal delay={0.3}>
-          <p className="mt-8 text-center text-xs text-ink-2/70">{lp.proof.note}</p>
+          <p className="lp-fine mt-8 text-center text-ink-2/70">{lp.proof.note}</p>
         </Reveal>
       </div>
     </section>
@@ -394,7 +383,7 @@ function Register() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <h2 className="mt-5 flex flex-wrap items-center gap-x-3 text-3xl leading-tight font-black text-ink sm:text-4xl">
+            <h2 className="lp-display mt-5 flex flex-wrap items-center gap-x-3 text-3xl leading-tight text-ink sm:text-4xl">
               עושים אהבה
               <Heart
                 className="size-7 fill-flame text-flame sm:size-8"
@@ -405,13 +394,11 @@ function Register() {
           </Reveal>
 
           <Reveal delay={0.14}>
-            <p className="mt-4 text-lg font-bold text-flame-dp">
-              {lp.register.sub}
-            </p>
+            <p className="mt-4 text-base font-bold text-flame-dp">{lp.register.sub}</p>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="mt-3 leading-relaxed text-ink-2">{lp.register.body}</p>
+            <p className="lp-body mt-3 text-ink-2">{lp.register.body}</p>
           </Reveal>
 
           <Reveal delay={0.26}>
@@ -430,7 +417,7 @@ function LandingFooter() {
 
   return (
     <footer className="border-t border-gold-ink/25 bg-paper px-5 py-10 sm:px-8">
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 text-xs text-ink-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="lp-fine mx-auto flex w-full max-w-5xl flex-col gap-4 text-ink-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="ltr-nums">
           © {year} {site.name} · כל הזכויות שמורות | עיצוב ובנייה: {site.credit}
         </p>

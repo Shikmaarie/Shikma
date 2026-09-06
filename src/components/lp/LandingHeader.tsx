@@ -41,7 +41,7 @@ export default function LandingHeader() {
             <BrandStar className="size-5 text-gold-ink" />
           </span>
           <span className="flex flex-col leading-none">
-            <span className="text-lg font-black text-ink">{site.name}</span>
+            <span className="lp-display text-lg text-ink">{site.name}</span>
             <span className="mt-1.5 hidden text-[10px] tracking-[0.14em] text-ink-2 sm:block">
               {site.roleParts.join(" · ")}
             </span>
@@ -49,7 +49,14 @@ export default function LandingHeader() {
         </Link>
 
         <div className="flex items-center gap-4">
-          <span className="hidden text-xs font-medium tracking-wide text-ink-2 md:inline">
+          {/* Over the hero photo this line has nothing to sit on, so it
+              appears only once the header has its cream ground. */}
+          <span
+            className={`hidden text-xs font-medium tracking-wide text-ink-2 transition-opacity duration-300 md:inline ${
+              scrolled ? "opacity-100" : "opacity-0"
+            }`}
+            aria-hidden={!scrolled}
+          >
             {moneyFearLanding.dates} · {moneyFearLanding.format}
           </span>
           <a

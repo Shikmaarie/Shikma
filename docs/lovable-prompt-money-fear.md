@@ -3,8 +3,9 @@
 הפרומט כתוב באנגלית כי זו השפה שבה הסוכן של Lovable מדייק הכי טוב,
 והקופי בעברית מצוטט בתוכו מילה במילה. להעתיק הכל, מ-`---` ועד `---`.
 
-לפני ההדבקה: להעלות ל-Lovable שתי תמונות —
-`racheli-portrait.jpg` (הפורטרט החתוך) ו-`money-fear-poster.jpg` (הקריאייטיב המלא).
+לפני ההדבקה: להעלות ל-Lovable שלוש תמונות —
+`racheli-header.jpg` (הצילום הרחב להדר), `money-fear-poster.jpg` (הקריאייטיב המלא)
+ו-`proof-whatsapp-1.jpg` (צילום המסך של ההמלצה).
 
 ---
 
@@ -14,8 +15,19 @@ One route (`/`), no navigation menu, one conversion goal: registration.
 ## Language and direction
 
 - `<html lang="he" dir="rtl">`. The whole page is RTL Hebrew.
-- Fonts: Heebo (300/400/500/700/900) from Google Fonts as the only family.
-  Headlines are Heebo 900. Load with `display=swap` and a real fallback stack.
+- Fonts: **Rubik** from Google Fonts (variable, 300-900) is the only text
+  family, Hebrew subset included. Load with `display=swap` and a real fallback
+  stack.
+- Headlines are asked for in **Rubik One**. Google ships Rubik One with Latin
+  and Cyrillic only, there is no Hebrew cut, so declare it *ahead* of Rubik in
+  the display stack and let Hebrew fall through:
+  `font-family: "Rubik One", "Rubik", system-ui, sans-serif; font-weight: 900;`
+  Latin runs get Rubik One, Hebrew gets Rubik Black. Do not substitute another
+  display family for the Hebrew.
+- **Running text is 12px.** Set it once as a variable
+  (`--lp-body: 12px; line-height: 2`) and use it for every body paragraph, so
+  it is one number to change. Headlines, the hero lead line, buttons, eyebrows
+  and form labels keep their own sizes. Fine print is 11px.
 - Never reverse or reorder Hebrew text manually. The browser handles bidi.
   Numbers like `2,000,000 ₪` stay inside normal RTL paragraphs.
 
@@ -96,39 +108,53 @@ Icons elsewhere: `lucide-react` only (`ArrowLeft`, `Heart`, `Check`,
 Transparent at rest; on scroll past 24px it gets `hsl(var(--paper) / 0.9)`,
 `backdrop-blur-xl` and a `--gold` bottom hairline.
 Right side (RTL start): a deep teal circle with a small four-point star, then
-`רחלי חדד` in Heebo 900 and under it, from `md` up, `מכפילה עסקים · בונה אימפריות`.
-Left side: the text `4-5 באוקטובר · יומיים | כנס אונליין חינמי` (hidden below `md`)
-and a deep teal pill button `להרשמה חינם` that scrolls to `#register`.
+`רחלי חדד` in the display face and under it, from `md` up,
+`מכפילה עסקים · בונה אימפריות`.
+Left side: the text `4-5 באוקטובר · יומיים | כנס אונליין חינמי` and a deep teal
+pill button `להרשמה חינם` that scrolls to `#register`. That date line sits over
+the hero photo at rest, where it has nothing to sit on, so fade it in only once
+the header has its cream ground.
 
-### 1. Hero — `.paper-wash`, two columns from `lg` up
-Text column first in the DOM (right side in RTL), portrait column second.
+### 1. Hero, full-bleed header photo
+`racheli-header.jpg` is a wide 16:9 frame: Racheli sits on the left, the right
+half of the frame is empty warm cream. The headline goes in that empty half.
 
-- Deep teal pill: `כנס אונליין חינמי · 4-5 באוקטובר`
-- Kicker, Heebo 700, ~30px: `הפסיכולוגיה הסמויה` in `--ink` plus
-  `של הכסף` in `--flame`
-- H1, Heebo 900, clamp 42px to 64px, line-height 1.06, two lines:
-  line 1 `מ־2,000,000 ₪ חוב` in `--ink`
-  line 2 `לחופש כלכלי` in `--flame`
-- `GoldRule`
-- Lead paragraph, Heebo 600, ~20px, `--ink`, exactly this composition:
-  `מה באמת מנהל` inside a `Marker`, then the plain text
-  ` את כמות הכסף שאתם מרוויחים `, then
-  `בלי שאתם בכלל מודעים לזה?` underlined with a 3px `--flame` underline,
-  6px offset.
-- Sub, `--ink-2`, ~18px:
-  `תנו לי יומיים ואגלה לכם את החוקים הסמויים שמנהלים את מערכת היחסים שלכם עם כסף.`
-- Deep teal pill CTA `לשמור לי מקום, חינם` with an `ArrowLeft` that slides on
-  hover, linking to `#register`.
-- Next to it, a row of four facts separated by small gold dots:
-  `4-5 באוקטובר` · `יומיים` · `אונליין` · `ללא עלות`
-- Portrait column: `racheli-portrait.jpg` in a `3/4` box,
-  `object-cover object-top`, `rounded-[2.5rem]`, soft teal shadow. The image is
-  a content element: it keeps its aspect ratio and is never stretched.
-- `ArcScatter` bleeding off the top-left corner of the section.
+- From `lg` up the photo is the section's own backdrop: absolutely positioned
+  across the section, `object-cover object-left`, with the copy sitting above
+  it in a two-column grid (`1.08fr 0.92fr`), copy in the first column, which in
+  RTL is the right side, over the empty part of the frame.
+- Below `lg` the copy comes first and the photo stacks under it, full width,
+  16rem to 20rem tall, `object-cover object-[30%_top]` so her face stays in
+  frame. Use one `<img>` for both, not two.
+- Scrim over the photo, so the type has a ground without milking out the
+  subject. From `lg` up:
+  `linear-gradient(270deg, paper 0%, paper 31%, paper/80 44%, paper/30 60%, transparent 76%)`
+  Below `lg` a vertical fade instead: `to top, paper, paper/15, transparent`.
+- Copy in the right half, in this order:
+  - Deep teal pill: `כנס אונליין חינמי · 4-5 באוקטובר`
+  - Kicker, display face, ~30px: `הפסיכולוגיה הסמויה` in `--ink` plus
+    `של הכסף` in `--flame`
+  - H1, display face, clamp 38px to 56px, line-height 1.07, two lines that must
+    not break further (`white-space: nowrap` from `lg` up):
+    line 1 `מ־2,000,000 ₪ חוב` in `--ink`
+    line 2 `לחופש כלכלי` in `--flame`
+  - `GoldRule`
+  - Lead paragraph, 18px, semibold, `--ink`, `text-wrap: balance`, exactly this
+    composition: `מה באמת מנהל` inside a `Marker`, then the plain text
+    ` את כמות הכסף שאתם מרוויחים `, then `בלי שאתם בכלל מודעים לזה?` underlined
+    with a 3px `--flame` underline at 6px offset.
+  - Sub at the 12px body size, `--ink-2`:
+    `תנו לי יומיים ואגלה לכם את החוקים הסמויים שמנהלים את מערכת היחסים שלכם עם כסף.`
+  - Deep teal pill CTA `לשמור לי מקום, חינם` with an `ArrowLeft` that slides on
+    hover, linking to `#register`.
+  - Next to it, four facts separated by small gold dots:
+    `4-5 באוקטובר` · `יומיים` · `אונליין` · `ללא עלות`
+- The photo already carries gold arcs, so no `ArcScatter` in this section.
+- The photo is a content element: `object-fit: cover`, never stretched.
 
 ### 2. Story — `.paper-wash-alt`, single column, max-width 48rem
 Eyebrow in `--gold`, letter-spaced: `מאיפה אני מגיעה`
-Three lines, Heebo 900, ~36px, stacked:
+Three lines, display face, ~36px, stacked:
 ```
 לא נולדתי למשפחה עשירה.
 לא קיבלתי ירושה.
@@ -142,32 +168,32 @@ Three lines, Heebo 900, ~36px, stacked:
 אני הייתי במקום שאתם נמצאים בו. עשיתי את הטעויות, שילמתי עליהן מחיר כבד, ואז הבנתי את המשחק. עכשיו אני רוצה לקצר לכם את הדרך.
 ```
 Then a card, `--mist` at 55%, gold hairline border, `rounded-[2rem]`:
-question in `--flame` Heebo 900 ~28px:
+question in `--flame` display face, ~28px:
 `אז איך עברתי משם לחופש כלכלי, השקעות ומיליונים?`
 answer under it in `--ink`, 18px:
 `את הסיפור המלא אני הולכת לפתוח בכנס האונליין החינמי.`
 
 ### 3. Why it matters — `.paper-wash`, centred, max-width 56rem
 Eyebrow: `למה זה חשוב לי`
-Pull quote, Heebo 900, clamp 30px to 48px, `--ink`:
+Pull quote, display face, clamp 30px to 48px, `--ink`:
 `הדבר הכי גדול שכסף נתן לי הוא לא כסף. הוא נתן לי אפשרות להראות לילדים שלי עולם אחר.`
 `GoldRule` centred. Then `עולם שבו כסף הוא` in `--ink-2`.
 Four pills, wrapped and centred, cream at 80%, thin `--ink` border, each with a
 2px `--flame` strike-through:
 `לא פחד.` · `לא חובות.` · `לא מריבות.` · `ולא משהו שצריך לברוח ממנו.`
-Then, Heebo 900 ~34px in `--flame`: `אלא כלי ליצירת חופש.`
+Then, display face, ~34px, in `--flame`: `אלא כלי ליצירת חופש.`
 Then in `--ink-2`: `וזה בדיוק מה שאני רוצה להעביר לכם.`
 `ArcScatter` bleeding off the bottom-left corner.
 
 ### 4. What happens at the summit — `.paper-wash-alt`, max-width 64rem
 Eyebrow: `מה יהיה בכנס`
-H2 in quotes, Heebo 900, clamp 30px to 48px, the quotation marks in `--flame`:
+H2 in quotes, display face, clamp 30px to 48px, the quotation marks in `--flame`:
 `„אני לא הולכת ללמד אתכם איך להתעשר”`
 Sub in `--ink-2`:
 `אני הולכת לספר לכם איך אנחנו עברנו מ־2,000,000 ₪ חוב לחופש כלכלי.`
 Then four cards, 2 columns from `sm` up, cream at 85%, gold hairline,
 `rounded-[2rem]`, soft shadow. Each has a large `--gold` numeral at 45%
-opacity, a Heebo 900 title, and a line of body copy. The numbering is real
+opacity, a title in the display face, and a line of body copy. The numbering is real
 sequence, keep the order:
 ```
 01  מה השתנה בדרך            נקודות המפנה האמיתיות, לא הסיפור המצונזר.
@@ -177,15 +203,15 @@ sequence, keep the order:
 ```
 Under the grid, in `--ink-2`:
 `מה למדתי בדרך על כסף, פחד, עושר והחלטות שאף אחד לא לימד אותי בבית.`
-Then a `--mist` band at 55% with a gold hairline: on one side, Heebo 700 ~24px
+Then a `--mist` band at 55% with a gold hairline: on one side, display face ~24px
 in `--ink`:
 `תנו לי יומיים ואקח אתכם למסע ששינה את מערכת היחסים שלי עם כסף. ואולי ישנה גם את שלכם.`
 and on the other, the deep teal pill `להרשמה חינם` linking to `#register`.
 
 ### 5. Social proof — `.paper-wash`, centred
-Eyebrow `ממשתתפות בכנס`, H2 `מה כותבים אחרי`, `GoldRule`.
+Eyebrow `ממשתתפות בכנס`, H2 `מה כותבים אחרי` in the display face, `GoldRule`.
 Then a single screenshot in a cream card with a gold hairline and 12px padding,
-max-width 28rem, centred. Under it, 12px `--ink-2` at 70%:
+max-width 28rem, centred. Under it, 11px `--ink-2` at 70%:
 `צילום מסך מהודעה שהתקבלה אחרי הכנס. פרטי השולחת אינם מופיעים בתמונה.`
 Do not invent additional testimonials. If more screenshots are supplied later,
 they lay out in the same row, still centred.
@@ -195,16 +221,16 @@ Left column: `money-fear-poster.jpg`, max-width 24rem, `rounded-[2rem]`, gold
 ring, soft shadow, aspect ratio preserved.
 Right column:
 - Eyebrow `הרשמה`
-- H2 Heebo 900 ~36px: `עושים אהבה`, a filled coral `Heart` icon, `עם הפחד מכסף`
-- In `--flame-dp` Heebo 700: `4-5 באוקטובר | יומיים | כנס אונליין חינמי`
+- H2 in the display face, ~36px: `עושים אהבה`, a filled coral `Heart` icon, `עם הפחד מכסף`
+- In `--flame-dp`, semibold: `4-5 באוקטובר | יומיים | כנס אונליין חינמי`
 - In `--ink-2`: `משאירים פרטים ואני שולחת לכם את קישור הכניסה ואת השעות המדויקות.`
 - The signup form, in a cream card at 90% with a gold hairline,
   `rounded-[2rem]`, padding 28px to 36px.
 
 ### Footer
-Cream, gold hairline on top, 12px `--ink-2`:
+Cream, gold hairline on top, `--ink-2`:
 `© 2026 רחלי חדד · כל הזכויות שמורות | עיצוב ובנייה: שקמה אושרי אריה`
-and links: `תקנון ותנאי שימוש`, `מדיניות פרטיות`.
+and links: `תקנון ותנאי שימוש`, `מדיניות פרטיות`. All of it at 11px.
 
 ## The signup form
 
@@ -272,6 +298,6 @@ Notes:
 - Do not invent testimonials, logos, participant counts or press mentions.
 - Do not name family members and do not mention how many children Racheli has.
 - Do not add a navigation menu, a chat widget or a second competing CTA.
-- Do not swap Heebo for a different family and do not introduce a dark section.
+- Do not swap Rubik for a different family and do not introduce a dark section.
 
 ---

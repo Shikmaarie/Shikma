@@ -48,9 +48,11 @@ export const moneyFearLanding = {
     },
     sub: "תנו לי יומיים ואגלה לכם את החוקים הסמויים שמנהלים את מערכת היחסים שלכם עם כסף.",
     facts: ["4-5 באוקטובר", "יומיים", "אונליין", "ללא עלות"],
-    portrait: {
-      src: "/lp/racheli-portrait.jpg",
+    image: {
+      src: "/lp/racheli-header.jpg",
       alt: "רחלי חדד",
+      width: 1672,
+      height: 941,
     },
   },
 

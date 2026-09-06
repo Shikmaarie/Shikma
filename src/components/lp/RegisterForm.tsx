@@ -58,10 +58,10 @@ export default function RegisterForm() {
         >
           <Check className="size-7" />
         </span>
-        <h3 className="mt-6 text-3xl font-black text-ink">
+        <h3 className="lp-display mt-6 text-3xl text-ink">
           {register.success.title}
         </h3>
-        <p className="mx-auto mt-3 max-w-sm leading-relaxed text-ink-2">
+        <p className="lp-body mx-auto mt-3 max-w-sm text-ink-2">
           {register.success.body}
         </p>
       </div>
@@ -127,7 +127,7 @@ export default function RegisterForm() {
         )}
       </button>
 
-      <p className="mt-4 text-center text-xs leading-relaxed text-ink-2/80">
+      <p className="lp-fine mt-4 text-center text-ink-2/80">
         {register.fine}{" "}
         <Link href="/legal/privacy" className="text-flame-dp hover:underline">
           מדיניות הפרטיות
@@ -148,7 +148,7 @@ function Field({
 } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div>
-      <label htmlFor={name} className="mb-2 block text-sm font-semibold text-ink">
+      <label htmlFor={name} className="mb-2 block text-xs font-semibold text-ink">
         {label}
         {props.required && <span className="text-flame-dp"> *</span>}
       </label>
