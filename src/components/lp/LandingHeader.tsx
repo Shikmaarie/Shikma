@@ -50,7 +50,7 @@ export default function LandingHeader() {
 
         <div className="flex items-center gap-4">
           <span className="hidden text-xs font-medium tracking-wide text-ink-2 md:inline">
-            {moneyFearLanding.format}
+            {moneyFearLanding.dates} · {moneyFearLanding.format}
           </span>
           <a
             href={registerAnchor}
