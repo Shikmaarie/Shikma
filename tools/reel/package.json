@@ -1,0 +1,15 @@
+{
+  "name": "racheli-reel",
+  "private": true,
+  "type": "module",
+  "description": "מנוע רינדור לריל אנכי של דף הנחיתה על מסך לפטופ",
+  "scripts": {
+    "capture": "node capture.mjs",
+    "render": "node render.mjs",
+    "reel": "node capture.mjs && node render.mjs"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "playwright": "^1.50.0"
+  }
+}

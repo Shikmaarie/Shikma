@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>reel stage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- מותג: טורקיז עמוק + זהב (מתוך globals.css) ---------- */
+  :root {
+    --void: #04171a;
+    --night: #072428;
+    --teal: #0f4a50;
+    --teal-2: #14606a;
+    --cream: #e9e2d7;
+    --gold: #d3a96a;
+    --gold-lt: #edd4a2;
+
+    /* נשלטים מ-render.mjs, פריים אחר פריים */
+    --scroll: 0; /* מספר בלבד — ה-px מתווסף ב-calc */
+    --cam-scale: 1;
+    --cam-y: 0px;
+    --intro: 1;
+    --sweep: 0;
+    --drift: 0;
+
+    --screen-w: 1008px;
+    --screen-h: 630px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 1080px; height: 1920px;
+    overflow: hidden;
+    background: var(--void);
+    font-family: "Heebo", system-ui, "DejaVu Sans", sans-serif;
+    color: var(--cream);
+  }
+
+  /* ---------- רקע הסצנה ---------- */
+  .bg { position: absolute; inset: 0; overflow: hidden; }
+
+  .bg::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 70% at 50% 34%, #12545c 0%, #0b333a 38%, #061e22 68%, #04171a 100%),
+      linear-gradient(180deg, #051a1e 0%, #04171a 100%);
+  }
+
+  /* זוהר זהב מאחורי הלפטופ — "אופק" */
+  .halo {
+    position: absolute; left: 50%; top: 47%;
+    width: 1500px; height: 900px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(50% 50% at 50% 50%,
+      rgba(211,169,106,.38) 0%, rgba(133,201,188,.14) 40%, transparent 72%);
+    filter: blur(28px);
+  }
+
+  /* קרני אור נודדות */
+  .streak {
+    position: absolute; width: 1700px; height: 300px;
+    background: linear-gradient(90deg, transparent 0%,
+      rgba(237,212,162,.16) 45%, rgba(133,201,188,.10) 62%, transparent 100%);
+    filter: blur(70px);
+  }
+  .streak.a { top: 300px;  left: -320px; transform: rotate(-22deg) translateX(calc(var(--drift) * 120px)); }
+  .streak.b { top: 1280px; left: -260px; transform: rotate(16deg) translateX(calc(var(--drift) * -150px)); }
+
+  /* משטח השולחן */
+  .desk {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 620px;
+    background: linear-gradient(180deg, rgba(4,23,26,0) 0%, rgba(4,23,26,.55) 34%, rgba(3,15,17,.92) 100%);
+  }
+  .desk-line {
+    position: absolute; left: 0; right: 0; bottom: 512px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(211,169,106,.28), transparent);
+  }
+
+  .grain {
+    position: absolute; inset: 0; opacity: .055;
+    mix-blend-mode: overlay; pointer-events: none;
+  }
+  .vignette {
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(78% 62% at 50% 46%, transparent 40%, rgba(2,12,14,.72) 100%);
+  }
+
+  /* ---------- מצלמה: כל מה שזז ביחד ---------- */
+  .camera {
+    position: absolute; inset: 0; overflow: hidden;
+    transform: translateY(var(--cam-y)) scale(var(--cam-scale));
+    transform-origin: 50% 48%;
+    opacity: var(--intro);
+  }
+
+  /* ---------- טקסט ---------- */
+  .lockup { position: absolute; left: 0; right: 0; text-align: center; }
+  .lockup.top { top: 190px; }
+  .lockup.bottom { bottom: 190px; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 18px;
+    font-size: 30px; font-weight: 600; letter-spacing: .22em;
+    color: var(--gold-lt); text-indent: .22em;
+  }
+  .eyebrow svg { width: 22px; height: 22px; flex: none; }
+
+  .headline {
+    margin-top: 26px;
+    font-family: "Frank Ruhl Libre", "Heebo", Georgia, "DejaVu Serif", serif;
+    font-size: 62px; font-weight: 700; line-height: 1.24;
+    color: var(--cream);
+    text-shadow: 0 2px 30px rgba(4,23,26,.6);
+  }
+
+  .footer-pill {
+    display: inline-block; padding: 20px 52px;
+    border: 1px solid rgba(211,169,106,.55);
+    border-radius: 999px;
+    background: rgba(7,36,40,.55);
+    font-size: 34px; font-weight: 400; letter-spacing: .06em;
+    color: var(--gold-lt);
+    direction: ltr;
+  }
+
+  /* ---------- הלפטופ ---------- */
+  .rig { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+  .laptop { width: 1036px; }
+
+  .lid {
+    padding: 14px;
+    border-radius: 24px;
+    background: linear-gradient(160deg, #33403f 0%, #1b2528 34%, #10181a 100%);
+    border: 1px solid rgba(233,226,215,.14);
+    box-shadow:
+      0 2px 0 rgba(255,255,255,.10) inset,
+      0 60px 120px rgba(2,10,12,.75),
+      0 0 90px rgba(211,169,106,.10);
+  }
+
+  .cam-dot {
+    width: 7px; height: 7px; margin: 0 auto 8px;
+    border-radius: 50%;
+    background: #1d282a; box-shadow: 0 0 0 1px rgba(233,226,215,.12);
+  }
+
+  .chrome {
+    height: 44px; flex: none;
+    display: flex; align-items: center; gap: 10px;
+    padding: 0 16px;
+    background: linear-gradient(180deg, #1b2427, #131a1c);
+    border-bottom: 1px solid rgba(0,0,0,.6);
+  }
+  .dot { width: 11px; height: 11px; border-radius: 50%; background: #2f3b3e; flex: none; }
+  .omni {
+    flex: 1; height: 26px; margin: 0 8px;
+    border-radius: 999px; background: #0a1113;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: #7d9a97; letter-spacing: .04em;
+    direction: ltr;
+  }
+
+  .bezel {
+    width: var(--screen-w);
+    display: flex; flex-direction: column;
+    border-radius: 10px; overflow: hidden;
+    background: #04090a;
+    position: relative;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.7) inset;
+  }
+
+  .screen { height: var(--screen-h); overflow: hidden; position: relative; }
+  .screen img {
+    display: block; width: 100%;
+    transform: translateY(calc(var(--scroll) * -1px));
+    /* המסך "נדלק" בפתיחה */
+    filter: brightness(calc(.28 + .72 * var(--intro)));
+  }
+
+  /* בוהק זכוכית */
+  .glare {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(104deg,
+      rgba(255,255,255,.11) 0%, rgba(255,255,255,.03) 26%, transparent 46%);
+    mix-blend-mode: screen;
+  }
+  .sweep {
+    position: absolute; top: -40%; bottom: -40%; width: 300px;
+    left: calc(var(--sweep) * 140% - 20%);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+    transform: rotate(14deg);
+    mix-blend-mode: screen; pointer-events: none;
+  }
+
+  .base {
+    width: 1124px; height: 20px; margin: 0 auto;
+    border-radius: 3px 3px 14px 14px;
+    background: linear-gradient(180deg, #39464a 0%, #1a2325 42%, #0a1012 100%);
+    box-shadow: 0 22px 46px rgba(2,10,12,.7);
+    position: relative;
+  }
+  .base::after {
+    content: ""; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 132px; height: 7px;
+    background: #080e10; border-radius: 0 0 9px 9px;
+  }
+
+  .contact-shadow {
+    width: 940px; height: 46px; margin: 10px auto 0;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.62), transparent 72%);
+    filter: blur(10px);
+  }
+
+  /* ---------- השתקפות ---------- */
+  .reflection {
+    position: absolute; top: 100%; left: 0; right: 0;
+    margin-top: 6px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.5) 0%, transparent 46%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.5) 0%, transparent 46%);
+    opacity: .40; filter: blur(3px);
+    pointer-events: none;
+  }
+  .reflection .flip { transform: scaleY(-1); transform-origin: top center; }
+  .reflection .lid { box-shadow: none; }
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="halo"></div>
+  <div class="streak a"></div>
+  <div class="streak b"></div>
+  <div class="desk"></div>
+  <div class="desk-line"></div>
+</div>
+
+<div class="camera">
+  <div class="lockup top" dir="rtl">
+    <div class="eyebrow" id="eyebrow"></div>
+    <div class="headline" id="headline"></div>
+  </div>
+
+  <div class="rig">
+    <div class="laptop" id="laptop">
+      <div class="lid">
+        <div class="cam-dot"></div>
+        <div class="bezel">
+          <div class="chrome" id="chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="omni" id="omni"></span>
+          </div>
+          <div class="screen"><img id="pageImg" alt=""></div>
+          <div class="glare"></div>
+          <div class="sweep"></div>
+        </div>
+      </div>
+      <div class="base"></div>
+      <div class="contact-shadow"></div>
+    </div>
+    <div class="reflection"><div class="flip" id="reflectSlot"></div></div>
+  </div>
+
+  <div class="lockup bottom" dir="rtl">
+    <span class="footer-pill" id="footer"></span>
+  </div>
+</div>
+
+<svg class="grain" xmlns="http://www.w3.org/2000/svg">
+  <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3"/></filter>
+  <rect width="100%" height="100%" filter="url(#n)"/>
+</svg>
+<div class="vignette"></div>
+
+<script>
+  const STAR = '<svg viewBox="0 0 24 24" fill="none"><path d="M12 0c.7 6.4 4.9 10.6 12 12-7.1 1.4-11.3 5.6-12 12-.7-6.4-4.9-10.6-12-12C7.1 10.6 11.3 6.4 12 0z" fill="#edd4a2"/></svg>';
+
+  // render.mjs מזריק את window.__REEL לפני הטעינה
+  const cfg = window.__REEL || {};
+  const root = document.documentElement;
+
+  if (cfg.pageSrc) document.getElementById("pageImg").src = cfg.pageSrc;
+
+  const ov = cfg.overlay || {};
+  const topLockup = document.querySelector(".lockup.top");
+  const bottomLockup = document.querySelector(".lockup.bottom");
+
+  if (ov.eyebrow) {
+    document.getElementById("eyebrow").innerHTML = STAR + "<span>" + ov.eyebrow + "</span>" + STAR;
+  } else {
+    document.getElementById("eyebrow").remove();
+  }
+  if (ov.headline) document.getElementById("headline").textContent = ov.headline;
+  else document.getElementById("headline").remove();
+  if (!ov.eyebrow && !ov.headline) topLockup.remove();
+
+  if (ov.browserBar === false) document.getElementById("chrome").remove();
+  else document.getElementById("omni").textContent = ov.browserBar || ov.footer || "";
+
+  if (ov.footer) document.getElementById("footer").textContent = ov.footer;
+  else bottomLockup.remove();
+
+  // ההשתקפות היא עותק חי של הלפטופ — הוא יורש את אותם CSS vars
+  document.getElementById("reflectSlot").appendChild(
+    document.getElementById("laptop").cloneNode(true),
+  );
+
+  // ה-API ש-render.mjs קורא לו לכל פריים
+  window.setFrame = (s) => {
+    root.style.setProperty("--scroll", s.scroll);
+    root.style.setProperty("--cam-scale", s.camScale);
+    root.style.setProperty("--cam-y", s.camY + "px");
+    root.style.setProperty("--intro", s.intro);
+    root.style.setProperty("--sweep", s.sweep);
+    root.style.setProperty("--drift", s.drift);
+  };
+
+  window.setScreenSize = (w, h) => {
+    root.style.setProperty("--screen-w", w + "px");
+    root.style.setProperty("--screen-h", h + "px");
+  };
+
+  window.imageReady = () => {
+    const img = document.getElementById("pageImg");
+    return img.complete && img.naturalWidth > 0;
+  };
+</script>
+</body>
+</html>
