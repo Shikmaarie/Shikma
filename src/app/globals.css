@@ -3,44 +3,51 @@
 @theme {
   /* ---------------------------------------------------------------
      Racheli's brand palette: deep teal + gold.
-     Sampled from the supplied logo, book cover and swatch sheet.
-     Verify against the brand book before launch — see README.
+
+     These are the official values, sampled pixel-for-pixel from the
+     brand colour sheet ("רחלי צבעים") rather than eyeballed off the
+     logo. The ten swatches on that sheet are the source of truth; the
+     ink, void and night values below are derived from the teal so the
+     darks stay in family, and the two AA-safe values are computed, not
+     picked (see the note on each).
      --------------------------------------------------------------- */
 
   /* Dark end of the family — used for the hero band, the pull-quote
      card and the podcast band, not for the page as a whole. */
-  --color-void: #04171a;
-  --color-night: #072428;
-  --color-teal: #0f4a50; /* the brand teal from the swatch sheet */
-  --color-teal-2: #14606a;
-  --color-teal-3: #2b7f85;
+  --color-void: #04181c;
+  --color-night: #07262a;
+  --color-teal: #0f4c51; /* swatch 2 — the brand teal */
+  --color-teal-2: #14626a;
+  --color-teal-3: #2b8188;
 
   /* Light end — the site's default ground. Tinted off the brand cream
      so the paper stays in the same family as the teal. */
-  --color-ivory: #faf6f0;
-  --color-shell: #f2ece2;
-  --color-mist: #e4efeb; /* pale mint band, from the swatch sheet's mint */
-  --color-cream: #e9e2d7; /* brand cream — body text on dark */
+  --color-ivory: #faf7f1;
+  --color-shell: #f3ede1;
+  --color-mist: #e6f0ec; /* pale mint band, lifted off swatch 4 */
+  --color-cream: #ebe2d3; /* swatch 3 — body text on dark */
 
   /* Ink: near-black teal, so text on paper never reads as flat grey */
-  --color-ink: #06272b;
+  --color-ink: #06272b; /* derived from the teal, not a swatch */
   --color-ink-2: #3d5a5d;
 
   /* Gold: the logo wordmark gradient runs dark → light → dark */
-  --color-gold: #d3a96a;
-  --color-gold-lt: #edd4a2;
-  --color-gold-dp: #b08850;
-  /* Dark enough to carry small text on ivory at AA (≈5:1). The lighter
-     golds above are decorative on light ground — never body copy. */
-  --color-gold-ink: #8a6329;
+  --color-gold: #d1ad7d; /* swatch 1, mid-gradient */
+  --color-gold-lt: #e7c48e; /* swatch 1, light end */
+  --color-gold-dp: #bc976b; /* swatch 1, dark end */
+  /* The brand gold sits at 1.95:1 on ivory, so it can never carry text
+     there. This is the same hue walked down in lightness until it
+     measures 5.07:1 — AA for small text. The golds above stay
+     decorative on light ground. */
+  --color-gold-ink: #82643f;
 
   /* Secondary accents from the swatch sheet */
-  --color-coral: #f5877b;
-  --color-coral-dp: #d9604f;
-  --color-mint: #85c9bc;
-  --color-sage: #c7dad5;
-  --color-lavender: #d7cbe6;
-  --color-peri: #8e9bf6;
+  --color-coral: #f88e7e; /* swatch 8 */
+  --color-coral-dp: #dc6a57;
+  --color-mint: #88c7bc; /* swatch 9 */
+  --color-sage: #cdded8; /* swatch 4 */
+  --color-lavender: #ddcbe3; /* swatch 5 */
+  --color-peri: #99a5f1; /* swatch 10 */
 
   /* One family, two roles. `font-display` still exists as a separate
      token so headline treatment stays changeable in one place — it just
@@ -90,7 +97,7 @@
 [data-surface="light"] {
   --fg: var(--color-ink);
   --fg2: #3d5a5d;
-  --fg3: #6f8688;
+  --fg3: #5c7476; /* 4.63:1 on ivory — AA for small text */
   --accent: var(--color-gold-ink);
   --accent-soft: var(--color-gold-dp);
   --line: color-mix(in oklab, var(--color-ink) 12%, transparent);

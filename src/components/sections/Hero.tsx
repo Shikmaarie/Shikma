@@ -110,10 +110,13 @@ export default function Hero() {
             className="aspect-4/5 w-full rounded-t-[10rem] lg:aspect-auto lg:h-[36rem]"
           />
 
-          {/* The stamp straddles the portrait's edge, as in the reference. */}
+          {/* The stamp straddles the portrait's outer edge. It sits over the
+              band rather than over the photograph: gold on teal measures
+              5.8:1, gold on the portrait's own gold rim-light measures
+              nothing at all. */}
           <Seal
             text={hero.seal}
-            className="absolute -right-2 bottom-10 size-28 text-gold-lt sm:size-36 lg:-right-8 lg:bottom-24"
+            className="absolute -left-4 bottom-16 size-28 text-gold-lt sm:size-32 lg:-left-12 lg:bottom-24"
           />
         </motion.div>
       </div>

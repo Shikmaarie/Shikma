@@ -1,44 +1,44 @@
 import type { PhotoSlot } from "@/components/ui/Editorial";
 
 /**
- * Every photograph the site expects, in one place.
+ * Every photograph the site uses, in one place.
  *
- * The design is photography-led: Racheli appears in the hero, in the
- * story chapter and beside the pull-quote. Until the real files are
- * dropped into `public/photos/`, each slot renders a branded stand-in
- * that names the shot it is waiting for — see README, „תמונות”.
- *
- * To connect a photograph: save it under `public/photos/` and set `src`
- * to its path. Nothing else changes.
+ * The design is photography-led: Racheli appears in the hero, beside
+ * the pull-quote, in the story chapter and in the podcast band. The
+ * files come from her own shoots — see README, „תמונות”.
  *
  * Rule from CLAUDE.md: professional portraits of Racheli are fine.
  * Family photographs showing children's faces must not be published
- * without her explicit approval, so no slot here asks for one.
+ * without her explicit approval, so none are used here — the source
+ * folder holds several and every one of them is deliberately left out.
+ *
+ * To swap a photograph: drop the file in `public/photos/` and change
+ * `src`. Nothing else moves.
  */
 export const photos = {
   hero: {
-    src: null,
+    src: "/photos/racheli-hero.webp",
     alt: "רחלי חדד",
-    brief: "פורטרט ראשי — רחלי בפול־בודי או שלושת רבעי, רקע נקי, מבט למצלמה",
+    brief: "פורטרט ראשי — סטודיו, תאורת זהב על רקע כהה",
   },
   quote: {
-    src: null,
-    alt: "רחלי חדד מרצה מול קהל",
+    src: "/photos/racheli-stage.webp",
+    alt: "רחלי חדד על הבמה מול אולם מלא",
     brief: "רחלי על הבמה מול קהל — לרוחב, פורמט קטן",
   },
   story: {
-    src: null,
+    src: "/photos/racheli-story.webp",
     alt: "רחלי חדד",
-    brief: "פורטרט יושבת, אווירה חמה — לצד פרק הסיפור האישי",
+    brief: "פורטרט חתוך מרקע — לצד פרק הסיפור האישי",
   },
   podcast: {
-    src: null,
-    alt: "רחלי חדד מקליטה את הפודקאסט",
-    brief: "רחלי עם מיקרופון בהקלטת הפודקאסט",
+    src: "/photos/racheli-speaking.webp",
+    alt: "רחלי חדד מרצה עם מיקרופון",
+    brief: "רחלי עם מיקרופון ראש, באמצע הרצאה",
   },
 } satisfies Record<string, PhotoSlot>;
 
-/** Slots still waiting for a file — surfaced by `npm run check:media`. */
+/** Slots still waiting for a file. Empty is the goal. */
 export const missingPhotos = Object.entries(photos)
   .filter(([, slot]) => slot.src === null)
   .map(([key]) => key);

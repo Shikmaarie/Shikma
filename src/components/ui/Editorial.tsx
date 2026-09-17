@@ -253,22 +253,25 @@ export function Photo({
   className = "",
   sizes = "(min-width: 1024px) 45vw, 100vw",
   priority = false,
+  fit = "cover",
 }: {
   slot: PhotoSlot;
   className?: string;
   sizes?: string;
   priority?: boolean;
+  /** Cut-outs use `contain`: cropping one lops off a head or a hand. */
+  fit?: "cover" | "contain";
 }) {
   if (slot.src) {
     return (
-      <div className={`relative overflow-hidden ${className}`}>
+      <div className={`relative ${fit === "cover" ? "overflow-hidden" : ""} ${className}`}>
         <Image
           src={slot.src}
           alt={slot.alt}
           fill
           sizes={sizes}
           priority={priority}
-          className="object-cover"
+          className={fit === "cover" ? "object-cover" : "object-contain"}
         />
       </div>
     );

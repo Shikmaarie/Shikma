@@ -21,11 +21,20 @@ export default function About() {
       <div className="mx-auto w-full max-w-7xl px-5 pb-20 sm:px-8 lg:pb-28">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
           <Reveal>
-            <Photo
-              slot={photos.story}
-              sizes="(min-width: 1024px) 38vw, 100vw"
-              className="aspect-4/5 w-full rounded-[2.5rem] rounded-bl-[8rem]"
-            />
+            {/* A cut-out, so it stands on the band rather than sitting in a
+                frame — the soft disc behind it keeps it from floating loose. */}
+            <div className="relative">
+              <span
+                className="absolute inset-x-4 bottom-6 top-10 rounded-[3rem] rounded-bl-[8rem] bg-mist"
+                aria-hidden="true"
+              />
+              <Photo
+                slot={photos.story}
+                fit="contain"
+                sizes="(min-width: 1024px) 38vw, 100vw"
+                className="aspect-3/4 w-full"
+              />
+            </div>
           </Reveal>
 
           <div className="relative">
