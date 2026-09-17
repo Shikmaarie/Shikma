@@ -12,7 +12,7 @@ export default function Loading() {
             />
           ))}
         </div>
-        <p className="text-sm tracking-[0.2em] text-gold/60">טוען…</p>
+        <p className="text-sm tracking-[0.2em] text-accent/60">טוען…</p>
       </div>
     </div>
   );

@@ -9,11 +9,15 @@ const HelixScene = dynamic(() => import("./HelixScene"), {
 });
 
 /**
- * Decides whether the 3D hero should run at all, and at what quality.
+ * Decides whether the 3D scene should run at all, and at what quality.
  *
  * The canvas is skipped entirely when the visitor has asked for reduced
  * motion or the device has no usable WebGL context; in both cases a still
- * gradient stands in, so the hero never renders as an empty black box.
+ * gradient stands in, so the band never renders as an empty black box.
+ *
+ * It backs the pull-quote card, not the hero: the helix illustrates the
+ * claim that results follow the DNA underneath them, and the hero now
+ * carries a photograph instead.
  */
 export default function HeroCanvas() {
   const [mode, setMode] = useState<"pending" | "off" | "low" | "high">("pending");
@@ -43,8 +47,8 @@ export default function HeroCanvas() {
 function StaticGlow() {
   return (
     <div className="absolute inset-0" aria-hidden="true">
-      <div className="absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(212,169,95,0.30),rgba(154,113,214,0.14)_45%,transparent_70%)] blur-3xl" />
-      <div className="absolute left-[38%] top-[38%] h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(227,163,182,0.22),transparent_68%)] blur-3xl" />
+      <div className="absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(211,169,106,0.30),rgba(133,201,188,0.16)_45%,transparent_70%)] blur-3xl" />
+      <div className="absolute left-[38%] top-[38%] h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(20,96,106,0.35),transparent_68%)] blur-3xl" />
     </div>
   );
 }

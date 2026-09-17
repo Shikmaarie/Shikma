@@ -2,69 +2,70 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Section, SectionTitle, Eyebrow } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
-import { aboutTeaser, hero } from "@/data/site";
+import {
+  CircleMark,
+  DoodleArrow,
+  GhostBand,
+  Photo,
+  ScriptLine,
+  pill,
+} from "@/components/ui/Editorial";
+import { aboutTeaser } from "@/data/site";
+import { photos } from "@/data/media";
 
 export default function About() {
   return (
-    <Section id="about" className="bg-gradient-to-b from-void via-teal/25 to-void">
-      <div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-24">
-        <div>
+    <Section id="about" className="bg-shell" bleed>
+      <GhostBand text={aboutTeaser.ghost} className="py-10" />
+
+      <div className="mx-auto w-full max-w-7xl px-5 pb-20 sm:px-8 lg:pb-28">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
           <Reveal>
-            <Eyebrow>על רחלי חדד</Eyebrow>
+            <Photo
+              slot={photos.story}
+              sizes="(min-width: 1024px) 38vw, 100vw"
+              className="aspect-4/5 w-full rounded-[2.5rem] rounded-bl-[8rem]"
+            />
           </Reveal>
 
-          <Reveal delay={0.08}>
-            <SectionTitle className="mt-6">
-              לא סיסמאות.{" "}
-              <span className="text-gradient-gold">תכלס מהשטח.</span>
-            </SectionTitle>
-          </Reveal>
+          <div className="relative">
+            <Reveal>
+              <Eyebrow>על רחלי חדד</Eyebrow>
+            </Reveal>
 
-          <div className="mt-8 space-y-5">
-            {aboutTeaser.paragraphs.map((p, i) => (
-              <Reveal key={i} delay={0.14 + i * 0.07}>
-                <p className="text-lg leading-relaxed text-cream/70">{p}</p>
-              </Reveal>
-            ))}
+            <Reveal delay={0.08}>
+              <SectionTitle className="mt-6">
+                לא סיסמאות.
+                <br />
+                <CircleMark>{aboutTeaser.mark}</CircleMark> מהשטח.
+              </SectionTitle>
+            </Reveal>
+
+            <Reveal delay={0.13}>
+              <ScriptLine className="mt-6">{aboutTeaser.script}</ScriptLine>
+            </Reveal>
+
+            <div className="mt-7 space-y-5">
+              {aboutTeaser.paragraphs.map((p, i) => (
+                <Reveal key={i} delay={0.18 + i * 0.07}>
+                  <p className="leading-relaxed text-fg2 sm:text-lg">{p}</p>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={0.4}>
+              <Link href={aboutTeaser.cta.href} className={`group mt-9 ${pill.solid}`}>
+                {aboutTeaser.cta.label}
+                <ArrowLeft
+                  className="size-4 transition-transform group-hover:-translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            </Reveal>
+
+            <DoodleArrow className="absolute -bottom-4 left-4 hidden w-24 rotate-[190deg] text-accent-soft/50 lg:block" />
           </div>
-
-          <Reveal delay={0.38}>
-            <Link
-              href={aboutTeaser.cta.href}
-              className="group mt-9 inline-flex items-center gap-2 rounded-full border border-gold/35 px-8 py-3.5 font-semibold text-cream transition hover:border-gold/70 hover:text-gold-lt"
-            >
-              {aboutTeaser.cta.label}
-              <ArrowLeft
-                className="size-4 transition-transform group-hover:-translate-x-1"
-                aria-hidden="true"
-              />
-            </Link>
-          </Reveal>
         </div>
-
-        <Reveal delay={0.2}>
-          <dl className="grid grid-cols-2 gap-5">
-            {hero.stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-4xl glass px-6 py-8 text-center"
-              >
-                <dt className="sr-only">{stat.label}</dt>
-                <dd>
-                  <span className="ltr-nums block font-display text-4xl font-black text-gradient-gold">
-                    {stat.value}
-                  </span>
-                  <span className="mt-2 block text-xs font-semibold text-gold/75">
-                    {stat.suffix}
-                  </span>
-                  <span className="mt-1.5 block text-xs leading-snug text-cream/50">
-                    {stat.label}
-                  </span>
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
       </div>
     </Section>
   );

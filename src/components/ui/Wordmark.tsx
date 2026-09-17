@@ -38,21 +38,23 @@ export default function Wordmark({
 
   return (
     <span className={`flex flex-col items-center leading-none ${className}`}>
-      <span className={`font-display font-black tracking-tight text-gradient-gold ${name}`}>
+      {/* Colour follows the surrounding band, so the same lockup works on
+          the teal header and on ivory once the page is scrolled. */}
+      <span className={`font-display font-black tracking-tight text-fg ${name}`}>
         {site.name}
       </span>
 
       {size !== "sm" && (
         <span
-          className={`mt-2 flex items-center gap-2 text-gold/75 ${
+          className={`mt-2 flex items-center gap-2 text-accent ${
             size === "lg" ? "text-sm" : "text-[9px]"
           }`}
         >
-          <span className="h-px w-6 bg-gold/40 sm:w-10" aria-hidden="true" />
+          <span className="h-px w-6 bg-current opacity-40 sm:w-10" aria-hidden="true" />
           <span className="whitespace-nowrap">{site.roleParts[0]}</span>
           <BrandStar className={size === "lg" ? "size-3.5" : "size-2.5"} />
           <span className="whitespace-nowrap">{site.roleParts[1]}</span>
-          <span className="h-px w-6 bg-gold/40 sm:w-10" aria-hidden="true" />
+          <span className="h-px w-6 bg-current opacity-40 sm:w-10" aria-hidden="true" />
         </span>
       )}
     </span>

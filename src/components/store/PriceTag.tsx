@@ -16,10 +16,10 @@ export default function PriceTag({
   if (product.mode === "application") {
     return (
       <div>
-        <p className="font-display text-2xl font-bold text-gold-lt">
+        <p className="font-display text-2xl font-bold text-accent">
           בשיחת התאמה
         </p>
-        <p className="mt-1 text-xs text-cream/50">
+        <p className="mt-1 text-xs text-fg3">
           המסלול והתשלום נקבעים יחד, לפי השלב שבו אתם נמצאים.
         </p>
       </div>
@@ -28,7 +28,7 @@ export default function PriceTag({
 
   if (product.mode === "free" || product.price == null) {
     return (
-      <p className={`font-display ${big} font-black text-gradient-gold`}>חינם</p>
+      <p className={`font-display ${big} font-black text-teal`}>חינם</p>
     );
   }
 
@@ -36,25 +36,25 @@ export default function PriceTag({
     <div>
       <div className="flex items-baseline gap-3">
         <span
-          className={`ltr-nums font-display ${big} font-black text-gradient-gold`}
+          className={`ltr-nums font-display ${big} font-black text-teal`}
         >
           {formatILS(product.price)}
         </span>
         {product.compareAt && (
-          <span className="ltr-nums text-sm text-cream/35 line-through">
+          <span className="ltr-nums text-sm text-fg3 line-through">
             {formatILS(product.compareAt)}
           </span>
         )}
       </div>
 
       {product.priceNote && (
-        <p className="ltr-nums mt-1.5 text-xs leading-relaxed text-cream/55">
+        <p className="ltr-nums mt-1.5 text-xs leading-relaxed text-fg3">
           {product.priceNote}
         </p>
       )}
 
       {!product.priceNote && product.maxPayments > 1 && (
-        <p className="ltr-nums mt-1 text-xs text-cream/45">
+        <p className="ltr-nums mt-1 text-xs text-fg3">
           עד {product.maxPayments} תשלומים
         </p>
       )}

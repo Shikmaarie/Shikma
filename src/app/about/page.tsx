@@ -17,23 +17,23 @@ export default function AboutPage() {
     <>
       <PageHeader eyebrow="אודות" title={aboutPage.title} />
 
-      <Section className="bg-void !pt-6">
+      <Section className="bg-ivory !pt-6">
         <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           {/* Timeline */}
-          <ol className="relative flex flex-col gap-10 border-r border-gold/20 pr-8">
+          <ol className="relative flex flex-col gap-10 border-r border-line pr-8">
             {aboutPage.chapters.map((chapter, i) => (
               <Reveal key={chapter.label} delay={i * 0.09}>
                 <li className="relative">
                   <span
-                    className="absolute -right-[2.55rem] top-1 grid size-6 place-items-center rounded-full border border-gold/45 bg-void text-[10px] font-black text-gold"
+                    className="absolute -right-[2.55rem] top-1 grid size-6 place-items-center rounded-full border border-line-strong bg-ivory text-[10px] font-black text-accent"
                     aria-hidden="true"
                   >
                     {i + 1}
                   </span>
-                  <h2 className="font-display text-2xl font-bold text-gold-lt">
+                  <h2 className="font-display text-2xl font-bold text-accent">
                     {chapter.label}
                   </h2>
-                  <p className="mt-3 text-lg leading-relaxed text-cream/70">
+                  <p className="mt-3 text-lg leading-relaxed text-fg2">
                     {chapter.body}
                   </p>
                 </li>
@@ -43,11 +43,11 @@ export default function AboutPage() {
 
           <div className="flex flex-col gap-6 lg:sticky lg:top-28 lg:self-start">
             <Reveal>
-              <div className="rounded-5xl glass p-8">
-                <h2 className="font-display text-xl font-bold text-cream">
+              <div className="rounded-5xl panel p-8">
+                <h2 className="font-display text-xl font-bold text-fg">
                   {aboutPage.creed.label}
                 </h2>
-                <p className="mt-4 leading-relaxed text-cream/70">
+                <p className="mt-4 leading-relaxed text-fg2">
                   {aboutPage.creed.body}
                 </p>
               </div>
@@ -58,17 +58,17 @@ export default function AboutPage() {
                 {hero.stats.map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-3xl glass px-5 py-6 text-center"
+                    className="rounded-3xl panel px-5 py-6 text-center"
                   >
                     <dt className="sr-only">{stat.label}</dt>
                     <dd>
-                      <span className="ltr-nums block font-display text-3xl font-black text-gradient-gold">
+                      <span className="ltr-nums block font-display text-3xl font-black text-teal">
                         {stat.value}
                       </span>
-                      <span className="mt-1.5 block text-[11px] font-semibold text-gold/75">
+                      <span className="mt-1.5 block text-[11px] font-semibold text-accent">
                         {stat.suffix}
                       </span>
-                      <span className="mt-1 block text-[11px] leading-snug text-cream/50">
+                      <span className="mt-1 block text-[11px] leading-snug text-fg3">
                         {stat.label}
                       </span>
                     </dd>

@@ -7,6 +7,7 @@ import { Menu, ShoppingBag, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { headerCta, nav, site } from "@/data/site";
 import Wordmark, { BrandStar } from "@/components/ui/Wordmark";
+import { pill } from "@/components/ui/Editorial";
 import { useCart } from "@/lib/cart";
 
 export default function Header() {
@@ -42,10 +43,15 @@ export default function Header() {
 
   return (
     <>
+      {/*
+        Every page opens on a teal band, so the bar starts as light type on
+        dark and flips to ink on paper once the page scrolls under it.
+      */}
       <header
+        data-surface={scrolled ? "light" : "dark"}
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "border-b border-gold/12 bg-void/80 backdrop-blur-xl"
+            ? "border-b border-line bg-ivory/90 backdrop-blur-xl"
             : "border-b border-transparent"
         }`}
       >
@@ -71,15 +77,13 @@ export default function Header() {
                       href={item.href}
                       aria-current={current ? "page" : undefined}
                       className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${
-                        current
-                          ? "text-gold-lt"
-                          : "text-cream/75 hover:text-gold-lt"
+                        current ? "text-accent" : "text-fg2 hover:text-accent"
                       }`}
                     >
                       {item.label}
                       {current && (
                         <span
-                          className="absolute inset-x-4 -bottom-0.5 h-px bg-gradient-to-l from-transparent via-gold to-transparent"
+                          className="absolute inset-x-4 -bottom-0.5 h-px bg-current opacity-60"
                           aria-hidden="true"
                         />
                       )}
@@ -94,28 +98,35 @@ export default function Header() {
             <button
               type="button"
               onClick={openCart}
-              className="relative rounded-full border border-gold/25 p-2.5 text-cream/85 transition hover:border-gold/60 hover:text-gold-lt"
+              className="relative rounded-full border border-line-strong p-2.5 text-fg transition hover:text-accent"
               aria-label={`עגלת קניות${mounted && count ? `, ${count} פריטים` : ", ריקה"}`}
             >
               <ShoppingBag className="size-5" aria-hidden="true" />
               {mounted && count > 0 && (
-                <span className="absolute -top-1 -left-1 flex size-5 items-center justify-center rounded-full bg-gold text-[11px] font-black text-void">
+                <span className="absolute -top-1 -left-1 flex size-5 items-center justify-center rounded-full bg-coral text-[11px] font-black text-ink">
                   {count}
                 </span>
               )}
             </button>
 
-            <Link
-              href={headerCta.href}
-              className="hidden rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-6 py-2.5 text-sm font-bold text-void shadow-[0_0_28px_-6px_rgba(212,169,95,0.65)] transition hover:brightness-110 md:inline-flex"
-            >
-              {headerCta.label}
-            </Link>
+            {/* Wrapped rather than given `hidden md:inline-flex` directly:
+                the pill classes carry their own `inline-flex`, which wins
+                over `hidden` and leaks the button onto small screens. */}
+            <span className="hidden md:block">
+              <Link
+                href={headerCta.href}
+                className={`px-6 py-2.5 text-sm ${
+                  scrolled ? pill.solid : pill.gold
+                }`}
+              >
+                {headerCta.label}
+              </Link>
+            </span>
 
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="rounded-full border border-gold/25 p-2.5 text-cream/85 transition hover:border-gold/60 lg:hidden"
+              className="rounded-full border border-line-strong p-2.5 text-fg transition hover:text-accent lg:hidden"
               aria-label="פתיחת תפריט"
             >
               <Menu className="size-5" aria-hidden="true" />
@@ -127,7 +138,8 @@ export default function Header() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-[60] bg-void/97 backdrop-blur-2xl lg:hidden"
+            data-surface="light"
+            className="fixed inset-0 z-[60] bg-ivory backdrop-blur-2xl lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -138,7 +150,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setMenuOpen(false)}
-                className="rounded-full border border-gold/25 p-2.5 text-cream"
+                className="rounded-full border border-line-strong p-2.5 text-fg"
                 aria-label="סגירת תפריט"
               >
                 <X className="size-5" aria-hidden="true" />
@@ -158,10 +170,8 @@ export default function Header() {
                       href={item.href}
                       onClick={() => setMenuOpen(false)}
                       aria-current={isCurrent(item.href) ? "page" : undefined}
-                      className={`block border-b border-gold/10 py-4 font-display text-3xl font-bold transition ${
-                        isCurrent(item.href)
-                          ? "text-gradient-gold"
-                          : "text-cream hover:text-gold-lt"
+                      className={`block border-b border-line py-4 font-display text-3xl font-bold transition ${
+                        isCurrent(item.href) ? "text-accent" : "text-fg hover:text-accent"
                       }`}
                     >
                       {item.label}
@@ -173,7 +183,7 @@ export default function Header() {
               <Link
                 href={headerCta.href}
                 onClick={() => setMenuOpen(false)}
-                className="mt-8 flex items-center justify-center rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-6 py-4 font-bold text-void"
+                className={`mt-8 w-full ${pill.solid}`}
               >
                 {headerCta.label}
               </Link>
@@ -188,7 +198,7 @@ export default function Header() {
 function Monogram() {
   return (
     <span
-      className="relative grid size-11 shrink-0 place-items-center rounded-full border border-gold/40 bg-gradient-to-br from-teal to-void"
+      className="relative grid size-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-teal to-night"
       aria-hidden="true"
     >
       <BrandStar className="size-5 text-gold-lt" />

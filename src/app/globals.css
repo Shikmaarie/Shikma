@@ -7,20 +7,36 @@
      Verify against the brand book before launch — see README.
      --------------------------------------------------------------- */
 
-  /* Neutrals, built down from the brand teal so the darks stay in family */
+  /* Dark end of the family — used for the hero band, the pull-quote
+     card and the podcast band, not for the page as a whole. */
   --color-void: #04171a;
   --color-night: #072428;
   --color-teal: #0f4a50; /* the brand teal from the swatch sheet */
   --color-teal-2: #14606a;
+  --color-teal-3: #2b7f85;
+
+  /* Light end — the site's default ground. Tinted off the brand cream
+     so the paper stays in the same family as the teal. */
+  --color-ivory: #faf6f0;
+  --color-shell: #f2ece2;
+  --color-mist: #e4efeb; /* pale mint band, from the swatch sheet's mint */
   --color-cream: #e9e2d7; /* brand cream — body text on dark */
+
+  /* Ink: near-black teal, so text on paper never reads as flat grey */
+  --color-ink: #06272b;
+  --color-ink-2: #3d5a5d;
 
   /* Gold: the logo wordmark gradient runs dark → light → dark */
   --color-gold: #d3a96a;
   --color-gold-lt: #edd4a2;
   --color-gold-dp: #b08850;
+  /* Dark enough to carry small text on ivory at AA (≈5:1). The lighter
+     golds above are decorative on light ground — never body copy. */
+  --color-gold-ink: #8a6329;
 
   /* Secondary accents from the swatch sheet */
   --color-coral: #f5877b;
+  --color-coral-dp: #d9604f;
   --color-mint: #85c9bc;
   --color-sage: #c7dad5;
   --color-lavender: #d7cbe6;
@@ -35,6 +51,7 @@
   --animate-float: float 7s ease-in-out infinite;
   --animate-shimmer: shimmer 6s linear infinite;
   --animate-marquee: marquee 38s linear infinite;
+  --animate-spin-slow: spin 22s linear infinite;
   --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
 }
 
@@ -54,8 +71,42 @@
   50% { opacity: 0.75; }
 }
 
-:root {
-  color-scheme: dark;
+/* ------------------------------------------------------------------
+   Surfaces.
+
+   The site alternates light and dark bands, so every component needs
+   to know which ground it is sitting on. Rather than hard-coding a
+   colour per component, each band declares `data-surface`, and the
+   semantic utilities below (text-fg, border-line, bg-card …) resolve
+   against the nearest band. A card can then move from an ivory
+   section to a teal one without touching its class list.
+   ------------------------------------------------------------------ */
+
+:root,
+[data-surface="light"] {
+  --fg: var(--color-ink);
+  --fg2: #3d5a5d;
+  --fg3: #6f8688;
+  --accent: var(--color-gold-ink);
+  --accent-soft: var(--color-gold-dp);
+  --line: color-mix(in oklab, var(--color-ink) 12%, transparent);
+  --line-strong: color-mix(in oklab, var(--color-ink) 24%, transparent);
+  --card: #ffffff;
+  --card-2: #f6f1e8;
+  --shadow-key: 6 39 43;
+}
+
+[data-surface="dark"] {
+  --fg: #f4efe6;
+  --fg2: color-mix(in oklab, #f4efe6 74%, transparent);
+  --fg3: color-mix(in oklab, #f4efe6 52%, transparent);
+  --accent: var(--color-gold-lt);
+  --accent-soft: var(--color-gold);
+  --line: color-mix(in oklab, var(--color-gold) 24%, transparent);
+  --line-strong: color-mix(in oklab, var(--color-gold) 46%, transparent);
+  --card: color-mix(in oklab, #0b3a40 72%, transparent);
+  --card-2: color-mix(in oklab, #0b3a40 92%, transparent);
+  --shadow-key: 2 12 14;
 }
 
 html {
@@ -64,8 +115,8 @@ html {
 }
 
 body {
-  background: var(--color-void);
-  color: var(--color-cream);
+  background: var(--color-ivory);
+  color: var(--fg);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -77,6 +128,17 @@ body {
   direction: ltr;
   unicode-bidi: isolate;
 }
+
+/* ---- Semantic colour utilities, resolved per surface ---- */
+@utility text-fg { color: var(--fg); }
+@utility text-fg2 { color: var(--fg2); }
+@utility text-fg3 { color: var(--fg3); }
+@utility text-accent { color: var(--accent); }
+@utility text-accent-soft { color: var(--accent-soft); }
+@utility border-line { border-color: var(--line); }
+@utility border-line-strong { border-color: var(--line-strong); }
+@utility bg-card { background-color: var(--card); }
+@utility bg-card-2 { background-color: var(--card-2); }
 
 /* ---- Utility layers ---- */
 @utility text-gradient-gold {
@@ -95,22 +157,38 @@ body {
   animation: shimmer 6s linear infinite;
 }
 
-@utility glass {
-  background: color-mix(in oklab, var(--color-teal) 45%, transparent);
+/* Card that reads correctly on either ground: frosted teal on dark,
+   plain paper with a hairline on light. */
+@utility panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 60px -48px rgb(var(--shadow-key) / 0.55);
+}
+
+@utility panel-blur {
+  background: var(--card);
+  border: 1px solid var(--line);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid color-mix(in oklab, var(--color-gold) 16%, transparent);
 }
 
 @utility hairline {
-  border: 1px solid color-mix(in oklab, var(--color-gold) 20%, transparent);
+  border: 1px solid var(--line);
+}
+
+/* The editorial "band" — a full-bleed section of one colour. Rounded
+   inner corners on large screens give the stacked-card look from the
+   reference without breaking the full-bleed background. */
+@utility band-top {
+  border-start-start-radius: 2.75rem;
+  border-start-end-radius: 2.75rem;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-track { background: var(--color-shell); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--color-gold-dp), var(--color-teal-2));
+  background: linear-gradient(var(--color-teal-2), var(--color-gold-dp));
   border-radius: 99px;
 }
 
@@ -119,9 +197,9 @@ body {
   color: var(--color-void);
 }
 
-/* Focus ring — visible for keyboard users everywhere */
-:where(a, button, input, textarea, select, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-gold);
+/* Focus ring — visible for keyboard users on both grounds */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-soft);
   outline-offset: 3px;
   border-radius: 6px;
 }

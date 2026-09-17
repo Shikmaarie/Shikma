@@ -18,13 +18,13 @@ export default function Error({
   return (
     <div className="flex min-h-[80vh] items-center px-5 pt-32 pb-20 sm:px-8">
       <div className="mx-auto w-full max-w-xl text-center">
-        <p className="font-display text-7xl font-black text-gradient-gold">
+        <p className="font-display text-7xl font-black text-teal">
           אופס
         </p>
-        <h1 className="mt-6 font-display text-3xl font-bold text-cream sm:text-4xl">
+        <h1 className="mt-6 font-display text-3xl font-bold text-fg sm:text-4xl">
           משהו נשבר כאן
         </h1>
-        <p className="mt-4 leading-relaxed text-cream/60">
+        <p className="mt-4 leading-relaxed text-fg2">
           זו תקלה אצלנו, לא אצלכם. נסו לרענן — ואם זה חוזר, נשמח שתספרו לנו.
         </p>
 
@@ -39,14 +39,14 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="rounded-full border border-gold/30 px-8 py-3.5 font-semibold text-cream transition hover:border-gold/70 hover:text-gold-lt"
+            className="rounded-full border border-line-strong px-8 py-3.5 font-semibold text-fg transition hover:border-current hover:text-accent"
           >
             לעמוד הבית
           </Link>
         </div>
 
         {error.digest && (
-          <p className="ltr-nums mt-8 text-xs text-cream/35">
+          <p className="ltr-nums mt-8 text-xs text-fg3">
             קוד שגיאה: {error.digest}
           </p>
         )}

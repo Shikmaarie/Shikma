@@ -1,9 +1,20 @@
 import type { ReactNode } from "react";
+import { BrandStar } from "./Wordmark";
 
-export function Eyebrow({ children }: { children: ReactNode }) {
+export type Surface = "light" | "dark";
+
+export function Eyebrow({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.32em] text-gold/80">
-      <span className="h-px w-8 bg-gradient-to-l from-gold to-transparent" />
+    <span
+      className={`inline-flex items-center gap-2.5 text-xs font-bold tracking-[0.28em] text-accent ${className}`}
+    >
+      <BrandStar className="size-2.5 shrink-0" />
       {children}
     </span>
   );
@@ -18,28 +29,52 @@ export function SectionTitle({
 }) {
   return (
     <h2
-      className={`font-display text-4xl leading-[1.15] font-bold text-cream sm:text-5xl lg:text-6xl ${className}`}
+      className={`font-display text-[2.1rem] leading-[1.12] font-black tracking-tight text-fg sm:text-5xl lg:text-[3.4rem] ${className}`}
     >
       {children}
     </h2>
   );
 }
 
+/**
+ * A full-bleed horizontal band of one colour.
+ *
+ * The page is read as a stack of bands rather than one continuous
+ * ground, so each declares the surface it presents and the semantic
+ * colour utilities inside it resolve against that. `bleed` drops the
+ * vertical padding for bands that own their own spacing (a hero, a
+ * marquee).
+ */
 export function Section({
   id,
   children,
   className = "",
+  surface = "light",
+  bleed = false,
+  full = false,
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
+  surface?: Surface;
+  /** Skip the standard vertical rhythm. */
+  bleed?: boolean;
+  /** Skip the centred max-width wrapper — for edge-to-edge content. */
+  full?: boolean;
 }) {
+  const pad = bleed ? "" : "py-20 sm:py-24 lg:py-28";
+
   return (
     <section
       id={id}
-      className={`relative scroll-mt-24 px-5 py-24 sm:px-8 lg:py-32 ${className}`}
+      data-surface={surface}
+      className={`relative scroll-mt-24 ${pad} ${className}`}
     >
-      <div className="mx-auto w-full max-w-7xl">{children}</div>
+      {full ? (
+        children
+      ) : (
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">{children}</div>
+      )}
     </section>
   );
 }

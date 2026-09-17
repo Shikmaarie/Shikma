@@ -15,10 +15,11 @@ const heebo = Heebo({
 
 const frank = Frank_Ruhl_Libre({
   subsets: ["hebrew", "latin"],
-  weight: ["400", "500", "700", "900"],
+  weight: ["300", "400", "500", "700", "900"],
   variable: "--font-frank",
   display: "swap",
 });
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#06040a",
+  themeColor: "#0f4a50",
   width: "device-width",
   initialScale: 1,
 };
@@ -67,10 +68,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="he" dir="rtl" className={`${heebo.variable} ${frank.variable}`}>
-      <body className="min-h-screen antialiased">
+      <body data-surface="light" className="min-h-screen bg-ivory antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:right-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-gold focus:px-5 focus:py-2 focus:font-bold focus:text-void"
+          className="sr-only focus:not-sr-only focus:fixed focus:right-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-teal focus:px-5 focus:py-2 focus:font-bold focus:text-ivory"
         >
           דילוג לתוכן הראשי
         </a>

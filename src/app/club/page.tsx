@@ -28,13 +28,13 @@ export default function ClubPage() {
       />
 
       {/* The problem */}
-      <Section className="bg-void !pt-6">
+      <Section className="bg-ivory !pt-6">
         <Reveal>
           <div className="mx-auto max-w-3xl rounded-5xl border border-coral/25 bg-gradient-to-b from-teal/40 to-void px-8 py-10 text-center sm:px-12">
             <h2 className="font-display text-2xl font-bold text-coral sm:text-3xl">
               {clubPage.problem.title}
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-cream/70">
+            <p className="mt-4 text-lg leading-relaxed text-fg2">
               {clubPage.problem.body}
             </p>
           </div>
@@ -42,14 +42,14 @@ export default function ClubPage() {
       </Section>
 
       {/* What's inside */}
-      <Section className="bg-gradient-to-b from-void via-night to-void">
+      <Section className="bg-gradient-to-b from-ivory via-night to-void">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <Eyebrow>מה מקבלים במועדון</Eyebrow>
           </Reveal>
           <Reveal delay={0.08}>
             <SectionTitle className="mt-6">
-              המסגרת ש<span className="text-gradient-gold">מחזיקה אתכם</span>
+              המסגרת ש<span className="text-teal">מחזיקה אתכם</span>
             </SectionTitle>
           </Reveal>
         </div>
@@ -57,12 +57,12 @@ export default function ClubPage() {
         <div className="mt-14 grid gap-5 md:grid-cols-2">
           {clubPage.includes.map((item, i) => (
             <Reveal key={item.title} delay={0.08 + i * 0.08}>
-              <article className="h-full rounded-4xl glass p-8">
-                <Sparkles className="size-6 text-gold" aria-hidden="true" />
-                <h3 className="mt-5 font-display text-xl font-bold text-cream">
+              <article className="h-full rounded-4xl panel p-8">
+                <Sparkles className="size-6 text-accent" aria-hidden="true" />
+                <h3 className="mt-5 font-display text-xl font-bold text-fg">
                   {item.title}
                 </h3>
-                <p className="mt-3 leading-relaxed text-cream/60">{item.body}</p>
+                <p className="mt-3 leading-relaxed text-fg2">{item.body}</p>
               </article>
             </Reveal>
           ))}
@@ -71,16 +71,16 @@ export default function ClubPage() {
 
       {/* Join */}
       {club && (
-        <Section className="bg-void">
+        <Section className="bg-ivory">
           <Reveal>
-            <div className="relative mx-auto max-w-3xl overflow-hidden rounded-5xl border border-gold/30 bg-gradient-to-t from-void via-teal/50 to-void px-8 py-12 text-center sm:px-14">
+            <div className="relative mx-auto max-w-3xl overflow-hidden rounded-5xl border border-line-strong bg-gradient-to-t from-ivory via-teal/50 to-void px-8 py-12 text-center sm:px-14">
               <span
                 className="absolute left-1/2 top-0 h-56 w-[38rem] max-w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/14 blur-3xl"
                 aria-hidden="true"
               />
 
               <div className="relative">
-                <h2 className="font-display text-3xl font-black text-cream sm:text-4xl">
+                <h2 className="font-display text-3xl font-black text-fg sm:text-4xl">
                   מחיר השקה מיוחד
                 </h2>
 
@@ -96,12 +96,12 @@ export default function ClubPage() {
                   />
                 </div>
 
-                <p className="mt-6 flex items-center justify-center gap-2.5 rounded-2xl border border-gold/25 bg-void/50 px-5 py-4 text-sm leading-relaxed text-gold-lt">
+                <p className="mt-6 flex items-center justify-center gap-2.5 rounded-2xl border border-line-strong bg-ivory/50 px-5 py-4 text-sm leading-relaxed text-accent">
                   <Gift className="size-5 shrink-0" aria-hidden="true" />
                   {clubPage.bonus}
                 </p>
 
-                <p className="mt-5 text-xs text-cream/45">
+                <p className="mt-5 text-xs text-fg3">
                   התשלום מתבצע בעמוד סליקה מאובטח של קארדקום.
                 </p>
               </div>

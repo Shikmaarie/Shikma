@@ -13,12 +13,15 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-gold/12 bg-gradient-to-b from-void to-night px-5 pt-20 pb-10 sm:px-8">
+    <footer
+      data-surface="dark"
+      className="relative bg-gradient-to-b from-night to-void px-5 pt-20 pb-10 sm:px-8"
+    >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Wordmark size="lg" className="!items-start" />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/60">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg2">
               להפסיק לרדוף אחרי הכסף — ולבנות אימפריה שמנוהלת מבפנים החוצה.
             </p>
 
@@ -56,7 +59,7 @@ export default function Footer() {
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-2 text-sm text-cream/60 transition hover:text-gold-lt"
+                className="flex items-center gap-2 text-sm text-fg2 transition hover:text-accent"
               >
                 <Mail className="size-4 shrink-0" aria-hidden="true" />
                 <span className="ltr-nums">{site.email}</span>
@@ -65,14 +68,14 @@ export default function Footer() {
             <li>
               <a
                 href={`tel:${site.phone}`}
-                className="flex items-center gap-2 text-sm text-cream/60 transition hover:text-gold-lt"
+                className="flex items-center gap-2 text-sm text-fg2 transition hover:text-accent"
               >
                 <Phone className="size-4 shrink-0" aria-hidden="true" />
                 <span className="ltr-nums">{site.phone}</span>
               </a>
             </li>
             <li className="pt-3">
-              <p className="text-xs leading-relaxed text-cream/40">
+              <p className="text-xs leading-relaxed text-fg3">
                 התשלומים באתר מתבצעים בעמוד סליקה מאובטח של קארדקום בתקן
                 PCI-DSS. פרטי האשראי אינם נשמרים באתר.
               </p>
@@ -80,33 +83,33 @@ export default function Footer() {
           </FooterCol>
         </div>
 
-        <p className="mt-14 rounded-2xl border border-gold/12 bg-void/40 px-5 py-4 text-xs leading-relaxed text-cream/45">
+        <p className="mt-14 rounded-2xl border border-line bg-card px-5 py-4 text-xs leading-relaxed text-fg3">
           אתר זה מופעל עם מערכת „נגיש בקליק”. להצגת תפריט הנגישות יש ללחוץ{" "}
-          <kbd className="ltr-nums rounded border border-gold/25 px-1.5 py-0.5 text-gold/80">
+          <kbd className="ltr-nums rounded border border-line-strong px-1.5 py-0.5 text-accent">
             Control-F10
           </kbd>
           , ולהפעלת קורא מסך{" "}
-          <kbd className="ltr-nums rounded border border-gold/25 px-1.5 py-0.5 text-gold/80">
+          <kbd className="ltr-nums rounded border border-line-strong px-1.5 py-0.5 text-accent">
             Control-F11
           </kbd>
           .
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-gold/10 pt-8 text-xs text-cream/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-4 border-t border-line pt-8 text-xs text-fg3 sm:flex-row sm:items-center sm:justify-between">
           <p className="ltr-nums">
             © {year} {site.name} · כל הזכויות שמורות | עיצוב ובנייה:{" "}
             {site.credit}
           </p>
           <div className="flex flex-wrap gap-6">
-            <Link href="/legal/terms" className="transition hover:text-gold-lt">
+            <Link href="/legal/terms" className="transition hover:text-accent">
               תקנון ותנאי שימוש
             </Link>
-            <Link href="/legal/privacy" className="transition hover:text-gold-lt">
+            <Link href="/legal/privacy" className="transition hover:text-accent">
               מדיניות פרטיות
             </Link>
             <Link
               href="/legal/accessibility"
-              className="transition hover:text-gold-lt"
+              className="transition hover:text-accent"
             >
               הצהרת נגישות
             </Link>
@@ -126,7 +129,7 @@ function FooterCol({
 }) {
   return (
     <div>
-      <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-gold/80">
+      <h3 className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-accent">
         {title}
       </h3>
       <ul className="flex flex-col gap-3">{children}</ul>
@@ -145,7 +148,7 @@ function FooterLink({
     <li>
       <Link
         href={href}
-        className="text-sm text-cream/60 transition hover:text-gold-lt"
+        className="text-sm text-fg2 transition hover:text-accent"
       >
         {children}
       </Link>
@@ -168,7 +171,7 @@ function Social({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="grid size-10 place-items-center rounded-full border border-gold/25 text-cream/70 transition hover:border-gold/60 hover:text-gold-lt"
+      className="grid size-10 place-items-center rounded-full border border-line-strong text-fg2 transition hover:border-current hover:text-accent"
     >
       {children}
     </a>

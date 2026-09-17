@@ -35,7 +35,7 @@ export default function CartDrawer() {
       {isOpen && (
         <>
           <motion.div
-            className="fixed inset-0 z-[70] bg-void/75 backdrop-blur-sm"
+            className="fixed inset-0 z-[70] bg-ivory/75 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -47,18 +47,18 @@ export default function CartDrawer() {
             role="dialog"
             aria-modal="true"
             aria-label="עגלת הקניות"
-            className="fixed inset-y-0 left-0 z-[80] flex w-full max-w-md flex-col border-l border-gold/20 bg-night shadow-2xl"
+            className="fixed inset-y-0 left-0 z-[80] flex w-full max-w-md flex-col border-l border-line bg-shell shadow-2xl"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 32, stiffness: 280 }}
           >
-            <header className="flex items-center justify-between border-b border-gold/12 px-6 py-5">
-              <h2 className="flex items-center gap-2 font-display text-xl font-bold text-cream">
-                <ShoppingBag className="size-5 text-gold" aria-hidden="true" />
+            <header className="flex items-center justify-between border-b border-line px-6 py-5">
+              <h2 className="flex items-center gap-2 font-display text-xl font-bold text-fg">
+                <ShoppingBag className="size-5 text-accent" aria-hidden="true" />
                 העגלה שלי
                 {count > 0 && (
-                  <span className="ltr-nums text-sm font-normal text-cream/45">
+                  <span className="ltr-nums text-sm font-normal text-fg3">
                     ({count})
                   </span>
                 )}
@@ -66,7 +66,7 @@ export default function CartDrawer() {
               <button
                 type="button"
                 onClick={close}
-                className="rounded-full border border-gold/25 p-2 text-cream/80 transition hover:border-gold/60"
+                className="rounded-full border border-line-strong p-2 text-fg/80 transition hover:border-current"
                 aria-label="סגירת העגלה"
               >
                 <X className="size-4" aria-hidden="true" />
@@ -75,10 +75,10 @@ export default function CartDrawer() {
 
             {lines.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-5 px-8 text-center">
-                <span className="grid size-20 place-items-center rounded-full border border-gold/20 bg-teal/40">
-                  <ShoppingBag className="size-8 text-gold/50" aria-hidden="true" />
+                <span className="grid size-20 place-items-center rounded-full border border-line bg-teal/40">
+                  <ShoppingBag className="size-8 text-accent/50" aria-hidden="true" />
                 </span>
-                <p className="text-cream/60">העגלה עדיין ריקה.</p>
+                <p className="text-fg2">העגלה עדיין ריקה.</p>
                 <Link
                   href="/store"
                   onClick={close}
@@ -93,25 +93,25 @@ export default function CartDrawer() {
                   {lines.map(({ product, quantity, price }) => (
                     <li
                       key={product.slug}
-                      className="border-b border-gold/10 py-5 first:pt-0 last:border-0"
+                      className="border-b border-line py-5 first:pt-0 last:border-0"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="min-w-0">
                           <Link
                             href={`/store/${product.slug}`}
                             onClick={close}
-                            className="font-bold text-cream transition hover:text-gold-lt"
+                            className="font-bold text-fg transition hover:text-accent"
                           >
                             {product.name}
                           </Link>
-                          <p className="mt-1 text-xs text-gold/65">
+                          <p className="mt-1 text-xs text-accent/65">
                             {product.tagline}
                           </p>
                         </div>
                         <button
                           type="button"
                           onClick={() => remove(product.slug)}
-                          className="shrink-0 rounded-full p-2 text-cream/45 transition hover:bg-teal hover:text-coral"
+                          className="shrink-0 rounded-full p-2 text-fg3 transition hover:bg-teal hover:text-coral"
                           aria-label={`הסרת ${product.name} מהעגלה`}
                         >
                           <Trash2 className="size-4" aria-hidden="true" />
@@ -119,17 +119,17 @@ export default function CartDrawer() {
                       </div>
 
                       <div className="mt-4 flex items-center justify-between">
-                        <div className="flex items-center gap-1 rounded-full border border-gold/25 p-1">
+                        <div className="flex items-center gap-1 rounded-full border border-line-strong p-1">
                           <button
                             type="button"
                             onClick={() => setQuantity(product.slug, quantity - 1)}
-                            className="grid size-7 place-items-center rounded-full text-cream/80 transition hover:bg-teal"
+                            className="grid size-7 place-items-center rounded-full text-fg/80 transition hover:bg-teal"
                             aria-label={`הפחתת כמות של ${product.name}`}
                           >
                             <Minus className="size-3.5" aria-hidden="true" />
                           </button>
                           <span
-                            className="ltr-nums w-8 text-center text-sm font-bold text-cream"
+                            className="ltr-nums w-8 text-center text-sm font-bold text-fg"
                             aria-live="polite"
                           >
                             {quantity}
@@ -137,14 +137,14 @@ export default function CartDrawer() {
                           <button
                             type="button"
                             onClick={() => setQuantity(product.slug, quantity + 1)}
-                            className="grid size-7 place-items-center rounded-full text-cream/80 transition hover:bg-teal"
+                            className="grid size-7 place-items-center rounded-full text-fg/80 transition hover:bg-teal"
                             aria-label={`הגדלת כמות של ${product.name}`}
                           >
                             <Plus className="size-3.5" aria-hidden="true" />
                           </button>
                         </div>
 
-                        <span className="ltr-nums font-display text-lg font-bold text-gold-lt">
+                        <span className="ltr-nums font-display text-lg font-bold text-accent">
                           {formatILS(price * quantity)}
                         </span>
                       </div>
@@ -152,15 +152,15 @@ export default function CartDrawer() {
                   ))}
                 </ul>
 
-                <footer className="border-t border-gold/15 bg-void/60 px-6 py-6">
+                <footer className="border-t border-line bg-card-2 px-6 py-6">
                   <div className="flex items-baseline justify-between">
-                    <span className="text-sm text-cream/60">סה״כ לתשלום</span>
-                    <span className="ltr-nums font-display text-3xl font-black text-gradient-gold">
+                    <span className="text-sm text-fg2">סה״כ לתשלום</span>
+                    <span className="ltr-nums font-display text-3xl font-black text-teal">
                       {formatILS(subtotal)}
                     </span>
                   </div>
                   {maxPayments > 1 && (
-                    <p className="ltr-nums mt-1 text-left text-xs text-cream/45">
+                    <p className="ltr-nums mt-1 text-left text-xs text-fg3">
                       ניתן לפרוס עד {maxPayments} תשלומים
                     </p>
                   )}
@@ -173,7 +173,7 @@ export default function CartDrawer() {
                     למעבר לתשלום
                   </Link>
 
-                  <p className="mt-3 text-center text-[11px] text-cream/40">
+                  <p className="mt-3 text-center text-[11px] text-fg3">
                     התשלום מתבצע בעמוד מאובטח של קארדקום
                   </p>
                 </footer>

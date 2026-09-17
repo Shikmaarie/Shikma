@@ -25,7 +25,7 @@ export default function ProgramsPage() {
         sub={programsPage.sub}
       />
 
-      <Section className="bg-void !pt-6">
+      <Section className="bg-ivory !pt-6">
         <div className="flex flex-col gap-8">
           {items.map((product, i) => (
             <Reveal key={product.slug} delay={i * 0.06}>

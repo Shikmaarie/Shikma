@@ -1,51 +1,45 @@
 import { Section, SectionTitle, Eyebrow } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
+import { BrandStar } from "@/components/ui/Wordmark";
 import { testimonials } from "@/data/site";
 
 export default function Testimonials() {
   return (
-    <Section id="results" className="bg-void">
+    <Section id="results" className="bg-ivory">
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
-          <Eyebrow>הוכחה חברתית</Eyebrow>
+          <Eyebrow>מהשטח</Eyebrow>
         </Reveal>
         <Reveal delay={0.08}>
-          <SectionTitle className="mt-6">
-            התוצאות מדברות{" "}
-            <span className="text-gradient-gold">בעד עצמן</span>
-          </SectionTitle>
+          <SectionTitle className="mt-6">התוצאות מדברות בעד עצמן</SectionTitle>
         </Reveal>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-2">
+      <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-2">
         {testimonials.map((t, i) => (
           <Reveal key={t.name} delay={0.1 + i * 0.1} className="h-full">
-            <figure className="relative flex h-full flex-col overflow-hidden rounded-5xl glass p-9">
+            <figure className="relative flex h-full flex-col rounded-[2rem] panel p-9">
               <span
-                className="absolute -left-10 -top-10 size-40 rounded-full bg-gold/8 blur-3xl"
-                aria-hidden="true"
-              />
-              <span
-                className="relative font-display text-6xl leading-none text-gold/30"
+                className="absolute -top-3 right-9 grid size-10 place-items-center rounded-full bg-coral text-ink"
                 aria-hidden="true"
               >
-                ”
+                <BrandStar className="size-4" />
               </span>
 
-              <blockquote className="relative mt-2 flex-1 font-display text-xl leading-relaxed text-cream/85 sm:text-2xl">
-                {t.quote}
+              <blockquote className="flex-1 pt-4 font-display text-xl leading-relaxed text-fg sm:text-2xl">
+                „{t.quote}”
               </blockquote>
 
-              <figcaption className="relative mt-8 flex items-center gap-3.5 border-t border-gold/12 pt-5">
+              <figcaption className="mt-8 flex items-center gap-3.5 border-t border-line pt-5">
                 <span
-                  className="grid size-11 shrink-0 place-items-center rounded-full border border-gold/30 bg-teal font-display text-lg font-bold text-gold-lt"
+                  className="grid size-11 shrink-0 place-items-center rounded-full bg-teal font-display text-lg font-bold text-gold-lt"
                   aria-hidden="true"
                 >
                   {t.name.charAt(0)}
                 </span>
                 <span>
-                  <span className="block font-bold text-cream">{t.name}</span>
-                  <span className="block text-sm text-cream/50">{t.role}</span>
+                  <span className="block font-bold text-fg">{t.name}</span>
+                  <span className="block text-sm text-fg3">{t.role}</span>
                 </span>
               </figcaption>
             </figure>

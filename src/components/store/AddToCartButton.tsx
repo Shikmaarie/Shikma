@@ -48,7 +48,7 @@ export default function AddToCartButton({
         href={`https://wa.me/${site.whatsapp}`}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${base} border border-gold/40 text-cream hover:border-gold/80 hover:text-gold-lt`}
+        className={`${base} border border-line-strong text-fg hover:border-gold/80 hover:text-accent`}
       >
         {label ?? "להרשמה"}
         <ArrowLeft className="size-4" aria-hidden="true" />

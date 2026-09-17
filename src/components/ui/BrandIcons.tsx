@@ -50,3 +50,73 @@ export function YoutubeIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+/* ------------------------------------------------------------------ */
+/* Route motifs                                                        */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The four routes on the home page, drawn as line motifs rather than
+ * emoji. They repeat the category motifs the product covers already use
+ * (`ProductSigil`), so a visitor meets the same shape twice: once when
+ * choosing a route, once on the product it leads to.
+ */
+export type PathMotif = "growth" | "ripple" | "circle" | "pages";
+
+const motifPaths: Record<PathMotif, React.ReactNode> = {
+  // Rising columns — growth and scale.
+  growth: (
+    <>
+      <path d="M5 27V19" />
+      <path d="M13 27V13" />
+      <path d="M21 27V17" />
+      <path d="M29 27V7" />
+      <path d="M3 31h30" />
+    </>
+  ),
+  // Expanding rings — inner work spreading outward.
+  ripple: (
+    <>
+      <circle cx="18" cy="18" r="3.5" />
+      <circle cx="18" cy="18" r="9" />
+      <circle cx="18" cy="18" r="14.5" />
+    </>
+  ),
+  // Interlocking circles — the community.
+  circle: (
+    <>
+      <circle cx="13" cy="18" r="8.5" />
+      <circle cx="23" cy="18" r="8.5" />
+      <circle cx="18" cy="9" r="8.5" />
+    </>
+  ),
+  // Unfolding pages — the books and guides.
+  pages: (
+    <>
+      <path d="M18 10.5C15 8 11 7 6.5 7.5v18C11 25 15 26 18 28.5" />
+      <path d="M18 10.5C21 8 25 7 29.5 7.5v18C25 25 21 26 18 28.5" />
+      <path d="M18 10.5v18" />
+    </>
+  ),
+};
+
+export function PathIcon({
+  motif,
+  className,
+}: IconProps & { motif: PathMotif }) {
+  return (
+    <svg
+      viewBox="0 0 36 36"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+    >
+      {motifPaths[motif]}
+    </svg>
+  );
+}

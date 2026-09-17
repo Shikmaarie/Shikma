@@ -120,24 +120,24 @@ export default async function LegalPage({ params }: Params) {
   return (
     <article className="px-5 pt-36 pb-24 sm:px-8">
       <div className="mx-auto w-full max-w-3xl">
-        <h1 className="font-display text-4xl font-black text-cream sm:text-5xl">
+        <h1 className="font-display text-4xl font-black text-fg sm:text-5xl">
           {entry.title}
         </h1>
 
         <div className="mt-12 flex flex-col gap-10">
           {entry.sections.map((section) => (
             <section key={section.h}>
-              <h2 className="font-display text-xl font-bold text-gold-lt">
+              <h2 className="font-display text-xl font-bold text-accent">
                 {section.h}
               </h2>
-              <p className="mt-3 leading-relaxed text-cream/65">{section.p}</p>
+              <p className="mt-3 leading-relaxed text-fg2">{section.p}</p>
             </section>
           ))}
         </div>
 
-        <p className="mt-16 rounded-2xl border border-gold/20 bg-void/50 px-5 py-4 text-sm text-cream/45">
+        <p className="mt-16 rounded-2xl border border-line bg-ivory/50 px-5 py-4 text-sm text-fg3">
           המסמך מעודכן לאחרונה בתאריך העלאת האתר. לשאלות ניתן לפנות לכתובת{" "}
-          <a href={`mailto:${site.email}`} className="ltr-nums text-gold-lt">
+          <a href={`mailto:${site.email}`} className="ltr-nums text-accent">
             {site.email}
           </a>
           .

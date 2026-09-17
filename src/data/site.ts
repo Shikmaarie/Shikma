@@ -45,6 +45,10 @@ export const hero = {
     { text: "שמנוהלת מבפנים החוצה.", gold: true },
   ],
   sub: "18 שנות ניסיון, 3 עסקים שמכניסים 6 ספרות בחודש, וחיים של חופש אמיתי — מטיילת בעולם 4 ימים בשבוע עם המשפחה שלי. הגיע הזמן ללמוד את מה שאף אחד לא לימד בבית הספר: חוקי ה-DNA של העסק והעושר שלך.",
+  /** The handwritten aside under the headline. One line, always. */
+  script: "בלי סיסמאות. בלי קיצורי דרך. רק מה שעובד במציאות.",
+  /** Runs around the stamp over the portrait. Keep it short — it repeats. */
+  seal: "מכפילה עסקים · בונה אימפריות",
   ctaPrimary: { label: "גלה את התוכניות העסקיות", href: "/programs" },
   ctaSecondary: {
     label: "לרכישת הספר 100K הראשון שלי",
@@ -59,11 +63,47 @@ export const hero = {
 } as const;
 
 export const painPromise = {
+  kicker: "הבסיס",
   title: "רוב בעלי העסקים לא תקועים בגלל שיווק. הם תקועים בגלל הבסיס.",
+  /** The word the hand-drawn ring is thrown around, inside `title`. */
+  mark: "הבסיס",
+  cta: { label: "איך זה עובד", href: "/programs" },
   paragraphs: [
     "אתם לא עצלנים. אתם לא חסרי כישרון. אתם פשוט עובדים קשה מדי על העסק הלא נכון, עם מיינדסט של הישרדות ומערכת יחסים כבולת פחד מול כסף.",
     "בעסק, כמו בחיים — התוצאות תמיד משקפות את ה-DNA של מי שמנהל אותם.",
     "אני מביאה גישה חדשנית שמשלבת פסיכולוגיה עמוקה, ריפוי רגשי של כסף ואסטרטגיה עסקית מוכחת — כזו שלוקחת אתכם מעסק שנאבק לשרוד, לאימפריה שצומחת לבד.",
+  ],
+} as const;
+
+/**
+ * The credential strip. Every line here is a fact Racheli supplied and
+ * CLAUDE.md lists as verified — nothing on this band may be inferred,
+ * rounded up, or written for rhythm.
+ */
+export const proof = {
+  title: "מוכח. נבדק. מהשטח.",
+  script: "18 שנה של ניסיון, לא של הבטחות.",
+  items: [
+    {
+      value: "18",
+      unit: "שנים",
+      body: "התחלתי בגיל 20, בלי רקע ובלי עורף פיננסי.",
+    },
+    {
+      value: "0",
+      unit: "ומשם למעלה",
+      body: "עברתי פשיטת רגל, ובניתי הכל מחדש מהיסוד.",
+    },
+    {
+      value: "3",
+      unit: "עסקים",
+      body: "שמכניסים 6 ספרות בחודש. המודלים שאני מלמדת רצים אצלי.",
+    },
+    {
+      value: "1,000+",
+      unit: "מלווים",
+      body: "בעלי עסקים ומשפחות שכבר עברו את התהליך.",
+    },
   ],
 } as const;
 
@@ -72,7 +112,7 @@ export const paths = {
   sub: "בחרו את המקום שבו העסק או החיים שלכם זקוקים לפריצת דרך.",
   cards: [
     {
-      icon: "🚀",
+      motif: "growth" as const,
       kicker: "בעלי עסקים שרוצים לפרוץ קדימה",
       title: "תוכניות ליווי ועסקים",
       body: "מהמעבר הראשון של שכירים לעצמאות, דרך תוכנית הדגל „ה-DNA של העסק”, ועד לפלטינום ביזנס לעסקים של 6 ספרות בחודש.",
@@ -80,7 +120,7 @@ export const paths = {
       accent: "gold" as const,
     },
     {
-      icon: "💸",
+      motif: "ripple" as const,
       kicker: "שחרור פחדים ובניית שפע כלכלי",
       title: "מיינדסט, שפע ומשפחה",
       body: "המסע השנתי „ה-DNA של העושר”, כנס העומק „עושים אהבה עם הפחד מכסף” במכון וינגייט, ואתגר הכסף והשפע.",
@@ -88,7 +128,7 @@ export const paths = {
       accent: "peri" as const,
     },
     {
-      icon: "🤝",
+      motif: "circle" as const,
       kicker: "קהילה ומנויים בהישג יד",
       title: "מועדון העסקים החודשי",
       body: "זום שבועי ממוקד, מיני-פודקאסטים, וקהילה תומכת שתחזיק אתכם בתנועה עסקית מתמדת. בפחות מ-1.20 ₪ ליום.",
@@ -96,7 +136,7 @@ export const paths = {
       accent: "coral" as const,
     },
     {
-      icon: "📚",
+      motif: "pages" as const,
       kicker: "ספרים, מדריכים והדרכות",
       title: "הכלים שכתבתי בשבילכם",
       body: "ספר רב-המכר „ה-100K הראשון שלי”, מדריכי 7 צעדים לחופש כלכלי, נוסחת ההכפלה ומדריכים חינמיים.",
@@ -107,7 +147,12 @@ export const paths = {
 } as const;
 
 export const aboutTeaser = {
+  /** Runs oversized behind the chapter opening. Decoration only. */
+  ghost: "הסיפור שלי",
   title: "לא סיסמאות. תכלס מהשטח.",
+  /** Circled by hand inside `title`. */
+  mark: "תכלס",
+  script: "נפלתי. קמתי. ואת הדרך חזרה אני מלמדת.",
   paragraphs: [
     "התחלתי בגיל 20 בלי שום רקע, בלי עורף פיננסי ובמינוס עמוק — עד לפשיטת רגל כואבת שבה אפילו מטרנה לבת שלי הייתה מותרות. הבנתי שהשינוי לא יגיע מקורס שיווק נוסף, אלא משינוי יסודי ב-DNA הפנימי שלי.",
     // שמות בני המשפחה הושמטו בכוונה — לא לפרסם ללא אישור מפורש של רחלי.

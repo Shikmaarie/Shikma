@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import PainPromise from "@/components/sections/PainPromise";
+import Proof from "@/components/sections/Proof";
 import Paths from "@/components/sections/Paths";
 import About from "@/components/sections/About";
 import Testimonials from "@/components/sections/Testimonials";
@@ -40,6 +41,7 @@ export default function HomePage() {
       />
       <Hero />
       <PainPromise />
+      <Proof />
       <Paths />
       <About />
       <Testimonials />

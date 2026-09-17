@@ -59,7 +59,7 @@ export default function CheckoutForm() {
   if (!mounted) {
     return (
       <div className="flex min-h-[40vh] items-center justify-center">
-        <Loader2 className="size-6 animate-spin text-gold" aria-hidden="true" />
+        <Loader2 className="size-6 animate-spin text-accent" aria-hidden="true" />
         <span className="sr-only">טוען את העגלה…</span>
       </div>
     );
@@ -67,8 +67,8 @@ export default function CheckoutForm() {
 
   if (lines.length === 0) {
     return (
-      <div className="flex flex-col items-center gap-6 rounded-4xl glass px-8 py-20 text-center">
-        <p className="text-lg text-cream/65">העגלה שלך ריקה.</p>
+      <div className="flex flex-col items-center gap-6 rounded-4xl panel px-8 py-20 text-center">
+        <p className="text-lg text-fg2">העגלה שלך ריקה.</p>
         <Link
           href="/store"
           className="rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-3.5 font-bold text-void"
@@ -81,9 +81,9 @@ export default function CheckoutForm() {
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-      <form onSubmit={handleSubmit} className="rounded-4xl glass p-7 sm:p-9">
-        <h2 className="font-display text-2xl font-bold text-cream">הפרטים שלך</h2>
-        <p className="mt-2 text-sm text-cream/55">
+      <form onSubmit={handleSubmit} className="rounded-4xl panel p-7 sm:p-9">
+        <h2 className="font-display text-2xl font-bold text-fg">הפרטים שלך</h2>
+        <p className="mt-2 text-sm text-fg3">
           נשתמש בהם להנפקת החשבונית ולשליחת הגישה.
         </p>
 
@@ -148,10 +148,10 @@ export default function CheckoutForm() {
           )}
         </button>
 
-        <p className="mt-4 text-center text-xs leading-relaxed text-cream/45">
+        <p className="mt-4 text-center text-xs leading-relaxed text-fg3">
           בלחיצה על הכפתור תועברו לעמוד הסליקה המאובטח של קארדקום. בביצוע
           ההזמנה אתם מאשרים את{" "}
-          <Link href="/legal/terms" className="text-gold-lt hover:underline">
+          <Link href="/legal/terms" className="text-accent hover:underline">
             התקנון ותנאי השימוש
           </Link>
           .
@@ -159,46 +159,46 @@ export default function CheckoutForm() {
       </form>
 
       <aside className="lg:sticky lg:top-28 lg:self-start">
-        <div className="rounded-4xl glass p-7 sm:p-8">
-          <h2 className="font-display text-xl font-bold text-cream">סיכום ההזמנה</h2>
+        <div className="rounded-4xl panel p-7 sm:p-8">
+          <h2 className="font-display text-xl font-bold text-fg">סיכום ההזמנה</h2>
 
           <ul className="mt-6 flex flex-col gap-4">
             {lines.map(({ product, quantity, price }) => (
               <li
                 key={product.slug}
-                className="flex items-start justify-between gap-4 border-b border-gold/10 pb-4 last:border-0 last:pb-0"
+                className="flex items-start justify-between gap-4 border-b border-line pb-4 last:border-0 last:pb-0"
               >
                 <div className="min-w-0">
-                  <p className="font-semibold text-cream">{product.name}</p>
-                  <p className="ltr-nums mt-1 text-xs text-cream/45">
+                  <p className="font-semibold text-fg">{product.name}</p>
+                  <p className="ltr-nums mt-1 text-xs text-fg3">
                     כמות: {quantity}
                   </p>
                 </div>
-                <span className="ltr-nums shrink-0 font-bold text-gold-lt">
+                <span className="ltr-nums shrink-0 font-bold text-accent">
                   {formatILS(price * quantity)}
                 </span>
               </li>
             ))}
           </ul>
 
-          <div className="mt-6 flex items-baseline justify-between border-t border-gold/15 pt-5">
-            <span className="text-sm text-cream/60">סה״כ לתשלום</span>
-            <span className="ltr-nums font-display text-3xl font-black text-gradient-gold">
+          <div className="mt-6 flex items-baseline justify-between border-t border-line pt-5">
+            <span className="text-sm text-fg2">סה״כ לתשלום</span>
+            <span className="ltr-nums font-display text-3xl font-black text-teal">
               {formatILS(subtotal)}
             </span>
           </div>
-          <p className="mt-1 text-left text-xs text-cream/45">כולל מע״מ</p>
+          <p className="mt-1 text-left text-xs text-fg3">כולל מע״מ</p>
 
           {maxPayments > 1 && (
-            <p className="ltr-nums mt-4 rounded-2xl border border-gold/20 bg-void/40 px-4 py-3 text-xs leading-relaxed text-cream/60">
+            <p className="ltr-nums mt-4 rounded-2xl border border-line bg-card-2 px-4 py-3 text-xs leading-relaxed text-fg2">
               ניתן לפרוס עד {maxPayments} תשלומים. את מספר התשלומים בוחרים בעמוד
               הסליקה.
             </p>
           )}
 
-          <div className="mt-6 flex items-start gap-2.5 text-xs leading-relaxed text-cream/50">
+          <div className="mt-6 flex items-start gap-2.5 text-xs leading-relaxed text-fg3">
             <ShieldCheck
-              className="mt-0.5 size-4 shrink-0 text-gold/70"
+              className="mt-0.5 size-4 shrink-0 text-accent"
               aria-hidden="true"
             />
             <span>
@@ -226,15 +226,15 @@ function Field({
     <div className={className}>
       <label
         htmlFor={name}
-        className="mb-2 block text-sm font-medium text-cream/75"
+        className="mb-2 block text-sm font-medium text-fg2"
       >
         {label}
-        {props.required && <span className="text-gold"> *</span>}
+        {props.required && <span className="text-accent"> *</span>}
       </label>
       <input
         id={name}
         name={name}
-        className="w-full rounded-2xl border border-gold/20 bg-void/50 px-4 py-3 text-cream placeholder:text-cream/30 transition focus:border-gold/60 focus:outline-none"
+        className="w-full rounded-2xl border border-line bg-ivory/50 px-4 py-3 text-fg placeholder:text-fg/30 transition focus:border-gold/60 focus:outline-none"
         {...props}
       />
     </div>
