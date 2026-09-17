@@ -42,7 +42,7 @@ export default function PageHeader({
       <div className="relative mx-auto w-full max-w-7xl">
         <Eyebrow>{eyebrow}</Eyebrow>
 
-        <h1 className="mt-6 max-w-4xl font-display text-[2.2rem] leading-[1.1] font-black tracking-tight text-fg sm:text-5xl lg:text-[3.6rem]">
+        <h1 className="mt-6 max-w-4xl font-display text-[2rem] leading-[1.12] font-black text-fg sm:text-[2.7rem] lg:text-[3.2rem]">
           {title}
           {accent && (
             <>

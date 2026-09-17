@@ -12,7 +12,7 @@ export default function Podcast() {
         <Reveal>
           <div className="max-w-xl">
             <Eyebrow>{podcast.eyebrow}</Eyebrow>
-            <h2 className="mt-5 font-display text-4xl font-black text-fg sm:text-5xl">
+            <h2 className="mt-5 font-display text-[2rem] font-black text-fg sm:text-[2.8rem]">
               {podcast.title}
             </h2>
             <p className="mt-5 leading-relaxed text-fg2 sm:text-lg">

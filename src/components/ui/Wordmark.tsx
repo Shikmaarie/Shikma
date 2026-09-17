@@ -40,7 +40,7 @@ export default function Wordmark({
     <span className={`flex flex-col items-center leading-none ${className}`}>
       {/* Colour follows the surrounding band, so the same lockup works on
           the teal header and on ivory once the page is scrolled. */}
-      <span className={`font-display font-black tracking-tight text-fg ${name}`}>
+      <span className={`font-display font-black text-fg ${name}`}>
         {site.name}
       </span>
 

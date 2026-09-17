@@ -12,9 +12,9 @@ import { BrandStar } from "./Wordmark";
  * The obvious move — copying the reference's handwritten script — does
  * not survive translation. Hebrew has no italic, and the handwriting
  * faces that do cover Hebrew are built for teaching children to write;
- * set beside Frank Ruhl they read as a mistake, not as an aside. So the
+ * set beside Rubik they read as a mistake, not as an aside. So the
  * "said out loud" register is carried by weight and a drawn underline
- * instead: the display serif at its lightest, over a pen stroke.
+ * instead: Rubik at its lightest, over a pen stroke.
  *
  * Keep it to one line. It stops working at two.
  */

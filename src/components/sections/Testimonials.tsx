@@ -26,7 +26,7 @@ export default function Testimonials() {
                 <BrandStar className="size-4" />
               </span>
 
-              <blockquote className="flex-1 pt-4 font-display text-xl leading-relaxed text-fg sm:text-2xl">
+              <blockquote className="flex-1 pt-4 font-display text-lg leading-relaxed font-medium text-fg sm:text-xl">
                 „{t.quote}”
               </blockquote>
 

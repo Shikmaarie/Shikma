@@ -20,8 +20,8 @@ export const contentType = "image/png";
  * support and would otherwise spell the text backwards. See src/lib/bidi.ts.
  */
 export default async function Image() {
-  const heebo = await readFile(
-    join(process.cwd(), "src/app/_assets/heebo-800.ttf"),
+  const rubik = await readFile(
+    join(process.cwd(), "src/app/_assets/rubik-800.ttf"),
   );
 
   return new ImageResponse(
@@ -39,7 +39,7 @@ export default async function Image() {
           padding: "0 90px",
           background:
             "radial-gradient(1000px 600px at 78% 22%, #0f4a50 0%, #072428 45%, #04171a 100%)",
-          fontFamily: "Heebo",
+          fontFamily: "Rubik",
           position: "relative",
         }}
       >
@@ -145,7 +145,7 @@ export default async function Image() {
     ),
     {
       ...size,
-      fonts: [{ name: "Heebo", data: heebo, style: "normal", weight: 800 }],
+      fonts: [{ name: "Rubik", data: rubik, style: "normal", weight: 800 }],
     },
   );
 }

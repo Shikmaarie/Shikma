@@ -42,8 +42,12 @@
   --color-lavender: #d7cbe6;
   --color-peri: #8e9bf6;
 
-  --font-sans: var(--font-heebo), system-ui, sans-serif;
-  --font-display: var(--font-frank), Georgia, serif;
+  /* One family, two roles. `font-display` still exists as a separate
+     token so headline treatment stays changeable in one place — it just
+     resolves to the same face as the body now, distinguished by weight
+     and tracking rather than by a second family. */
+  --font-sans: var(--font-rubik), system-ui, sans-serif;
+  --font-display: var(--font-rubik), system-ui, sans-serif;
 
   --radius-4xl: 2rem;
   --radius-5xl: 2.75rem;

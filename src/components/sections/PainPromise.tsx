@@ -37,10 +37,9 @@ export default function PainPromise() {
           <div className="relative mx-auto max-w-3xl">
             <Eyebrow>{painPromise.kicker}</Eyebrow>
 
-            <h2 className="mt-6 font-display text-[1.9rem] leading-[1.18] font-bold text-fg sm:text-4xl lg:text-[2.9rem]">
-              רוב בעלי העסקים לא תקועים בגלל שיווק.
-              <br />
-              הם תקועים בגלל <CircleMark>{painPromise.mark}</CircleMark>.
+            <h2 className="mt-6 font-display text-[1.75rem] leading-[1.2] font-bold text-fg sm:text-[2.2rem] lg:text-[2.6rem]">
+              רוב בעלי העסקים לא תקועים בגלל שיווק. הם תקועים בגלל{" "}
+              <CircleMark>{painPromise.mark}</CircleMark>.
             </h2>
 
             <p className="mt-8 leading-relaxed text-fg2 sm:text-lg">{opening}</p>

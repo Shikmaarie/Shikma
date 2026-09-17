@@ -1,25 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/store/CartDrawer";
 
-const heebo = Heebo({
+/**
+ * The whole site is set in Rubik.
+ *
+ * Loaded as the variable font rather than seven static cuts: the `wght`
+ * axis runs 300–900 continuously, so every weight the design uses — and
+ * every value in between — comes out of one file instead of seven.
+ */
+const rubik = Rubik({
   subsets: ["hebrew", "latin"],
-  weight: ["300", "400", "500", "700", "900"],
-  variable: "--font-heebo",
+  weight: "variable",
+  style: ["normal", "italic"],
+  variable: "--font-rubik",
   display: "swap",
 });
-
-const frank = Frank_Ruhl_Libre({
-  subsets: ["hebrew", "latin"],
-  weight: ["300", "400", "500", "700", "900"],
-  variable: "--font-frank",
-  display: "swap",
-});
-
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -67,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${frank.variable}`}>
+    <html lang="he" dir="rtl" className={rubik.variable}>
       <body data-surface="light" className="min-h-screen bg-ivory antialiased">
         <a
           href="#main"

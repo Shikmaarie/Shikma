@@ -29,7 +29,7 @@ export function SectionTitle({
 }) {
   return (
     <h2
-      className={`font-display text-[2.1rem] leading-[1.12] font-black tracking-tight text-fg sm:text-5xl lg:text-[3.4rem] ${className}`}
+      className={`font-display text-[1.95rem] leading-[1.14] font-black text-fg sm:text-[2.6rem] lg:text-[3.1rem] ${className}`}
     >
       {children}
     </h2>

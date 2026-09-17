@@ -36,7 +36,7 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-6">
+      <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-8">
         {/* ---- Copy ---- */}
         <div className="pb-14 lg:pb-28">
           <motion.p
@@ -47,7 +47,7 @@ export default function Hero() {
             {hero.eyebrow}
           </motion.p>
 
-          <h1 className="mt-7 font-display text-[2.6rem] leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.3rem]">
+          <h1 className="mt-7 font-display text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-[3.55rem]">
             {hero.title.map((line, i) => (
               <motion.span key={line.text} {...rise(0.14 + i * 0.09)} className="block">
                 <span
