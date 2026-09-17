@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
-import { site } from "@/data/site";
+import { baseUrl as base, isLiveSite } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
+  // Nothing to offer a crawler that is not allowed to crawl us anyway.
+  if (!isLiveSite) return [];
+
   const now = new Date();
 
   return [

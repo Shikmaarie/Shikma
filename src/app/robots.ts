@@ -1,8 +1,11 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/data/site";
+import { baseUrl, isLiveSite } from "@/lib/site-url";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
+  // A preview deployment is shut out entirely — see src/lib/site-url.ts.
+  if (!isLiveSite) {
+    return { rules: { userAgent: "*", disallow: "/" } };
+  }
 
   return {
     rules: {
@@ -10,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/checkout"],
     },
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

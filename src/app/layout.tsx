@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
+import { isLiveSite } from "@/lib/site-url";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/store/CartDrawer";
@@ -52,7 +53,11 @@ export const metadata: Metadata = {
     title: `${site.name} — ${site.role}`,
     description: "מעבר מהישרדות לשפע אמיתי.",
   },
-  robots: { index: true, follow: true },
+  // robots.txt alone is advisory and does not get an already-crawled
+  // preview dropped, so the meta tag carries the same rule.
+  robots: isLiveSite
+    ? { index: true, follow: true }
+    : { index: false, follow: false, nocache: true },
 };
 
 export const viewport: Viewport = {
