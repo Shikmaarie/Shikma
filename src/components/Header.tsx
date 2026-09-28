@@ -9,6 +9,7 @@ import { headerCta, nav, site } from "@/data/site";
 import Wordmark, { BrandStar } from "@/components/ui/Wordmark";
 import { pill } from "@/components/ui/Editorial";
 import { useCart } from "@/lib/cart";
+import { opensOnPaper } from "@/lib/opening-surface";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,6 +20,8 @@ export default function Header() {
 
   const isCurrent = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  const onPaper = opensOnPaper(pathname);
 
   // Rendered only after mount so the server and client markup agree — the
   // cart count comes from localStorage and isn't known during SSR.
@@ -44,15 +47,19 @@ export default function Header() {
   return (
     <>
       {/*
-        Every page opens on a teal band, so the bar starts as light type on
-        dark and flips to ink on paper once the page scrolls under it.
+        Most pages open on a teal band, so the bar starts as light type on
+        dark and flips to ink on paper once the page scrolls under it. The
+        routes that open straight onto paper start light instead — there is
+        no dark band to read against, and light type simply vanishes.
       */}
       <header
-        data-surface={scrolled ? "light" : "dark"}
+        data-surface={scrolled || onPaper ? "light" : "dark"}
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           scrolled
             ? "border-b border-line bg-ivory/90 backdrop-blur-xl"
-            : "border-b border-transparent"
+            : onPaper
+              ? "border-b border-transparent bg-ivory/80 backdrop-blur-xl"
+              : "border-b border-transparent"
         }`}
       >
         <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
@@ -116,7 +123,7 @@ export default function Header() {
               <Link
                 href={headerCta.href}
                 className={`px-6 py-2.5 text-sm ${
-                  scrolled ? pill.solid : pill.gold
+                  scrolled || onPaper ? pill.solid : pill.gold
                 }`}
               >
                 {headerCta.label}
