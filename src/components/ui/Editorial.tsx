@@ -262,9 +262,17 @@ export function Photo({
   /** Cut-outs use `contain`: cropping one lops off a head or a hand. */
   fit?: "cover" | "contain";
 }) {
+  // `Image fill` needs a positioned box, so this element carries `relative`
+  // by default. A caller that places the photograph itself must win, though:
+  // its class lands on this same element, and Tailwind emits `.relative`
+  // after `.absolute`, so a hardcoded `relative` silently beats it and the
+  // photograph drops back into the flow on top of whatever sits below.
+  const placed = /(?:^|\s)(?:absolute|fixed|sticky|relative)(?:\s|$)/.test(className);
+  const pos = placed ? "" : "relative";
+
   if (slot.src) {
     return (
-      <div className={`relative ${fit === "cover" ? "overflow-hidden" : ""} ${className}`}>
+      <div className={`${pos} ${fit === "cover" ? "overflow-hidden" : ""} ${className}`}>
         <Image
           src={slot.src}
           alt={slot.alt}
@@ -279,7 +287,7 @@ export function Photo({
 
   return (
     <div
-      className={`relative grid place-items-center overflow-hidden bg-gradient-to-br from-teal via-teal-2 to-night ${className}`}
+      className={`${pos} grid place-items-center overflow-hidden bg-gradient-to-br from-teal via-teal-2 to-night ${className}`}
       role="img"
       aria-label={slot.alt}
     >
