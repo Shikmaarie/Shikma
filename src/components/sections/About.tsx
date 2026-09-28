@@ -22,17 +22,17 @@ export default function About() {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20">
           <Reveal>
             {/* A cut-out, so it stands on the band rather than sitting in a
-                frame — the soft disc behind it keeps it from floating loose. */}
+                frame — the mist block behind it, offset rather than centred,
+                gives the photograph an edge to sit against. */}
             <div className="relative">
               <span
-                className="absolute inset-x-4 bottom-6 top-10 rounded-[3rem] rounded-bl-[8rem] bg-mist"
+                className="absolute -bottom-5 -right-5 top-12 left-12 rounded-[3rem] rounded-bl-[8rem] bg-mist"
                 aria-hidden="true"
               />
               <Photo
                 slot={photos.story}
-                fit="contain"
                 sizes="(min-width: 1024px) 38vw, 100vw"
-                className="aspect-3/4 w-full"
+                className="aspect-3/4 w-full rounded-[3rem] rounded-bl-[8rem]"
               />
             </div>
           </Reveal>

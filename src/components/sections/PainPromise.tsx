@@ -2,9 +2,9 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
-import { CircleMark, Photo, pill } from "@/components/ui/Editorial";
+import { CircleMark, Photo, Seal, pill } from "@/components/ui/Editorial";
 import HeroCanvas from "@/components/three/HeroCanvas";
-import { painPromise } from "@/data/site";
+import { hero, painPromise } from "@/data/site";
 import { photos } from "@/data/media";
 
 /**
@@ -62,6 +62,15 @@ export default function PainPromise() {
               />
             </Link>
           </div>
+
+          {/* The stamp, on the flat card rather than over a photograph: it
+              needs an even ground to stay legible, and the card is the one
+              place on the page that gives it one. Opposite corner from the
+              snapshot, so the two never meet. */}
+          <Seal
+            text={hero.seal}
+            className="absolute bottom-10 right-10 hidden size-36 text-gold-lt/85 xl:block"
+          />
 
           {/* The snapshot that breaks the card's edge — the reference's
               "photo taped to the page" gesture. */}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { BrandStar } from "@/components/ui/Wordmark";
-import { Photo, ScriptLine, Seal, pill } from "@/components/ui/Editorial";
+import { Photo, ScriptLine, pill } from "@/components/ui/Editorial";
 import { hero } from "@/data/site";
 import { photos } from "@/data/media";
 
@@ -36,7 +36,7 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-8">
+      <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-end lg:gap-6">
         {/* ---- Copy ---- */}
         <div className="pb-14 lg:pb-28">
           <motion.p
@@ -101,23 +101,20 @@ export default function Hero() {
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] as const },
               })}
-          className="relative mx-auto w-full max-w-lg lg:max-w-none"
+          className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end"
         >
+          {/* A cut-out, so no frame and no crop: she stands on the foot of
+              the band the way the reference does, with the teal reading as
+              ground rather than as a backdrop behind a photograph. */}
           <Photo
             slot={photos.hero}
             priority
+            fit="contain"
             sizes="(min-width: 1024px) 45vw, 100vw"
-            className="aspect-4/5 w-full rounded-t-[10rem] lg:aspect-auto lg:h-[36rem]"
+            className="aspect-4/5 w-full lg:aspect-auto lg:h-[41rem]"
+            imageClassName="object-bottom lg:object-[left_bottom]"
           />
 
-          {/* The stamp straddles the portrait's outer edge. It sits over the
-              band rather than over the photograph: gold on teal measures
-              5.8:1, gold on the portrait's own gold rim-light measures
-              nothing at all. */}
-          <Seal
-            text={hero.seal}
-            className="absolute -left-4 bottom-16 size-28 text-gold-lt sm:size-32 lg:-left-12 lg:bottom-24"
-          />
         </motion.div>
       </div>
 

@@ -17,9 +17,9 @@ import type { PhotoSlot } from "@/components/ui/Editorial";
  */
 export const photos = {
   hero: {
-    src: "/photos/racheli-hero.webp",
+    src: "/photos/racheli-story.webp",
     alt: "רחלי חדד",
-    brief: "פורטרט ראשי — סטודיו, תאורת זהב על רקע כהה",
+    brief: "פורטרט חתוך מרקע — עומד על רצפת פס הפתיחה",
   },
   quote: {
     src: "/photos/racheli-stage.webp",
@@ -27,9 +27,9 @@ export const photos = {
     brief: "רחלי על הבמה מול קהל — לרוחב, פורמט קטן",
   },
   story: {
-    src: "/photos/racheli-story.webp",
+    src: "/photos/racheli-hero.webp",
     alt: "רחלי חדד",
-    brief: "פורטרט חתוך מרקע — לצד פרק הסיפור האישי",
+    brief: "פורטרט סטודיו ממוסגר — לצד פרק הסיפור האישי",
   },
   podcast: {
     src: "/photos/racheli-speaking.webp",

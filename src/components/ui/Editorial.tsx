@@ -254,6 +254,7 @@ export function Photo({
   sizes = "(min-width: 1024px) 45vw, 100vw",
   priority = false,
   fit = "cover",
+  imageClassName = "",
 }: {
   slot: PhotoSlot;
   className?: string;
@@ -261,6 +262,9 @@ export function Photo({
   priority?: boolean;
   /** Cut-outs use `contain`: cropping one lops off a head or a hand. */
   fit?: "cover" | "contain";
+  /** Extra classes for the image itself, e.g. `object-bottom` so a
+   *  cut-out figure stands on the foot of its band rather than floating. */
+  imageClassName?: string;
 }) {
   // `Image fill` needs a positioned box, so this element carries `relative`
   // by default. A caller that places the photograph itself must win, though:
@@ -279,7 +283,7 @@ export function Photo({
           fill
           sizes={sizes}
           priority={priority}
-          className={fit === "cover" ? "object-cover" : "object-contain"}
+          className={`${fit === "cover" ? "object-cover" : "object-contain"} ${imageClassName}`}
         />
       </div>
     );
