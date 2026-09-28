@@ -88,7 +88,7 @@ export default async function ContactPage({
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link
                 href="/store/money-challenge"
-                className="rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-3.5 font-bold text-void transition hover:brightness-110"
+                className="rounded-full bg-coral ring-1 ring-coral-ring px-8 py-3.5 font-bold text-ink transition hover:bg-coral-dp hover:text-ivory"
               >
                 לאתגר הכסף והשפע
               </Link>

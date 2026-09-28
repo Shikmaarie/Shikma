@@ -44,6 +44,10 @@
   /* Secondary accents from the swatch sheet */
   --color-coral: #f88e7e; /* swatch 8 */
   --color-coral-dp: #dc6a57;
+  /* Ring for a coral button on paper. The fill is only 1.8:1 against cream,
+     below the 3:1 a control's boundary needs, and this clears 3:1 on every
+     light ground the site uses. */
+  --color-coral-ring: #b8695d;
   --color-mint: #88c7bc; /* swatch 9 */
   --color-sage: #cdded8; /* swatch 4 */
   --color-lavender: #ddcbe3; /* swatch 5 */

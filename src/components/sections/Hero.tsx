@@ -75,7 +75,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div {...rise(0.68)} className="mt-9 flex flex-wrap gap-3.5">
-            <Link href={hero.ctaPrimary.href} className={`group ${pill.gold}`}>
+            <Link href={hero.ctaPrimary.href} className={`group ${pill.coral}`}>
               {hero.ctaPrimary.label}
               <ArrowLeft
                 className="size-5 transition-transform group-hover:-translate-x-1"

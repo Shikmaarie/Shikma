@@ -71,7 +71,7 @@ export default function CheckoutForm() {
         <p className="text-lg text-fg2">העגלה שלך ריקה.</p>
         <Link
           href="/store"
-          className="rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-3.5 font-bold text-void"
+          className="rounded-full bg-coral ring-1 ring-coral-ring px-8 py-3.5 font-bold text-ink hover:bg-coral-dp hover:text-ivory"
         >
           לגלישה בחנות
         </Link>
@@ -133,7 +133,7 @@ export default function CheckoutForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-4 text-base font-bold text-void transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+          className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-coral ring-1 ring-coral-ring px-8 py-4 text-base font-bold text-ink transition hover:bg-coral-dp hover:text-ivory disabled:cursor-not-allowed disabled:opacity-60"
         >
           {submitting ? (
             <>

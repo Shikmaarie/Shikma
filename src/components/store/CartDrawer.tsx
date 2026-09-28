@@ -82,7 +82,7 @@ export default function CartDrawer() {
                 <Link
                   href="/store"
                   onClick={close}
-                  className="rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-7 py-3 text-sm font-bold text-void"
+                  className="rounded-full bg-coral ring-1 ring-coral-ring px-7 py-3 text-sm font-bold text-ink hover:bg-coral-dp hover:text-ivory"
                 >
                   לגלישה בחנות
                 </Link>
@@ -168,7 +168,7 @@ export default function CartDrawer() {
                   <Link
                     href="/checkout"
                     onClick={close}
-                    className="mt-5 flex items-center justify-center rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-6 py-4 font-bold text-void transition hover:brightness-110"
+                    className="mt-5 flex items-center justify-center rounded-full bg-coral ring-1 ring-coral-ring px-6 py-4 font-bold text-ink transition hover:bg-coral-dp hover:text-ivory"
                   >
                     למעבר לתשלום
                   </Link>

@@ -123,7 +123,7 @@ export default function Header() {
               <Link
                 href={headerCta.href}
                 className={`px-6 py-2.5 text-sm ${
-                  scrolled || onPaper ? pill.solid : pill.gold
+                  pill.solid
                 }`}
               >
                 {headerCta.label}

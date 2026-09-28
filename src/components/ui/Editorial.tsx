@@ -218,13 +218,19 @@ export function DoodleArrow({ className = "" }: { className?: string }) {
 const pillBase =
   "inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-bold transition";
 
+/**
+ * One rule across the site, taken from the reference boards:
+ * coral acts, gold decorates. Gold carries the icons, the rules, the stamp
+ * and the figures; it no longer carries a button, so the eye has exactly
+ * one thing to find in a band.
+ */
 export const pill = {
-  /** Deep teal — the primary action on light ground. */
+  /** The action. Ink on coral measures 6.87:1, on paper and on teal alike. */
+  coral: `${pillBase} bg-coral text-ink ring-1 ring-coral-ring hover:bg-coral-dp hover:text-ivory`,
+  /** The header's persistent action, kept apart from a section's own. */
   solid: `${pillBase} bg-teal text-ivory hover:bg-teal-2`,
-  /** Gold — the primary action on dark ground. */
+  /** Ornament only. Kept for a surface that needs gold to read as a button. */
   gold: `${pillBase} bg-gradient-to-l from-gold-dp via-gold to-gold-lt text-void hover:brightness-110`,
-  /** Coral — the warm secondary, borrowed from the swatch sheet. */
-  coral: `${pillBase} bg-coral text-ink hover:bg-coral-dp hover:text-ivory`,
   /** Outline that reads on whichever ground it lands on. */
   ghost: `${pillBase} border border-line-strong text-fg hover:border-current hover:text-accent`,
 } as const;

@@ -42,7 +42,7 @@ export default function Contact() {
               href={`https://wa.me/${site.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className={pill.gold}
+              className={pill.coral}
             >
               <MessageCircle className="size-5" aria-hidden="true" />
               לשיחה בוואטסאפ

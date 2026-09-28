@@ -3,6 +3,11 @@ import type { PhotoSlot } from "@/components/ui/Editorial";
 /**
  * Every photograph the site uses, in one place.
  *
+ * Two of them are cut out of their ground. `hero` was supplied that way;
+ * `story` was cut here from a white studio frame, which is why it sits on
+ * a pale band and not on the teal — its hair edge is clean against paper
+ * and shows a faint wisp against deep colour.
+ *
  * The design is photography-led: Racheli appears in the hero, beside
  * the pull-quote, in the story chapter and in the podcast band. The
  * files come from her own shoots — see README, „תמונות”.
@@ -27,9 +32,16 @@ export const photos = {
     brief: "רחלי על הבמה מול קהל — לרוחב, פורמט קטן",
   },
   story: {
+    src: "/photos/racheli-portrait.webp",
+    alt: "רחלי חדד",
+    brief: "פורטרט חתוך מרקע — לצד פרק הסיפור האישי, על רקע בהיר",
+  },
+  /** The dark studio frame. Held for a band that wants a framed photograph
+   *  rather than a figure standing on the ground. */
+  studio: {
     src: "/photos/racheli-hero.webp",
     alt: "רחלי חדד",
-    brief: "פורטרט סטודיו ממוסגר — לצד פרק הסיפור האישי",
+    brief: "פורטרט סטודיו, תאורת זהב על רקע כהה",
   },
   podcast: {
     src: "/photos/racheli-speaking.webp",

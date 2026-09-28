@@ -37,7 +37,8 @@ export default function AddToCartButton({
   const base = `inline-flex w-full items-center justify-center gap-2 rounded-full font-bold transition ${
     size === "lg" ? "px-8 py-4 text-base" : "px-6 py-3 text-sm"
   }`;
-  const solid = `${base} bg-gradient-to-l from-gold-dp via-gold to-gold-lt text-void hover:brightness-110`;
+  // Coral acts, gold decorates — the same rule the bands follow.
+  const solid = `${base} bg-coral text-ink ring-1 ring-coral-ring hover:bg-coral-dp hover:text-ivory`;
 
   if (product.landing && product.mode !== "purchase") {
     return (

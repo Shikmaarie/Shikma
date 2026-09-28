@@ -28,7 +28,7 @@ export default function Podcast() {
               href={podcast.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group mt-8 ${pill.solid}`}
+              className={`group mt-8 ${pill.coral}`}
             >
               <Headphones className="size-5" aria-hidden="true" />
               להאזנה לפרקים

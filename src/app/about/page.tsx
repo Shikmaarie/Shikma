@@ -80,7 +80,7 @@ export default function AboutPage() {
             <Reveal delay={0.16}>
               <Link
                 href="/contact"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-l from-gold-dp via-gold to-gold-lt px-8 py-4 font-bold text-void transition hover:brightness-110"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-coral ring-1 ring-coral-ring px-8 py-4 font-bold text-ink transition hover:bg-coral-dp hover:text-ivory"
               >
                 בואו נדבר
                 <ArrowLeft
