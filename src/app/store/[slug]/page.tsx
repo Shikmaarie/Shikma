@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, Check, ExternalLink, ShieldCheck, Sparkles } from "lucide-react";
 import AddToCartButton from "@/components/store/AddToCartButton";
 import PriceTag from "@/components/store/PriceTag";
 import ProductCard from "@/components/store/ProductCard";
 import ProductSigil from "@/components/store/ProductSigil";
+import PageHeader from "@/components/ui/PageHeader";
 import {
   categoryHrefs,
   categoryLabels,
@@ -68,8 +69,17 @@ export default async function ProductPage({ params }: Params) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="px-5 pt-36 pb-24 sm:px-8">
-        <div className="mx-auto w-full max-w-7xl">
+      {/*
+        The same opening band as every other route, so a program page is not
+        the odd one out and the fixed header always has a dark ground to
+        read against at the top of the page.
+      */}
+      <PageHeader
+        eyebrow={categoryLabels[product.category]}
+        title={product.name}
+        accent={product.tagline}
+        sub={product.summary}
+        breadcrumb={
           <Link
             href={categoryHrefs[product.category]}
             className="group inline-flex items-center gap-2 text-sm text-fg3 transition hover:text-accent"
@@ -80,31 +90,26 @@ export default async function ProductPage({ params }: Params) {
             />
             חזרה ל{categoryLabels[product.category]}
           </Link>
+        }
+      >
+        {product.badge && (
+          <span className="mt-7 inline-block rounded-full border border-line-strong bg-coral/20 px-4 py-1.5 text-[11px] font-bold tracking-[0.14em] text-accent">
+            {product.badge}
+          </span>
+        )}
+      </PageHeader>
 
-          <div className="mt-8 grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
+      <article className="px-5 pt-16 pb-24 sm:px-8">
+        <div className="mx-auto w-full max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
             <div>
-              <span className="rounded-full border border-line-strong bg-teal/40 px-4 py-1.5 text-[11px] font-bold tracking-[0.16em] text-accent/85">
-                {categoryLabels[product.category]}
-              </span>
-
-              <h1 className="mt-6 font-display text-4xl leading-[1.1] font-black text-fg sm:text-5xl lg:text-6xl">
-                {product.name}
-              </h1>
-              <p className="mt-4 text-lg font-medium text-accent">
-                {product.tagline}
-              </p>
-
-              <p className="mt-8 text-lg leading-relaxed text-fg2">
-                {product.summary}
-              </p>
-
               {product.detail && (
-                <p className="mt-4 leading-relaxed text-fg3">
+                <p className="text-lg leading-relaxed text-fg2">
                   {product.detail}
                 </p>
               )}
 
-              <section className="mt-14">
+              <section className={product.detail ? "mt-14" : ""}>
                 <h2 className="flex items-center gap-3 font-display text-2xl font-bold text-fg">
                   <Sparkles className="size-5 text-accent" aria-hidden="true" />
                   מה מקבלים
@@ -161,12 +166,6 @@ export default async function ProductPage({ params }: Params) {
                 </div>
 
                 <div className="p-8">
-                {product.badge && (
-                  <span className="mb-5 inline-block rounded-full bg-coral/25 px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-accent">
-                    {product.badge}
-                  </span>
-                )}
-
                 <PriceTag product={product} size="lg" />
 
                 {product.mode === "purchase" && (
@@ -184,6 +183,20 @@ export default async function ProductPage({ params }: Params) {
                 <div className="mt-7">
                   <AddToCartButton slug={product.slug} size="lg" />
                 </div>
+
+                {/* Kept beside the cart, not in place of it: this product can
+                    be bought here, and the landing page is the fuller read. */}
+                {product.landing && product.mode === "purchase" && (
+                  <a
+                    href={product.landing}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex w-full items-center justify-center gap-2 text-sm font-semibold text-fg2 transition hover:text-accent"
+                  >
+                    כל הפרטים בעמוד התוכנית
+                    <ExternalLink className="size-4" aria-hidden="true" />
+                  </a>
+                )}
 
                 {/* The notebook only makes sense alongside the book. */}
                 {product.slug === "first-100k-book" && (
@@ -206,9 +219,11 @@ export default async function ProductPage({ params }: Params) {
                     aria-hidden="true"
                   />
                   <span>
-                    {product.mode === "purchase"
-                      ? "התשלום מתבצע בעמוד סליקה מאובטח של קארדקום בתקן PCI-DSS. פרטי האשראי אינם עוברים דרך האתר ואינם נשמרים בו."
-                      : "נדבר בשיחה קצרה, נבין איפה אתם נמצאים, ורק אז נחליט ביחד אם זה מתאים."}
+                    {product.landing && product.mode !== "purchase"
+                      ? "הכפתור מוביל לעמוד התוכנית, שם נמצאים כל הפרטים וטופס ההרשמה. העמוד נפתח בלשונית חדשה."
+                      : product.mode === "purchase"
+                        ? "התשלום מתבצע בעמוד סליקה מאובטח של קארדקום בתקן PCI-DSS. פרטי האשראי אינם עוברים דרך האתר ואינם נשמרים בו."
+                        : "נדבר בשיחה קצרה, נבין איפה אתם נמצאים, ורק אז נחליט ביחד אם זה מתאים."}
                   </span>
                 </div>
                 </div>

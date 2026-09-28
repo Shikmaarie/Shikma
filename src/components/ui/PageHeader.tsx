@@ -14,6 +14,7 @@ export default function PageHeader({
   accent,
   sub,
   script,
+  breadcrumb,
   children,
 }: {
   eyebrow: string;
@@ -23,6 +24,8 @@ export default function PageHeader({
   sub?: string;
   /** Optional handwritten aside. One short line. */
   script?: string;
+  /** Sits above the eyebrow — a way back to where the visitor came from. */
+  breadcrumb?: React.ReactNode;
   children?: React.ReactNode;
 }) {
   return (
@@ -40,6 +43,7 @@ export default function PageHeader({
       />
 
       <div className="relative mx-auto w-full max-w-7xl">
+        {breadcrumb && <div className="mb-6">{breadcrumb}</div>}
         <Eyebrow>{eyebrow}</Eyebrow>
 
         <h1 className="mt-6 max-w-4xl font-display text-[2rem] leading-[1.12] font-black text-fg sm:text-[2.7rem] lg:text-[3.2rem]">

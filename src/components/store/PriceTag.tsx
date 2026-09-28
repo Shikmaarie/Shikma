@@ -14,14 +14,19 @@ export default function PriceTag({
   const big = size === "lg" ? "text-5xl" : "text-3xl";
 
   if (product.mode === "application") {
+    // With a landing page the button no longer opens a fit call, so saying
+    // the price is settled in one would describe a step that isn't there.
+    const [headline, note] = product.landing
+      ? ["הפרטים בעמוד התוכנית", "התנאים והמחיר מופיעים שם, יחד עם טופס ההרשמה."]
+      : [
+          "בשיחת התאמה",
+          "המסלול והתשלום נקבעים יחד, לפי השלב שבו אתם נמצאים.",
+        ];
+
     return (
       <div>
-        <p className="font-display text-2xl font-bold text-accent">
-          בשיחת התאמה
-        </p>
-        <p className="mt-1 text-xs text-fg3">
-          המסלול והתשלום נקבעים יחד, לפי השלב שבו אתם נמצאים.
-        </p>
+        <p className="font-display text-2xl font-bold text-accent">{headline}</p>
+        <p className="mt-1 text-xs text-fg3">{note}</p>
       </div>
     );
   }

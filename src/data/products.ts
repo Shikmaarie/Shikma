@@ -26,6 +26,16 @@ export type Product = {
   recurring?: { period: "month"; amount: number };
   /** Shown under the price, e.g. shipping or renewal wording. */
   priceNote?: string;
+  /**
+   * The program's own landing page, on its subdomain.
+   *
+   * When set, it becomes the primary call to action everywhere this product
+   * appears: the landing page already carries the registration or payment
+   * funnel the campaigns point at, and a second funnel on this site would
+   * only compete with it. The page here stays the description a visitor
+   * reads first, and the one search engines index.
+   */
+  landing?: string;
   badge?: string;
   featured?: boolean;
   summary: string;
@@ -40,6 +50,7 @@ export const products: Product[] = [
   /* ---------------- Business programs ---------------- */
   {
     slug: "platinum-business",
+    landing: "https://platinum.rachelihadad.co.il",
     name: "Platinum Business",
     tagline: "תוכנית עילית שנתית · 12 חודשים",
     category: "business",
@@ -70,6 +81,7 @@ export const products: Product[] = [
   },
   {
     slug: "dna-of-business",
+    landing: "https://business.dna.rachelihadad.co.il",
     name: "ה-DNA של העסק",
     tagline: "תוכנית הדגל · 8 חודשים · 4 סמינרי עומק",
     category: "business",
@@ -95,6 +107,7 @@ export const products: Product[] = [
   },
   {
     slug: "independence",
+    landing: "https://independence.rachelihadad.co.il",
     name: "לצאת לעצמאות",
     tagline: "6 חודשי ליווי · משכירות לעסק אונליין",
     category: "business",
@@ -203,6 +216,9 @@ export const products: Product[] = [
   /* ---------------- Club ---------------- */
   {
     slug: "business-club",
+    // Spelt "masrers" on the live subdomain. Confirm before publishing, and
+    // ask for a "mastersclub" alias: the address is easy to mistype.
+    landing: "https://masrersclub.rachelihadad.co.il",
     name: "מועדון העסקים",
     tagline: "מנוי חודשי · ללא התחייבות",
     category: "club",

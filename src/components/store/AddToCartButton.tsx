@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowLeft, Check, MessageCircle, ShoppingBag } from "lucide-react";
+import { ArrowLeft, Check, ExternalLink, MessageCircle, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
 import { getProduct } from "@/data/products";
 import { site } from "@/data/site";
@@ -11,6 +11,13 @@ import { site } from "@/data/site";
  * The single call-to-action for a product. What it does depends on the
  * product's mode: purchasable items go into the cart, high-ticket programs
  * open a fit call, and lead magnets link to registration.
+ *
+ * A program with its own landing page takes it over when there is nothing
+ * to take over: a high-ticket program has no checkout here, so its landing
+ * page carries the funnel the campaigns already drive traffic into, and
+ * sending the visitor to a fit-call form instead would split the path in
+ * two. A product that really can be bought here keeps its cart — the
+ * landing page is offered beside it, never instead of it.
  */
 export default function AddToCartButton({
   slug,
@@ -31,6 +38,21 @@ export default function AddToCartButton({
     size === "lg" ? "px-8 py-4 text-base" : "px-6 py-3 text-sm"
   }`;
   const solid = `${base} bg-gradient-to-l from-gold-dp via-gold to-gold-lt text-void hover:brightness-110`;
+
+  if (product.landing && product.mode !== "purchase") {
+    return (
+      <a
+        href={product.landing}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={solid}
+      >
+        {label ?? "לפרטים והרשמה"}
+        <ExternalLink className="size-4" aria-hidden="true" />
+        <span className="sr-only">— {product.name}, נפתח בלשונית חדשה</span>
+      </a>
+    );
+  }
 
   if (product.mode === "application") {
     return (
