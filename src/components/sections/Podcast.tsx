@@ -5,9 +5,14 @@ import { Photo, pill } from "@/components/ui/Editorial";
 import { podcast } from "@/data/site";
 import { photos } from "@/data/media";
 
+/**
+ * Pale, like the rest of the page's middle. Only the opening band and the
+ * pull-quote card are dark: the reference spends that contrast twice and
+ * no more, and a third dark band here flattened the one that matters.
+ */
 export default function Podcast() {
   return (
-    <Section id="podcast" surface="dark" className="bg-night" bleed>
+    <Section id="podcast" surface="light" className="bg-mist" bleed>
       <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_0.8fr] lg:py-24">
         <Reveal>
           <div className="max-w-xl">
@@ -23,7 +28,7 @@ export default function Podcast() {
               href={podcast.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group mt-8 ${pill.gold}`}
+              className={`group mt-8 ${pill.solid}`}
             >
               <Headphones className="size-5" aria-hidden="true" />
               להאזנה לפרקים
@@ -50,19 +55,20 @@ export default function Podcast() {
   );
 }
 
-/** Purely decorative equaliser bars. */
+/** Purely decorative equaliser bars. Teal, not gold: the band went
+ *  pale, and gold on ivory measures 2.8:1 — the bars simply vanished. */
 function Waveform({ className = "" }: { className?: string }) {
   const bars = [42, 78, 30, 96, 58, 84, 36, 68, 24, 88, 46, 72];
 
   return (
     <div
-      className={`flex h-14 items-end justify-center gap-1.5 rounded-full border border-gold/25 bg-void/85 px-6 backdrop-blur-md ${className}`}
+      className={`flex h-14 items-end justify-center gap-1.5 rounded-full border border-gold/30 bg-ivory/95 px-6 backdrop-blur-md ${className}`}
       aria-hidden="true"
     >
       {bars.map((h, i) => (
         <span
           key={i}
-          className="w-1.5 rounded-full bg-gradient-to-t from-gold-dp to-gold-lt animate-pulse-glow"
+          className="w-1.5 rounded-full bg-gradient-to-t from-teal to-teal-3 animate-pulse-glow"
           style={{
             height: `${h * 0.55}%`,
             animationDelay: `${i * 0.18}s`,

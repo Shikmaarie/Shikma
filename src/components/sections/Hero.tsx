@@ -118,27 +118,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ---- Credential strip, welded to the foot of the band ---- */}
-      <div className="relative border-t border-gold/20 bg-void/30 backdrop-blur-sm">
-        <dl className="mx-auto grid w-full max-w-7xl grid-cols-2 gap-x-6 gap-y-7 px-5 py-8 sm:grid-cols-4 sm:px-8">
-          {hero.stats.map((stat) => (
-            <div key={stat.label} className="border-r border-gold/25 pr-4">
-              <dt className="sr-only">{stat.label}</dt>
-              <dd>
-                <span className="ltr-nums block font-display text-3xl font-black text-gold-lt sm:text-4xl">
-                  {stat.value}
-                </span>
-                <span className="mt-1 block text-xs font-semibold text-gold/80">
-                  {stat.suffix}
-                </span>
-                <span className="mt-1 block text-xs leading-snug text-fg3">
-                  {stat.label}
-                </span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
     </section>
   );
 }

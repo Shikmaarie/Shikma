@@ -69,7 +69,7 @@ export default function PainPromise() {
               snapshot, so the two never meet. */}
           <Seal
             text={hero.seal}
-            className="absolute bottom-10 right-10 hidden size-36 text-gold-lt/85 xl:block"
+            className="absolute bottom-10 right-10 hidden size-40 text-gold-lt xl:block"
           />
 
           {/* The snapshot that breaks the card's edge — the reference's
