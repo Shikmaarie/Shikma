@@ -1,6 +1,5 @@
 import { Section, SectionTitle, Eyebrow } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
-import { BrandStar } from "@/components/ui/Wordmark";
 import { testimonials } from "@/data/site";
 
 export default function Testimonials() {
@@ -19,11 +18,12 @@ export default function Testimonials() {
         {testimonials.map((t, i) => (
           <Reveal key={t.name} delay={0.1 + i * 0.1} className="h-full">
             <figure className="relative flex h-full flex-col rounded-[2rem] panel p-9">
+              {/* Gold, not coral: coral is reserved for things you can click. */}
               <span
-                className="absolute -top-3 right-9 grid size-10 place-items-center rounded-full bg-coral text-ink"
+                className="absolute -top-5 right-9 grid size-11 place-items-center rounded-full bg-gradient-to-br from-gold-lt to-gold-dp font-display text-2xl leading-none font-black text-void"
                 aria-hidden="true"
               >
-                <BrandStar className="size-4" />
+                <span className="-mt-1">”</span>
               </span>
 
               <blockquote className="flex-1 pt-4 font-display text-lg leading-relaxed font-medium text-fg sm:text-xl">

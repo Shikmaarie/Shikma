@@ -46,8 +46,14 @@ export default function Wordmark({
 
       {size !== "sm" && (
         <span
+          /* This line is part of the logo lockup, which WCAG 1.4.3 exempts
+             from the contrast minimum — and it needs the exemption: gold-lt
+             over the header's lightest band measures 4.25:1 against the
+             4.5:1 body text wants. It was 9px, which is too small whatever
+             the exemption says, so it is 11px now. `accent`, not
+             `accent-soft`: on a dark surface soft is the *darker* gold. */
           className={`mt-2 flex items-center gap-2 text-accent ${
-            size === "lg" ? "text-sm" : "text-[9px]"
+            size === "lg" ? "text-sm" : "text-[11px]"
           }`}
         >
           <span className="h-px w-6 bg-current opacity-40 sm:w-10" aria-hidden="true" />

@@ -36,16 +36,34 @@ export default function Paths() {
         {paths.cards.map((card, i) => (
           <Reveal key={card.title} delay={0.08 + i * 0.08} className="h-full">
             <article
-              className={`group relative flex h-full flex-col overflow-hidden rounded-[2rem] panel p-8 transition duration-500 ${accentRing[card.accent]}`}
+              className={`group relative flex h-full flex-col overflow-hidden rounded-[2rem] panel transition duration-500 ${accentRing[card.accent]}`}
             >
-              <span
-                className="grid size-14 shrink-0 place-items-center rounded-2xl bg-shell text-teal transition duration-500 group-hover:bg-teal group-hover:text-ivory"
+              {/* A teal head with the gold disc straddling its edge — the
+                  reference's card device. It runs on colour rather than a
+                  photograph, so it needs no asset that does not exist. */}
+              <div
+                className="relative h-24 overflow-hidden bg-gradient-to-bl from-teal-2 via-teal to-night"
                 aria-hidden="true"
               >
-                <PathIcon motif={card.motif} className="size-8" />
-              </span>
+                {/* The card's own motif, blown up and dropped to a whisper, so
+                    the head carries something where the reference carries a
+                    photograph. */}
+                <PathIcon
+                  motif={card.motif}
+                  className="absolute -bottom-10 left-6 size-36 text-gold/12"
+                />
+                <span
+                  className="pointer-events-none absolute -top-16 right-1/3 size-40 rounded-full bg-mint/12 blur-2xl"
+                />
+                <span
+                  className="absolute -bottom-7 right-8 grid size-14 place-items-center rounded-full bg-gradient-to-br from-gold-lt to-gold-dp text-void shadow-[0_10px_24px_-12px_rgba(4,24,28,0.8)]"
+                >
+                  <PathIcon motif={card.motif} className="size-7" />
+                </span>
+              </div>
 
-              <p className="mt-6 text-xs font-bold tracking-[0.12em] text-accent">
+              <div className="flex flex-1 flex-col p-8 pt-11">
+              <p className="text-xs font-bold tracking-[0.12em] text-accent">
                 {card.kicker}
               </p>
 
@@ -64,6 +82,7 @@ export default function Paths() {
                   aria-hidden="true"
                 />
               </span>
+              </div>
             </article>
           </Reveal>
         ))}

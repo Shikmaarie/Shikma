@@ -156,10 +156,13 @@ body {
 @utility bg-card-2 { background-color: var(--card-2); }
 
 /* ---- Utility layers ---- */
+/* The dark end of the gradient starts at `gold`, not `gold-dp`: against the
+   lightest part of the opening band `gold-dp` measures 2.61:1, under the 3:1
+   large text needs, while `gold` holds 3.35:1 across the whole band. */
 @utility text-gradient-gold {
   background-image: linear-gradient(
     100deg,
-    var(--color-gold-dp) 0%,
+    var(--color-gold) 0%,
     var(--color-gold-lt) 25%,
     var(--color-gold) 50%,
     var(--color-gold-lt) 75%,
