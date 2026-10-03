@@ -22,9 +22,16 @@ import type { PhotoSlot } from "@/components/ui/Editorial";
  */
 export const photos = {
   hero: {
-    src: "/photos/racheli-story.webp",
+    src: "/photos/racheli-office.webp",
     alt: "רחלי חדד",
-    brief: "פורטרט חתוך מרקע — עומד על רצפת פס הפתיחה",
+    brief: "פורטרט במשרד, ממוסגר — פס הפתיחה",
+  },
+  /** Same shoot as the opening band — the same blazer and the same hand on
+   *  the chin — so the two must not share a page. Held for another one. */
+  portraitCut: {
+    src: "/photos/racheli-portrait.webp",
+    alt: "רחלי חדד",
+    brief: "פורטרט חתוך מרקע, ז'קט תכלת",
   },
   quote: {
     src: "/photos/racheli-stage.webp",
@@ -32,9 +39,9 @@ export const photos = {
     brief: "רחלי על הבמה מול קהל — לרוחב, פורמט קטן",
   },
   story: {
-    src: "/photos/racheli-portrait.webp",
+    src: "/photos/racheli-story.webp",
     alt: "רחלי חדד",
-    brief: "פורטרט חתוך מרקע — לצד פרק הסיפור האישי, על רקע בהיר",
+    brief: "פורטרט חתוך מרקע, ז'קט קורל — לצד פרק הסיפור האישי",
   },
   /** The dark studio frame. Held for a band that wants a framed photograph
    *  rather than a figure standing on the ground. */

@@ -85,16 +85,16 @@ export default function Hero() {
           y={40}
           className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end"
         >
-          {/* A cut-out, so no frame and no crop: she stands on the foot of
-              the band the way the reference does, with the teal reading as
-              ground rather than as a backdrop behind a photograph. */}
+          {/* Framed, not cut out. This photograph carries its own room —
+              a window, a plant, the back of a chair — and the background is
+              nowhere near uniform enough to lift her off it cleanly. The
+              frame keeps the room, and the arch is the brand's own shape. */}
           <Photo
             slot={photos.hero}
             priority
-            fit="contain"
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="aspect-4/5 w-full lg:aspect-auto lg:h-[41rem]"
-            imageClassName="object-bottom lg:object-[left_bottom]"
+            sizes="(min-width: 1024px) 42vw, 100vw"
+            className="aspect-4/5 w-full rounded-t-[11rem] rounded-b-[2rem] lg:aspect-auto lg:h-[39rem]"
+            imageClassName="object-[center_top]"
           />
 
         </Reveal>
