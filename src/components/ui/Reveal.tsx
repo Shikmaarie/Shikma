@@ -1,36 +1,59 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 /**
- * Scroll-triggered entrance. Respects reduced-motion by rendering the content
- * in its final state with no transform at all.
+ * Scroll-triggered entrance.
+ *
+ * The hidden state is CSS behind `.js`, never an inline style, so the markup
+ * this renders on the server is readable on its own. If the script never
+ * runs the content simply shows; if it does, the observer brings each block
+ * in as it arrives. Reduced motion is handled in the stylesheet.
  */
 export default function Reveal({
   children,
   delay = 0,
   y = 26,
-  className,
+  className = "",
 }: {
   children: ReactNode;
+  /** Seconds, to match the call sites this replaced. */
   delay?: number;
   y?: number;
   className?: string;
 }) {
-  const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
 
-  if (reduced) return <div className={className}>{children}</div>;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // Anything already on screen when the page loads should not wait.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      },
+      { rootMargin: "-80px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      ref={ref}
+      className={`reveal ${className}`}
+      style={
+        {
+          "--reveal-delay": `${Math.round(delay * 1000)}ms`,
+          "--reveal-y": `${y}px`,
+        } as React.CSSProperties
+      }
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

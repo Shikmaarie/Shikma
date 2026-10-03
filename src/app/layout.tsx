@@ -73,6 +73,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="he" dir="rtl" className={rubik.variable}>
+      <head>
+        {/* Before first paint, so the entrance animations can hide their
+            content — and so that without this script nothing is hidden. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add("js")`,
+          }}
+        />
+      </head>
       <body data-surface="light" className="min-h-screen bg-ivory antialiased">
         <a
           href="#main"

@@ -232,3 +232,37 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Entrance animations.
+ *
+ * Visible by default, on purpose. The hidden state lives behind `.js`, which
+ * a one-line script in <head> adds before first paint, so a visitor whose
+ * JavaScript never arrives — blocked, failed, sandboxed — reads the whole
+ * page instead of a blank one. Doing this the other way round shipped 47
+ * blocks of the home page with `opacity:0` baked into the HTML.
+ */
+.reveal {
+  --reveal-y: 26px;
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-y));
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

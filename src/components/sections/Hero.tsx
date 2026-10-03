@@ -1,25 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { BrandStar } from "@/components/ui/Wordmark";
 import { Photo, ScriptLine, pill } from "@/components/ui/Editorial";
+import Reveal from "@/components/ui/Reveal";
 import { hero } from "@/data/site";
 import { photos } from "@/data/media";
 
 export default function Hero() {
-  const reduced = useReducedMotion();
-
-  const rise = (delay: number) =>
-    reduced
-      ? {}
-      : {
-          initial: { opacity: 0, y: 26 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] as const },
-        };
-
   return (
     <section
       data-surface="dark"
@@ -39,17 +26,18 @@ export default function Hero() {
       <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-end lg:gap-6">
         {/* ---- Copy ---- */}
         <div className="pb-14 lg:pb-28">
-          <motion.p
-            {...rise(0.05)}
+          <Reveal delay={0.05}>
+          <p
             className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-void/25 px-4 py-2 text-[11px] font-medium tracking-[0.16em] text-gold-lt backdrop-blur-md sm:text-xs"
           >
             <BrandStar className="size-3 text-gold" />
             {hero.eyebrow}
-          </motion.p>
+          </p>
+          </Reveal>
 
           <h1 className="mt-7 font-display text-[2.35rem] leading-[1.08] sm:text-5xl lg:text-[3.55rem]">
             {hero.title.map((line, i) => (
-              <motion.span key={line.text} {...rise(0.14 + i * 0.09)} className="block">
+              <Reveal key={line.text} delay={0.14 + i * 0.09} className="block">
                 <span
                   className={
                     line.gold
@@ -59,22 +47,21 @@ export default function Hero() {
                 >
                   {line.text}
                 </span>
-              </motion.span>
+              </Reveal>
             ))}
           </h1>
 
-          <motion.div {...rise(0.5)}>
+          <Reveal delay={0.5}>
             <ScriptLine className="mt-6">{hero.script}</ScriptLine>
-          </motion.div>
+          </Reveal>
 
-          <motion.p
-            {...rise(0.58)}
-            className="mt-6 max-w-xl leading-relaxed text-fg2 sm:text-lg"
-          >
-            {hero.sub}
-          </motion.p>
+          <Reveal delay={0.58}>
+            <p className="mt-6 max-w-xl leading-relaxed text-fg2 sm:text-lg">
+              {hero.sub}
+            </p>
+          </Reveal>
 
-          <motion.div {...rise(0.68)} className="mt-9 flex flex-wrap gap-3.5">
+          <Reveal delay={0.68} className="mt-9 flex flex-wrap gap-3.5">
             <Link href={hero.ctaPrimary.href} className={`group ${pill.coral}`}>
               {hero.ctaPrimary.label}
               <ArrowLeft
@@ -89,18 +76,13 @@ export default function Hero() {
             >
               {hero.ctaSecondary.label}
             </Link>
-          </motion.div>
+          </Reveal>
         </div>
 
         {/* ---- Portrait ---- */}
-        <motion.div
-          {...(reduced
-            ? {}
-            : {
-                initial: { opacity: 0, y: 40 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 1, delay: 0.25, ease: [0.22, 1, 0.36, 1] as const },
-              })}
+        <Reveal
+          delay={0.25}
+          y={40}
           className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none lg:justify-self-end"
         >
           {/* A cut-out, so no frame and no crop: she stands on the foot of
@@ -115,7 +97,7 @@ export default function Hero() {
             imageClassName="object-bottom lg:object-[left_bottom]"
           />
 
-        </motion.div>
+        </Reveal>
       </div>
 
     </section>
