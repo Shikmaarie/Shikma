@@ -5,8 +5,9 @@ import PageHeader from "@/components/ui/PageHeader";
 import Reveal from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import Faq from "@/components/sections/Faq";
-import { products } from "@/data/products";
 import { contactPage, site } from "@/data/site";
+import { Suspense } from "react";
+import RequestedProgram from "@/components/ui/RequestedProgram";
 
 export const metadata: Metadata = {
   title: "צור קשר",
@@ -14,15 +15,7 @@ export const metadata: Metadata = {
     "שיחת התאמה עם רחלי חדד — בלי התחייבות ובלי מכירה בכוח. ספרו לי איפה אתם היום.",
 };
 
-export default async function ContactPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ program?: string }>;
-}) {
-  const { program } = await searchParams;
-  // Only echo a slug that actually exists, so the URL can't inject text.
-  const requested = products.find((p) => p.slug === program);
-
+export default function ContactPage() {
   return (
     <>
       <PageHeader
@@ -32,15 +25,11 @@ export default async function ContactPage({
       />
 
       <Section className="bg-ivory !pt-6">
-        {requested && (
-          <Reveal>
-            <p className="mb-10 rounded-3xl border border-line-strong bg-mint/20 px-6 py-5 text-center text-fg">
-              מתעניינים ב
-              <span className="font-bold text-accent">{requested.name}</span> —
-              נהדר. ציינו את זה בפנייה ואחזור אליכם עם כל הפרטים.
-            </p>
-          </Reveal>
-        )}
+        <Reveal>
+          <Suspense fallback={null}>
+            <RequestedProgram />
+          </Suspense>
+        </Reveal>
 
         <div className="grid gap-6 md:grid-cols-3">
           <Reveal className="h-full">

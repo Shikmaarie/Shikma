@@ -2,6 +2,10 @@ import type { MetadataRoute } from "next";
 import { products } from "@/data/products";
 import { baseUrl as base, isLiveSite } from "@/lib/site-url";
 
+/* Evaluated once at build time, which is what both of these already were.
+   Declaring it lets the static preview build emit them as plain files. */
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Nothing to offer a crawler that is not allowed to crawl us anyway.
   if (!isLiveSite) return [];

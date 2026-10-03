@@ -4,6 +4,9 @@ import { join } from "node:path";
 import { site } from "@/data/site";
 import { visual } from "@/lib/bidi";
 
+/* Rendered once at build time, so the static preview build can emit it. */
+export const dynamic = "force-static";
+
 export const runtime = "nodejs";
 export const alt = `${site.name} — ${site.role}`;
 export const size = { width: 1200, height: 630 };
