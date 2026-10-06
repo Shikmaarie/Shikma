@@ -20,12 +20,16 @@ import { Button } from "@/components/ui/button";
 
 import heroBgAsset from "@/assets/hero-bg.webp.asset.json";
 import logoGoldAsset from "@/assets/logo-gold.webp.asset.json";
+import familyAsset from "@/assets/family-photo.png.asset.json";
 import proof1 from "@/assets/proof-1.jpg.asset.json";
 import proof2 from "@/assets/proof-2.jpg.asset.json";
 import proof3 from "@/assets/proof-3.jpg.asset.json";
 
 const HERO_BG = heroBgAsset.url;
 const LOGO = logoGoldAsset.url;
+// רחלי אישרה במפורש את פרסום התמונה המשפחתית הזו.
+// בלעדיה אסור לפרסם תמונות שרואים בהן פני ילדים.
+const FAMILY_PHOTO = familyAsset.url;
 const PROOFS = [
   { src: proof1.url, width: 1096, height: 473 },
   { src: proof2.url, width: 1114, height: 528 },
@@ -723,9 +727,9 @@ const FOR_WHO = [
   "למי שההכנסה שלו גדלה, אבל העושר שלו לא גדל יחד איתה.",
 ];
 
-/* ה-FAQ. חמש השאלות שמסירות את רוב ההתנגדויות.
-   התשובה האחרונה היא הנקודה: רוב הדפים מפחדים מהשאלה הזו, ודווקא
-   תשובה ישרה עליה מעלה הרשמה. הניסוח ממתין לאישור של רחלי. */
+/* ה-FAQ. ארבע השאלות שמסירות את רוב ההתנגדויות.
+   היתה כאן גם שאלה חמישית, "ינסו למכור לי משהו?", שהוסרה
+   לפי בקשה. לא להחזיר אותה בלי אישור מפורש. */
 const FAQ = [
   {
     q: "אם לא אוכל להיות בשידור חי, יש הקלטה?",
@@ -742,10 +746,6 @@ const FAQ = [
   {
     q: "צריך ידע מוקדם בכלכלה או בהשקעות?",
     a: "לא. מתחילים מההתחלה. מי שכבר משקיע ימצא כאן את השכבה שמתחת להשקעות, זו שמחליטה אם הכסף בכלל מגיע לשם.",
-  },
-  {
-    q: "ינסו למכור לי משהו?",
-    a: "כן, ואני אומרת את זה מראש ולא באותיות קטנות. בסוף הכנס אציג את התוכנית המלאה שלי, למי שירצה להמשיך איתי לעומק. שלושת הימים עומדים בפני עצמם: גם אם לא תקנו כלום, תצאו עם מפת ה־DNA הכלכלית שלכם מלאה.",
   },
 ];
 
@@ -988,6 +988,17 @@ function Sheet() {
               "אולי נותנים לילדים נקודת פתיחה אחרת.",
             ]}
           />
+          {/* בלי מסגרת ריבועית ובלי קופסה מסביב, כמו שאר התמונות בדף */}
+          <figure className="m-0 mt-7">
+            <img
+              src={FAMILY_PHOTO}
+              alt="רחלי חדד עם משפחתה בטיול בחו״ל"
+              width={1086}
+              height={1448}
+              loading="lazy"
+              className="mx-auto block h-auto w-full max-w-[22rem] rounded-[20px]"
+            />
+          </figure>
           <Key className="mt-7">
             חופש כלכלי הוא לא רק מספר בחשבון. הוא כמה מההחלטות בחיים שלכם אתם באמת חופשיים לקבל.
           </Key>
