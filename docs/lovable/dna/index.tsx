@@ -625,7 +625,7 @@ function Hero() {
       />
       <span className="lp-scrim" aria-hidden />
 
-      <div className="relative mx-auto w-full max-w-[44rem] text-center lg:me-0 lg:ms-auto lg:max-w-[34rem] lg:text-right">
+      <div className="relative mx-auto w-full max-w-[44rem] text-center lg:ms-0 lg:me-auto lg:max-w-[34rem] lg:text-right">
         <Eyebrow dark>במיוחד למי שרוצים שהכסף שלהם יתחיל לבנות להם עושר</Eyebrow>
 
         <h1 className="lp-display mt-2.5 text-white [font-size:clamp(30px,6.2vw,46px)] [text-shadow:0_0_44px_hsl(188_73%_15%/0.55)]">
@@ -652,7 +652,9 @@ function Hero() {
           <Cta dark>כן, אני רוצה לבנות עושר</Cta>
         </div>
 
-        <p className="lp-fine mt-3.5 text-[hsl(192_10%_68%)]">{WHATSAPP_LINE}</p>
+        <p className="lp-fine mx-auto mt-3.5 max-w-[30rem] text-[hsl(190_14%_80%)] [text-shadow:0_1px_10px_hsl(var(--void)/0.9)] lg:mx-0">
+          {WHATSAPP_LINE}
+        </p>
       </div>
     </section>
   );
