@@ -7,7 +7,7 @@
    ======================================================================= */
 
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { Check, MessageCircle, CalendarPlus, Video } from "lucide-react";
 
 import logoGoldAsset from "@/assets/logo-gold.webp.asset.json";
@@ -22,14 +22,22 @@ const DESCRIPTION = "המקום שלך לכנס שמור. השלב הבא: הצ�
 const WHATSAPP_GROUP =
   "https://chat.whatsapp.com/JDrsE8PmrPVJZACMbefRqo?s=cl&p=i&mlu=4&ilr=4";
 
-/* שלושת הימים כאירועי יום שלם. השעה המדויקת ירדה מהדף, ולכן גם קובץ
-   היומן לא מפרסם אותה: עדיף שלא תופיע כלל מאשר שתופיע ותהיה לא נכונה.
-   DTEND באירוע יום שלם הוא בלעדי, ומכאן היום שאחרי בכל שורה. */
-const DAYS = [
-  { n: 1, t: "הקוד הסמוי של הכסף", start: "20261013", end: "20261014" },
-  { n: 2, t: "מלכודת ההכנסה", start: "20261014", end: "20261015" },
-  { n: 3, t: "מפת העושר", start: "20261015", end: "20261016" },
-];
+/* הוספה ליומן. אין כאן יצירת קובץ בדפדפן: גרסה קודמת בנתה Blob
+   והורידה אותו דרך <a download>, וזה לא עובד בטלפון. ספארי ב-iOS
+   מתעלם מ-download על blob:, ודפדפני־תוך־אפליקציה (אינסטגרם, פייסבוק),
+   שמהם מגיעה רוב תנועת המודעות, חוסמים הורדות לגמרי.
+
+   במקום זה: קובץ סטטי אמיתי שמוגש מהשרת, שאותו iOS מזהה כיומן ומציע
+   להוסיף, ולצידו קישור ליומן גוגל שהוא https רגיל ועובד בכל מקום. */
+const ICS_FILE = "/dna-of-wealth.ics";
+
+const GOOGLE_CALENDAR =
+  "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+  "&text=" + encodeURIComponent("ה־DNA של העושר · כנס אונליין") +
+  // ביומן גוגל תאריך הסיום הוא בלעדי, ולכן ה-16 בשביל שלושה ימים
+  "&dates=20261013/20261016" +
+  "&details=" +
+  encodeURIComponent("הכנס מתקיים בזום. הלינק ושעת המפגש נשלחים בקבוצת הוואטסאפ של הכנס.");
 
 export const Route = createFileRoute("/thanks")({
   component: ThanksPage,
@@ -94,62 +102,21 @@ function useLeadPixel() {
   }, []);
 }
 
-function buildIcs() {
-  const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-  const esc = (v: string) => v.replace(/([,;\\])/g, "\\$1");
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Racheli Hadad//DNA of Wealth//HE",
-    "CALSCALE:GREGORIAN",
-    "METHOD:PUBLISH",
-  ];
-  DAYS.forEach((d) => {
-    lines.push(
-      "BEGIN:VEVENT",
-      `UID:dna-of-wealth-day-${d.n}@rachelihadad.co.il`,
-      `DTSTAMP:${stamp}`,
-      `DTSTART;VALUE=DATE:${d.start}`,
-      `DTEND;VALUE=DATE:${d.end}`,
-      `SUMMARY:${esc(`ה־DNA של העושר · יום ${d.n}: ${d.t}`)}`,
-      `DESCRIPTION:${esc("הכנס מתקיים בזום. הלינק ושעת המפגש נשלחים בקבוצת הוואטסאפ של הכנס.")}`,
-      "END:VEVENT",
-    );
-  });
-  lines.push("END:VCALENDAR");
-  // RFC 5545 דורש CRLF. ללא זה חלק מלקוחות היומן פשוט לא פותחים את הקובץ.
-  return lines.join("\r\n");
-}
-
 function AddToCalendar() {
-  const [busy, setBusy] = useState(false);
-  const download = () => {
-    setBusy(true);
-    try {
-      const blob = new Blob([buildIcs()], { type: "text/calendar;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "dna-of-wealth.ics";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      // משחררים את ה-Blob רק אחרי שהדפדפן הספיק להתחיל את ההורדה.
-      window.setTimeout(() => URL.revokeObjectURL(url), 4000);
-    } finally {
-      setBusy(false);
-    }
-  };
+  const cls =
+    "lp-focus inline-flex items-center justify-center gap-2.5 rounded-full " +
+    "border border-tq/35 px-7 py-3.5 text-[16px] font-bold text-tq transition hover:bg-tq/5";
   return (
-    <button
-      type="button"
-      onClick={download}
-      disabled={busy}
-      className="lp-focus inline-flex items-center justify-center gap-2.5 rounded-full border border-tq/35 px-7 py-3.5 text-[16px] font-bold text-tq transition hover:bg-tq/5"
-    >
-      <CalendarPlus className="size-5" aria-hidden />
-      הוסיפו את שלושת הימים ליומן
-    </button>
+    <div className="flex flex-wrap items-center justify-center gap-3">
+      <a href={ICS_FILE} className={cls}>
+        <CalendarPlus className="size-5" aria-hidden />
+        הוסיפו ליומן
+      </a>
+      <a href={GOOGLE_CALENDAR} target="_blank" rel="noopener noreferrer" className={cls}>
+        <CalendarPlus className="size-5" aria-hidden />
+        ליומן גוגל
+      </a>
+    </div>
   );
 }
 

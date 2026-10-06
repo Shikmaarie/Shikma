@@ -1,0 +1,34 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Racheli Hadad//DNA of Wealth//HE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:dna-of-wealth-day-1@rachelihadad.co.il
+DTSTAMP:20261006T000000Z
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+SUMMARY:ה־DNA של העושר · יום 1: הקוד הסמוי של ה
+ כסף
+DESCRIPTION:הכנס מתקיים בזום. הלינק ושעת המפג
+ ש נשלחים בקבוצת הוואטסאפ של הכנס.
+END:VEVENT
+BEGIN:VEVENT
+UID:dna-of-wealth-day-2@rachelihadad.co.il
+DTSTAMP:20261006T000000Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+SUMMARY:ה־DNA של העושר · יום 2: מלכודת ההכנסה
+DESCRIPTION:הכנס מתקיים בזום. הלינק ושעת המפג
+ ש נשלחים בקבוצת הוואטסאפ של הכנס.
+END:VEVENT
+BEGIN:VEVENT
+UID:dna-of-wealth-day-3@rachelihadad.co.il
+DTSTAMP:20261006T000000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:ה־DNA של העושר · יום 3: מפת העושר
+DESCRIPTION:הכנס מתקיים בזום. הלינק ושעת המפג
+ ש נשלחים בקבוצת הוואטסאפ של הכנס.
+END:VEVENT
+END:VCALENDAR
