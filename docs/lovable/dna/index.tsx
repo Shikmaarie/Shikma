@@ -22,6 +22,10 @@ import heroBgAsset from "@/assets/hero-bg.webp.asset.json";
 import logoGoldAsset from "@/assets/logo-gold.webp.asset.json";
 import familyAsset from "@/assets/family-photo.png.asset.json";
 import proof1 from "@/assets/proof-1.jpg.asset.json";
+import proof4 from "@/assets/proof-4.webp.asset.json";
+import proof5 from "@/assets/proof-5.webp.asset.json";
+import proof6 from "@/assets/proof-6.webp.asset.json";
+import proof7 from "@/assets/proof-7.webp.asset.json";
 import proof2 from "@/assets/proof-2.jpg.asset.json";
 import proof3 from "@/assets/proof-3.jpg.asset.json";
 
@@ -30,7 +34,13 @@ const LOGO = logoGoldAsset.url;
 // רחלי אישרה במפורש את פרסום התמונה המשפחתית הזו.
 // בלעדיה אסור לפרסם תמונות שרואים בהן פני ילדים.
 const FAMILY_PHOTO = familyAsset.url;
+// ארבע העדויות החדשות ראשונות: הן מהכנס הזה ומזכירות
+// את שלושת הימים במפורש. שלוש האחרונות הן מכנס קודם.
 const PROOFS = [
+  { src: proof4.url, width: 900, height: 1079 },
+  { src: proof5.url, width: 900, height: 716 },
+  { src: proof6.url, width: 900, height: 949 },
+  { src: proof7.url, width: 900, height: 1145 },
   { src: proof1.url, width: 1096, height: 473 },
   { src: proof2.url, width: 1114, height: 528 },
   { src: proof3.url, width: 1146, height: 730 },
@@ -138,7 +148,7 @@ function Block({ children, id }: { children: ReactNode; id?: string }) {
   return (
     <div
       id={id}
-      className="border-t border-hairline px-5 py-9 first:border-t-0 sm:px-[30px] sm:py-[46px] [scroll-margin-top:80px]"
+      className="border-t border-hairline px-5 py-9 text-center first:border-t-0 sm:px-[30px] sm:py-[46px] [scroll-margin-top:80px]"
     >
       {children}
     </div>
@@ -158,8 +168,8 @@ function DarkInset({
   note?: string;
 }) {
   return (
-    <div className="lp-dark m-3.5 rounded-[22px] bg-night px-6 py-8 sm:px-7">
-      <h3 className="lp-display text-sheet [font-size:clamp(22px,4.6vw,28px)]">{title}</h3>
+    <div className="lp-dark m-3.5 rounded-[22px] bg-night px-6 py-8 text-center sm:px-7">
+      <h3 className="lp-display text-sheet [font-size:clamp(21px,4.2vw,26px)]">{title}</h3>
       <p className="mt-2 text-[17px] leading-relaxed text-[hsl(196_11%_74%)]">{line}</p>
       <div className="mt-5">
         <Cta full dark>
@@ -173,13 +183,13 @@ function DarkInset({
 
 function H2({ children }: { children: ReactNode }) {
   return (
-    <h2 className="lp-display mt-3.5 text-ink [font-size:clamp(27px,5.6vw,42px)]">{children}</h2>
+    <h2 className="lp-display mt-3.5 text-ink [font-size:clamp(28px,5.8vw,44px)]">{children}</h2>
   );
 }
 
 function Key({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`lp-display text-ink [font-size:clamp(23px,4.8vw,32px)] [line-height:1.35] ${className}`}>
+    <p className={`font-semibold text-ink [font-size:clamp(19px,3.8vw,25px)] [line-height:1.6] [letter-spacing:-0.01em] ${className}`}>
       {children}
     </p>
   );
@@ -191,7 +201,7 @@ function Body({ children, className = "" }: { children: ReactNode; className?: s
 
 function Pills({ items, strike = false, srPrefix = "" }: { items: string[]; strike?: boolean; srPrefix?: string }) {
   return (
-    <ul className="mt-4 flex flex-wrap gap-2">
+    <ul className="mt-4 flex flex-wrap justify-center gap-2">
       {items.map((t) => (
         <li
           key={t}
@@ -773,9 +783,9 @@ function Sheet() {
         <Reveal>
           <Eyebrow>ממשתתפות בכנס</Eyebrow>
           <H2>מה כותבים אחרי</H2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-3">
+          <div className="mt-6 columns-1 gap-4 sm:columns-2 [&>*]:mb-4">
             {PROOFS.map((p) => (
-              <figure key={p.src} className="m-0">
+              <figure key={p.src} className="m-0 break-inside-avoid">
                 <img
                   src={p.src}
                   alt="הודעת תודה ממשתתפת בכנס"
@@ -807,7 +817,7 @@ function Sheet() {
               "אתם רוצים להגיע למצב שבו כסף נותן לכם יותר זמן, חופש, בחירה ואפשרויות.",
               "אתם רוצים שהילדים שלכם יגדלו בבית שבו כסף הוא לא פחד, לחץ או מריבות, אלא כלי לבניית חיים.",
             ].map((t) => (
-              <li key={t} className="flex gap-3">
+              <li key={t} className="flex justify-center gap-3 text-center">
                 <span
                   className="mt-[15px] size-[7px] shrink-0 rounded-full bg-gold ring-4 ring-gold/[0.16]"
                   aria-hidden
@@ -877,7 +887,7 @@ function Sheet() {
             ].map(([n, t]) => (
               <div key={n} className="rounded-[20px] border border-hairline bg-sheet-2 px-6 py-7">
                 <span className="mb-2 block text-[13px] font-bold tracking-[0.18em] text-gold">{n}</span>
-                <h3 className="lp-display text-ink [font-size:clamp(20px,4vw,26px)]">{t}</h3>
+                <h3 className="lp-display text-ink [font-size:clamp(19px,3.4vw,23px)]">{t}</h3>
               </div>
             ))}
           </div>
@@ -904,7 +914,7 @@ function Sheet() {
             כמה שנים אחר כך מצאתי את עצמי עם כמעט 2,000,000 ₪ חובות ומינוס של בערך 150,000 ₪.
           </Body>
           <div className="mt-6 rounded-[20px] border border-hairline bg-sheet-2 px-6 py-7">
-            <h3 className="lp-display text-ink [font-size:clamp(20px,4.4vw,28px)]">
+            <h3 className="lp-display text-ink [font-size:clamp(19px,3.4vw,23px)]">
               הייתי טובה בלעשות כסף.
               <br />
               לא ידעתי להיות עשירה.
@@ -952,7 +962,7 @@ function Sheet() {
                   <span className="mb-2 block text-[13px] font-bold tracking-[0.18em] text-gold">
                     {c.n}
                   </span>
-                  <h3 className="lp-display text-tq [font-size:clamp(20px,4vw,26px)]">{c.t}</h3>
+                  <h3 className="lp-display text-tq [font-size:clamp(19px,3.4vw,23px)]">{c.t}</h3>
                   <p className="mt-2.5 text-[17px] leading-[1.7] text-body">{c.b}</p>
                 </div>
               </Reveal>
@@ -1012,7 +1022,7 @@ function Sheet() {
           <H2>למי שרוצה לא רק להרוויח יותר, אלא להיות עשיר יותר</H2>
           <ul className="mt-6 grid list-none gap-2.5 p-0">
             {FOR_WHO.map((t) => (
-              <li key={t} className="lp-body-text flex items-start gap-2.5 text-body">
+              <li key={t} className="lp-body-text flex items-start justify-center gap-2.5 text-center text-body">
                 <span
                   className="mt-[9px] grid size-5 shrink-0 place-items-center rounded-full bg-sheet-2 text-[12px] font-bold text-tq"
                   aria-hidden
@@ -1027,7 +1037,7 @@ function Sheet() {
             אני לא רוצה שעוד 10 שנים יעברו ורק אז אגלה שידעתי להרוויח, אבל לא ידעתי לבנות עושר.
           </Key>
           <div className="mt-7 rounded-[20px] border border-hairline bg-sheet-2 px-6 py-7">
-            <h3 className="lp-display mb-3.5 text-ink [font-size:clamp(20px,4vw,26px)]">
+            <h3 className="lp-display mb-3.5 text-ink [font-size:clamp(19px,3.4vw,23px)]">
               למי זה לא מתאים?
             </h3>
             <Pills
@@ -1063,10 +1073,10 @@ function Sheet() {
           <div className="lp-faq mt-6 border-t border-hairline">
             {FAQ.map((item, i) => (
               <details key={item.q} open={i === 0} className="border-b border-hairline">
-                <summary className="flex cursor-pointer items-start gap-3 py-[18px] text-[18px] font-extrabold leading-[1.5] text-ink">
+                <summary className="flex cursor-pointer items-start justify-center gap-3 py-[18px] text-center text-[18px] font-extrabold leading-[1.5] text-ink">
                   {item.q}
                 </summary>
-                <div className="ms-[1.1em] pb-[18px] text-[17px] leading-[1.8] text-body">
+                <div className="pb-[18px] text-[17px] leading-[1.8] text-body">
                   {item.a}
                 </div>
               </details>
