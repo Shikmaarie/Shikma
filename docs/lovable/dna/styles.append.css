@@ -189,3 +189,68 @@ html { scroll-behavior: smooth; }
   --color-gold: hsl(var(--gold));
   --color-gold-lt: hsl(var(--gold-lt));
 }
+
+/* =======================================================================
+   שכבת תאימות לעמודים המשניים
+   -----------------------------------------------------------------------
+   /privacy, /accessibility ו-/thanks נכתבו מול הטוקנים הישנים של הדף
+   בצבעי הקרם. כשהחלפתי את בלוק הטוקנים הם איבדו רקע, משקלי כותרות
+   וגודל טקסט. במקום לשכתב שני מסמכים משפטיים ארוכים, השמות הישנים
+   ממופים כאן אל הפלטה החדשה. אם ושיכתבו את העמודים האלה, אפשר למחוק
+   את כל הבלוק הזה.
+   ======================================================================= */
+
+:root {
+  --paper: 0 0% 100%;
+  --paper-2: 40 36% 95%;
+  --mist: 170 36% 94%;
+  --mint-wash: 170 36% 88%;
+  --ink-2: var(--body);
+  --flame: var(--tq-hi);
+  --flame-dp: var(--tq);
+  --gold-ink: 33 42% 38%;
+  --cta: var(--tq);
+}
+
+.font-display {
+  font-family: Assistant, system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+}
+
+.lp-body { font-size: var(--lp-body); line-height: 1.8; }
+
+.paper-wash,
+.paper-wash-alt {
+  background-color: hsl(var(--paper));
+  background-image: radial-gradient(
+    120% 70% at 50% 0%, hsl(var(--mist) / 0.9) 0%, transparent 62%);
+}
+
+.lp-marker {
+  background-color: hsl(var(--mist));
+  border-radius: 0.5rem;
+  padding: 0.08em 0.35em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.lp-underline {
+  text-decoration: underline;
+  text-decoration-color: hsl(var(--tq-soft));
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+@theme inline {
+  --color-paper: hsl(var(--paper));
+  --color-paper-2: hsl(var(--paper-2));
+  --color-mist: hsl(var(--mist));
+  --color-mint-wash: hsl(var(--mint-wash));
+  --color-ink-2: hsl(var(--ink-2));
+  --color-flame: hsl(var(--flame));
+  --color-flame-dp: hsl(var(--flame-dp));
+  --color-cta: hsl(var(--cta));
+  --color-gold-ink: hsl(var(--gold-ink));
+}
