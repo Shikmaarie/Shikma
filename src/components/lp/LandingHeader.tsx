@@ -57,7 +57,8 @@ export default function LandingHeader() {
             }`}
             aria-hidden={!scrolled}
           >
-            {moneyFearLanding.dates} · {moneyFearLanding.format}
+            {moneyFearLanding.dates ? `${moneyFearLanding.dates} · ` : ""}
+            {moneyFearLanding.format}
           </span>
           <a
             href={registerAnchor}

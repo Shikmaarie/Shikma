@@ -123,7 +123,7 @@ export default function RegisterForm() {
             רושמים אתכם…
           </>
         ) : (
-          cta.label
+          cta.final
         )}
       </button>
 
