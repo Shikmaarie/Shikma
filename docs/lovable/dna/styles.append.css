@@ -1,0 +1,191 @@
+/* =======================================================================
+   ה־DNA של העושר — מערכת העיצוב החדשה
+   -----------------------------------------------------------------------
+   להחליף את בלוק הטוקנים של דף הנחיתה ב-src/styles.css (זה שמתחיל ב-
+   `/* ===== Landing page: "עושים אהבה עם הפחד מכסף" ===== */`) בבלוק הזה.
+   שאר הקובץ — shadcn, האקורדיון של הנגישות, .rp-embed — נשאר בדיוק כפי
+   שהוא. אסור לגעת ב-.rp-embed: הוא מה שמחזיק את טופס רב מסר בתוך הדף.
+   ======================================================================= */
+
+:root {
+  /* המסגרת הכהה */
+  --void: 210 17% 2%;        /* #050607 */
+  --night: 200 19% 6%;       /* #0d1113 */
+
+  /* היריעה הבהירה שצפה במרכז */
+  --sheet: 0 0% 100%;
+  --sheet-2: 40 36% 95%;     /* #f7f4ee */
+  --hairline: 40 28% 90%;    /* #ece7dd */
+
+  /* טקסט */
+  --ink: 0 0% 0%;            /* שחור. רחלי ביקשה שחור, וזה גם הכי קריא */
+  --body: 216 7% 13%;        /* #1f2124 */
+  --muted: 202 6% 39%;       /* #5d6468 */
+
+  /* הטורקיז של המותג. שני הגוונים שרחלי מסרה */
+  --tq: 185 71% 19%;         /* #0e4c52 */
+  --tq-mid: 185 81% 31%;     /* #0f8690 */
+  --tq-hi: 183 79% 39%;      /* #15a8b0 */
+  --tq-soft: 170 36% 65%;    /* #87c7bc */
+
+  /* זהב */
+  --gold: 33 34% 55%;        /* #b49167 */
+  --gold-lt: 38 73% 81%;     /* #f2d7aa */
+
+  /* מעבר הצבע של הכותרות. מוגדר פעם אחת, וכל .lp-grad בדף שואב ממנו,
+     כדי שכל כותרת עם מעבר צבע תהיה זהה. */
+  --g1: var(--tq);
+  --g2: var(--tq-mid);
+  --g3: var(--tq-hi);
+
+  --lp-body: 19px;
+}
+
+@media (min-width: 768px) {
+  :root { --lp-body: 19px; }
+}
+
+html { scroll-behavior: smooth; }
+
+/* אין letter-spacing חיובי על עברית. זה מה שהרס את הריווח קודם. */
+.lp-display {
+  font-family: Assistant, system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+}
+
+.lp-body-text {
+  font-size: var(--lp-body);
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
+.lp-fine { font-size: 15px; line-height: 1.7; }
+
+/* ---------- מעבר הצבע בכותרות ---------- */
+.lp-grad {
+  color: hsl(var(--tq));
+  background-image: linear-gradient(
+    95deg, hsl(var(--g1)) 0%, hsl(var(--g2)) 45%, hsl(var(--g3)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-inline: 0.06em;
+  margin-inline: -0.06em;
+}
+/* אותו מעבר בדיוק גם על הכהה. ההבדל היחיד: הקצה הכהה נבלע בשחור
+   ומילים שלמות נעלמות, ולכן שם הוא מוחלף במנטה של המותג. */
+.lp-dark { --g1: var(--tq-soft); --g2: 184 53% 48%; }
+.lp-dark .lp-grad {
+  filter: drop-shadow(0 0 14px hsl(var(--tq-hi) / 0.45));
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .lp-grad { -webkit-text-fill-color: currentColor; }
+}
+
+/* ---------- ההירו ---------- */
+/* שכבת הקריאוּת. חייבת להיות מוגדרת לפני ה-media queries:
+   בלי הפרש specificity הכלל המאוחר מנצח, וערכי הדסקטופ נמרחים
+   על הפנים של רחלי בנייד. זה היה באג אמיתי. */
+.lp-scrim {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to bottom,
+    hsl(var(--void) / 0.82) 0%, hsl(var(--void) / 0.4) 24%,
+    hsl(var(--void) / 0.14) 48%, hsl(var(--void) / 0.66) 82%, hsl(var(--void)) 100%);
+}
+
+@media (max-width: 639px) {
+  /* הטקסט יושב מתחת לתמונה, ולכן אין צורך להחשיך אותה בכלל.
+     ההמסה אל הרקע נעשית ב-mask, כלומר בשקיפות ולא בשכבת שחור. */
+  .lp-hero-bg {
+    object-position: 56% 0%; height: 62%; top: 0; bottom: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 99%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 99%);
+  }
+  .lp-scrim {
+    background: linear-gradient(to bottom, hsl(var(--void) / 0.34) 0%,
+      hsl(var(--void) / 0.05) 9%, hsl(var(--void) / 0) 17%, hsl(var(--void) / 0) 100%);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .lp-hero-bg {
+    object-position: 50% 0%; height: 64%; top: 0; bottom: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
+  }
+  .lp-scrim {
+    background: linear-gradient(to bottom, hsl(var(--void) / 0.32) 0%,
+      hsl(var(--void) / 0.05) 10%, hsl(var(--void) / 0) 19%, hsl(var(--void) / 0) 100%);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* בדסקטופ הטקסט כן יושב על התמונה, אז הכהות נשארת — רק מרוככת,
+     כדי שקו הרקיע של העיר והחץ העולה יישארו נראים. */
+  .lp-hero-bg { object-position: 50% 50%; }
+  .lp-scrim {
+    background:
+      linear-gradient(to left, hsl(var(--void) / 0.88) 0%, hsl(var(--void) / 0.66) 30%,
+        hsl(var(--void) / 0.04) 52%, hsl(var(--void) / 0) 72%, hsl(var(--void) / 0.28) 100%),
+      linear-gradient(to bottom, hsl(var(--void) / 0.34) 0%, transparent 20%,
+        transparent 78%, hsl(var(--void)) 100%);
+  }
+}
+
+/* ---------- FAQ ---------- */
+/* אקורדיון נייטיב עם <details>, בלי JavaScript: נגיש למקלדת ולקוראי
+   מסך, ומה שסגור עדיין ב-DOM ולכן ניתן לחיפוש בדף ונסרק על ידי גוגל. */
+.lp-faq summary { list-style: none; }
+.lp-faq summary::-webkit-details-marker { display: none; }
+.lp-faq summary::before {
+  content: "+";
+  flex: 0 0 auto; width: 1.1em; text-align: center;
+  color: hsl(var(--tq)); font-weight: 800; font-size: 24px; line-height: 1.15;
+  transform-origin: 50% 55%; transition: transform 0.2s ease;
+}
+/* הסימן נשאר "+" ומסתובב ל-x. גרסה עם קו מפריד יוניקודי לא עבדה:
+   הפונט Assistant לא מכיל אותו, ובמקום מינוס הופיעה משבצת ריקה. */
+.lp-faq details[open] summary::before { transform: rotate(45deg); }
+
+/* ---------- אנימציה ---------- */
+.lp-reveal { opacity: 0; transform: translateY(18px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.lp-reveal.is-in { opacity: 1; transform: none; }
+
+.lp-focus:focus-visible {
+  outline: 2px solid hsl(var(--tq-soft)); outline-offset: 3px; border-radius: 9999px;
+}
+
+@keyframes lp-shine { to { background-position: -220% 0; } }
+.lp-grad { background-size: 220% 100%; animation: lp-shine 9s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lp-reveal { opacity: 1; transform: none; transition: none; }
+  .lp-grad { animation: none; }
+  .lp-faq summary::before { transition: none; }
+}
+
+/* נשאר ללא שינוי — מעטפת הבידוד של טופס רב מסר */
+.rp-embed { width: 100%; max-width: 100%; overflow-x: hidden; }
+.rp-embed * { max-width: 100% !important; box-sizing: border-box; }
+.rp-embed img, .rp-embed table, .rp-embed iframe { height: auto; }
+
+@theme inline {
+  --color-void: hsl(var(--void));
+  --color-night: hsl(var(--night));
+  --color-sheet: hsl(var(--sheet));
+  --color-sheet-2: hsl(var(--sheet-2));
+  --color-hairline: hsl(var(--hairline));
+  --color-ink: hsl(var(--ink));
+  --color-body: hsl(var(--body));
+  --color-muted-ink: hsl(var(--muted));
+  --color-tq: hsl(var(--tq));
+  --color-tq-mid: hsl(var(--tq-mid));
+  --color-tq-hi: hsl(var(--tq-hi));
+  --color-tq-soft: hsl(var(--tq-soft));
+  --color-gold: hsl(var(--gold));
+  --color-gold-lt: hsl(var(--gold-lt));
+}
