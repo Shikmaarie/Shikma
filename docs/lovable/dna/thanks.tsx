@@ -8,7 +8,7 @@
 
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Check, MessageCircle, CalendarPlus, Video, Clock } from "lucide-react";
+import { Check, MessageCircle, CalendarPlus, Video } from "lucide-react";
 
 import logoGoldAsset from "@/assets/logo-gold.webp.asset.json";
 
@@ -22,13 +22,13 @@ const DESCRIPTION = "המקום שלך לכנס שמור. השלב הבא: הצ�
 const WHATSAPP_GROUP =
   "https://chat.whatsapp.com/JDrsE8PmrPVJZACMbefRqo?s=cl&p=i&mlu=4&ilr=4";
 
-/* שלושת הימים, בשעון UTC. אוקטובר 2026 הוא עדיין שעון קיץ בישראל
-   (UTC+3), ולכן 9:30-12:30 מקומי הם 06:30-09:30 ב-UTC. כתיבה ב-UTC
-   חוסכת VTIMEZONE ולא משתנה לפי אזור הזמן של מי שמוריד. */
+/* שלושת הימים כאירועי יום שלם. השעה המדויקת ירדה מהדף, ולכן גם קובץ
+   היומן לא מפרסם אותה: עדיף שלא תופיע כלל מאשר שתופיע ותהיה לא נכונה.
+   DTEND באירוע יום שלם הוא בלעדי, ומכאן היום שאחרי בכל שורה. */
 const DAYS = [
-  { n: 1, t: "הקוד הסמוי של הכסף", start: "20261013T063000Z", end: "20261013T093000Z" },
-  { n: 2, t: "מלכודת ההכנסה", start: "20261014T063000Z", end: "20261014T093000Z" },
-  { n: 3, t: "מפת העושר", start: "20261015T063000Z", end: "20261015T093000Z" },
+  { n: 1, t: "הקוד הסמוי של הכסף", start: "20261013", end: "20261014" },
+  { n: 2, t: "מלכודת ההכנסה", start: "20261014", end: "20261015" },
+  { n: 3, t: "מפת העושר", start: "20261015", end: "20261016" },
 ];
 
 export const Route = createFileRoute("/thanks")({
@@ -109,10 +109,10 @@ function buildIcs() {
       "BEGIN:VEVENT",
       `UID:dna-of-wealth-day-${d.n}@rachelihadad.co.il`,
       `DTSTAMP:${stamp}`,
-      `DTSTART:${d.start}`,
-      `DTEND:${d.end}`,
+      `DTSTART;VALUE=DATE:${d.start}`,
+      `DTEND;VALUE=DATE:${d.end}`,
       `SUMMARY:${esc(`ה־DNA של העושר · יום ${d.n}: ${d.t}`)}`,
-      `DESCRIPTION:${esc("הכנס מתקיים בזום. הלינק נשלח בקבוצת הוואטסאפ של הכנס ביום הכנס.")}`,
+      `DESCRIPTION:${esc("הכנס מתקיים בזום. הלינק ושעת המפגש נשלחים בקבוצת הוואטסאפ של הכנס.")}`,
       "END:VEVENT",
     );
   });
@@ -199,9 +199,9 @@ function ThanksPage() {
 
             <Reveal delay={110}>
               <h1 className="lp-display mt-7 text-ink [font-size:clamp(28px,5.8vw,44px)]">
-                ההרשמה הושלמה.
+                ההרשמה הושלמה
                 <br />
-                <span className="lp-grad">המקום שלך שמור.</span>
+                <span className="lp-grad">המקום שלך שמור</span>
               </h1>
             </Reveal>
 
@@ -213,11 +213,6 @@ function ThanksPage() {
                 </span>
                 <span className="size-[5px] rounded-full bg-gold" aria-hidden />
                 <span>13–15 באוקטובר</span>
-                <span className="size-[5px] rounded-full bg-gold" aria-hidden />
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="size-4 text-tq" aria-hidden />
-                  9:30-12:30
-                </span>
               </div>
             </Reveal>
           </div>
@@ -264,7 +259,7 @@ function ThanksPage() {
                 <Step
                   n="02"
                   title="שריינו את הזמן"
-                  body="שלושה בוקרים, 9:30 עד 12:30. הכניסו אותם ליומן עכשיו."
+                  body="שלושה בוקרים רצופים. הכניסו אותם ליומן עכשיו."
                 />
                 <Step
                   n="03"

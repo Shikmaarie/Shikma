@@ -657,9 +657,7 @@ function Hero() {
           <span className="size-[5px] rounded-full bg-tq-soft" aria-hidden />
           <span>13–15 באוקטובר</span>
           <span className="size-[5px] rounded-full bg-tq-soft" aria-hidden />
-          <span>9:30-12:30</span>
-          <span className="size-[5px] rounded-full bg-tq-soft" aria-hidden />
-          <span className="font-bold text-tq-soft">ללא עלות</span>
+                    <span className="font-bold text-tq-soft">ללא עלות</span>
         </div>
 
         <div className="mt-6">
@@ -747,7 +745,7 @@ const FAQ = [
   },
   {
     q: "כמה זמן זה לוקח בפועל?",
-    a: "שלושה בוקרים, 9:30 עד 12:30 בכל יום. תשע שעות סך הכול, בזום.",
+    a: "שלושה מפגשים, אחד בכל יום, בזום. שעת המפגש תישלח בקבוצת הוואטסאפ של הכנס.",
   },
   {
     q: "זה מתאים לי אם אני שכיר, או רק לבעלי עסקים?",
@@ -834,8 +832,8 @@ function Sheet() {
 
       {/* הכפתור אחרי סקשן הכאב מנסח את הכאב */}
       <DarkInset
-        title="3 ימים. ללא עלות."
-        line="13–15 באוקטובר · 9:30-12:30 · בזום"
+        title="3 ימים ללא עלות"
+        line="13–15 באוקטובר · בזום"
         cta="אני רוצה לדעת לאן הכסף שלי הולך"
         note="הלינק לזום נשלח בקבוצת הוואטסאפ של הכנס ביום הכנס."
       />
@@ -845,9 +843,9 @@ function Sheet() {
         <Reveal>
           <Eyebrow>מה רובנו מפספסים</Eyebrow>
           <H2>
-            לימדו אותנו איך להרוויח כסף.
+            לימדו אותנו איך להרוויח כסף
             <br />
-            <span className="lp-grad">לא לימדו אותנו איך לבנות עושר.</span>
+            <span className="lp-grad">לא לימדו אותנו איך לבנות עושר</span>
           </H2>
           <ul className="mt-5 flex list-none flex-col gap-1.5 p-0">
             {["למדנו לעבוד.", "למדנו מקצוע.", "חלקנו למדנו למכור.", "לפתוח עסק.", "להגדיל הכנסה."].map((t) => (
@@ -856,7 +854,7 @@ function Sheet() {
               </li>
             ))}
           </ul>
-          <Key className="my-7">אבל אף אחד כמעט לא לימד אותנו מה לעשות אחרי שהכסף נכנס.</Key>
+          <Key className="my-7">אבל אף אחד כמעט לא לימד אותנו מה לעשות אחרי שהכסף נכנס</Key>
           <ul className="flex list-none flex-col gap-1.5 p-0">
             {[
               "איך לנהל אותו.",
@@ -880,10 +878,10 @@ function Sheet() {
           <Body className="mt-4">והוא בנוי מארבע מיומנויות:</Body>
           <div className="mt-6 grid gap-3.5 sm:grid-cols-2 md:grid-cols-4">
             {[
-              ["01", "לייצר."],
-              ["02", "לנהל."],
-              ["03", "לשמור."],
-              ["04", "להצמיח."],
+              ["01", "לייצר"],
+              ["02", "לנהל"],
+              ["03", "לשמור"],
+              ["04", "להצמיח"],
             ].map(([n, t]) => (
               <div key={n} className="rounded-[20px] border border-hairline bg-sheet-2 px-6 py-7">
                 <span className="mb-2 block text-[13px] font-bold tracking-[0.18em] text-gold">{n}</span>
@@ -902,22 +900,22 @@ function Sheet() {
       <Block>
         <Reveal>
           <Eyebrow>מה קרה לי</Eyebrow>
-          <H2>בגיל 25 הכנסתי מעל 200,000 ₪ בחודש.</H2>
+          <H2>בגיל 25 הכנסתי מעל 200,000 ₪ בחודש</H2>
           <Body className="mt-4">
             לא נולדתי למשפחה עשירה, לא קיבלתי ירושה ולא זכיתי בלוטו. היו לי 16 עובדים, עסק, לקוחות,
             כסף נכנס. ומבחוץ הייתי נראית כמו מישהי שפיצחה את המשחק. וגם אני חשבתי ככה.
           </Body>
           <Key className="my-7">
-            <span className="lp-grad">עד שהבנק סגר לי את הברז.</span>
+            <span className="lp-grad">עד שהבנק סגר לי את הברז</span>
           </Key>
           <Body>
             כמה שנים אחר כך מצאתי את עצמי עם כמעט 2,000,000 ₪ חובות ומינוס של בערך 150,000 ₪.
           </Body>
           <div className="mt-6 rounded-[20px] border border-hairline bg-sheet-2 px-6 py-7">
             <h3 className="lp-display text-ink [font-size:clamp(19px,3.4vw,23px)]">
-              הייתי טובה בלעשות כסף.
+              הייתי טובה בלעשות כסף
               <br />
-              לא ידעתי להיות עשירה.
+              לא ידעתי להיות עשירה
             </h3>
           </div>
         </Reveal>
@@ -927,7 +925,7 @@ function Sheet() {
       <Block>
         <Reveal>
           <Eyebrow>ומה קרה אחר כך</Eyebrow>
-          <H2>אבל החוב לא היה סוף הסיפור.</H2>
+          <H2>אבל החוב לא היה סוף הסיפור</H2>
           <Body className="mt-4">
             הוא היה הרגע שבו התחלתי ללמוד את המשחק מחדש. לא „איך לעשות עוד כסף”, אלא: איך אנשים
             שבונים עושר חושבים על כסף? מה הם עושים כשהוא נכנס? מה הם לא עושים? מה הם שומרים? מתי הם
@@ -976,14 +974,14 @@ function Sheet() {
         title="תנו לי 3 ימים"
         line="3 ימים שבהם אני פותחת איתכם את חוקי הכסף ששינו את החיים הכלכליים שלי, כדי שתזהו איזה חלק ב־DNA הכלכלי שלכם כבר חזק ואיזה חלק עולה לכם הרבה יותר כסף ממה שאתם חושבים."
         cta="אני רוצה את מפת העושר שלי"
-        note="בזום · 9:30-12:30 · הלינק נשלח בקבוצת הוואטסאפ של הכנס."
+        note="בזום · הלינק נשלח בקבוצת הוואטסאפ של הכנס"
       />
 
       {/* ----- ועכשיו אליכם ----- */}
       <Block>
         <Reveal>
           <Eyebrow>ועכשיו אליכם</Eyebrow>
-          <H2>אני לא מספרת לכם את זה כדי שתרצו את החיים שלי.</H2>
+          <H2>אני לא מספרת לכם את זה כדי שתרצו את החיים שלי</H2>
           <Body className="mt-4">אני מספרת לכם את זה כי אני רוצה שתשאלו:</Body>
           <Key className="my-7">
             אילו חיים אתם הייתם בונים <span className="lp-grad">אם כסף היה נותן לכם יותר בחירה?</span>
@@ -1010,7 +1008,7 @@ function Sheet() {
             />
           </figure>
           <Key className="mt-7">
-            חופש כלכלי הוא לא רק מספר בחשבון. הוא כמה מההחלטות בחיים שלכם אתם באמת חופשיים לקבל.
+            חופש כלכלי הוא לא רק מספר בחשבון. הוא כמה מההחלטות בחיים שלכם אתם באמת חופשיים לקבל
           </Key>
         </Reveal>
       </Block>
@@ -1034,7 +1032,7 @@ function Sheet() {
             ))}
           </ul>
           <Key className="mt-7">
-            אני לא רוצה שעוד 10 שנים יעברו ורק אז אגלה שידעתי להרוויח, אבל לא ידעתי לבנות עושר.
+            אני לא רוצה שעוד 10 שנים יעברו ורק אז אגלה שידעתי להרוויח, אבל לא ידעתי לבנות עושר
           </Key>
           <div className="mt-7 rounded-[20px] border border-hairline bg-sheet-2 px-6 py-7">
             <h3 className="lp-display mb-3.5 text-ink [font-size:clamp(19px,3.4vw,23px)]">
@@ -1093,13 +1091,13 @@ function Sheet() {
           <Body className="mt-3">
             3 ימים לפצח את חוקי הכסף שמפרידים בין אנשים שמרוויחים כסף לאנשים שבונים עושר.
           </Body>
-          <Key className="mt-7">יכול להיות שאתם לא גרועים בכסף.</Key>
+          <Key className="mt-7">יכול להיות שאתם לא גרועים בכסף</Key>
           <Key className="mt-2.5 [font-size:clamp(20px,4vw,26px)]">
-            יכול להיות שפשוט לימדו אתכם <span className="lp-grad">רק 25% מהמשחק.</span>
+            יכול להיות שפשוט לימדו אתכם <span className="lp-grad">רק 25% מהמשחק</span>
           </Key>
           <p className="mt-3.5 font-bold text-ink">בואו ללמוד את השאר.</p>
           <p className="lp-fine mt-3.5 text-muted-ink">
-            13–15 באוקטובר · 9:30-12:30 · בזום. אחרי ההרשמה תועברו לקבוצת הוואטסאפ של הכנס, ושם
+            13–15 באוקטובר · בזום. אחרי ההרשמה תועברו לקבוצת הוואטסאפ של הכנס, ושם
             יישלח הלינק ביום הכנס. ההקלטה נשלחת לנרשמים בלבד.
           </p>
           <div className="mt-6 overflow-hidden rounded-[20px] border border-hairline bg-sheet-2 p-4 sm:p-7">
