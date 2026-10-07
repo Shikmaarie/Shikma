@@ -642,10 +642,14 @@ function Hero() {
       <div className="relative mx-auto w-full max-w-[44rem] text-center lg:ms-0 lg:me-auto lg:max-w-[34rem] lg:text-right">
         <Eyebrow dark>במיוחד למי שרוצים שהכסף שלהם יתחיל לבנות להם עושר</Eyebrow>
 
-        <h1 className="lp-display mt-2.5 text-white [font-size:clamp(30px,6.2vw,46px)] [text-shadow:0_0_44px_hsl(188_73%_15%/0.55)]">
-          איך לעבור מ״לדעת להרוויח כסף״
+        <h1 className="lp-display mt-2.5 text-balance text-white [font-size:clamp(28px,6.2vw,46px)] [text-shadow:0_0_44px_hsl(188_73%_15%/0.55)]">
+          איך עוברים ממצב של
           <br />
-          <span className="lp-grad">ללדעת לבנות ממנו עושר</span>
+          ״לדעת להרוויח כסף״
+          <br />
+          למצב של
+          <br />
+          <span className="lp-grad">״לדעת לבנות ממנו עושר״</span>
         </h1>
 
         <p className="mt-3.5 text-[clamp(18px,3.6vw,22px)] font-bold text-white">
