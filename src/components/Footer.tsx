@@ -5,7 +5,7 @@ import {
   InstagramIcon,
   YoutubeIcon,
 } from "@/components/ui/BrandIcons";
-import { nav, site } from "@/data/site";
+import { nav, site, heroTitlePlain } from "@/data/site";
 import Wordmark from "@/components/ui/Wordmark";
 import { purchasable } from "@/data/products";
 
@@ -22,7 +22,7 @@ export default function Footer() {
           <div>
             <Wordmark size="lg" className="!items-start" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-fg2">
-              להפסיק לרדוף אחרי הכסף — ולבנות אימפריה שמנוהלת מבפנים החוצה.
+              {heroTitlePlain}
             </p>
 
             <div className="mt-6 flex gap-3">

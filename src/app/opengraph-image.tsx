@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { site } from "@/data/site";
+import { site, hero } from "@/data/site";
 import { visual } from "@/lib/bidi";
 
 /* Rendered once at build time, so the static preview build can emit it. */
@@ -86,11 +86,7 @@ export default async function Image() {
             text cannot be wrapped by the renderer — a soft wrap would move the
             first word to the last line and scramble the reading order.
           */}
-          {[
-            { text: "להפסיק לרדוף אחרי הכסף —", gold: false },
-            { text: "ולבנות אימפריה", gold: true },
-            { text: "שמנוהלת מבפנים החוצה.", gold: true },
-          ].map((line) => (
+          {hero.title.map((line) => (
             <div
               key={line.text}
               style={{

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
-import { site } from "@/data/site";
+import { site, heroTitlePlain } from "@/data/site";
 import { isLiveSite } from "@/lib/site-url";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -28,8 +28,7 @@ export const metadata: Metadata = {
     default: `${site.name} — ${site.role}`,
     template: `%s | ${site.name}`,
   },
-  description:
-    "להפסיק לרדוף אחרי הכסף — ולבנות אימפריה שמנוהלת מבפנים החוצה. תוכניות ליווי עסקי, מסלולי שפע ומיינדסט, מועדון עסקים, ספרים ומדריכים.",
+  description: `${heroTitlePlain}. תוכניות ליווי עסקי, מסלולי שפע ומיינדסט, מועדון עסקים, ספרים ומדריכים.`,
   keywords: [
     "רחלי חדד",
     "ליווי עסקי",
