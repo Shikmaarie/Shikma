@@ -38,16 +38,12 @@ export const headerCta = { label: "התחל את המסע", href: "/programs" } 
 
 export const hero = {
   eyebrow: "מעבר מהישרדות לשפע אמיתי",
-  /**
-   * The line breaks are deliberate, not a wrap. `gold` marks the turn in
-   * the sentence: what the visitor already knows how to do is set in cream,
-   * what they came for is set in gold.
-   */
+  /** The line breaks are deliberate, not a wrap. `gold` marks the turn. */
   title: [
-    { text: "איך עוברים ממצב של", gold: false },
-    { text: "״לדעת להרוויח כסף״", gold: false },
-    { text: "למצב של", gold: true },
-    { text: "״לדעת לבנות ממנו עושר״", gold: true },
+    { text: "להפסיק לרדוף", gold: false },
+    { text: "אחרי הכסף —", gold: false },
+    { text: "ולבנות אימפריה", gold: true },
+    { text: "שמנוהלת מבפנים החוצה.", gold: true },
   ],
   sub: "18 שנות ניסיון, 3 עסקים שמכניסים 6 ספרות בחודש, וחיים של חופש אמיתי — מטיילת בעולם 4 ימים בשבוע עם המשפחה שלי. הגיע הזמן ללמוד את מה שאף אחד לא לימד בבית הספר: חוקי ה-DNA של העסק והעושר שלך.",
   /** The handwritten aside under the headline. One line, always. */
