@@ -5,7 +5,6 @@ import PageHeader from "@/components/ui/PageHeader";
 import Reveal from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { aboutPage, hero } from "@/data/site";
-import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
   title: "אודות",
@@ -63,10 +62,9 @@ export default function AboutPage() {
                   >
                     <dt className="sr-only">{stat.label}</dt>
                     <dd>
-                      <CountUp
-                        value={stat.value}
-                        className="block font-display text-3xl font-black text-teal"
-                      />
+                      <span className="ltr-nums block font-display text-3xl font-black text-teal">
+                        {stat.value}
+                      </span>
                       <span className="mt-1.5 block text-[11px] font-semibold text-accent">
                         {stat.suffix}
                       </span>

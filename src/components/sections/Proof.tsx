@@ -1,6 +1,5 @@
 import { Section, SectionTitle } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
-import CountUp from "@/components/ui/CountUp";
 import { ScriptLine } from "@/components/ui/Editorial";
 import { BrandStar } from "@/components/ui/Wordmark";
 import { proof } from "@/data/site";
@@ -32,10 +31,9 @@ export default function Proof() {
             <div className="flex h-full flex-col bg-ivory px-7 py-9">
               <BrandStar className="size-3.5 text-gold" />
               <dt className="mt-5 flex items-baseline gap-2">
-                <CountUp
-                  value={item.value}
-                  className="font-display text-4xl font-black text-teal"
-                />
+                <span className="ltr-nums font-display text-4xl font-black text-teal">
+                  {item.value}
+                </span>
                 <span className="text-sm font-semibold text-gold-ink">
                   {item.unit}
                 </span>
