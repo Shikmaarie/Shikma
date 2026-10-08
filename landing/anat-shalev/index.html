@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ענת שלו | מתקשרים מיניות בריאה</title>
+<meta name="description" content="הרצאות, סדנאות והדרכות על גוף, מיניות, יחסים, גבולות, מוגנות וכל מה שביניהם. להורים, לצוותים, לנשים ולאוכלוסיות עם צרכים מיוחדים.">
+<meta name="theme-color" content="#FBF5EC">
+<meta property="og:title" content="ענת שלו | מתקשרים מיניות בריאה">
+<meta property="og:description" content="לדבר על מיניות. בגובה העיניים.">
+<meta property="og:image" content="assets/anat-hero.jpg">
+<meta property="og:locale" content="he_IL">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF5EC;
+    --paper: #FFFBF5;
+    --coral: #E8664A;
+    --coral-deep: #C4502F;
+    --peach: #F3C7AE;
+    --rose: #E9BFB4;
+    --mustard: #E3A92B;
+    --teal: #0B6E7A;
+    --teal-deep: #0B5F69;
+    --sand: #E8D8B8;
+    --ink: #2B1E1A;
+    --ink-soft: #6B5A52;
+    --radius: 28px;
+    --gutter: 20px;
+    --maxw: 1120px;
+    --font: "Rubik", "Heebo", system-ui, sans-serif;
+    --font-round: "Varela Round", "Rubik", system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 18px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  h1, h2, h3, p { margin: 0; }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+  section { position: relative; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+    min-height: 56px; padding: 14px 30px;
+    border-radius: 999px; border: 0;
+    font: 700 1.1rem/1 var(--font);
+    text-decoration: none; cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  }
+  .btn svg { width: 1.35em; height: 1.35em; flex: none; }
+  .btn-primary { background: var(--coral-deep); color: #fff; box-shadow: 0 6px 0 #9A3B21, 0 14px 30px -10px rgba(196,80,47,.55); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #9A3B21, 0 18px 34px -10px rgba(196,80,47,.6); }
+  .btn-primary:active { transform: translateY(4px); box-shadow: 0 2px 0 #9A3B21; }
+  .btn-light { background: var(--paper); color: var(--ink); box-shadow: 0 6px 0 rgba(0,0,0,.18); }
+  .btn-light:hover { transform: translateY(-2px); }
+  .btn-xl { min-height: 64px; padding: 18px 38px; font-size: 1.25rem; }
+  .btn:focus-visible, .link-more:focus-visible, .social a:focus-visible { outline: 3px solid var(--mustard); outline-offset: 4px; }
+
+  .link-more {
+    display: inline-flex; align-items: center; gap: .4em;
+    font-weight: 700; color: var(--coral-deep); text-decoration: none;
+    border-bottom: 2px solid currentColor; padding-bottom: 2px;
+  }
+  .link-more::after { content: "←"; transition: transform .2s; }
+  .link-more:hover::after { transform: translateX(-4px); }
+
+  /* ---------- doodles (the hand-drawn language of the illustrations) ---------- */
+  .doodle { position: absolute; pointer-events: none; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- section heads ---------- */
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .5em;
+    font: 400 1rem/1.2 var(--font-round);
+    color: var(--teal);
+    letter-spacing: .01em;
+  }
+  .eyebrow::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--mustard); }
+  .h2 { font-size: clamp(2rem, 7vw, 3.2rem); line-height: 1.12; font-weight: 800; letter-spacing: -.01em; }
+  .scribble { position: relative; white-space: nowrap; }
+  .scribble svg { position: absolute; inset-inline: -4%; bottom: -.28em; width: 108%; height: .5em; }
+
+  .pad { padding-block: 72px; }
+  @media (min-width: 900px) { .pad { padding-block: 112px; } }
+
+  /* ---------- 1. HERO ---------- */
+  .hero { padding-top: 20px; padding-bottom: 56px; overflow: hidden; }
+  .hero-grid { display: grid; gap: 28px; align-items: center; }
+  .hero-photo { position: relative; margin-inline: 6px; }
+  .hero-photo .frame {
+    position: relative; z-index: 1;
+    border-radius: 36px 36px 36px 120px;
+    overflow: hidden; aspect-ratio: 4 / 4.4;
+    box-shadow: 0 24px 50px -24px rgba(43,30,26,.35);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+  .hero-photo .blob { position: absolute; z-index: 0; border-radius: 50%; }
+  .hero-photo .blob.b1 { width: 46%; aspect-ratio: 1; background: var(--peach); inset-inline-end: -8%; bottom: -7%; }
+  .hero-photo .blob.b2 { width: 22%; aspect-ratio: 1; background: var(--mustard); inset-inline-start: -5%; top: 10%; opacity: .9; }
+  .hero-text { text-align: center; }
+  .hero h1 { font-size: clamp(2.6rem, 11vw, 4.6rem); line-height: 1.05; font-weight: 800; letter-spacing: -.02em; margin-top: 14px; }
+  .hero h1 .l2 { color: var(--coral-deep); display: block; }
+  .hero .lead { font-size: 1.15rem; color: var(--ink-soft); margin-top: 18px; max-width: 34ch; margin-inline: auto; }
+  .audiences {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 10px;
+    margin-top: 20px; font-weight: 600; color: var(--teal); font-size: 1rem;
+  }
+  .audiences .dot { color: var(--mustard); }
+  .hero .cta-row { margin-top: 28px; }
+  .hero .cta-row .btn { width: 100%; max-width: 360px; }
+
+  @media (min-width: 900px) {
+    .hero { padding-top: 56px; padding-bottom: 96px; }
+    .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 64px; }
+    .hero-text { text-align: start; }
+    .hero .lead { margin-inline: 0; }
+    .audiences { justify-content: flex-start; }
+    .hero .cta-row .btn { width: auto; }
+    .hero-photo .frame { aspect-ratio: 4 / 4.8; }
+  }
+
+  /* ---------- 2. OPENING ---------- */
+  .opening { background: var(--paper); border-radius: 48px 48px 0 0; }
+  .opening .grid { display: grid; gap: 40px; align-items: center; }
+  .opening-text { font-size: clamp(1.45rem, 5.6vw, 2.25rem); line-height: 1.45; font-weight: 500; }
+  .opening-text p + p { margin-top: .2em; }
+  .opening-text .soft { color: var(--ink-soft); }
+  .opening-text .turn { color: var(--ink); font-weight: 700; }
+  .opening-text .here {
+    display: inline-block; margin-top: .8em;
+    font-weight: 800; color: var(--coral-deep);
+    font-size: 1.15em;
+  }
+  .polaroid {
+    background: #fff; padding: 12px 12px 14px; border-radius: 22px;
+    box-shadow: 0 18px 40px -20px rgba(43,30,26,.4);
+    transform: rotate(-3deg); max-width: 270px; margin-inline: auto;
+  }
+  .polaroid img { border-radius: 14px; }
+  @media (min-width: 900px) {
+    .opening .grid { grid-template-columns: 1.4fr .8fr; gap: 72px; }
+    .polaroid { max-width: 380px; }
+  }
+
+  /* ---------- 3. ABOUT ---------- */
+  .about .grid { display: grid; gap: 40px; align-items: center; }
+  .photo-slot {
+    position: relative; aspect-ratio: 4 / 5; border-radius: 120px 36px 36px 36px;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,.55), transparent 55%),
+      linear-gradient(160deg, var(--peach), var(--rose));
+    display: grid; place-items: center; text-align: center;
+    color: var(--ink-soft); font: 400 1rem/1.4 var(--font-round);
+    border: 2px dashed rgba(43,30,26,.25);
+    max-width: 300px; margin-inline: auto; width: 100%;
+  }
+  @media (min-width: 900px) { .photo-slot { max-width: 440px; } }
+  .photo-slot svg { width: 44px; height: 44px; margin: 0 auto 10px; stroke: currentColor; }
+  .about-body p { color: var(--ink-soft); margin-top: 16px; }
+  .about-body p:first-of-type { margin-top: 22px; }
+  .about .h2 { margin-top: 10px; }
+  .highlight {
+    margin-top: 32px; padding: 26px 26px 26px 22px;
+    background: var(--teal-deep); color: var(--paper);
+    border-radius: 28px 28px 28px 8px;
+    font-size: clamp(1.2rem, 4.6vw, 1.5rem); line-height: 1.5; font-weight: 600;
+    position: relative;
+  }
+  .highlight p { color: inherit !important; margin: 0 !important; }
+  .highlight p:last-child { color: var(--sand) !important; }
+  @media (min-width: 900px) {
+    .about .grid { grid-template-columns: .85fr 1.15fr; gap: 80px; }
+  }
+
+  /* ---------- 4. SERVICES ---------- */
+  .services { background: var(--paper); }
+  .services .head { text-align: center; }
+  .cards { display: grid; gap: 18px; margin-top: 40px; }
+  .card {
+    position: relative; background: var(--cream); border-radius: var(--radius);
+    padding: 30px 26px 26px; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .25s ease;
+  }
+  .card:hover { transform: translateY(-4px); }
+  .card .num {
+    width: 54px; height: 54px; border-radius: 18px 18px 18px 6px;
+    display: grid; place-items: center;
+    font: 800 1.25rem/1 var(--font); color: var(--ink);
+  }
+  .card h3 { font-size: 1.5rem; font-weight: 800; margin-top: 18px; line-height: 1.25; }
+  .card p { color: var(--ink-soft); margin-top: 10px; flex: 1; }
+  .card .link-more { margin-top: 20px; align-self: flex-start; }
+  .card.c1 .num { background: var(--peach); }
+  .card.c2 .num { background: var(--mustard); }
+  .card.c3 .num { background: #9FD3D0; }
+  .card.c4 .num { background: var(--rose); }
+  .card .corner { position: absolute; inset-inline-start: -30px; top: -30px; width: 110px; height: 110px; border-radius: 50%; opacity: .35; }
+  .card.c1 .corner { background: var(--peach); }
+  .card.c2 .corner { background: var(--mustard); }
+  .card.c3 .corner { background: #9FD3D0; }
+  .card.c4 .corner { background: var(--rose); }
+  .card p.lines span { display: block; }
+  .card p.lines span:first-child { color: var(--ink); font-weight: 600; }
+  @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .cards { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ---------- 5. MESSAGE BAND ---------- */
+  .band {
+    background: var(--coral); color: var(--ink);
+    border-radius: 48px; margin-inline: 10px;
+    padding-block: 72px; overflow: hidden; text-align: center;
+  }
+  .band .q { font-size: clamp(1.35rem, 5vw, 1.9rem); font-weight: 600; line-height: 1.35; }
+  .band .a { font-size: clamp(2.6rem, 12vw, 5.2rem); font-weight: 800; line-height: 1.05; margin-top: 14px; letter-spacing: -.02em; }
+  .band .a .not { color: var(--paper); }
+  .words {
+    list-style: none; padding: 0; margin: 44px auto 0; max-width: 820px;
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 12px;
+  }
+  .words li {
+    font-weight: 700; line-height: 1; padding: .5em .85em; border-radius: 999px;
+    transform: rotate(var(--r, 0deg));
+  }
+  .words .w-a { background: var(--paper); font-size: 1.5rem; }
+  .words .w-b { background: var(--ink); color: var(--paper); font-size: 1.15rem; }
+  .words .w-c { background: transparent; border: 2.5px solid var(--ink); font-size: 1.3rem; }
+  .words .w-d { background: var(--mustard); font-size: 1.7rem; }
+  .words .w-e { background: var(--teal-deep); color: var(--paper); font-size: 1.25rem; }
+  @media (min-width: 900px) {
+    .band { margin-inline: 24px; padding-block: 112px; }
+    .words { gap: 16px 18px; }
+    .words .w-a { font-size: 2rem; } .words .w-d { font-size: 2.3rem; } .words .w-c { font-size: 1.7rem; }
+    .words .w-b, .words .w-e { font-size: 1.45rem; }
+  }
+
+  /* ---------- 6. TALKS ---------- */
+  .talks .head { text-align: center; }
+  .talk-list { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 14px; counter-reset: t; }
+  .talk-list li {
+    counter-increment: t;
+    display: flex; align-items: center; gap: 16px;
+    background: var(--paper); border-radius: 22px; padding: 20px 22px;
+    font-size: 1.2rem; font-weight: 700; line-height: 1.35;
+    border: 1.5px solid rgba(43,30,26,.08);
+  }
+  .talk-list li::before {
+    content: counter(t); flex: none;
+    width: 38px; height: 38px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 1rem; font-weight: 800;
+    background: var(--tone, var(--peach));
+  }
+  .talk-list li:nth-child(2) { --tone: #9FD3D0; }
+  .talk-list li:nth-child(3) { --tone: var(--mustard); }
+  .talk-list li:nth-child(4) { --tone: var(--rose); }
+  .talk-list li:nth-child(5) { --tone: var(--sand); }
+  .talk-list li:nth-child(6) { --tone: var(--coral); }
+  @media (min-width: 700px) { .talk-list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .talk-list { grid-template-columns: repeat(3, 1fr); } .talk-list li { min-height: 110px; } }
+
+  .custom {
+    margin-top: 40px; background: var(--peach); border-radius: 36px;
+    padding: 36px 26px; text-align: center; position: relative; overflow: hidden;
+  }
+  .custom .big { font-size: clamp(1.5rem, 5.6vw, 2rem); font-weight: 800; line-height: 1.3; }
+  .custom .big .ok { color: var(--coral-deep); display: block; }
+  .custom p.sub { margin: 16px auto 0; max-width: 46ch; color: var(--ink); }
+  .custom .btn { margin-top: 26px; }
+  @media (min-width: 900px) { .custom { padding: 56px; } }
+
+  /* ---------- 7. TESTIMONIALS ---------- */
+  .testimonials { background: var(--paper); }
+  .testimonials .head { text-align: center; }
+  .quotes { display: grid; gap: 18px; margin-top: 40px; }
+  .quote {
+    position: relative; min-height: 220px; border-radius: var(--radius);
+    background: var(--cream); padding: 64px 28px 28px;
+    border: 2px dashed rgba(43,30,26,.18);
+    display: grid; place-items: center; text-align: center;
+    color: var(--ink-soft); font: 400 1.1rem/1.5 var(--font-round);
+  }
+  .quote::before {
+    content: "\201D"; position: absolute; top: 4px; inset-inline-start: 22px;
+    font: 800 5.5rem/1 var(--font); color: var(--tone, var(--coral));
+  }
+  .quote:nth-child(2) { --tone: var(--teal); }
+  .quote:nth-child(3) { --tone: var(--mustard); }
+  @media (min-width: 900px) { .quotes { grid-template-columns: repeat(3, 1fr); } .quote { min-height: 280px; } }
+
+  /* ---------- 8. WORLDVIEW ---------- */
+  .worldview .grid { display: grid; gap: 40px; align-items: center; }
+  .worldview .body p { color: var(--ink-soft); margin-top: 18px; font-size: 1.1rem; }
+  .worldview .body p.first { color: var(--ink); font-weight: 600; margin-top: 24px; }
+  .worldview .pull {
+    margin-top: 32px; font-size: clamp(1.5rem, 6vw, 2.2rem); line-height: 1.3; font-weight: 800;
+    padding-inline-start: 20px; border-inline-start: 6px solid var(--coral);
+  }
+  .illu {
+    border-radius: 40px 40px 120px 40px; overflow: hidden;
+    box-shadow: 0 24px 50px -24px rgba(43,30,26,.35);
+    max-width: 340px; margin-inline: auto;
+  }
+  @media (min-width: 900px) { .illu { max-width: 480px; } }
+  @media (min-width: 900px) { .worldview .grid { grid-template-columns: 1.15fr .85fr; gap: 80px; } }
+
+  /* ---------- 9. FINAL CTA ---------- */
+  .final {
+    background: var(--teal-deep); color: var(--paper);
+    border-radius: 48px 48px 0 0; text-align: center; overflow: hidden;
+    padding-top: 88px; padding-bottom: 56px;
+  }
+  .final h2 { font-size: clamp(1.9rem, 7.4vw, 3.4rem); line-height: 1.2; font-weight: 800; max-width: 22ch; margin-inline: auto; }
+  .final .start { font-size: clamp(1.6rem, 6vw, 2.4rem); font-weight: 800; color: var(--peach); margin-top: 22px; }
+  .final p.sub { max-width: 44ch; margin: 18px auto 0; color: rgba(255,251,245,.88); font-size: 1.1rem; }
+  .final .btn { margin-top: 34px; width: 100%; max-width: 380px; }
+  .sign {
+    margin-top: 72px; padding-top: 40px; border-top: 1.5px solid rgba(255,251,245,.18);
+    display: grid; justify-items: center; gap: 8px;
+  }
+  .sign .logo-chip { background: var(--paper); border-radius: 28px; padding: 14px 20px; }
+  .sign .logo-chip img { width: 150px; height: auto; }
+  .sign .name { font-size: 1.5rem; font-weight: 800; margin-top: 10px; }
+  .sign .brand { font-family: var(--font-round); color: var(--sand); }
+  .sign .services-line { margin-top: 6px; font-weight: 600; color: var(--peach); letter-spacing: .02em; }
+  .social { list-style: none; padding: 0; margin: 22px 0 0; display: flex; gap: 12px; justify-content: center; }
+  .social a {
+    width: 52px; height: 52px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(255,251,245,.1); color: var(--paper);
+    transition: background-color .2s, transform .2s;
+  }
+  .social a:hover { background: var(--coral-deep); transform: translateY(-2px); }
+  .social a.is-pending { opacity: .45; cursor: default; }
+  .social a.is-pending:hover { background: rgba(255,251,245,.1); transform: none; }
+  .social svg { width: 24px; height: 24px; }
+  .legal { margin-top: 36px; font-size: .85rem; color: rgba(255,251,245,.6); }
+
+  /* ---------- floating WhatsApp (mobile) ---------- */
+  .fab {
+    position: fixed; z-index: 20; bottom: calc(16px + env(safe-area-inset-bottom)); inset-inline-end: 16px;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--coral-deep); color: #fff;
+    box-shadow: 0 10px 26px -8px rgba(43,30,26,.5);
+    transform: translateY(120px); transition: transform .35s ease;
+  }
+  .fab.show { transform: none; }
+  .fab svg { width: 30px; height: 30px; }
+  @media (min-width: 900px) { .fab { display: none; } }
+
+  /* ---------- reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn, .card, .fab { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.55V4.45A20 20 0 0 0 14.3 4.3c-2.2 0-3.7 1.34-3.7 3.8v2.4H8.1v3h2.5V21h2.9Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></g></symbol>
+</svg>
+
+<main>
+
+  <!-- ================= 1. HERO ================= -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">מתקשרים מיניות בריאה</span>
+        <h1 id="hero-title">לדבר על מיניות.<span class="l2">בגובה <span class="scribble">העיניים.<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 13 C 40 4, 80 18, 120 9 S 180 6, 197 11" fill="none" stroke="#E3A92B" stroke-width="5" stroke-linecap="round"/></svg></span></span></h1>
+        <p class="lead">הרצאות, סדנאות והדרכות על גוף, מיניות, יחסים, גבולות, מוגנות וכל מה שביניהם.</p>
+        <p class="audiences">
+          <span>להורים</span><span class="dot" aria-hidden="true">•</span>
+          <span>לצוותים</span><span class="dot" aria-hidden="true">•</span>
+          <span>לנשים</span><span class="dot" aria-hidden="true">•</span>
+          <span>לאוכלוסיות עם צרכים מיוחדים</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-wa="היי ענת, הגעתי מהאתר ואשמח לדבר על הרצאה או סדנה" href="#contact">
+            <svg aria-hidden="true"><use href="#i-wa"/></svg>בואו נדבר
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <span class="blob b1" aria-hidden="true"></span>
+        <span class="blob b2" aria-hidden="true"></span>
+        <!-- doodle: question mark + sparkle, like the illustrations -->
+        <svg class="doodle" viewBox="0 0 60 80" style="width:46px; top:-14px; inset-inline-end:8%; z-index:2" aria-hidden="true">
+          <path d="M14 22 C 14 6, 46 4, 46 22 C 46 34, 30 34, 30 48" stroke="#0B6E7A" stroke-width="6"/>
+          <circle cx="30" cy="66" r="4.5" fill="#0B6E7A" stroke="none"/>
+        </svg>
+        <svg class="doodle" viewBox="0 0 40 40" style="width:34px; bottom:18%; inset-inline-start:-10px; z-index:2" aria-hidden="true">
+          <path d="M20 4v9M20 27v9M4 20h9M27 20h9" stroke="#C4502F" stroke-width="4"/>
+        </svg>
+        <div class="frame">
+          <!-- תמונה אמיתית של ענת שלו -->
+          <img src="assets/anat-hero.jpg" width="1000" height="1200" alt="ענת שלו מחייכת, יושבת בחוץ באור יום" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. OPENING ================= -->
+  <section class="opening pad" aria-label="משפט פתיחה">
+    <div class="wrap grid">
+      <div class="opening-text reveal">
+        <p class="soft">אנחנו מדברים עם ילדים על לחצות כביש.</p>
+        <p class="soft">מדברים על תזונה. על כסף. על חברים. על אינטרנט.</p>
+        <p class="turn">דווקא כשמגיעים לגוף, יחסים ומיניות – לפעמים נגמרות לנו המילים.</p>
+        <span class="here">בשביל זה אני כאן.</span>
+      </div>
+      <figure class="polaroid reveal" style="margin:0 auto">
+        <img src="assets/illustration-no.jpg" width="900" height="900" loading="lazy" alt="איור: ילד מסרב בתנועת ידיים לדבר על חתונה, ואמא מבולבלת עם ענן מחשבות מקושקש">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= 3. ABOUT ================= -->
+  <section class="about pad" aria-labelledby="about-title">
+    <div class="wrap grid">
+      <!-- מקום לתמונה נוספת של ענת שלו: להחליף את ה-div ב-<img src="assets/anat-about.jpg" ...> -->
+      <div class="photo-slot reveal" role="img" aria-label="מקום לתמונה נוספת של ענת שלו">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          כאן תופיע תמונה נוספת<br>של ענת
+        </div>
+      </div>
+
+      <div class="about-body reveal">
+        <span class="eyebrow">אודות</span>
+        <h2 class="h2" id="about-title">נעים להכיר, אני ענת שלו</h2>
+        <p>אני עוסקת בחינוך למיניות בריאה ובהנגשה של נושאים שלפעמים קצת קשה לנו לדבר עליהם.</p>
+        <p>אני מומחית בתחום האוטיזם במערכת החינוך, מנחה ומדריכה צוותי חינוך וטיפול, הורים ואנשי מקצוע בתחום המיניות הבריאה, ועובדת עם ילדים, מתבגרים, מבוגרים ואוכלוסיות עם צרכים מיוחדים.</p>
+        <p>אני מאמינה שאפשר לדבר על מיניות בצורה מקצועית, ישירה, אנושית ולעיתים גם מצחיקה.</p>
+        <div class="highlight">
+          <p>מקצועיות בלי מילים גבוהות.</p>
+          <p>מיניות בלי לחישות.</p>
+          <p>וכלים שאפשר לקחת הביתה או לכיתה כבר מחר.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. SERVICES ================= -->
+  <section class="services pad" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">שירותים</span>
+        <h2 class="h2" id="services-title" style="margin-top:10px">אז על מה אפשר לדבר איתי?</h2>
+      </div>
+
+      <div class="cards">
+        <article class="card c1 reveal">
+          <span class="corner" aria-hidden="true"></span>
+          <span class="num" aria-hidden="true">01</span>
+          <h3>להורים</h3>
+          <p>הרצאות וכלים לשיחות עם ילדים ומתבגרים על גוף, פרטיות, גבולות, התפתחות, מסכים ומיניות.</p>
+          <a class="link-more" data-wa="היי ענת, אשמח לשמוע עוד על הרצאות להורים" href="#contact">ספרו לי עוד</a>
+        </article>
+        <article class="card c2 reveal">
+          <span class="corner" aria-hidden="true"></span>
+          <span class="num" aria-hidden="true">02</span>
+          <h3>לצוותי חינוך וטיפול</h3>
+          <p>הרצאות, סדנאות, ימי עיון ותהליכי הכשרה בחינוך למיניות בריאה.</p>
+          <a class="link-more" data-wa="היי ענת, אשמח לשמוע עוד על הדרכות לצוותי חינוך וטיפול" href="#contact">ספרו לי עוד</a>
+        </article>
+        <article class="card c3 reveal">
+          <span class="corner" aria-hidden="true"></span>
+          <span class="num" aria-hidden="true">03</span>
+          <h3>מיניות וצרכים מיוחדים</h3>
+          <p>ידע וכלים מותאמים בתחום המיניות, האוטיזם והצרכים המיוחדים, מתוך הסתכלות על עצמאות, בחירה ואיכות חיים.</p>
+          <a class="link-more" data-wa="היי ענת, אשמח לשמוע עוד על מיניות וצרכים מיוחדים" href="#contact">ספרו לי עוד</a>
+        </article>
+        <article class="card c4 reveal">
+          <span class="corner" aria-hidden="true"></span>
+          <span class="num" aria-hidden="true">04</span>
+          <h3>ערבים לנשים</h3>
+          <p class="lines"><span>מיניות. סקס. גוף. עונג. יחסים.</span><span>וכל הדברים שאנחנו חושבות עליהם ולא תמיד שואלות בקול.</span></p>
+          <a class="link-more" data-wa="היי ענת, אשמח לשמוע עוד על ערבים לנשים" href="#contact">ספרו לי עוד</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. MESSAGE BAND ================= -->
+  <section class="pad" style="padding-block:40px" aria-labelledby="band-title">
+    <div class="band">
+      <div class="wrap">
+        <p class="q reveal" id="band-title">רגע, מיניות בריאה זה לא בעיקר מוגנות?</p>
+        <p class="a reveal">גם. אבל <span class="not">ממש לא רק.</span></p>
+        <ul class="words reveal">
+          <li class="w-a" style="--r:-3deg">גוף</li>
+          <li class="w-c" style="--r:2deg">פרטיות</li>
+          <li class="w-d" style="--r:-2deg">בחירה</li>
+          <li class="w-b" style="--r:3deg">גבולות</li>
+          <li class="w-e" style="--r:-1deg">הסכמה</li>
+          <li class="w-a" style="--r:2deg">עצמאות</li>
+          <li class="w-c" style="--r:-3deg">קשר</li>
+          <li class="w-d" style="--r:1deg">אהבה</li>
+          <li class="w-b" style="--r:-2deg">אינטימיות</li>
+          <li class="w-e" style="--r:3deg">עונג</li>
+          <li class="w-a" style="--r:-1deg">תקשורת</li>
+          <li class="w-c" style="--r:2deg">מוגנות</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. TALKS ================= -->
+  <section class="talks pad" aria-labelledby="talks-title" style="padding-top:56px">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">הרצאות וסדנאות</span>
+        <h2 class="h2" id="talks-title" style="margin-top:10px">אפשר להתחיל מכאן</h2>
+      </div>
+
+      <ol class="talk-list">
+        <li class="reveal">זכותי על הגוף שלי</li>
+        <li class="reveal">חינוך למיניות בריאה ואוטיזם</li>
+        <li class="reveal">כשהמיניות פוגשת את הרשת</li>
+        <li class="reveal">מיניות מתחילה הרבה לפני גיל ההתבגרות</li>
+        <li class="reveal">מוגנות, גבולות והסכמה</li>
+        <li class="reveal">בואו נדבר באמת – ערב לנשים</li>
+      </ol>
+
+      <div class="custom reveal">
+        <svg class="doodle" viewBox="0 0 120 40" style="width:110px; top:18px; inset-inline-end:18px; opacity:.8" aria-hidden="true">
+          <path d="M4 22 C 14 6, 24 36, 34 20 S 54 6, 64 22 S 84 36, 94 20 S 110 8, 116 18" stroke="#C4502F" stroke-width="4"/>
+        </svg>
+        <p class="big">לא מצאתם בדיוק את מה שאתם צריכים?<span class="ok">מצוין.</span></p>
+        <p class="sub">רוב ההרצאות שלי מתחילות דווקא משיחה על מי יושב בקהל ומה באמת מעסיק אותו.</p>
+        <a class="btn btn-primary" data-wa="היי ענת, אשמח שנתאים יחד הרצאה או סדנה במיוחד עבורנו" href="#contact">
+          <svg aria-hidden="true"><use href="#i-wa"/></svg>בואו נתאים משהו במיוחד
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. TESTIMONIALS ================= -->
+  <!-- להחליף רק בהמלצות אמיתיות, עם שם ותפקיד, ובאישור הממליצים -->
+  <section class="testimonials pad" aria-labelledby="quotes-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">המלצות</span>
+        <h2 class="h2" id="quotes-title" style="margin-top:10px">דברים שאמרו לי בדרך</h2>
+      </div>
+      <div class="quotes">
+        <blockquote class="quote reveal">כאן תופיע המלצה אמיתית</blockquote>
+        <blockquote class="quote reveal">כאן תופיע המלצה אמיתית</blockquote>
+        <blockquote class="quote reveal">כאן תופיע המלצה אמיתית</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 8. WORLDVIEW ================= -->
+  <section class="worldview pad" aria-labelledby="world-title">
+    <div class="wrap grid">
+      <div class="body reveal">
+        <span class="eyebrow">תפיסת העולם</span>
+        <h2 class="h2" id="world-title" style="margin-top:10px">מיניות בריאה היא הרבה יותר <span class="scribble">ממוגנות<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12 C 50 4, 100 18, 150 8 S 190 10, 197 12" fill="none" stroke="#E8664A" stroke-width="5" stroke-linecap="round"/></svg></span></h2>
+        <p class="first">מוגנות היא חשובה, אבל היא רק חלק מהסיפור.</p>
+        <p>חינוך למיניות בריאה הוא גם היכולת להכיר את הגוף שלי, להבין פרטיות, לזהות גבולות, להגיד כן ולא, לכבד את האחר, ליצור קשר, לבחור ולהרגיש בטוח לשאול.</p>
+        <p class="pull">מוגנות נבנית גם מתוך ידע, עצמאות, בחירה ושפה.</p>
+      </div>
+      <figure class="illu reveal" style="margin:0 auto">
+        <img src="assets/illustration-questions.jpg" width="1000" height="1000" loading="lazy" alt="איור: ילד סקרן שואל שאלות ואמא מחייכת במבוכה, סביבם סימני שאלה">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= 9. FINAL CTA ================= -->
+  <section class="final" id="contact" aria-labelledby="final-title">
+    <div class="wrap">
+      <h2 id="final-title" class="reveal">יש נושא שאתם יודעים שצריך לדבר עליו,<br>אבל עוד לא ממש יודעים איך?</h2>
+      <p class="start reveal">בואו נתחיל משיחה.</p>
+      <p class="sub reveal">לא צריך לדעת איזו הרצאה להזמין.<br>ספרו לי מי הקהל ומה מעסיק אתכם, ונחשוב יחד מה יתאים.</p>
+      <a class="btn btn-primary btn-xl reveal" data-wa="היי ענת, יש לנו נושא שצריך לדבר עליו ואשמח לחשוב יחד מה יתאים" href="#contact">
+        <svg aria-hidden="true"><use href="#i-wa"/></svg>דברו איתי
+      </a>
+
+      <footer class="sign">
+        <div class="logo-chip"><img src="assets/logo.png" width="530" height="470" alt="הלוגו של ענת שלו, מתקשרים מיניות בריאה" loading="lazy"></div>
+        <p class="name">ענת שלו</p>
+        <p class="brand">מתקשרים מיניות בריאה</p>
+        <p class="services-line">הרצאות • סדנאות • הכשרות • ליווי</p>
+        <ul class="social">
+          <li><a data-wa="היי ענת" href="#contact" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a></li>
+          <li><a data-link="instagram" href="#contact" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a></li>
+          <li><a data-link="facebook" href="#contact" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a></li>
+          <li><a data-link="email" href="#contact" aria-label="Email"><svg aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+        </ul>
+        <p class="legal">© <span id="year"></span> ענת שלו</p>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<a class="fab" data-wa="היי ענת, הגעתי מהאתר ואשמח לדבר" href="#contact" aria-label="שליחת הודעת WhatsApp לענת">
+  <svg aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+<script>
+  /* ===== פרטי קשר: למלא לפני עלייה לאוויר =====
+     WHATSAPP_NUMBER בפורמט בינלאומי בלי + ובלי 0 מוביל, למשל 9725XXXXXXXX.
+     כל עוד השדה ריק, כפתורי WhatsApp פותחים את WhatsApp עם ההודעה בלי נמען. */
+  const WHATSAPP_NUMBER = "";
+  const LINKS = {
+    instagram: "",   // https://instagram.com/...
+    facebook: "",    // https://facebook.com/...
+    email: ""        // name@example.com
+  };
+
+  document.querySelectorAll("[data-wa]").forEach((a) => {
+    const text = encodeURIComponent(a.dataset.wa);
+    a.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+
+  document.querySelectorAll("[data-link]").forEach((a) => {
+    const key = a.dataset.link;
+    const value = LINKS[key];
+    if (!value) {
+      a.classList.add("is-pending");
+      a.setAttribute("aria-disabled", "true");
+      a.addEventListener("click", (e) => e.preventDefault());
+      return;
+    }
+    a.href = key === "email" ? `mailto:${value}` : value;
+    if (key !== "email") { a.target = "_blank"; a.rel = "noopener"; }
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // reveal on scroll
+  const io = "IntersectionObserver" in window && new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
+
+  // floating WhatsApp: shows after the hero, hides at the final CTA
+  const fab = document.querySelector(".fab");
+  const hero = document.querySelector(".hero");
+  const final = document.getElementById("contact");
+  let pastHero = false, atFinal = false;
+  const sync = () => fab.classList.toggle("show", pastHero && !atFinal);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; sync(); }).observe(hero);
+    new IntersectionObserver(([e]) => { atFinal = e.isIntersecting; sync(); }).observe(final);
+  }
+</script>
+</body>
+</html>
