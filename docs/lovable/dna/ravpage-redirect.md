@@ -38,11 +38,11 @@ iframe באמצעות `document.write`.
 ## הקוד
 
 ```html
-<div id="rh-go" style="font-family:Assistant,Arial,sans-serif;text-align:center;padding:20px 16px;font-size:17px;line-height:1.7;color:#1f2124">
+<div style="font-family:Assistant,Arial,sans-serif;text-align:center;padding:20px 16px;font-size:17px;line-height:1.7;color:#1f2124">
   ההרשמה נקלטה. מעבירים אותך לדף הכנס&hellip;
   <br>
-  <a href="https://moneymindb.rachelihadad.co.il/thanks" target="_top"
-     style="display:inline-block;margin-top:10px;color:#0e4c52;font-weight:700">
+  <a id="rh-fallback" href="https://moneymindb.rachelihadad.co.il/thanks" target="_top"
+     style="display:none;margin-top:10px;color:#0e4c52;font-weight:700">
     לא עברת? לחצי כאן
   </a>
 </div>
@@ -97,11 +97,28 @@ iframe באמצעות `document.write`.
     }
   }, 400);
 
+  // הקישור הידני מוסתר ומופיע רק אחרי שלוש שניות. אם ההפניה עובדת היא
+  // קורית לפני כן ואף אחת לא רואה אותו.
+  setTimeout(function () {
+    var a = document.getElementById("rh-fallback");
+    if (a && !done) a.style.display = "inline-block";
+  }, 3000);
+
   // לא משאירים טיימר רץ לנצח על הדף
   setTimeout(function () { clearInterval(tick); }, 600000);
 })();
 </script>
 ```
+
+## למה יש קישור ידני בכלל
+
+הוא קיים למקרה שההפניה האוטומטית לא קורית. המקרה הנפוץ הוא שרב מסר
+מסנן את ה-`<script>` משדה הקוד המותאם אישית ומשאיר רק את ה-HTML. אז
+הטקסט מוצג, ההפניה לא מתבצעת, והנרשמת מגיעה למבוי סתום אחרי שכבר
+נרשמה. אותו דבר קורה בדפדפן שחוסם ניווט בין מסגרות, או כש-JavaScript כבוי.
+
+הקישור מוסתר ב-`display:none` ומופיע רק אחרי שלוש שניות, ולכן כשהכול
+עובד אף אחת לא רואה אותו.
 
 ## האלטרנטיבה, בלי לגעת ברב מסר
 
