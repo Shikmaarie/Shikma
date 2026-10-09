@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
+<script>document.documentElement.classList.add("js")</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ענת שלו | מתקשרים מיניות בריאה</title>
@@ -364,11 +365,11 @@
   @media (min-width: 900px) { .fab { display: none; } }
 
   /* ---------- reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in { opacity: 1; transform: none; }
+  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
     .btn, .card, .fab { transition: none; }
   }
 </style>
@@ -662,6 +663,8 @@
     entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
   }, { rootMargin: "0px 0px -8% 0px" });
   document.querySelectorAll(".reveal").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
+
+  setTimeout(() => document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in")), 2500);
 
   // floating WhatsApp: shows after the hero, hides at the final CTA
   const fab = document.querySelector(".fab");
