@@ -13,7 +13,14 @@
    ======================================================================= */
 
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type MouseEvent,
+  type ReactNode,
+} from "react";
 import { ArrowLeft, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -114,6 +121,25 @@ function Eyebrow({ children, dark = false }: { children: ReactNode; dark?: boole
   );
 }
 
+/* שני טפסי הרשמה בדף, אחד למעלה ואחד למטה. */
+const FORM_IDS = ["register", "register-bottom"];
+
+/* כל כפתור מוביל לטופס הקרוב אליו, מלמעלה או מלמטה. קישור קבוע
+   ל-#register היה שולח מישהי שנמצאת בתחתית הדף לגלול חזרה עד למעלה. */
+function scrollToNearestForm(e: MouseEvent<HTMLAnchorElement>) {
+  const forms = FORM_IDS.map((id) => document.getElementById(id)).filter(
+    (el): el is HTMLElement => el !== null,
+  );
+  // בלי טפסים נשארת התנהגות העוגן הרגילה של הדפדפן
+  if (!forms.length) return;
+  e.preventDefault();
+  const y = window.scrollY;
+  const dist = (el: HTMLElement) =>
+    Math.abs(el.getBoundingClientRect().top + window.scrollY - y);
+  const target = forms.reduce((best, el) => (dist(el) < dist(best) ? el : best));
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 /* כפתור. על הכהה המנטה היא המילוי והטקסט כהה, אחרת הכפתור נבלע.
    על היריעה הבהירה היחס מתהפך. */
 function Cta({
@@ -133,6 +159,7 @@ function Cta({
   return (
     <a
       href="#register"
+      onClick={scrollToNearestForm}
       className={`lp-focus group inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-[17px] font-extrabold transition hover:brightness-110 ${look} ${
         full ? "flex w-full" : ""
       } ${className}`}
@@ -241,6 +268,8 @@ const RAVPAGE_SRC_IFRAME = `https://form2.ravpage.co.il/${RAVPAGE_ID}`;
 const RAVPAGE_SRC_INLINE = `https://form2.ravpage.co.il/${RAVPAGE_ID}?__loveable__=true`;
 
 // Best-effort, anonymous form-load telemetry. Never blocks or breaks the form.
+// יש בדף שני טפסים, והדגלים האלה הם ברמת המודול, ולכן רק הראשון שמדווח
+// נרשם. זה מכוון: ספירה כפולה הייתה שוברת את ההשוואה לנתונים שכבר נאספו.
 let formLoadLogged = false;
 let localFormLogged = false;
 
@@ -578,6 +607,7 @@ function Header() {
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
         <a
           href="#register"
+          onClick={scrollToNearestForm}
           className="lp-focus rounded-full border border-white/25 px-5 py-2 text-[14px] font-bold text-white transition hover:bg-white/10"
         >
           להרשמה ללא עלות
@@ -597,9 +627,14 @@ function StickyCta() {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const onScroll = () => {
-      const reg = document.getElementById("register");
-      const top = reg ? reg.getBoundingClientRect().top : Infinity;
-      setShow(window.scrollY > 420 && top > window.innerHeight * 0.6);
+      // מתחבא כשטופס כלשהו כבר על המסך, לא רק הראשון
+      const formVisible = FORM_IDS.some((id) => {
+        const el = document.getElementById(id);
+        if (!el) return false;
+        const r = el.getBoundingClientRect();
+        return r.top < window.innerHeight * 0.6 && r.bottom > 0;
+      });
+      setShow(window.scrollY > 420 && !formVisible);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -764,6 +799,21 @@ const FAQ = [
 function Sheet() {
   return (
     <div className="mx-2 max-w-[44rem] rounded-[20px] bg-sheet p-1.5 shadow-[0_50px_110px_-60px_hsl(0_0%_0%/0.9)] sm:mx-auto sm:rounded-[30px] sm:p-2.5">
+      {/* ----- הרשמה, למעלה. הטופס עצמו ולא כפתור, כדי שאפשר יהיה
+               להירשם בלי לגלול את כל הדף ----- */}
+      <Block id="register">
+        <Reveal>
+          <Eyebrow>הרשמה</Eyebrow>
+          <H2>ה־DNA של העושר</H2>
+          <p className="lp-fine mt-3.5 text-muted-ink">
+            13–15 באוקטובר · בזום · ללא עלות
+          </p>
+          <div className="mt-6 overflow-hidden rounded-[20px] border border-hairline bg-sheet-2 p-4 sm:p-7">
+            <RavPageForm />
+          </div>
+        </Reveal>
+      </Block>
+
       {/* ----- מאיפה אני מגיעה ----- */}
       <Block>
         <Reveal>
@@ -1087,8 +1137,8 @@ function Sheet() {
         </Reveal>
       </Block>
 
-      {/* ----- הרשמה ----- */}
-      <Block id="register">
+      {/* ----- הרשמה, למטה ----- */}
+      <Block id="register-bottom">
         <Reveal>
           <Eyebrow>הרשמה</Eyebrow>
           <H2>ה־DNA של העושר</H2>
