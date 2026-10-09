@@ -136,8 +136,14 @@
 
   /* ---------- 2. OPENING ---------- */
   .opening { background: var(--paper); border-radius: 48px 48px 0 0; }
-  .opening .grid { display: grid; gap: 40px; align-items: center; }
-  .opening-text { font-size: clamp(1.45rem, 5.6vw, 2.25rem); line-height: 1.45; font-weight: 500; }
+  .opening .grid { display: grid; gap: 48px; justify-items: center; }
+  .opening-text { font-size: clamp(1.45rem, 5.6vw, 2.25rem); line-height: 1.5; font-weight: 500; text-align: center; max-width: 30ch; }
+  .opening-text .topic {
+    color: var(--ink); font-weight: 700; white-space: nowrap;
+    background: linear-gradient(transparent 58%, rgba(227,169,43,.45) 58%, rgba(227,169,43,.45) 92%, transparent 92%);
+    padding-inline: .08em;
+  }
+  .opening-text .key { color: var(--coral-deep); font-weight: 800; }
   .opening-text p + p { margin-top: .2em; }
   .opening-text .soft { color: var(--ink-soft); }
   .opening-text .turn { color: var(--ink); font-weight: 700; }
@@ -153,8 +159,8 @@
   }
   .polaroid img { border-radius: 14px; }
   @media (min-width: 900px) {
-    .opening .grid { grid-template-columns: 1.4fr .8fr; gap: 72px; }
-    .polaroid { max-width: 380px; }
+    .polaroid { max-width: 320px; }
+    .opening-text { max-width: 36ch; }
   }
 
   /* ---------- 3. ABOUT ---------- */
@@ -430,9 +436,9 @@
   <section class="opening pad" aria-label="משפט פתיחה">
     <div class="wrap grid">
       <div class="opening-text reveal">
-        <p class="soft">אנחנו מדברים עם ילדים על לחצות כביש.</p>
-        <p class="soft">מדברים על תזונה. על כסף. על חברים. על אינטרנט.</p>
-        <p class="turn">דווקא כשמגיעים לגוף, יחסים ומיניות – לפעמים נגמרות לנו המילים.</p>
+        <p class="soft">אנחנו מדברים עם ילדים על <span class="topic">לחצות כביש</span>.</p>
+        <p class="soft">מדברים על <span class="topic">תזונה</span>. על <span class="topic">כסף</span>. על <span class="topic">חברים</span>. על <span class="topic">אינטרנט</span>.</p>
+        <p class="turn">דווקא כשמגיעים לגוף, יחסים ו<span class="key">מיניות</span> – לפעמים נגמרות לנו המילים.</p>
         <span class="here">בשביל זה אני כאן.</span>
       </div>
       <figure class="polaroid reveal" style="margin:0 auto">
