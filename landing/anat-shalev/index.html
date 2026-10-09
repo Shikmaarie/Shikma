@@ -121,12 +121,15 @@
     margin-top: 20px; font-weight: 600; color: var(--teal); font-size: 1rem;
   }
   .audiences .dot { color: var(--mustard); }
-  .hero .cta-row { margin-top: 28px; }
+  .hero .cta-row { margin-top: 12px; text-align: center; position: relative; z-index: 2; }
   .hero .cta-row .btn { width: 100%; max-width: 360px; }
 
   @media (min-width: 900px) {
     .hero { padding-top: 56px; padding-bottom: 96px; }
-    .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 64px; }
+    .hero-grid { grid-template-columns: 1.05fr .95fr; grid-template-areas: "text photo" "text cta"; column-gap: 64px; row-gap: 36px; }
+    .hero-text { grid-area: text; }
+    .hero-photo { grid-area: photo; }
+    .hero .cta-row { grid-area: cta; margin-top: 0; }
     .hero-text { text-align: start; }
     .hero .lead { margin-inline: 0; }
     .audiences { justify-content: flex-start; }
@@ -406,11 +409,6 @@
           <span>לנשים</span><span class="dot" aria-hidden="true">•</span>
           <span>לאוכלוסיות עם צרכים מיוחדים</span>
         </p>
-        <div class="cta-row">
-          <a class="btn btn-primary" data-wa="היי ענת, הגעתי מהאתר ואשמח לדבר על הרצאה או סדנה" href="#contact">
-            <svg aria-hidden="true"><use href="#i-wa"/></svg>בואו נדבר
-          </a>
-        </div>
       </div>
 
       <div class="hero-photo">
@@ -428,6 +426,11 @@
           <!-- תמונה אמיתית של ענת שלו -->
           <img src="assets/anat-hero.jpg" width="1000" height="1200" alt="ענת שלו מחייכת, יושבת בחוץ באור יום" fetchpriority="high">
         </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" data-wa="היי ענת, הגעתי מהאתר ואשמח לדבר על הרצאה או סדנה" href="#contact">
+          <svg aria-hidden="true"><use href="#i-wa"/></svg>בואו נדבר
+        </a>
       </div>
     </div>
   </section>
