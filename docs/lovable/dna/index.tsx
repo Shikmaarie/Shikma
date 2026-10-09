@@ -171,11 +171,19 @@ function Cta({
 }
 
 /* גוש על היריעה הבהירה */
-function Block({ children, id }: { children: ReactNode; id?: string }) {
+function Block({
+  children,
+  id,
+  className = "",
+}: {
+  children: ReactNode;
+  id?: string;
+  className?: string;
+}) {
   return (
     <div
       id={id}
-      className="border-t border-hairline px-5 py-9 text-center first:border-t-0 sm:px-[30px] sm:py-[46px] [scroll-margin-top:80px]"
+      className={`border-t border-hairline px-5 py-9 text-center first:border-t-0 sm:px-[30px] sm:py-[46px] [scroll-margin-top:80px] ${className}`}
     >
       {children}
     </div>
@@ -814,8 +822,10 @@ function Sheet() {
         </Reveal>
       </Block>
 
-      {/* ----- מאיפה אני מגיעה ----- */}
-      <Block>
+      {/* ----- מאיפה אני מגיעה -----
+           הגוש היחיד ביריעה עם רקע קרם. זה אותו קרם של הקוביות בדף
+           (--sheet-2), ולכן אין כאן צבע חדש אלא טוקן קיים. */}
+      <Block className="bg-sheet-2">
         <Reveal>
           <Eyebrow>מאיפה אני מגיעה</Eyebrow>
           <Body className="mt-4">
