@@ -1,0 +1,110 @@
+/* ===== MONEY TIME landing page ===== */
+/* להוסיף בסוף src/styles.css. בסיס: דף הכנס ”עושים אהבה עם הפחד מכסף”,
+   עם זהב מפלטת המותג (#ba9569 → #e9c690) במקום הקורל, וטקסט רץ בשחור. */
+:root {
+  --paper: 42 45% 94%;
+  --mist: 144 23% 87%;
+  --mint-wash: 144 27% 78%;
+  --ink: 192 92% 15%;
+  --ink-2: 0 0% 7%;
+  --gold: 33 37% 57%;
+  --gold-deep: 33 39% 42%;
+  --gold-soft: 33 37% 57%;
+  --gold-mid: 34 48% 65%;
+  --gold-light: 37 67% 74%;
+  --lp-body: 17px;
+}
+
+@media (min-width: 768px) {
+  :root { --lp-body: 18px; }
+}
+
+@theme inline {
+  --color-paper: hsl(var(--paper));
+  --color-mist: hsl(var(--mist));
+  --color-mint-wash: hsl(var(--mint-wash));
+  --color-ink: hsl(var(--ink));
+  --color-ink-2: hsl(var(--ink-2));
+  --color-gold: hsl(var(--gold));
+}
+
+html { scroll-behavior: smooth; }
+
+.font-display {
+  font-family: "Rubik One", "Rubik", system-ui, sans-serif;
+  font-weight: 900;
+}
+
+.lp-body { font-size: var(--lp-body); line-height: 1.75; }
+.lp-fine { font-size: 14px; line-height: 1.7; }
+
+.paper-wash {
+  background-color: hsl(var(--paper));
+  background-image:
+    radial-gradient(116% 78% at 0% 0%, hsl(var(--mint-wash) / 0.78) 0%, hsl(var(--mint-wash) / 0.24) 42%, transparent 68%),
+    radial-gradient(70% 52% at 100% 108%, hsl(var(--mint-wash) / 0.45) 0%, transparent 62%);
+}
+
+.paper-wash-alt {
+  background-color: hsl(var(--paper));
+  background-image:
+    radial-gradient(104% 72% at 100% 0%, hsl(var(--mint-wash) / 0.62) 0%, hsl(var(--mint-wash) / 0.20) 44%, transparent 70%),
+    radial-gradient(74% 56% at 0% 104%, hsl(var(--mint-wash) / 0.52) 0%, transparent 64%);
+}
+
+.lp-marker {
+  background-color: hsl(var(--mist));
+  border-radius: 0.5rem;
+  padding: 0.08em 0.35em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.lp-underline {
+  text-decoration: underline;
+  text-decoration-color: hsl(var(--gold-mid));
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.lp-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.lp-reveal.is-in { opacity: 1; transform: none; }
+
+.lp-focus:focus-visible {
+  outline: 2px solid hsl(var(--ink));
+  outline-offset: 3px;
+  border-radius: 9999px;
+}
+
+/* טקסט מודגש על רקע בהיר */
+.text-gold-grad {
+  background-image: linear-gradient(90deg, hsl(var(--gold-deep)), hsl(var(--gold-soft)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* טקסט מודגש על רקע טורקיז */
+.text-gold-grad-light {
+  background-image: linear-gradient(90deg, hsl(var(--gold-soft)), hsl(var(--gold-light)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.bg-gold-grad {
+  background-image: linear-gradient(90deg, hsl(var(--gold-soft)), hsl(var(--gold-light)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lp-reveal { opacity: 1; transform: none; transition: none; }
+}

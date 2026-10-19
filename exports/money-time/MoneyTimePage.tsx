@@ -3,7 +3,7 @@
  *
  * בנוי על אותה שפה עיצובית של דף הכנס ”עושים אהבה עם הפחד מכסף” ב-Lovable:
  * הטוקנים (paper / ink / gold / mist) והמחלקות (paper-wash, lp-body,
- * lp-marker, lp-reveal, font-display) כבר מוגדרים שם ב-src/styles.css.
+ * lp-marker, lp-reveal, font-display) מוגדרים ב-src/styles.css (ראו styles-append.css).
  *
  * הטקסט מגיע מהמסמך ”MONEY TIME: טקסט לדף הנחיתה”. כל מה שמסומן שם
  * [להשלים] מוצג כאן ברכיב <Todo> — לא להמציא במקומו תוכן, המלצות או
@@ -27,19 +27,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import "./money-time.css";
 
-import heroAsset from "@/assets/money-time-hero.webp.asset.json";
-import logoAsset from "@/assets/logo-turquoise.png.asset.json";
+const HERO_IMAGE = "/brand/money-time-hero.webp";
 // לוגו הקורס על רקע שקוף. הגרסה deep כהה ב-26% לקריאות על רקע שמנת;
 // על רקע טורקיז משתמשים בלוגו המקורי.
-import courseLogoAsset from "@/assets/money-time-logo.png.asset.json";
-import courseLogoDeepAsset from "@/assets/money-time-logo-deep.png.asset.json";
-
-const HERO_IMAGE = heroAsset.url;
-const LOGO = logoAsset.url;
-const COURSE_LOGO = courseLogoAsset.url;
-const COURSE_LOGO_DEEP = courseLogoDeepAsset.url;
+const COURSE_LOGO = "/brand/money-time-logo.png";
+const COURSE_LOGO_DEEP = "/brand/money-time-logo-deep.png";
+/** הלוגו של רחלי לכותרת. עד שהקובץ מועלה מוצג שם המותג בטקסט. */
+const RACHELI_LOGO: string | null = null;
 
 /** [להשלים] קישור לעמוד התשלום. עד שיש קישור, הכפתור מוביל לסקשן המחיר. */
 const CHECKOUT_URL = "#join";
@@ -311,12 +306,21 @@ function Header() {
       className="group/header fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 [&.is-scrolled]:border-gold/40 [&.is-scrolled]:bg-[hsl(var(--paper)/0.9)] [&.is-scrolled]:backdrop-blur-xl"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-        <img
-          src={LOGO}
-          alt="רחלי חדד · מכפילה עסקים · בונה אימפריות"
-          loading="eager"
-          className="h-10 w-auto md:h-14"
-        />
+        {RACHELI_LOGO ? (
+          <img
+            src={RACHELI_LOGO}
+            alt="רחלי חדד · מכפילה עסקים · בונה אימפריות"
+            loading="eager"
+            className="h-10 w-auto md:h-14"
+          />
+        ) : (
+          <p className="leading-none" aria-label="רחלי חדד · מכפילה עסקים · בונה אימפריות">
+            <span className="font-display block text-[22px] text-ink md:text-[26px]">רחלי חדד</span>
+            <span className="mt-1 block text-[11px] tracking-wide text-ink-2 md:text-[12px]">
+              מכפילה עסקים · בונה אימפריות
+            </span>
+          </p>
+        )}
         <div className="flex items-center gap-4">
           <span className="hidden text-sm text-ink-2 opacity-0 transition-opacity duration-300 group-[.is-scrolled]/header:opacity-100 lg:block">
             MONEY TIME · 17 שיעורים · גישה לתמיד
@@ -911,14 +915,6 @@ function Footer() {
     <footer className="border-t border-gold/40 bg-paper px-4 py-8 sm:px-6">
       <div className="lp-fine mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-center text-ink-2 sm:flex-row sm:text-right">
         <p>© 2026 רחלי חדד · כל הזכויות שמורות | עיצוב ובנייה: שקמה אושרי אריה</p>
-        <nav className="flex gap-4">
-          <a href="/privacy" className="lp-focus hover:text-ink">
-            מדיניות פרטיות
-          </a>
-          <a href="/accessibility" className="lp-focus hover:text-ink">
-            הצהרת נגישות
-          </a>
-        </nav>
       </div>
     </footer>
   );
