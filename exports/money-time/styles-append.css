@@ -34,8 +34,8 @@
 html { scroll-behavior: smooth; }
 
 .font-display {
-  font-family: "Rubik One", "Rubik", system-ui, sans-serif;
-  font-weight: 900;
+  font-family: "Rubik", system-ui, sans-serif;
+  font-weight: 700;
 }
 
 .lp-body { font-size: var(--lp-body); line-height: 1.75; }
