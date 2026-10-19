@@ -135,7 +135,6 @@ const FAQ: { q: string; a: ReactNode }[] = [
     ),
   },
   { q: "לכמה זמן יש גישה?", a: "לתמיד, כולל עדכונים." },
-  { q: "יש החזר כספי?", a: <Todo>מדיניות החזר</Todo> },
 ];
 
 /* ---------- ornaments & primitives ---------- */
@@ -239,7 +238,7 @@ function PillCta({
   const toneClass =
     tone === "gold"
       ? "bg-gold-grad text-ink hover:brightness-105"
-      : "bg-ink text-paper hover:bg-ink-2 shadow-[0_10px_24px_-14px_hsl(var(--ink))]";
+      : "bg-ink text-paper hover:bg-ink/90 shadow-[0_10px_24px_-14px_hsl(var(--ink))]";
   return (
     <a
       href={href}
