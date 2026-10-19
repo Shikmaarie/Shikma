@@ -31,6 +31,7 @@ const HERO_IMAGE = "/brand/money-time-hero.webp";
 // לוגו הקורס על רקע שקוף. מופיע רק על רקע שחור, בצבעים המקוריים.
 const COURSE_LOGO = "/brand/money-time-logo.png";
 const FAMILY_PHOTO = "/brand/money-time-family.webp";
+const BONUS_SUMMARY = "/brand/money-time-bonus-all.webp";
 /** הלוגו של רחלי לכותרת. עד שהקובץ מועלה מוצג שם המותג בטקסט. */
 const RACHELI_LOGO: string | null = null;
 
@@ -756,6 +757,17 @@ function Bonuses() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <img
+            src={BONUS_SUMMARY}
+            alt="בונוסים מטורפים: 7 צורות של עושר (97 ש״ח), התנהלות כלכלית נכונה (197 ש״ח), החוקים הרוחניים והחומריים של הכסף (297 ש״ח), ניפוץ אמונות מגבילות (297 ש״ח). סה״כ שווי הבונוסים 888 ש״ח, בחינם"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            className="mt-16 aspect-video h-auto w-full rounded-[2rem] object-cover shadow-[0_30px_70px_-40px_hsl(var(--night))] ring-1 ring-gold/40"
+          />
+        </Reveal>
 
         <Reveal>
           <div className="mx-auto mt-14 flex max-w-xl items-center justify-center gap-3 rounded-full border border-gold/40 bg-[hsl(var(--mist)/0.5)] px-6 py-4 text-center">
