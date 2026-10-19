@@ -58,21 +58,11 @@ const PAINS = [
   "ובראש כל הזמן רצה המחשבה: ”אם רק ארוויח קצת יותר, זה יסתדר”",
 ];
 
-const TODAY: ReactNode[] = [
-  <Todo key="debt" inline>
-    ניסוח מדויק על החובות, למשל ”פרעתי X תוך Y שנים”
-  </Todo>,
-  "סגרתי את המינוס של 150,000 ש\"ח",
-  "הקמתי 2 חברות בע\"מ חדשות",
-  "יש לי השקעות ונכסים",
-  "ואנחנו טסים כמשפחה בלי לספור כל שקל",
-];
-
 const WHO_AM_I = [
   "18 שנות ניסיון בעסקים, מכירות ושיווק",
-  "כמעט פשיטת רגל, המיליון הראשון בגיל 25",
+  "כמעט פשיטת רגל, עד המיליון הראשון בגיל 25",
   "3 עסקים שמכניסים 6 ספרות בחודש",
-  "עובדת 4 ימים בשבוע בלבד, ומלמדת אתכם איך",
+  "עובדת 3 ימים בשבוע בלבד",
   "5 שנות מסע עולמי עם בעל ו-4 ילדים תוך כדי בניית אימפריות",
 ];
 
@@ -587,15 +577,17 @@ function Today() {
       <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2 md:gap-14">
         <div>
           <Reveal>
-            <SectionHead eyebrow="התוצאה">איפה אני היום</SectionHead>
+            <SectionHead eyebrow="איפה אני היום">מי אני שאספר לכם על זה?</SectionHead>
+            <p className="font-display mt-6 text-[clamp(24px,3vw,32px)] text-gold-grad">
+              רחלי חדד
+            </p>
+            <p className="mt-1 text-[17px] text-ink-2">מאסטרית בעסקים · מאמנת ויועצת בכירה</p>
           </Reveal>
-          <ul className="mt-8 space-y-4">
-            {TODAY.map((t, i) => (
-              <Reveal key={i} delay={i * 70}>
+          <ul className="mt-7 space-y-4">
+            {WHO_AM_I.map((t, i) => (
+              <Reveal key={t} delay={i * 70}>
                 <li className="flex items-start gap-3">
-                  <span className="mt-1 grid size-6 shrink-0 place-items-center rounded-full bg-ink text-paper">
-                    <Check className="size-3.5" aria-hidden />
-                  </span>
+                  <BrandStar className="mt-1.5 size-4 shrink-0 text-[hsl(var(--gold-deep))]" />
                   <span className="lp-body text-ink">{t}</span>
                 </li>
               </Reveal>
@@ -635,42 +627,6 @@ function BrandStar({ className = "" }: { className?: string }) {
         fill="currentColor"
       />
     </svg>
-  );
-}
-
-function WhoAmI() {
-  return (
-    <section className="night-glow relative overflow-hidden px-4 py-20 text-paper sm:px-6 lg:py-28">
-      <ArcScatter className="-top-24 -right-28 opacity-30" />
-      <div className="relative mx-auto max-w-4xl">
-        <Reveal>
-          <SectionHead eyebrow="מי אני" center dark>
-            מי אני שאספר לכם על זה?
-          </SectionHead>
-          <p className="font-display mt-8 text-center text-[clamp(26px,3.4vw,36px)] text-gold-grad-light">
-            רחלי חדד
-          </p>
-          <p className="mt-2 text-center text-[17px] text-paper/80">
-            מאסטרית בעסקים · מאמנת ויועצת בכירה
-          </p>
-        </Reveal>
-
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2">
-          {WHO_AM_I.map((t, i) => (
-            <Reveal
-              key={t}
-              delay={i * 70}
-              className={i === WHO_AM_I.length - 1 ? "sm:col-span-2" : ""}
-            >
-              <li className="flex h-full items-start gap-4 rounded-2xl border border-gold/25 bg-paper/5 px-5 py-4">
-                <BrandStar className="mt-1 size-5 shrink-0 text-[hsl(var(--gold-light))]" />
-                <span className="lp-body text-paper">{t}</span>
-              </li>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
-    </section>
   );
 }
 
@@ -1000,8 +956,8 @@ function RavPageForm() {
   const host = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = host.current;
-    if (!el || el.dataset.loaded) return;
-    el.dataset.loaded = "true";
+    if (!el || el.dataset["loaded"]) return;
+    el.dataset["loaded"] = "true";
     const script = document.createElement("script");
     script.src = RAVPAGE_FORM_SRC;
     script.type = "text/javascript";
@@ -1134,7 +1090,6 @@ export default function MoneyTimePage() {
         <Pain />
         <Story />
         <Today />
-        <WhoAmI />
         <Solution />
         <Changes />
         <Curriculum />
