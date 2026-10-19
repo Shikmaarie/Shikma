@@ -2,7 +2,7 @@
  * MONEY TIME — דף נחיתה לקורס הדיגיטלי של רחלי חדד.
  *
  * בנוי על אותה שפה עיצובית של דף הכנס „עושים אהבה עם הפחד מכסף” ב-Lovable:
- * הטוקנים (paper / ink / flame / gold / mist) והמחלקות (paper-wash, lp-body,
+ * הטוקנים (paper / ink / gold / mist) והמחלקות (paper-wash, lp-body,
  * lp-marker, lp-reveal, font-display) כבר מוגדרים שם ב-src/styles.css.
  *
  * הטקסט מגיע מהמסמך „MONEY TIME: טקסט לדף הנחיתה”. כל מה שמסומן שם
@@ -27,6 +27,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import "./money-time.css";
 
 import heroAsset from "@/assets/racheli-header.png.asset.json";
 import logoAsset from "@/assets/logo-turquoise.png.asset.json";
@@ -216,7 +217,7 @@ function Reveal({
 
 function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`text-sm font-semibold uppercase tracking-[0.28em] text-gold ${className}`}>
+    <p className={`text-sm font-semibold uppercase tracking-[0.28em] text-[hsl(var(--gold-deep))] ${className}`}>
       {children}
     </p>
   );
@@ -233,11 +234,11 @@ function PillCta({
   href?: string;
   className?: string;
   withArrow?: boolean;
-  tone?: "ink" | "flame";
+  tone?: "ink" | "gold";
 }) {
   const toneClass =
-    tone === "flame"
-      ? "bg-flame text-ink hover:bg-paper"
+    tone === "gold"
+      ? "bg-gold-grad text-ink hover:brightness-105"
       : "bg-ink text-paper hover:bg-ink-2 shadow-[0_10px_24px_-14px_hsl(var(--ink))]";
   return (
     <a
@@ -257,7 +258,7 @@ function Todo({ children, inline = false }: { children: ReactNode; inline?: bool
   const Tag = inline ? "span" : "div";
   return (
     <Tag
-      className={`rounded-lg border border-dashed border-flame bg-flame/10 font-semibold text-ink-2 ${
+      className={`rounded-lg border border-dashed border-[hsl(var(--gold-soft))] bg-[hsl(var(--gold-light)/0.18)] font-semibold text-ink-2 ${
         inline ? "inline px-2 py-0.5 text-[0.9em]" : "block px-4 py-3 text-[15px]"
       }`}
     >
@@ -346,7 +347,7 @@ function Hero() {
             dir="ltr"
             className="font-display mt-6 text-right text-ink [font-size:clamp(44px,6.4vw,78px)] [line-height:0.95] tracking-tight"
           >
-            MONEY <span className="text-flame">TIME</span>
+            MONEY <span className="text-gold-grad">TIME</span>
           </p>
 
           <GoldRule className="my-6" />
@@ -405,7 +406,7 @@ function Pain() {
         </ul>
 
         <Reveal delay={120}>
-          <p className="font-display mt-12 text-center text-flame [font-size:clamp(24px,3.6vw,34px)] [line-height:1.3]">
+          <p className="font-display mt-12 text-center text-gold-grad [font-size:clamp(24px,3.6vw,34px)] [line-height:1.3]">
             אני מכירה את כל אחד מהמשפטים האלה. מבפנים.
           </p>
         </Reveal>
@@ -421,7 +422,7 @@ function Story() {
       <div className="relative mx-auto max-w-5xl">
         <Reveal>
           <SectionHead eyebrow="הסיפור שלי">
-            הרווחתי 200,000 ש״ח בחודש. <span className="text-flame">וזה לא הציל אותי.</span>
+            הרווחתי 200,000 ש״ח בחודש. <span className="text-gold-grad">וזה לא הציל אותי.</span>
           </SectionHead>
         </Reveal>
 
@@ -436,7 +437,7 @@ function Story() {
             </div>
             <div className="rounded-[2rem] bg-ink p-7 text-center text-paper sm:p-9">
               <p className="text-sm font-semibold text-paper/75">כמה שנים אחר כך, כמעט</p>
-              <p className="font-display mt-2 whitespace-nowrap text-flame [font-size:clamp(34px,5vw,54px)] [line-height:1]">
+              <p className="font-display mt-2 whitespace-nowrap text-gold-grad-light [font-size:clamp(34px,5vw,54px)] [line-height:1]">
                 2,000,000 ₪
               </p>
               <p className="mt-2 text-[15px] text-paper/75">חובות · ומינוס של כ-150,000 ש״ח</p>
@@ -458,7 +459,7 @@ function Story() {
 
           <Reveal>
             <p className="font-display my-10 text-ink [font-size:clamp(28px,4.6vw,44px)] [line-height:1.2]">
-              עד שהבנק סגר לי <span className="text-flame">את הברז.</span>
+              עד שהבנק סגר לי <span className="text-gold-grad">את הברז.</span>
             </p>
           </Reveal>
 
@@ -523,7 +524,7 @@ function Today() {
         </div>
 
         <Reveal delay={120}>
-          <div className="grid aspect-[4/5] w-full place-items-center rounded-[2rem] border-2 border-dashed border-flame/70 bg-[hsl(var(--paper)/0.7)] p-8 text-center">
+          <div className="grid aspect-[4/5] w-full place-items-center rounded-[2rem] border-2 border-dashed border-[hsl(var(--gold-soft)/0.7)] bg-[hsl(var(--paper)/0.7)] p-8 text-center">
             <Todo>מקום לתמונה או צילום מסך מושחר כהוכחה</Todo>
           </div>
         </Reveal>
@@ -532,7 +533,7 @@ function Today() {
       <Reveal>
         <p className="font-display mx-auto mt-16 max-w-3xl text-center text-ink [font-size:clamp(22px,3.4vw,32px)] [line-height:1.35] [text-wrap:balance]">
           לא קרה לי נס. למדתי חוקים.{" "}
-          <span className="text-flame">ואת החוקים האלה אפשר ללמוד.</span>
+          <span className="text-gold-grad">ואת החוקים האלה אפשר ללמוד.</span>
         </p>
       </Reveal>
     </section>
@@ -588,9 +589,9 @@ function Changes() {
     <section className="bg-ink px-4 py-20 text-paper sm:px-6 lg:py-28">
       <div className="mx-auto max-w-5xl">
         <Reveal>
-          <Eyebrow className="text-center">מה ישתנה</Eyebrow>
+          <Eyebrow className="text-center !text-[hsl(var(--gold-light))]">מה ישתנה</Eyebrow>
           <h2 className="font-display mt-4 text-center text-paper [font-size:clamp(28px,4.4vw,46px)] [line-height:1.2]">
-            איך החיים נראים אחרי <span className="text-flame">MONEY TIME</span>
+            איך החיים נראים אחרי <span className="text-gold-grad-light">MONEY TIME</span>
           </h2>
           <GoldRule className="mx-auto mt-6" />
         </Reveal>
@@ -603,7 +604,7 @@ function Changes() {
               className={i === CHANGES.length - 1 ? "sm:col-span-2" : ""}
             >
               <li className="flex h-full items-start gap-4 rounded-2xl border border-paper/15 bg-paper/5 px-5 py-4">
-                <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-flame text-ink">
+                <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-gold-grad text-ink">
                   <Check className="size-4" aria-hidden />
                 </span>
                 <span className="lp-body text-paper">{c}</span>
@@ -722,7 +723,7 @@ function Fit() {
               <ul className="mt-5 space-y-4">
                 {FIT_NO.map((t) => (
                   <li key={t} className="flex items-start gap-3">
-                    <span className="mt-1 grid size-6 shrink-0 place-items-center rounded-full border border-flame text-flame">
+                    <span className="mt-1 grid size-6 shrink-0 place-items-center rounded-full border border-[hsl(var(--gold-soft))] text-[hsl(var(--gold-deep))]">
                       <X className="size-3.5" aria-hidden />
                     </span>
                     <span className="lp-body text-ink-2">{t}</span>
@@ -751,7 +752,7 @@ function Testimonials() {
             {[1, 2, 3].map((n) => (
               <figure
                 key={n}
-                className="grid min-h-[200px] place-items-center rounded-[2rem] border-2 border-dashed border-flame/60 bg-[hsl(var(--paper)/0.7)] p-6 text-center"
+                className="grid min-h-[200px] place-items-center rounded-[2rem] border-2 border-dashed border-[hsl(var(--gold-soft)/0.6)] bg-[hsl(var(--paper)/0.7)] p-6 text-center"
               >
                 <Todo>המלצה אמיתית {n}: שם + תוצאה</Todo>
               </figure>
@@ -791,7 +792,7 @@ function Price() {
           <div className="mt-12 overflow-hidden rounded-[2.25rem] border border-gold/50 bg-[hsl(var(--paper)/0.95)] shadow-[0_30px_70px_-45px_hsl(var(--ink))]">
             <div className="bg-ink px-7 py-5 text-center">
               <p dir="ltr" className="font-display text-[26px] text-paper">
-                MONEY <span className="text-flame">TIME</span>
+                MONEY <span className="text-gold-grad-light">TIME</span>
               </p>
             </div>
             <div className="px-6 py-10 text-center sm:px-12">
@@ -867,7 +868,7 @@ function Closing() {
       <div className="relative mx-auto max-w-3xl">
         <Reveal>
           <h2 className="font-display text-paper [font-size:clamp(30px,5vw,54px)] [line-height:1.15] [text-wrap:balance]">
-            הלקח הזה עלה לי <span className="text-flame">כמעט 2 מיליון ש״ח</span>
+            הלקח הזה עלה לי <span className="text-gold-grad-light">כמעט 2 מיליון ש״ח</span>
           </h2>
           <GoldRule className="mx-auto my-8" />
           <p className="text-[19px] leading-[1.85] text-paper/85">
@@ -877,7 +878,7 @@ function Closing() {
             אפשר ללמוד את זה בדרך הקשה, כמו שאני למדתי.{" "}
             <strong className="text-paper">ואפשר להתחיל היום.</strong>
           </p>
-          <PillCta href={CHECKOUT_URL} tone="flame" withArrow className="mt-10">
+          <PillCta href={CHECKOUT_URL} tone="gold" withArrow className="mt-10">
             אני רוצה להתחיל עכשיו
           </PillCta>
           <p className="lp-fine mx-auto mt-10 max-w-lg italic text-paper/55">
@@ -938,7 +939,7 @@ export default function MoneyTimePage() {
     <div
       dir="rtl"
       lang="he"
-      className="min-h-[100dvh] overflow-x-hidden bg-paper font-[Rubik,system-ui,sans-serif] text-ink"
+      className="mt-page min-h-[100dvh] overflow-x-hidden bg-paper font-[Rubik,system-ui,sans-serif] text-ink"
     >
       <Header />
       <main>

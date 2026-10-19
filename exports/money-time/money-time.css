@@ -1,0 +1,41 @@
+/*
+ * MONEY TIME — שכבת זהב מעל הטוקנים של דף הכנס.
+ * הזהב נדגם מפלטת המותג (גרדיאנט #ba9569 → #e9c690). הקורל (flame) לא בשימוש בדף.
+ * --gold-deep כהה יותר מהפלטה בכוונה: טקסט זהב על רקע שמנת צריך ניגודיות.
+ */
+.mt-page {
+  /* מחליף את הזהב הכתום של דף הכנס בזהב של הפלטה */
+  --gold: 33 37% 57%;
+  --gold-deep: 33 39% 42%;
+  --gold-soft: 33 37% 57%;
+  --gold-mid: 34 48% 65%;
+  --gold-light: 37 67% 74%;
+}
+
+/* טקסט מודגש על רקע בהיר */
+.text-gold-grad {
+  background-image: linear-gradient(90deg, hsl(var(--gold-deep)), hsl(var(--gold-soft)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* טקסט מודגש על רקע טורקיז */
+.text-gold-grad-light {
+  background-image: linear-gradient(90deg, hsl(var(--gold-soft)), hsl(var(--gold-light)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.bg-gold-grad {
+  background-image: linear-gradient(90deg, hsl(var(--gold-soft)), hsl(var(--gold-light)));
+}
+
+.mt-page .lp-underline {
+  text-decoration-color: hsl(var(--gold-mid));
+}
