@@ -29,10 +29,8 @@ import {
 } from "@/components/ui/accordion";
 
 const HERO_IMAGE = "/brand/money-time-hero.webp";
-// לוגו הקורס על רקע שקוף. הגרסה deep כהה ב-26% לקריאות על רקע שמנת;
-// על רקע טורקיז משתמשים בלוגו המקורי.
+// לוגו הקורס על רקע שקוף. מופיע רק על רקע שחור, בצבעים המקוריים.
 const COURSE_LOGO = "/brand/money-time-logo.png";
-const COURSE_LOGO_DEEP = "/brand/money-time-logo-deep.png";
 /** הלוגו של רחלי לכותרת. עד שהקובץ מועלה מוצג שם המותג בטקסט. */
 const RACHELI_LOGO: string | null = null;
 
@@ -239,7 +237,7 @@ function PillCta({
   const toneClass =
     tone === "gold"
       ? "bg-gold-grad text-ink hover:brightness-105"
-      : "bg-ink text-paper hover:bg-ink/90 shadow-[0_10px_24px_-14px_hsl(var(--ink))]";
+      : "bg-night text-paper hover:bg-night/85 shadow-[0_10px_24px_-14px_hsl(var(--night))]";
   return (
     <a
       href={href}
@@ -271,15 +269,18 @@ function SectionHead({
   eyebrow,
   children,
   center = false,
+  dark = false,
 }: {
   eyebrow: string;
   children: ReactNode;
   center?: boolean;
+  /** על רקע שחור: כותרת בהירה ו-eyebrow בזהב בהיר */
+  dark?: boolean;
 }) {
   return (
     <div className={center ? "text-center" : ""}>
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="font-display mt-4 text-ink [font-size:clamp(28px,4.4vw,46px)] [line-height:1.2] [text-wrap:balance]">
+      <Eyebrow className={dark ? "!text-[hsl(var(--gold-light))]" : ""}>{eyebrow}</Eyebrow>
+      <h2 className={`font-display mt-4 ${dark ? "text-paper" : "text-ink"} [font-size:clamp(28px,4.4vw,46px)] [line-height:1.2] [text-wrap:balance]`}>
         {children}
       </h2>
       <GoldRule className={`mt-6 ${center ? "mx-auto" : ""}`} />
@@ -303,7 +304,7 @@ function Header() {
   return (
     <header
       ref={ref}
-      className="group/header fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 [&.is-scrolled]:border-gold/40 [&.is-scrolled]:bg-[hsl(var(--paper)/0.9)] [&.is-scrolled]:backdrop-blur-xl"
+      className="group/header fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 [&.is-scrolled]:border-gold/30 [&.is-scrolled]:bg-[hsl(var(--night)/0.92)] [&.is-scrolled]:backdrop-blur-xl"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         {RACHELI_LOGO ? (
@@ -315,17 +316,17 @@ function Header() {
           />
         ) : (
           <p className="leading-none" aria-label="רחלי חדד · מכפילה עסקים · בונה אימפריות">
-            <span className="font-display block text-[22px] text-ink md:text-[26px]">רחלי חדד</span>
-            <span className="mt-1 block text-[11px] tracking-wide text-ink-2 md:text-[12px]">
+            <span className="font-display block text-[22px] text-paper md:text-[26px]">רחלי חדד</span>
+            <span className="mt-1 block text-[11px] tracking-wide text-gold md:text-[12px]">
               מכפילה עסקים · בונה אימפריות
             </span>
           </p>
         )}
         <div className="flex items-center gap-4">
-          <span className="hidden text-sm text-ink-2 opacity-0 transition-opacity duration-300 group-[.is-scrolled]/header:opacity-100 lg:block">
+          <span className="hidden text-sm text-paper/70 opacity-0 transition-opacity duration-300 group-[.is-scrolled]/header:opacity-100 lg:block">
             MONEY TIME · 17 שיעורים · גישה לתמיד
           </span>
-          <PillCta className="!px-5 !py-2 !text-[14px]">להצטרפות</PillCta>
+          <PillCta tone="gold" className="!px-5 !py-2 !text-[14px]">להצטרפות</PillCta>
         </div>
       </div>
     </header>
@@ -336,12 +337,12 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="paper-wash relative overflow-hidden pt-24 lg:min-h-[100dvh] lg:pt-28">
-      <ArcScatter className="-bottom-28 -left-24 opacity-50" />
+    <section className="night-glow relative overflow-hidden pt-24 lg:min-h-[100dvh] lg:pt-28">
+      <ArcScatter className="-bottom-28 -left-24 opacity-30" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:min-h-[calc(100dvh-7rem)] lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:pb-20">
         <Reveal className="max-w-xl">
           <img
-            src={COURSE_LOGO_DEEP}
+            src={COURSE_LOGO}
             alt="MONEY TIME · קורס הכסף הדיגיטלי"
             width={1434}
             height={707}
@@ -351,20 +352,20 @@ function Hero() {
 
           <GoldRule className="my-6" />
 
-          <h1 className="font-display text-ink [font-size:clamp(26px,3.2vw,36px)] [line-height:1.25] [text-wrap:balance]">
+          <h1 className="font-display text-paper [font-size:clamp(26px,3.2vw,36px)] [line-height:1.25] [text-wrap:balance]">
             מרוויחים, עובדים קשה,{" "}
             <span className="lp-underline">ובסוף החודש הכסף פשוט נעלם?</span>
           </h1>
 
-          <p className="lp-body mt-5 max-w-lg text-ink-2">
-            בגיל 25 הרווחתי מעל <span className="lp-marker">200,000 ש״ח בחודש</span>, ובכל
+          <p className="lp-body mt-5 max-w-lg text-paper/80">
+            בגיל 25 הרווחתי מעל <span className="lp-marker !bg-[hsl(var(--gold-light)/0.16)] text-[hsl(var(--gold-light))]">200,000 ש״ח בחודש</span>, ובכל
             זאת הגעתי לכמעט 2 מיליון ש״ח חובות. ב-MONEY TIME אלמד אותך את חוקי הכסף שאף
             אחד לא לימד אותי, כדי שלא תצטרך/י ללמוד אותם בדרך הקשה.
           </p>
 
           <div className="mt-8 flex flex-col items-start gap-4">
-            <PillCta withArrow>אני רוצה לקחת שליטה על הכסף שלי</PillCta>
-            <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ink-2">
+            <PillCta tone="gold" withArrow>אני רוצה לקחת שליטה על הכסף שלי</PillCta>
+            <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-paper/75">
               {[
                 { icon: PlayCircle, t: "17 שיעורים מעשיים" },
                 { icon: InfinityIcon, t: "גישה לתמיד" },
@@ -387,7 +388,7 @@ function Hero() {
             height={1080}
             loading="eager"
             fetchPriority="high"
-            className="aspect-video h-auto w-full rounded-[1.75rem] object-cover shadow-[0_30px_70px_-40px_hsl(var(--ink))] ring-1 ring-gold/50"
+            className="aspect-video h-auto w-full rounded-[1.75rem] object-cover shadow-[0_30px_80px_-30px_hsl(var(--gold-soft)/0.45)] ring-1 ring-gold/50"
           />
         </Reveal>
       </div>
@@ -446,7 +447,7 @@ function Story() {
               </p>
               <p className="mt-2 text-[15px] text-ink-2">הכנסה · עסק עם 16 עובדים</p>
             </div>
-            <div className="rounded-[2rem] bg-ink p-7 text-center text-paper sm:p-9">
+            <div className="rounded-[2rem] bg-night p-7 text-center text-paper sm:p-9">
               <p className="text-sm font-semibold text-paper/75">כמה שנים אחר כך, כמעט</p>
               <p className="font-display mt-2 whitespace-nowrap text-gold-grad-light [font-size:clamp(34px,5vw,54px)] [line-height:1]">
                 2,000,000 ₪
@@ -597,7 +598,7 @@ function Solution() {
 
 function Changes() {
   return (
-    <section className="bg-ink px-4 py-20 text-paper sm:px-6 lg:py-28">
+    <section className="night-glow px-4 py-20 text-paper sm:px-6 lg:py-28">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <Eyebrow className="text-center !text-[hsl(var(--gold-light))]">מה ישתנה</Eyebrow>
@@ -782,26 +783,26 @@ function Price() {
   return (
     <section
       id="join"
-      className="paper-wash-alt relative overflow-x-clip px-4 py-20 [scroll-margin-top:96px] sm:px-6 lg:py-28"
+      className="night-glow relative overflow-x-clip px-4 py-20 [scroll-margin-top:96px] sm:px-6 lg:py-28"
     >
-      <ArcScatter className="-top-28 -right-24 opacity-60" />
+      <ArcScatter className="-top-28 -right-24 opacity-30" />
       <div className="relative mx-auto max-w-3xl">
         <Reveal>
-          <SectionHead eyebrow="השקעה" center>
+          <SectionHead eyebrow="השקעה" center dark>
             כמה עולה להמשיך ככה?
           </SectionHead>
-          <p className="lp-body mx-auto mt-6 max-w-2xl text-center text-ink-2">
+          <p className="lp-body mx-auto mt-6 max-w-2xl text-center text-paper/80">
             תחשבו כמה כסף ברח בשנה האחרונה בלי שבכלל הרגשתם. כמה ריבית שולמה על המינוס. כמה
             חופשות נדחו.
           </p>
-          <p className="lp-body mx-auto mt-3 max-w-2xl text-center font-semibold text-ink">
+          <p className="lp-body mx-auto mt-3 max-w-2xl text-center font-semibold text-paper">
             MONEY TIME עולה פחות מחודש אחד של ריבית על מינוס ממוצע.
           </p>
         </Reveal>
 
         <Reveal delay={100}>
-          <div className="mt-12 overflow-hidden rounded-[2.25rem] border border-gold/50 bg-[hsl(var(--paper)/0.95)] shadow-[0_30px_70px_-45px_hsl(var(--ink))]">
-            <div className="bg-ink px-7 py-5 text-center">
+          <div className="mt-12 overflow-hidden rounded-[2.25rem] border border-gold/50 bg-[hsl(var(--paper)/0.95)] shadow-[0_30px_80px_-35px_hsl(var(--gold-soft)/0.5)]">
+            <div className="bg-night px-7 py-5 text-center">
               <img
                 src={COURSE_LOGO}
                 alt="MONEY TIME · קורס הכסף הדיגיטלי"
@@ -875,7 +876,7 @@ function Faq() {
 
 function Closing() {
   return (
-    <section className="relative overflow-hidden bg-ink px-4 py-24 text-center text-paper sm:px-6 lg:py-32">
+    <section className="night-glow relative overflow-hidden px-4 py-24 text-center text-paper sm:px-6 lg:py-32">
       <ArcScatter className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[2.2] opacity-25" />
       <div className="relative mx-auto max-w-3xl">
         <Reveal>
@@ -912,8 +913,8 @@ function Closing() {
 
 function Footer() {
   return (
-    <footer className="border-t border-gold/40 bg-paper px-4 py-8 sm:px-6">
-      <div className="lp-fine mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-center text-ink-2 sm:flex-row sm:text-right">
+    <footer className="border-t border-gold/25 bg-night px-4 py-8 sm:px-6">
+      <div className="lp-fine mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-center text-paper/60 sm:flex-row sm:text-right">
         <p>© 2026 רחלי חדד · כל הזכויות שמורות | עיצוב ובנייה: שקמה אושרי אריה</p>
       </div>
     </footer>

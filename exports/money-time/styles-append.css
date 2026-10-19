@@ -7,6 +7,8 @@
   --mint-wash: 144 27% 78%;
   --ink: 192 92% 15%;
   --ink-2: 0 0% 7%;
+  /* שחור חם, כמו הרקע של הלוגו ושל המוקאפ */
+  --night: 30 10% 6%;
   --gold: 33 37% 57%;
   --gold-deep: 33 39% 42%;
   --gold-soft: 33 37% 57%;
@@ -26,6 +28,7 @@
   --color-ink: hsl(var(--ink));
   --color-ink-2: hsl(var(--ink-2));
   --color-gold: hsl(var(--gold));
+  --color-night: hsl(var(--night));
 }
 
 html { scroll-behavior: smooth; }
@@ -78,6 +81,14 @@ html { scroll-behavior: smooth; }
   outline: 2px solid hsl(var(--ink));
   outline-offset: 3px;
   border-radius: 9999px;
+}
+
+/* רקע שחור עם הילת זהב רכה, בהשראת המוקאפ */
+.night-glow {
+  background-color: hsl(var(--night));
+  background-image:
+    radial-gradient(60% 70% at 15% 30%, hsl(var(--gold-light) / 0.16) 0%, transparent 65%),
+    radial-gradient(50% 60% at 100% 100%, hsl(var(--gold-soft) / 0.12) 0%, transparent 70%);
 }
 
 /* טקסט מודגש על רקע בהיר */
