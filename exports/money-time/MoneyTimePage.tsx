@@ -136,6 +136,30 @@ const BONUSES: { n: number; t: string; b?: string; value: number; img: string }[
   },
 ];
 
+/** צילומי מסך של המלצות אמיתיות. ה-alt מתמלל את הטקסט שבתמונה, לקוראי מסך ולגוגל. */
+const REVIEWS: { img: string; alt: string }[] = [
+  {
+    img: "/brand/money-time-review-1.webp",
+    alt: "המלצה: לא התאפקתי, הייתי חייבת לומר תודה ולשתף על קורס הכסף Money Time. הקורס הזה עשה לי הפייכ. יש בו הרבה ידע וערך ועבודה תוך כדי עם רחלי. אין קורס כזה בישראל וגם בעולם כולו. זה אוצר גלום שווה מיליונים במחיר ממש מצחיק.",
+  },
+  {
+    img: "/brand/money-time-review-2.webp",
+    alt: "שיחת וואטסאפ: בא לי לקנות את הקורס של הכסף לכל הסובבות אותי, פשוט קורס מטורף. מה אהבת בו במיוחד? כלים פרקטיים. מעשיים. מה לעשות כדי לשנות את ההרגלים שלי ולהפוך למי שאני רוצה להיות.",
+  },
+  {
+    img: "/brand/money-time-review-3.webp",
+    alt: "אורטל: וואו רחלי, מאז קורס הכסף שלך שרכשתי את לא מבינה איזה סדר והתנהלות אחרת, ופתאום הבנתי שכל עולם הפיננסי ממש מעניין אותי ונותן לי ביטחון ושליטה על החיים. Shani: לי רחלי פתחה בפני את האופציה לא לפחד מכסף, לא מלחיץ אותי להתעסק ולדבר עליו.",
+  },
+  {
+    img: "/brand/money-time-review-4.webp",
+    alt: "אתי: אני רק אגיד שבזכות קורס הכסף הבנתי כמה אני לא מבינה. רכשתי את סדרת הספרים של אבא עשיר אבא עני, התחלתי לחסוך ולהתעניין בהשקעות.",
+  },
+  {
+    img: "/brand/money-time-review-5.webp",
+    alt: "המלצה: רחלי, תודה רבה על הקורס. בדיוק צפיתי בחלק של השפע, פתח לי את כל הצ'אקרות וחידד לי דברים שלא הבנתי. תודה רבה.",
+  },
+];
+
 const FIT_YES = [
   "מרוויח/ה, אבל הכסף לא נשאר",
   "נמצא/ת במינוס קבוע ורוצה לצאת ממנו סופית",
@@ -854,25 +878,33 @@ function Fit() {
 function Testimonials() {
   return (
     <section className="paper-wash px-4 py-20 sm:px-6 lg:py-28">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHead eyebrow="המלצות" center>
             מה אומרים מי שכבר בפנים
           </SectionHead>
         </Reveal>
         <Reveal delay={100}>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {[1, 2, 3].map((n) => (
+          {/* בנייד: גלילה אופקית עם עצירה בכל המלצה. מהטאבלט ומעלה: רשת. */}
+          <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-6">
+            {REVIEWS.map((r) => (
               <figure
-                key={n}
-                className="grid min-h-[200px] place-items-center rounded-[2rem] border-2 border-dashed border-[hsl(var(--gold-soft)/0.6)] bg-[hsl(var(--paper)/0.7)] p-6 text-center"
+                key={r.img}
+                className="w-[78%] shrink-0 snap-center sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-1rem)]"
               >
-                <Todo>המלצה אמיתית {n}: שם + תוצאה</Todo>
+                <img
+                  src={r.img}
+                  alt={r.alt}
+                  width={1122}
+                  height={1402}
+                  loading="lazy"
+                  className="aspect-[1122/1402] h-auto w-full rounded-[1.75rem] object-cover shadow-[0_24px_60px_-40px_hsl(var(--night))] ring-1 ring-gold/40"
+                />
               </figure>
             ))}
           </div>
           <p className="lp-fine mt-4 text-center text-ink-2/70">
-            2-3 המלצות אמיתיות בלבד, באישור הממליצים. לפחות אחת של גבר.
+            צילומי מסך מהודעות של מי שעברו את הקורס.
           </p>
         </Reveal>
       </div>
