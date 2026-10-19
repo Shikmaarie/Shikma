@@ -819,10 +819,6 @@ function Price() {
                 אני מצטרף/ת ל-MONEY TIME
               </PillCta>
               <p className="lp-fine mt-3 text-ink-2">גישה מיידית לקורס מיד אחרי התשלום</p>
-
-              <div className="mt-6 text-right">
-                <Todo>מדיניות החזר, למשל „14 יום להחליט. לא מתאים? מקבלים את הכסף בחזרה”</Todo>
-              </div>
             </div>
           </div>
         </Reveal>
