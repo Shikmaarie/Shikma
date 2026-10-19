@@ -304,7 +304,7 @@ function Header() {
   return (
     <header
       ref={ref}
-      className="group/header fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 [&.is-scrolled]:border-gold/30 [&.is-scrolled]:bg-[hsl(var(--night)/0.92)] [&.is-scrolled]:backdrop-blur-xl"
+      className="group/header fixed inset-x-0 top-0 z-50 border-b border-gold/20 bg-[hsl(var(--night)/0.94)] backdrop-blur-xl transition-all duration-300 [&.is-scrolled]:border-gold/30"
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         {RACHELI_LOGO ? (
@@ -337,35 +337,46 @@ function Header() {
 
 function Hero() {
   return (
-    <section className="night-glow relative overflow-hidden pt-24 lg:min-h-[100dvh] lg:pt-28">
+    <section className="night-glow relative overflow-hidden pt-16 md:pt-20">
+      {/* תמונת המוקאפ היא הדבר הראשון בדף: ברוחב מלא, ביחס 16:9 קבוע */}
+      <img
+        src={HERO_IMAGE}
+        alt="רחלי חדד וקורס MONEY TIME על מחשב, טאבלט ונייד: 17 שיעורים קצרים וממוקדים, כל אחד עם תרגיל ליישום מיידי"
+        width={1920}
+        height={1080}
+        loading="eager"
+        fetchPriority="high"
+        className="block aspect-video h-auto w-full object-cover"
+      />
+
       <ArcScatter className="-bottom-28 -left-24 opacity-30" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:min-h-[calc(100dvh-7rem)] lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:pb-20">
-        <Reveal className="max-w-xl">
+      <div className="relative mx-auto max-w-3xl px-4 pb-16 pt-10 text-center sm:px-6 lg:pb-24 lg:pt-14">
+        <Reveal>
           <img
             src={COURSE_LOGO}
             alt="MONEY TIME · קורס הכסף הדיגיטלי"
             width={1434}
             height={707}
             loading="eager"
-            className="h-auto w-full max-w-[min(100%,320px)]"
+            className="mx-auto h-auto w-full max-w-[180px] md:max-w-[200px]"
           />
 
-          <GoldRule className="my-6" />
+          <GoldRule className="mx-auto my-6" />
 
-          <h1 className="font-display text-paper [font-size:clamp(26px,3.2vw,36px)] [line-height:1.25] [text-wrap:balance]">
+          <h1 className="font-display text-paper [font-size:clamp(26px,3.6vw,40px)] [line-height:1.25] [text-wrap:balance]">
             מרוויחים, עובדים קשה,{" "}
             <span className="lp-underline">ובסוף החודש הכסף פשוט נעלם?</span>
           </h1>
 
-          <p className="lp-body mt-5 max-w-lg text-paper/80">
+          <p className="lp-body mx-auto mt-5 max-w-2xl text-paper/80">
             בגיל 25 הרווחתי מעל <span className="lp-marker !bg-[hsl(var(--gold-light)/0.16)] text-[hsl(var(--gold-light))]">200,000 ש״ח בחודש</span>, ובכל
             זאת הגעתי לכמעט 2 מיליון ש״ח חובות. ב-MONEY TIME אלמד אותך את חוקי הכסף שאף
             אחד לא לימד אותי, כדי שלא תצטרך/י ללמוד אותם בדרך הקשה.
           </p>
 
-          <div className="mt-8 flex flex-col items-start gap-4">
+          <div className="mt-8 flex flex-col items-center gap-4">
             <PillCta tone="gold" withArrow>אני רוצה לקחת שליטה על הכסף שלי</PillCta>
-            <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-paper/75">
+            <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-paper/75">
               {[
                 { icon: PlayCircle, t: "17 שיעורים מעשיים" },
                 { icon: InfinityIcon, t: "גישה לתמיד" },
@@ -378,18 +389,6 @@ function Hero() {
               ))}
             </ul>
           </div>
-        </Reveal>
-
-        <Reveal delay={120}>
-          <img
-            src={HERO_IMAGE}
-            alt="רחלי חדד וקורס MONEY TIME על מחשב, טאבלט ונייד: 17 שיעורים קצרים וממוקדים, כל אחד עם תרגיל ליישום מיידי"
-            width={1920}
-            height={1080}
-            loading="eager"
-            fetchPriority="high"
-            className="aspect-video h-auto w-full rounded-[1.75rem] object-cover shadow-[0_30px_80px_-30px_hsl(var(--gold-soft)/0.45)] ring-1 ring-gold/50"
-          />
         </Reveal>
       </div>
     </section>
