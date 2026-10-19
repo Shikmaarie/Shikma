@@ -31,9 +31,15 @@ import "./money-time.css";
 
 import heroAsset from "@/assets/racheli-header.png.asset.json";
 import logoAsset from "@/assets/logo-turquoise.png.asset.json";
+// לוגו הקורס על רקע שקוף. הגרסה deep כהה ב-26% לקריאות על רקע שמנת;
+// על רקע טורקיז משתמשים בלוגו המקורי.
+import courseLogoAsset from "@/assets/money-time-logo.png.asset.json";
+import courseLogoDeepAsset from "@/assets/money-time-logo-deep.png.asset.json";
 
 const HERO_PHOTO = heroAsset.url;
 const LOGO = logoAsset.url;
+const COURSE_LOGO = courseLogoAsset.url;
+const COURSE_LOGO_DEEP = courseLogoDeepAsset.url;
 
 /** [להשלים] קישור לעמוד התשלום. עד שיש קישור, הכפתור מוביל לסקשן המחיר. */
 const CHECKOUT_URL = "#join";
@@ -338,16 +344,14 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl gap-8 px-4 pb-12 sm:px-6 lg:min-h-[calc(100dvh-7rem)] lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:pb-20">
         <Reveal className="max-w-xl">
-          <span className="inline-flex rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-paper">
-            קורס דיגיטלי · 17 שיעורים מעשיים
-          </span>
-
-          <p
-            dir="ltr"
-            className="font-display mt-6 text-right text-ink [font-size:clamp(44px,6.4vw,78px)] [line-height:0.95] tracking-tight"
-          >
-            MONEY <span className="text-gold-grad">TIME</span>
-          </p>
+          <img
+            src={COURSE_LOGO_DEEP}
+            alt="MONEY TIME · קורס הכסף הדיגיטלי"
+            width={1434}
+            height={707}
+            loading="eager"
+            className="h-auto w-full max-w-[min(100%,400px)]"
+          />
 
           <GoldRule className="my-6" />
 
@@ -790,9 +794,14 @@ function Price() {
         <Reveal delay={100}>
           <div className="mt-12 overflow-hidden rounded-[2.25rem] border border-gold/50 bg-[hsl(var(--paper)/0.95)] shadow-[0_30px_70px_-45px_hsl(var(--ink))]">
             <div className="bg-ink px-7 py-5 text-center">
-              <p dir="ltr" className="font-display text-[26px] text-paper">
-                MONEY <span className="text-gold-grad-light">TIME</span>
-              </p>
+              <img
+                src={COURSE_LOGO}
+                alt="MONEY TIME · קורס הכסף הדיגיטלי"
+                width={1434}
+                height={707}
+                loading="lazy"
+                className="mx-auto h-auto w-full max-w-[200px]"
+              />
             </div>
             <div className="px-6 py-10 text-center sm:px-12">
               <p className="font-display text-ink [font-size:clamp(56px,10vw,88px)] [line-height:1]">
@@ -862,6 +871,14 @@ function Closing() {
       <ArcScatter className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[2.2] opacity-25" />
       <div className="relative mx-auto max-w-3xl">
         <Reveal>
+          <img
+            src={COURSE_LOGO}
+            alt="MONEY TIME · קורס הכסף הדיגיטלי"
+            width={1434}
+            height={707}
+            loading="lazy"
+            className="mx-auto mb-10 h-auto w-full max-w-[260px]"
+          />
           <h2 className="font-display text-paper [font-size:clamp(30px,5vw,54px)] [line-height:1.15] [text-wrap:balance]">
             הלקח הזה עלה לי <span className="text-gold-grad-light">כמעט 2 מיליון ש״ח</span>
           </h2>
