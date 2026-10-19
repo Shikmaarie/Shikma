@@ -29,14 +29,14 @@ import {
 } from "@/components/ui/accordion";
 import "./money-time.css";
 
-import heroAsset from "@/assets/racheli-header.png.asset.json";
+import heroAsset from "@/assets/money-time-hero.webp.asset.json";
 import logoAsset from "@/assets/logo-turquoise.png.asset.json";
 // לוגו הקורס על רקע שקוף. הגרסה deep כהה ב-26% לקריאות על רקע שמנת;
 // על רקע טורקיז משתמשים בלוגו המקורי.
 import courseLogoAsset from "@/assets/money-time-logo.png.asset.json";
 import courseLogoDeepAsset from "@/assets/money-time-logo-deep.png.asset.json";
 
-const HERO_PHOTO = heroAsset.url;
+const HERO_IMAGE = heroAsset.url;
 const LOGO = logoAsset.url;
 const COURSE_LOGO = courseLogoAsset.url;
 const COURSE_LOGO_DEEP = courseLogoDeepAsset.url;
@@ -333,16 +333,8 @@ function Header() {
 function Hero() {
   return (
     <section className="paper-wash relative overflow-hidden pt-24 lg:min-h-[100dvh] lg:pt-28">
-      <img
-        src={HERO_PHOTO}
-        alt="רחלי חדד"
-        width={1920}
-        height={1080}
-        className="order-2 h-64 w-full object-cover object-[30%_top] sm:h-80 lg:absolute lg:inset-0 lg:order-none lg:h-full lg:object-cover lg:object-left"
-      />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-[linear-gradient(to_top,hsl(var(--paper)),hsl(var(--paper)/0.15),transparent)] sm:h-80 lg:inset-0 lg:h-full lg:bg-[linear-gradient(270deg,hsl(var(--paper))_0%,hsl(var(--paper))_33%,hsl(var(--paper)/0.82)_46%,hsl(var(--paper)/0.3)_62%,transparent_78%)]" />
-
-      <div className="relative mx-auto grid max-w-6xl gap-8 px-4 pb-12 sm:px-6 lg:min-h-[calc(100dvh-7rem)] lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:pb-20">
+      <ArcScatter className="-bottom-28 -left-24 opacity-50" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 sm:px-6 lg:min-h-[calc(100dvh-7rem)] lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:pb-20">
         <Reveal className="max-w-xl">
           <img
             src={COURSE_LOGO_DEEP}
@@ -350,7 +342,7 @@ function Hero() {
             width={1434}
             height={707}
             loading="eager"
-            className="h-auto w-full max-w-[min(100%,400px)]"
+            className="h-auto w-full max-w-[min(100%,320px)]"
           />
 
           <GoldRule className="my-6" />
@@ -381,6 +373,18 @@ function Hero() {
               ))}
             </ul>
           </div>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <img
+            src={HERO_IMAGE}
+            alt="רחלי חדד וקורס MONEY TIME על מחשב, טאבלט ונייד: 17 שיעורים קצרים וממוקדים, כל אחד עם תרגיל ליישום מיידי"
+            width={1920}
+            height={1080}
+            loading="eager"
+            fetchPriority="high"
+            className="aspect-video h-auto w-full rounded-[1.75rem] object-cover shadow-[0_30px_70px_-40px_hsl(var(--ink))] ring-1 ring-gold/50"
+          />
         </Reveal>
       </div>
     </section>
