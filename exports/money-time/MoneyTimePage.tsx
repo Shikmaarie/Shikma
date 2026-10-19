@@ -44,12 +44,12 @@ const RAVPAGE_FORM_SRC =
 export const MONEY_TIME_TITLE =
   "MONEY TIME | הקורס של רחלי חדד לניהול כסף, 17 שיעורים מעשיים";
 export const MONEY_TIME_DESCRIPTION =
-  "בגיל 25 הרווחתי מעל 200,000 ש״ח בחודש, ובכל זאת הגעתי לכמעט 2 מיליון ש״ח חובות. ב-MONEY TIME אלמד אותך את חוקי הכסף שאף אחד לא לימד אותי.";
+  "בגיל 25 הרווחתי מעל 200,000 ש״ח בחודש, ובכל זאת הגעתי לכמעט 2 מיליון ש״ח חובות. ב-MONEY TIME אלמד אתכם את חוקי הכסף שאף אחד לא לימד אותי.";
 
 /* ---------- content ---------- */
 
 const PAINS = [
-  "הכסף נכנס, אבל אין לך מושג לאן הוא הולך",
+  "הכסף נכנס, אבל אין לכם מושג לאן הוא הולך",
   "כל חודש מתחיל בהבטחה ”הפעם יהיה אחרת”, ונגמר באותו מינוס",
   "לפתוח את אפליקציית הבנק זה רגע של כאב בטן",
   "מבחוץ הכול נראה בסדר, ואף אחד לא יודע כמה זה מעיק",
@@ -123,7 +123,7 @@ const BONUSES: { n: number; t: string; b?: string; value: number; img: string }[
   {
     n: 4,
     t: "ניפוץ אמונות מגבילות",
-    b: "המשפטים בראש שעוצרים אותך מלהחזיק כסף",
+    b: "המשפטים בראש שעוצרים אתכם מלהחזיק כסף",
     value: 297,
     img: "/brand/money-time-bonus-4.webp",
   },
@@ -154,16 +154,16 @@ const REVIEWS: { img: string; alt: string }[] = [
 ];
 
 const FIT_YES = [
-  "מרוויח/ה, אבל הכסף לא נשאר",
-  "נמצא/ת במינוס קבוע ורוצה לצאת ממנו סופית",
-  "עצמאי/ת או בעל/ת עסק עם הכנסות לא קבועות",
-  "רוצה להתחיל לחסוך ולא יודע/ת מאיפה",
+  "מרוויחים, אבל הכסף לא נשאר",
+  "נמצאים במינוס קבוע ורוצים לצאת ממנו סופית",
+  "עצמאים או בעלי עסקים עם הכנסות לא קבועות",
+  "רוצים להתחיל לחסוך ולא יודעים מאיפה",
 ];
 
 const FIT_NO = [
-  "מחפש/ת דרך להתעשר מהר",
-  "צריך/ה ייעוץ השקעות, ייעוץ משפטי או ליווי בהליך חדלות פירעון",
-  "לא מוכן/ה להקדיש זמן ליישום",
+  "מחפשים דרך להתעשר מהר",
+  "צריכים ייעוץ השקעות, ייעוץ משפטי או ליווי בהליך חדלות פירעון",
+  "לא מוכנים להקדיש זמן ליישום",
 ];
 
 const FAQ: { q: string; a: ReactNode }[] = [
@@ -404,8 +404,8 @@ function Hero() {
 
           <p className="lp-body mx-auto mt-5 max-w-2xl text-paper/80">
             בגיל 25 הרווחתי מעל <span className="lp-marker !bg-[hsl(var(--gold-light)/0.16)] text-[hsl(var(--gold-light))]">200,000 ש״ח בחודש</span>, ובכל
-            זאת הגעתי לכמעט 2 מיליון ש״ח חובות. ב-MONEY TIME אלמד אותך את חוקי הכסף שאף
-            אחד לא לימד אותי, כדי שלא תצטרך/י ללמוד אותם בדרך הקשה.
+            זאת הגעתי לכמעט 2 מיליון ש״ח חובות. ב-MONEY TIME אלמד אתכם את חוקי הכסף שאף
+            אחד לא לימד אותי, כדי שלא תצטרכו ללמוד אותם בדרך הקשה.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-4">
@@ -625,7 +625,7 @@ function Solution() {
             {
               icon: Brain,
               t: "הראש",
-              b: "להבין למה הכסף בורח לך, ומה בהתנהלות שלך גורם לזה לקרות שוב ושוב.",
+              b: "להבין למה הכסף בורח לכם, ומה בהתנהלות שלכם גורם לזה לקרות שוב ושוב.",
             },
             {
               icon: Hand,
@@ -781,7 +781,7 @@ function Fit() {
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           <Reveal>
             <div className="h-full rounded-[2rem] border border-gold/40 bg-[hsl(var(--paper)/0.9)] p-7 sm:p-9">
-              <h3 className="font-display text-[22px] text-ink">מתאים למי ש:</h3>
+              <h3 className="font-display text-[22px] text-ink">מתאים לכם אם אתם:</h3>
               <ul className="mt-5 space-y-4">
                 {FIT_YES.map((t) => (
                   <li key={t} className="flex items-start gap-3">
@@ -796,7 +796,7 @@ function Fit() {
           </Reveal>
           <Reveal delay={100}>
             <div className="h-full rounded-[2rem] border border-ink/15 bg-[hsl(var(--paper)/0.55)] p-7 sm:p-9">
-              <h3 className="font-display text-[22px] text-ink-2">לא מתאים למי ש:</h3>
+              <h3 className="font-display text-[22px] text-ink-2">לא מתאים לכם אם אתם:</h3>
               <ul className="mt-5 space-y-4">
                 {FIT_NO.map((t) => (
                   <li key={t} className="flex items-start gap-3">
