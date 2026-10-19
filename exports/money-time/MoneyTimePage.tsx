@@ -9,7 +9,7 @@
  * [להשלים] מוצג כאן ברכיב <Todo> — לא להמציא במקומו תוכן, המלצות או
  * מדיניות החזר. להחליף רק בטקסט אמיתי שרחלי אישרה.
  */
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import {
   ArrowLeft,
   Brain,
@@ -34,8 +34,8 @@ const FAMILY_PHOTO = "/brand/money-time-family.webp";
 /** הלוגו של רחלי לכותרת. עד שהקובץ מועלה מוצג שם המותג בטקסט. */
 const RACHELI_LOGO: string | null = null;
 
-/** כל כפתורי ההצטרפות גוללים לכרטיס המחיר, שבו יושב טופס ההרשמה של Ravpage. */
-const CHECKOUT_URL = "#join";
+/** כל כפתורי ההצטרפות גוללים ישירות לטופס ההרשמה של Ravpage שבכרטיס המחיר. */
+const CHECKOUT_URL = "#signup";
 
 /** טופס ההרשמה מ-Ravpage. הגרסה __loveable__ בונה את הטופס inline בלי document.write. */
 const RAVPAGE_FORM_SRC =
@@ -282,7 +282,7 @@ function Eyebrow({ children, className = "" }: { children: ReactNode; className?
 
 function PillCta({
   children,
-  href = "#join",
+  href = CHECKOUT_URL,
   className = "",
   withArrow = false,
   tone = "ink",
@@ -297,9 +297,19 @@ function PillCta({
     tone === "gold"
       ? "bg-gold-grad text-ink hover:brightness-105"
       : "bg-night text-paper hover:bg-night/85 shadow-[0_10px_24px_-14px_hsl(var(--night))]";
+  // גלילה ידנית לעוגן: לא תלויה בהתנהגות של הראוטר עם קישורי #.
+  const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!href.startsWith("#")) return;
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", href);
+  };
   return (
     <a
       href={href}
+      onClick={onClick}
       className={`lp-focus group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[16px] font-semibold transition-colors ${toneClass} ${className}`}
     >
       {children}
@@ -969,7 +979,10 @@ function Price() {
                 ))}
               </ul>
 
-              <div className="mt-10 border-t border-gold/30 pt-8">
+              <div
+                id="signup"
+                className="mt-10 border-t border-gold/30 pt-8 [scroll-margin-top:96px]"
+              >
                 <p className="font-display text-[22px] text-ink">להצטרפות ל-MONEY TIME</p>
                 <p className="lp-fine mt-1 text-ink-2">גישה מיידית לקורס מיד אחרי התשלום</p>
                 <RavPageForm />
