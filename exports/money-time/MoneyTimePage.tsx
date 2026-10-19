@@ -38,6 +38,8 @@ const RACHELI_LOGO: string | null = null;
 const CHECKOUT_URL = "#signup";
 
 /** טופס ההרשמה מ-Ravpage. הגרסה __loveable__ בונה את הטופס inline בלי document.write. */
+const SHIKMA_URL = "https://celebrated-duckanoo-c56f2b.netlify.app/#contact";
+
 const RAVPAGE_FORM_SRC =
   "https://form2.ravpage.co.il/88ff4c6e29d2f8c6f4ee6a61c92d44356AD61EA6?__loveable__=true";
 
@@ -1015,7 +1017,25 @@ function Footer() {
   return (
     <footer className="border-t border-gold/25 bg-night px-4 py-8 sm:px-6">
       <div className="lp-fine mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-center text-paper/60 sm:flex-row sm:text-right">
-        <p>© 2026 רחלי חדד · כל הזכויות שמורות | עיצוב ובנייה: שקמה אושרי אריה</p>
+        <p>
+          © 2026 רחלי חדד · כל הזכויות שמורות | עיצוב ובנייה:{" "}
+          <a
+            href={SHIKMA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lp-focus underline decoration-gold/60 underline-offset-4 hover:text-paper"
+          >
+            שקמה אושרי אריה
+          </a>
+        </p>
+        <nav className="flex gap-4">
+          <a href="/privacy" className="lp-focus hover:text-paper">
+            מדיניות פרטיות
+          </a>
+          <a href="/accessibility" className="lp-focus hover:text-paper">
+            הצהרת נגישות
+          </a>
+        </nav>
       </div>
     </footer>
   );
