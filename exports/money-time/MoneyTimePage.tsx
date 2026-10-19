@@ -5,9 +5,9 @@
  * הטוקנים (paper / ink / gold / mist) והמחלקות (paper-wash, lp-body,
  * lp-marker, lp-reveal, font-display) מוגדרים ב-src/styles.css (ראו styles-append.css).
  *
- * הטקסט מגיע מהמסמך ”MONEY TIME: טקסט לדף הנחיתה”. כל מה שמסומן שם
- * [להשלים] מוצג כאן ברכיב <Todo> — לא להמציא במקומו תוכן, המלצות או
- * מדיניות החזר. להחליף רק בטקסט אמיתי שרחלי אישרה.
+ * הטקסט מגיע מהמסמך ”MONEY TIME: טקסט לדף הנחיתה”. מה שלא הושלם שם הוסר
+ * מהדף ולא הומצא: לא להוסיף תוכן, המלצות או מדיניות החזר בלי טקסט אמיתי
+ * שרחלי אישרה.
  */
 import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import {
@@ -44,7 +44,7 @@ const RAVPAGE_FORM_SRC =
 export const MONEY_TIME_TITLE =
   "MONEY TIME | הקורס של רחלי חדד לניהול כסף, 17 שיעורים מעשיים";
 export const MONEY_TIME_DESCRIPTION =
-  "בגיל 25 הרווחתי מעל 200,000 ש\"ח בחודש, ובכל זאת הגעתי לכמעט 2 מיליון ש\"ח חובות. ב-MONEY TIME אלמד אותך את חוקי הכסף שאף אחד לא לימד אותי.";
+  "בגיל 25 הרווחתי מעל 200,000 ש״ח בחודש, ובכל זאת הגעתי לכמעט 2 מיליון ש״ח חובות. ב-MONEY TIME אלמד אותך את חוקי הכסף שאף אחד לא לימד אותי.";
 
 /* ---------- content ---------- */
 
@@ -76,7 +76,7 @@ const CHANGES = [
   "להפסיק לחכות ל”עוד קצת הכנסה” שתפתור הכול",
 ];
 
-const PARTS: { n: string; t: string; b: ReactNode }[] = [
+const PARTS: { n: string; t: string; b?: string }[] = [
   {
     n: "01",
     t: "למה הכסף בורח",
@@ -90,7 +90,6 @@ const PARTS: { n: string; t: string; b: ReactNode }[] = [
   {
     n: "03",
     t: "לצאת מהמינוס",
-    b: <Todo inline>מה בדיוק נלמד כאן</Todo>,
   },
   {
     n: "04",
@@ -168,19 +167,9 @@ const FIT_NO = [
 ];
 
 const FAQ: { q: string; a: ReactNode }[] = [
-  { q: "אני בחובות כבדים. זה יעזור לי?", a: <Todo>תשובה</Todo> },
   {
     q: "ההכנסה שלי לא קבועה. זה רלוונטי?",
-    a: "בדיוק בשביל זה. השיטה נבנתה על ידי מי שחוותה הכנסות של 200,000 ש\"ח בחודש וגם חודשים בלי כלום.",
-  },
-  { q: "כמה זמן זה דורש?", a: <Todo>X דקות בשבוע</Todo> },
-  {
-    q: "אני לא מסתדר/ת עם מספרים.",
-    a: (
-      <>
-        לא צריך. <Todo inline>המשך התשובה</Todo>
-      </>
-    ),
+    a: "בדיוק בשביל זה. השיטה נבנתה על ידי מי שחוותה הכנסות של 200,000 ש״ח בחודש וגם חודשים בלי כלום.",
   },
   { q: "לכמה זמן יש גישה?", a: "לתמיד, כולל עדכונים." },
 ];
@@ -307,20 +296,6 @@ function PillCta({
         <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
       )}
     </a>
-  );
-}
-
-/** סימון ויזואלי לתוכן שחסר במסמך המקור. להסיר כשהטקסט האמיתי מגיע. */
-function Todo({ children, inline = false }: { children: ReactNode; inline?: boolean }) {
-  const Tag = inline ? "span" : "div";
-  return (
-    <Tag
-      className={`rounded-lg border border-dashed border-[hsl(var(--gold-soft))] bg-[hsl(var(--gold-light)/0.18)] font-semibold text-ink-2 ${
-        inline ? "inline px-2 py-0.5 text-[0.9em]" : "block px-4 py-3 text-[15px]"
-      }`}
-    >
-      [להשלים] {children}
-    </Tag>
   );
 }
 
@@ -727,17 +702,12 @@ function Curriculum() {
                 </span>
                 <p className="mt-3 text-sm font-semibold text-gold">חלק {i + 1}</p>
                 <h3 className="font-display mt-1 text-[22px] text-ink">{p.t}</h3>
-                <p className="lp-body mt-2 text-ink-2">{p.b}</p>
+                {p.b && <p className="lp-body mt-2 text-ink-2">{p.b}</p>}
               </div>
             </Reveal>
           ))}
         </div>
 
-        <Reveal>
-          <div className="mt-6">
-            <Todo>לעדכן לפי השיעורים בפועל</Todo>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
