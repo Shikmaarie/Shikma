@@ -30,6 +30,7 @@ import {
 const HERO_IMAGE = "/brand/money-time-hero.webp";
 // לוגו הקורס על רקע שקוף. מופיע רק על רקע שחור, בצבעים המקוריים.
 const COURSE_LOGO = "/brand/money-time-logo.png";
+const FAMILY_PHOTO = "/brand/money-time-family.webp";
 /** הלוגו של רחלי לכותרת. עד שהקובץ מועלה מוצג שם המותג בטקסט. */
 const RACHELI_LOGO: string | null = null;
 
@@ -61,6 +62,14 @@ const TODAY: ReactNode[] = [
   "הקמתי 2 חברות בע\"מ חדשות",
   "יש לי השקעות ונכסים",
   "ואנחנו טסים כמשפחה בלי לספור כל שקל",
+];
+
+const WHO_AM_I = [
+  "18 שנות ניסיון בעסקים, מכירות ושיווק",
+  "כמעט פשיטת רגל, המיליון הראשון בגיל 25",
+  "3 עסקים שמכניסים 6 ספרות בחודש",
+  "עובדת 4 ימים בשבוע בלבד, ומלמדת אתכם איך",
+  "5 שנות מסע עולמי עם בעל ו-4 ילדים תוך כדי בניית אימפריות",
 ];
 
 const CHANGES = [
@@ -557,9 +566,15 @@ function Today() {
         </div>
 
         <Reveal delay={120}>
-          <div className="grid aspect-[4/5] w-full place-items-center rounded-[2rem] border-2 border-dashed border-[hsl(var(--gold-soft)/0.7)] bg-[hsl(var(--paper)/0.7)] p-8 text-center">
-            <Todo>מקום לתמונה או צילום מסך מושחר כהוכחה</Todo>
-          </div>
+          {/* רחלי אישרה במפורש לפרסם את התמונה הזו, כולל פני הילדים (19.10.2026). */}
+          <img
+            src={FAMILY_PHOTO}
+            alt="רחלי חדד עם המשפחה בטיול בחו״ל ובשדה התעופה"
+            width={1086}
+            height={1448}
+            loading="lazy"
+            className="mx-auto aspect-[1086/1448] h-auto w-full max-w-[440px] rounded-[2rem] object-cover shadow-[0_24px_60px_-40px_hsl(var(--night))] ring-1 ring-gold/40"
+          />
         </Reveal>
       </div>
 
@@ -569,6 +584,54 @@ function Today() {
           <span className="text-gold-grad">ואת החוקים האלה אפשר ללמוד.</span>
         </p>
       </Reveal>
+    </section>
+  );
+}
+
+/** הכוכב ארבע-הקצוות של המותג (לא אייקון גנרי). */
+function BrandStar({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        d="M12 0c.6 6.6 5.4 11.4 12 12-6.6.6-11.4 5.4-12 12-.6-6.6-5.4-11.4-12-12C6.6 11.4 11.4 6.6 12 0Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function WhoAmI() {
+  return (
+    <section className="night-glow relative overflow-hidden px-4 py-20 text-paper sm:px-6 lg:py-28">
+      <ArcScatter className="-top-24 -right-28 opacity-30" />
+      <div className="relative mx-auto max-w-4xl">
+        <Reveal>
+          <SectionHead eyebrow="מי אני" center dark>
+            מי אני שאספר לכם על זה?
+          </SectionHead>
+          <p className="font-display mt-8 text-center text-[clamp(26px,3.4vw,36px)] text-gold-grad-light">
+            רחלי חדד
+          </p>
+          <p className="mt-2 text-center text-[17px] text-paper/80">
+            מאסטרית בעסקים · מאמנת ויועצת בכירה
+          </p>
+        </Reveal>
+
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2">
+          {WHO_AM_I.map((t, i) => (
+            <Reveal
+              key={t}
+              delay={i * 70}
+              className={i === WHO_AM_I.length - 1 ? "sm:col-span-2" : ""}
+            >
+              <li className="flex h-full items-start gap-4 rounded-2xl border border-gold/25 bg-paper/5 px-5 py-4">
+                <BrandStar className="mt-1 size-5 shrink-0 text-[hsl(var(--gold-light))]" />
+                <span className="lp-body text-paper">{t}</span>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
@@ -998,6 +1061,7 @@ export default function MoneyTimePage() {
         <Pain />
         <Story />
         <Today />
+        <WhoAmI />
         <Solution />
         <Changes />
         <Curriculum />
