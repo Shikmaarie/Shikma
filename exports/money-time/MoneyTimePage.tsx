@@ -34,8 +34,12 @@ const FAMILY_PHOTO = "/brand/money-time-family.webp";
 /** הלוגו של רחלי לכותרת. עד שהקובץ מועלה מוצג שם המותג בטקסט. */
 const RACHELI_LOGO: string | null = null;
 
-/** [להשלים] קישור לעמוד התשלום. עד שיש קישור, הכפתור מוביל לסקשן המחיר. */
+/** כל כפתורי ההצטרפות גוללים לכרטיס המחיר, שבו יושב טופס ההרשמה של Ravpage. */
 const CHECKOUT_URL = "#join";
+
+/** טופס ההרשמה מ-Ravpage. הגרסה __loveable__ בונה את הטופס inline בלי document.write. */
+const RAVPAGE_FORM_SRC =
+  "https://form2.ravpage.co.il/88ff4c6e29d2f8c6f4ee6a61c92d44356AD61EA6?__loveable__=true";
 
 export const MONEY_TIME_TITLE =
   "MONEY TIME | הקורס של רחלי חדד לניהול כסף, 17 שיעורים מעשיים";
@@ -965,15 +969,39 @@ function Price() {
                 ))}
               </ul>
 
-              <PillCta href={CHECKOUT_URL} withArrow className="mt-9 w-full sm:w-auto">
-                אני מצטרף/ת ל-MONEY TIME
-              </PillCta>
-              <p className="lp-fine mt-3 text-ink-2">גישה מיידית לקורס מיד אחרי התשלום</p>
+              <div className="mt-10 border-t border-gold/30 pt-8">
+                <p className="font-display text-[22px] text-ink">להצטרפות ל-MONEY TIME</p>
+                <p className="lp-fine mt-1 text-ink-2">גישה מיידית לקורס מיד אחרי התשלום</p>
+                <RavPageForm />
+              </div>
             </div>
           </div>
         </Reveal>
       </div>
     </section>
+  );
+}
+
+/** מזריק את הסקריפט של Ravpage פעם אחת, בצד הלקוח, לתוך הקונטיינר. */
+function RavPageForm() {
+  const host = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = host.current;
+    if (!el || el.dataset.loaded) return;
+    el.dataset.loaded = "true";
+    const script = document.createElement("script");
+    script.src = RAVPAGE_FORM_SRC;
+    script.type = "text/javascript";
+    script.charset = "UTF-8";
+    script.async = true;
+    el.appendChild(script);
+  }, []);
+  return (
+    <div
+      ref={host}
+      className="rp-embed mx-auto mt-6 min-h-[320px] w-full max-w-md text-right"
+      aria-label="טופס הרשמה לקורס MONEY TIME"
+    />
   );
 }
 

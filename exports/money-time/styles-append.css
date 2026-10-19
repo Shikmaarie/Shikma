@@ -115,6 +115,22 @@ html { scroll-behavior: smooth; }
   background-image: linear-gradient(90deg, hsl(var(--gold-soft)), hsl(var(--gold-light)));
 }
 
+/* בידוד לטופס Ravpage שמוזרק מבחוץ: לא חורג מרוחב הכרטיס */
+.rp-embed {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.rp-embed * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+.rp-embed img,
+.rp-embed table,
+.rp-embed iframe {
+  height: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .lp-reveal { opacity: 1; transform: none; transition: none; }
