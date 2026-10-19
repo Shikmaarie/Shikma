@@ -671,7 +671,7 @@ function Bonuses() {
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <SectionHead eyebrow="בונוסים" center>
-            ובנוסף תקבל/י:
+            ובנוסף תקבלו:
           </SectionHead>
         </Reveal>
 
