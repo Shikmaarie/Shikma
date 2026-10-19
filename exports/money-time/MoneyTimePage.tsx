@@ -14,7 +14,6 @@ import {
   ArrowLeft,
   Brain,
   Check,
-  Gift,
   Hand,
   Infinity as InfinityIcon,
   PlayCircle,
@@ -97,12 +96,35 @@ const PARTS: { n: string; t: string; b: ReactNode }[] = [
   },
 ];
 
-const BONUSES: { t: string; b?: string }[] = [
-  { t: "סדנה מעשית", b: "התנהלות כלכלית נכונה" },
-  { t: "7 צורות של עושר", b: "כי עושר הוא לא רק מספר בבנק" },
-  { t: "ניפוץ אמונות מגבילות", b: "המשפטים בראש שעוצרים אותך מלהחזיק כסף" },
-  { t: "החוקים הרוחניים והחומריים של הכסף" },
-  { t: "גישה לתמיד", b: "כולל כל העדכונים העתידיים" },
+/** הסדר והשווי לפי המוקאפים של הבונוסים (בונוס 1-4). */
+const BONUSES: { n: number; t: string; b?: string; value: number; img: string }[] = [
+  {
+    n: 1,
+    t: "7 צורות של עושר",
+    b: "כי עושר הוא לא רק מספר בבנק",
+    value: 97,
+    img: "/brand/money-time-bonus-1.webp",
+  },
+  {
+    n: 2,
+    t: "התנהלות כלכלית נכונה",
+    b: "סדנה מעשית",
+    value: 197,
+    img: "/brand/money-time-bonus-2.webp",
+  },
+  {
+    n: 3,
+    t: "החוקים הרוחניים והחומריים של הכסף",
+    value: 297,
+    img: "/brand/money-time-bonus-3.webp",
+  },
+  {
+    n: 4,
+    t: "ניפוץ אמונות מגבילות",
+    b: "המשפטים בראש שעוצרים אותך מלהחזיק כסף",
+    value: 297,
+    img: "/brand/money-time-bonus-4.webp",
+  },
 ];
 
 const FIT_YES = [
@@ -674,29 +696,46 @@ function Bonuses() {
           </SectionHead>
         </Reveal>
 
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
+        <div className="mt-14 space-y-12 md:space-y-16">
           {BONUSES.map((b, i) => (
-            <Reveal
-              key={b.t}
-              delay={i * 70}
-              className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
-            >
-              <div className="flex h-full gap-4 rounded-[1.5rem] border border-gold/40 bg-[hsl(var(--mist)/0.5)] p-6">
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-paper text-gold ring-1 ring-gold/40">
-                  {b.t === "גישה לתמיד" ? (
-                    <InfinityIcon className="size-5" aria-hidden />
-                  ) : (
-                    <Gift className="size-5" aria-hidden />
-                  )}
-                </span>
-                <div>
-                  <h3 className="text-[18px] font-bold text-ink">{b.t}</h3>
-                  {b.b && <p className="mt-1 text-[16px] leading-relaxed text-ink-2">{b.b}</p>}
+            <Reveal key={b.n}>
+              <div className="grid items-center gap-6 md:grid-cols-2 md:gap-12">
+                <div className={i % 2 === 1 ? "md:order-2" : ""}>
+                  <img
+                    src={b.img}
+                    alt={`בונוס ${b.n}: ${b.t}, בשווי ${b.value} ש״ח`}
+                    width={1122}
+                    height={940}
+                    loading="lazy"
+                    className="aspect-[1122/940] h-auto w-full rounded-[2rem] object-cover shadow-[0_24px_60px_-40px_hsl(var(--night))] ring-1 ring-gold/40"
+                  />
+                </div>
+                <div className="text-center md:text-right">
+                  <span className="bg-gold-grad inline-flex rounded-full px-4 py-1 text-sm font-bold text-ink">
+                    בונוס {b.n}
+                  </span>
+                  <h3 className="font-display mt-4 text-ink [font-size:clamp(24px,3vw,34px)] [line-height:1.25] [text-wrap:balance]">
+                    {b.t}
+                  </h3>
+                  {b.b && <p className="lp-body mt-2 text-ink-2">{b.b}</p>}
+                  <p className="mt-4 text-[18px] font-semibold text-ink-2">
+                    בשווי{" "}
+                    <span className="font-display text-gold-grad text-[30px]">{b.value}</span> ש״ח
+                  </p>
                 </div>
               </div>
             </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <div className="mx-auto mt-14 flex max-w-xl items-center justify-center gap-3 rounded-full border border-gold/40 bg-[hsl(var(--mist)/0.5)] px-6 py-4 text-center">
+            <InfinityIcon className="size-5 shrink-0 text-gold" aria-hidden />
+            <p className="text-[17px] text-ink">
+              <strong>גישה לתמיד</strong>, כולל כל העדכונים העתידיים
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -820,7 +859,7 @@ function Price() {
               <ul className="mx-auto mt-8 grid max-w-md gap-2.5 text-right">
                 {[
                   "17 שיעורים מעשיים עם תרגיל ליישום",
-                  "סדנה מעשית + 3 בונוסים",
+                  "4 בונוסים, כולל סדנה מעשית",
                   "גישה לתמיד, כולל עדכונים",
                   "צפייה מכל מכשיר",
                 ].map((t) => (
