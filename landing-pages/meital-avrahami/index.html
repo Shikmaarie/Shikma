@@ -146,6 +146,34 @@ p{margin:0}
 .goodnews h3{font-size:clamp(1.6rem,3.4vw,2.3rem);color:var(--forest)}
 .goodnews p{max-width:620px;margin:14px auto 0;font-size:1.15rem;color:var(--ink-soft)}
 .goodnews p b{color:var(--forest)}
+.qs--4{grid-template-columns:repeat(4,1fr)}
+.q__mark svg{width:17px;height:17px;color:#fff}
+.goodnews p.goodnews__pre{margin:0 auto 10px}
+
+/* ---------- the hidden story: five roots on one line ---------- */
+.story{background:linear-gradient(180deg,var(--paper),#efe9dd)}
+.story .section-head,.approach .section-head{max-width:860px}
+.section-head h2{text-wrap:balance}
+.roots{position:relative;list-style:none;margin:0 auto;padding:0;max-width:780px;display:grid;gap:18px}
+.roots::before{content:"";position:absolute;top:30px;bottom:30px;right:27px;width:1.5px;background:linear-gradient(var(--b-sage),rgba(139,154,127,.25))}
+.roots li{position:relative;display:flex;gap:22px;align-items:center}
+.roots__ico{position:relative;z-index:1;flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--b-sage);color:#fff;box-shadow:0 0 0 6px #f4efe5}
+.roots__ico svg{width:26px;height:26px}
+.roots li>div{flex:1;min-width:0;padding:18px 24px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px -32px rgba(20,28,22,.4)}
+.roots h3{font-size:1.45rem;color:var(--forest)}
+.roots p{margin-top:4px;color:var(--ink-soft);font-size:1.08rem;line-height:1.6}
+.story__punch{max-width:860px;margin:60px auto 0;text-align:center;font-family:var(--head);font-stretch:75%;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.2;color:var(--forest);text-wrap:balance}
+.story__punch span{display:block;color:#5e6e57}
+
+/* ---------- the approach: swapping the question ---------- */
+.approach .section-head p{font-size:1.15rem}
+.swap{max-width:660px;margin:0 auto;padding:36px 28px;border-radius:28px;background:var(--b-sage-tint);text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.swap__label{font-size:1.02rem;color:var(--ink-soft)}
+.swap__old{font-family:var(--head);font-stretch:75%;font-size:clamp(1.6rem,3.6vw,2.2rem);color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--b-clay);text-decoration-thickness:2px;opacity:.8}
+.swap__arrow{display:block;margin:6px 0;color:var(--b-sage)}
+.swap__arrow svg{width:28px;height:28px}
+.swap__new{font-family:var(--head);font-stretch:75%;font-weight:700;font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.15;color:var(--forest)}
+.approach__close{max-width:680px;margin:36px auto 0;text-align:center;font-size:1.25rem;color:var(--ink)}
 
 /* ---------- journey (forest) ---------- */
 .journey{overflow:hidden}
@@ -324,6 +352,7 @@ footer .credit a:hover{text-decoration:underline}
   .jgrid{grid-template-columns:1fr;gap:20px}
   .jgrid .medal{grid-column:1 / -1;grid-row:1;width:min(240px,60%);margin:0 auto 18px}
   .jgrid .jcard{margin-inline-start:30px}
+  .qs--4{grid-template-columns:repeat(2,1fr)}
   .jgrid .jcard{grid-row:auto!important;grid-column:auto!important}
   .about,.reg{grid-template-columns:1fr}
   .reg__copy{text-align:center}
@@ -335,6 +364,16 @@ footer .credit a:hover{text-decoration:underline}
   body{font-size:17px}
   .qs,.tgrid{grid-template-columns:1fr}
   .q{padding:26px 24px 24px}
+  .qs--4{gap:12px}
+  .qs--4 .q{display:flex;align-items:center;gap:14px;padding:16px 18px}
+  .qs--4 .q h3{margin-top:0;font-size:1.12rem}
+  .qs--4 .q__mark{flex:none}
+  .roots::before{right:21px}
+  .roots li{gap:14px;align-items:flex-start}
+  .roots__ico{width:44px;height:44px;margin-top:14px}
+  .roots__ico svg{width:21px;height:21px}
+  .roots li>div{padding:16px 18px}
+  .roots h3{font-size:1.3rem}
   .jgrid{grid-template-columns:1fr}
   .qa{flex-direction:column;text-align:center;gap:12px;padding:26px 22px}
   .topbar .btn{display:none}
@@ -379,6 +418,13 @@ footer .credit a:hover{text-decoration:underline}
     <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></g></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5l2.6.3 1.2 4.2-1.9 1.5a12 12 0 0 0 6 6l1.5-1.9 4.2 1.2.3 2.6c0 1.2-1 2.2-2.2 2.1C10.5 19 5 13.5 4.5 5.7c-.1-1.2.9-2.2 2.1-2.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-again" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8M4 4v4h4M4 13a8 8 0 0 0 14.3 4.9L20 16M20 20v-4h-4"/></g></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v16m0 0l-6-6m6 6l6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-birth" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M12 13c-4 0-6.5-3-6.5-7 4 0 6.5 3 6.5 7zM12 11.5c0-3.5 2.2-6 6-6 0 3.5-2.2 6-6 6z"/><path d="M8 21h8"/></g></symbol>
+    <symbol id="i-name" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.5V4h7.5l9.5 9.5-7.5 7.5z"/><circle cx="7.8" cy="8.2" r="1.4"/></g></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9M12 15l-3.5-2.5M12 13.5l3-2.5"/><path d="M7 14a4.5 4.5 0 0 1 .6-8.9A5 5 0 0 1 17 6a4 4 0 0 1 .2 8"/><path d="M8 21h8"/></g></symbol>
+    <symbol id="i-parents" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="3"/><circle cx="16.5" cy="7.5" r="2.5"/><path d="M2.5 20c0-3.6 2.5-6 5.5-6s5.5 2.4 5.5 6M13.5 14.6c.9-.4 1.9-.6 3-.6 2.8 0 5 2.2 5 5.5"/></g></symbol>
+    <symbol id="i-untold" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H10l-6 4.5z"/></g><circle cx="8.5" cy="10.5" r="1" fill="currentColor"/><circle cx="12" cy="10.5" r="1" fill="currentColor"/><circle cx="15.5" cy="10.5" r="1" fill="currentColor"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
   </defs>
 </svg>
@@ -420,35 +466,76 @@ footer .credit a:hover{text-decoration:underline}
       <span class="live__sep" aria-hidden="true"></span>
       <span>יום חמישי, 5 בנובמבר 2026 · 20:00</span>
     </p>
-    <h1 id="hero-title" class="rv" data-d="1">העבר שלא חווית<span>ועדיין מנהל לך את החיים</span></h1>
+    <h1 id="hero-title" class="rv" data-d="1">מה אם הסיפור שמנהל את החיים שלכם<span>בכלל לא התחיל אצלכם?</span></h1>
     <p class="hero__lead rv" data-d="2">
-      אם אתם מרגישים שאתם חוזרים שוב ושוב לאותם דפוסים, שהזוגיות, הביטחון העצמי או הגוף תקועים, הגיע הזמן להפסיק להילחם בסימפטום ולגעת בשורש.
-      בוובינר החינמי הקרוב נבין למה <strong>תקיעות היא לא תקלה, אלא פתרון הישרדותי ישן.</strong>
+      לפעמים כדי להבין את ההווה, <strong>צריך להסתכל גם על מה שהיה לפניו.</strong>
     </p>
     <div class="hero__cta rv" data-d="3">
-      <a class="btn" href="#register">אני רוצה להבטיח את מקומי בחינם!<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn" href="#register">אני רוצה לגלות מה עומד מאחורי הדפוסים שלי<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <span class="hero__note">ללא עלות · מספר המקומות בשידור החי מוגבל</span>
     </div>
   </div>
   <span class="scroll-cue" aria-hidden="true"></span>
 </section>
 
-<!-- ============ QUESTIONS ============ -->
+<!-- ============ RECOGNITION: "this is me" ============ -->
 <section class="section" aria-labelledby="qs-title">
   <div class="wrap">
     <div class="section-head rv">
-      <span class="eyebrow">רגע לפני שמתחילים</span>
-      <h2 id="qs-title">האם אתם מוצאים את עצמכם שואלים...</h2>
+      <span class="eyebrow">זה מרגיש מוכר?</span>
+      <h2 id="qs-title">אתם מנסים שוב ושוב לשנות משהו בחיים</h2>
     </div>
-    <div class="qs">
-      <article class="q rv" data-d="1"><div class="q__mark" aria-hidden="true">?</div><h3>למה אני תמיד מגיב באותה צורה למרות שאני מנסה אחרת?</h3></article>
-      <article class="q rv" data-d="2"><div class="q__mark" aria-hidden="true">?</div><h3>למה הגוף שלי מאותת בעייפות, מתח או כאבים שלא ברור מאיפה הגיעו?</h3></article>
-      <article class="q rv" data-d="3"><div class="q__mark" aria-hidden="true">?</div><h3>מאיפה מגיעה תחושת התקיעות הזו בזוגיות, בקריירה או בביטחון העצמי?</h3></article>
+    <div class="qs qs--4">
+      <article class="q rv" data-d="1"><div class="q__mark" aria-hidden="true"><svg><use href="#i-again"/></svg></div><h3>להיכנס לזוגיות טובה</h3></article>
+      <article class="q rv" data-d="2"><div class="q__mark" aria-hidden="true"><svg><use href="#i-again"/></svg></div><h3>להרגיש בטוחים יותר בעצמכם</h3></article>
+      <article class="q rv" data-d="3"><div class="q__mark" aria-hidden="true"><svg><use href="#i-again"/></svg></div><h3>להפסיק להגיב באותה צורה</h3></article>
+      <article class="q rv" data-d="4"><div class="q__mark" aria-hidden="true"><svg><use href="#i-again"/></svg></div><h3>להשתחרר מתחושת תקיעות שמלווה אתכם כבר שנים</h3></article>
     </div>
     <div class="goodnews rv">
       <svg class="sprig" aria-hidden="true"><use href="#i-sprig"/></svg>
-      <h3>החדשות הטובות: זו לא אשמתכם.</h3>
-      <p>מה שלמדתם בעבר עובד היום על טייס אוטומטי. <b>בוובינר נבין איך לשחרר את זה מהשורש.</b></p>
+      <p class="goodnews__pre">אולי כבר ניסיתם טיפולים, קראתם ספרים, עבדתם על עצמכם, הבנתם המון דברים.</p>
+      <h3>ובכל זאת, משהו ממשיך לחזור.</h3>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE HIDDEN STORY ============ -->
+<section class="section story" aria-labelledby="story-title">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow">החלקים שלא סיפרו לכם</span>
+      <h2 id="story-title">מה אם יש חלקים בסיפור שלכם שאתם בכלל לא מכירים?</h2>
+    </div>
+    <ol class="roots">
+      <li class="rv"><span class="roots__ico" aria-hidden="true"><svg><use href="#i-birth"/></svg></span><div><h3>סיפור הלידה שלכם</h3><p>האם לחוויות שסבבו את תחילת החיים שלכם עשויה להיות משמעות עבורכם?</p></div></li>
+      <li class="rv"><span class="roots__ico" aria-hidden="true"><svg><use href="#i-name"/></svg></span><div><h3>השם שקיבלתם</h3><p>איזה סיפור, זיכרון או משמעות משפחתית עומדים מאחוריו?</p></div></li>
+      <li class="rv"><span class="roots__ico" aria-hidden="true"><svg><use href="#i-tree"/></svg></span><div><h3>העץ המשפחתי שלכם</h3><p>אילו פחדים, אמונות, דפוסים וסיפורים חוזרים בין הדורות?</p></div></li>
+      <li class="rv"><span class="roots__ico" aria-hidden="true"><svg><use href="#i-parents"/></svg></span><div><h3>הקשר עם אבא ואמא</h3><p>אילו מסרים למדתם בילדות על אהבה, ביטחון, הצלחה וכסף?</p></div></li>
+      <li class="rv"><span class="roots__ico" aria-hidden="true"><svg><use href="#i-untold"/></svg></span><div><h3>הסיפורים שלא סופרו</h3><p>האם אירועים, אובדנים וחוויות משפחתיות מהעבר ממשיכים להשפיע על האופן שבו אתם תופסים את העולם?</p></div></li>
+    </ol>
+    <p class="story__punch rv">כי לפעמים אנחנו נלחמים בדפוס,<span>כשאנחנו בכלל לא מכירים את הסיפור שמאחוריו.</span></p>
+  </div>
+</section>
+
+<!-- ============ THE APPROACH ============ -->
+<section class="section approach" aria-labelledby="approach-title">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow">הגישה</span>
+      <h2 id="approach-title">ריפוי בין-דורי</h2>
+      <p>בגישת הריפוי הבין-דורי נחקור כיצד סיפורי המשפחה, מערכות היחסים וחוויות החיים עשויים להשפיע על התגובות, האמונות והבחירות שלנו.</p>
+      <p>נלמד להסתכל על התקיעות לא רק כבעיה שצריך לפתור, אלא גם כדפוס שאולי נוצר בעבר כדי להגן, לשמור או לשרוד.</p>
+    </div>
+    <div class="swap rv">
+      <span class="swap__label">והכי חשוב: נתחיל להחליף את השאלה</span>
+      <p class="swap__old">מה לא בסדר איתי?</p>
+      <span class="swap__arrow" aria-hidden="true"><svg><use href="#i-down"/></svg></span>
+      <span class="swap__label">בשאלה</span>
+      <p class="swap__new">מה הסיפור שמאחורי הדפוס הזה?</p>
+    </div>
+    <p class="approach__close rv">כי כשאנחנו מתחילים להבין את הסיפור, נפתחת האפשרות לבחור איך אנחנו רוצים להמשיך לכתוב אותו.</p>
+    <div class="center-cta rv">
+      <a class="btn" href="#register">אני רוצה לגלות מה עומד מאחורי הדפוסים שלי<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
