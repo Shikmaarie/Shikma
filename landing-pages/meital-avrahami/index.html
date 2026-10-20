@@ -179,6 +179,9 @@ p{margin:0}
 .stat span{font-weight:600;font-size:1.12rem;line-height:1.45;color:var(--forest)}
 .about p.bio{margin-top:24px;font-size:1.12rem;color:var(--ink-soft)}
 
+.about-sec{background:var(--paper) url(assets/about-bg.webp) center/cover no-repeat}
+@media (max-width:960px){.about-sec{background:linear-gradient(180deg,rgba(248,244,236,0) 0,rgba(248,244,236,0) 46vw,var(--paper) 64vw),var(--paper) url(assets/about-bg-960.webp) left top/220% auto no-repeat}}
+
 /* ---------- testimonials ---------- */
 .testis{background:var(--cream)}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -488,7 +491,7 @@ footer a{color:var(--sage-soft)}
 </section>
 
 <!-- ============ ABOUT ============ -->
-<section class="section" aria-labelledby="about-title">
+<section class="section about-sec" aria-labelledby="about-title">
   <div class="wrap about">
     <div class="portrait rv">
       <picture><source srcset="assets/meital.webp" type="image/webp"><img src="assets/meital.jpg" alt="מיטל אברהמי" width="800" height="1000" loading="lazy"></picture>
