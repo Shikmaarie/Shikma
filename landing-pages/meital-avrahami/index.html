@@ -153,9 +153,9 @@ p{margin:0}
 .journey--sage .qa{flex-direction:column;text-align:center}
 .journey--sage .qa h3,.journey--sage .qa p{color:var(--ink)}
 .journey .flow{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;opacity:.5}
-.jgrid{display:grid;grid-template-columns:1fr minmax(240px,300px) 1fr;grid-template-rows:auto auto;gap:28px 34px;align-items:stretch}
+.jgrid{position:relative;display:grid;grid-template-columns:1fr minmax(260px,330px) 1fr;grid-template-rows:auto auto;gap:28px 34px;align-items:stretch}
 .jgrid .medal{grid-column:2;grid-row:1 / span 2;align-self:center}
-.jcard{position:relative;padding:34px 32px 30px;border-radius:var(--radius);background:linear-gradient(160deg,#f5efe3,#ece3d2);color:var(--ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.jcard{position:relative;z-index:1;padding:34px 32px 30px;border-radius:var(--radius);background:linear-gradient(160deg,#f5efe3,#ece3d2);color:var(--ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
 .jcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .jcard__num{font-family:var(--serif);font-size:.95rem;color:var(--sage);letter-spacing:.08em}
 .jcard .ico{flex:none;width:52px;height:52px;color:var(--moss)}
@@ -165,6 +165,14 @@ p{margin:0}
 .medal{position:relative;aspect-ratio:1;width:100%}
 .medal svg{width:100%;height:100%;filter:drop-shadow(0 30px 50px rgba(0,0,0,.5))}
 .medal::before{content:"";position:absolute;inset:-10%;border-radius:50%;border:1px dashed rgba(220,193,150,.3);animation:spin 80s linear infinite}
+/* glowing body figure in the centre, joined to the four cards by fine lines */
+.medal--body{aspect-ratio:auto;z-index:1}
+.medal--body::before{inset:8% -8% 18%;border:0;border-radius:50%;background:radial-gradient(closest-side,rgba(255,240,205,.32),rgba(255,240,205,0));animation:none}
+.medal--body img{position:relative;width:100%;height:auto;-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent);mask-image:linear-gradient(180deg,#000 78%,transparent)}
+.jlines{position:absolute;inset:0;width:100%;height:100%;z-index:2;overflow:visible;pointer-events:none}
+.jlines .ln{fill:none;stroke:rgba(255,246,222,.85);stroke-width:1.2}
+.jlines .star{fill:#fff6de}
+.jlines .dot{fill:#fff6de;opacity:.9}
 @keyframes spin{to{transform:rotate(360deg)}}
 .qa{display:flex;align-items:center;gap:26px;margin-top:40px;padding:28px 34px;border-radius:var(--radius);border:1px solid rgba(220,193,150,.35);background:rgba(255,255,255,.04)}
 .qa .ico{flex:none;width:58px;height:58px;color:var(--gold-soft)}
@@ -290,7 +298,8 @@ footer a{color:var(--sage-soft)}
 /* ---------- responsive ---------- */
 @media (max-width:980px){
   .jgrid{grid-template-columns:1fr 1fr;gap:20px}
-  .jgrid .medal{grid-column:1 / -1;grid-row:1;width:min(280px,70%);margin:0 auto 18px}
+  .jgrid .medal{grid-column:1 / -1;grid-row:1;width:min(240px,60%);margin:0 auto 18px}
+  .jlines{display:none}
   .jgrid .jcard{grid-row:auto!important;grid-column:auto!important}
   .about,.reg{grid-template-columns:1fr}
   .reg__copy{text-align:center}
@@ -433,38 +442,10 @@ footer a{color:var(--sage-soft)}
         <p>נבין לעומק מה ההתנהגות או המחלות שלנו מסמלות לנו, מה הקשר בין סיפורי חיינו וחיי משפחתנו להתנהגות שלנו, ואיך אפשר לשחרר את העבר ולהתחיל להתרפא מהשורש.</p>
       </article>
 
-      <div class="medal rv" aria-hidden="true">
-        <svg viewBox="0 0 300 300">
-          <defs>
-            <radialGradient id="mbg" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#34463a"/><stop offset=".6" stop-color="#1d2a22"/><stop offset="1" stop-color="#111914"/></radialGradient>
-            <radialGradient id="moon" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f3dcb4"/><stop offset="1" stop-color="#c79a62"/></radialGradient>
-            <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e9cf9f" stop-opacity=".35"/><stop offset="1" stop-color="#e9cf9f" stop-opacity="0"/></radialGradient>
-            <clipPath id="mc"><circle cx="150" cy="150" r="140"/></clipPath>
-          </defs>
-          <circle cx="150" cy="150" r="146" fill="none" stroke="#dcc196" stroke-opacity=".45"/>
-          <circle cx="150" cy="150" r="140" fill="url(#mbg)"/>
-          <g clip-path="url(#mc)">
-            <g fill="#f4e7cf">
-              <circle cx="78" cy="70" r="1"/><circle cx="102" cy="44" r=".7"/><circle cx="210" cy="56" r="1.1"/><circle cx="232" cy="92" r=".7"/><circle cx="60" cy="118" r=".8"/><circle cx="246" cy="132" r="1"/><circle cx="122" cy="84" r=".6"/><circle cx="186" cy="34" r=".7"/><circle cx="90" cy="150" r=".6"/><circle cx="218" cy="160" r=".7"/>
-            </g>
-            <circle cx="150" cy="58" r="17" fill="url(#moon)"/>
-            <circle cx="150" cy="58" r="26" fill="none" stroke="#e9cf9f" stroke-opacity=".25"/>
-            <path d="M0 214 L48 186 L82 200 L128 166 L160 184 L204 158 L246 190 L300 176 V300 H0Z" fill="#26372c"/>
-            <path d="M0 238 L60 210 L112 230 L170 204 L226 228 L300 214 V300 H0Z" fill="#18231c"/>
-            <path d="M48 186 L82 200 L128 166 L160 184 L204 158 L246 190" fill="none" stroke="#dcc196" stroke-opacity=".25"/>
-            <circle cx="150" cy="182" r="78" fill="url(#glow)"/>
-          </g>
-          <g fill="#1b261f" stroke="#f1e6d2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M150 207c-26 0-48 9-60 21-4 4-1 9 5 9h110c6 0 9-5 5-9-12-12-34-21-60-21z"/>
-            <path d="M136 156c-3 15-2 34 4 50h20c6-16 7-35 4-50-4-4-9-6-14-6s-10 2-14 6z"/>
-            <path d="M136 157c-9 8-15 22-20 38-3 9-3 17 3 22l14-4M164 157c9 8 15 22 20 38 3 9 3 17-3 22l-14-4"/>
-            <circle cx="150" cy="131" r="12"/>
-            <path d="M146 143v6M154 143v6" fill="none"/>
-            <path d="M106 229c16-9 30-12 44-12s28 3 44 12" fill="none" stroke-opacity=".7"/>
-          </g>
-          <circle cx="150" cy="131" r="22" fill="none" stroke="#dcc196" stroke-opacity=".4" stroke-dasharray="1 4"/>
-        </svg>
+      <div class="medal medal--body" aria-hidden="true">
+        <img src="assets/body-glow.webp" alt="" width="520" height="807" loading="lazy">
       </div>
+      <svg class="jlines" aria-hidden="true"></svg>
 
       <article class="jcard rv" style="grid-column:3;grid-row:1" data-d="2">
         <div class="jcard__top"><div><span class="jcard__num">02</span><h3>איך העבר משפיע גם בלי שחווינו אותו?</h3></div><svg class="ico" aria-hidden="true"><use href="#i-branch"/></svg></div>
@@ -667,6 +648,32 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
     setTimeout(tick, 1000);
   }
   tick();
+
+  /* journey: curves from the figure's glow points (head, chest, belly) to the four cards */
+  const jgrid = document.querySelector(".jgrid"), jsvg = jgrid && jgrid.querySelector(".jlines");
+  const body = jgrid && jgrid.querySelector(".medal--body img");
+  const GLOW = [.088, .413, .413, .671];           // card 01..04 -> head, chest, chest, belly
+  function drawLines(){
+    if (!jsvg || getComputedStyle(jsvg).display === "none" || !body.complete) return;
+    const g = jgrid.getBoundingClientRect(), b = body.getBoundingClientRect();
+    const cards = jgrid.querySelectorAll(".jcard");
+    const star = (x,y,r) => `M${x} ${y-r}Q${x} ${y} ${x+r} ${y}Q${x} ${y} ${x} ${y+r}Q${x} ${y} ${x-r} ${y}Q${x} ${y} ${x} ${y-r}Z`;
+    let out = "";
+    cards.forEach((c, i) => {
+      const r = c.getBoundingClientRect();
+      const sx = b.left + b.width/2 - g.left, sy = b.top + b.height*GLOW[i] - g.top;
+      const right = r.left > b.left;                // card sits to the right of the figure
+      const ex = (right ? r.left : r.right) - g.left, ey = r.top + r.height*.5 - g.top;
+      const dx = ex - sx;
+      out += `<path class="ln" d="M${sx} ${sy}C${sx+dx*.45} ${sy} ${ex-dx*.35} ${ey} ${ex} ${ey}"/>`
+           + `<circle class="dot" cx="${sx}" cy="${sy}" r="2.5"/>`
+           + `<path class="star" d="${star(ex,ey,9)}"/>`;
+    });
+    jsvg.innerHTML = out;
+  }
+  if (body){ body.complete ? drawLines() : body.addEventListener("load", drawLines); }
+  addEventListener("resize", drawLines);
+  if (document.fonts) document.fonts.ready.then(drawLines);
 
   /* sticky CTA: visible after the hero, hidden while the form is on screen */
   const sticky = document.getElementById("sticky");
