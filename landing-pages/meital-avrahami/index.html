@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>העבר שלא חווית | וובינר חינמי עם מיטל אברהמי</title>
+<meta name="description" content="וובינר חינמי בשידור חי, 5 בנובמבר 2026 בשעה 20:00. איך דפוסים משפחתיים ישנים ממשיכים לנהל את הזוגיות, הביטחון והגוף, ואיך מתחילים לשחרר אותם מהשורש. בהנחיית מיטל אברהמי.">
+<meta name="theme-color" content="#1c2620">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="העבר שלא חווית, ועדיין מנהל לך את החיים">
+<meta property="og:description" content="וובינר חינמי בשידור חי | 5.11.26 | 20:00 | בהנחיית מיטל אברהמי">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%231c2620'/%3E%3Cg fill='none' stroke='%23d8b98c' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M24 12c4 6 4 14 0 20-4-6-4-14 0-20z'/%3E%3Cpath d='M24 32c-6-2-11-7-12-14 5 1 9 4 12 8M24 32c6-2 11-7 12-14-5 1-9 4-12 8'/%3E%3Cpath d='M14 36q10 3 20 0'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/hero.webp" imagesrcset="assets/hero-960.webp 960w, assets/hero.webp 1672w" imagesizes="100vw">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --forest:#1c2620;
+  --forest-2:#26332a;
+  --moss:#3a4a3c;
+  --sage:#7f8d70;
+  --sage-soft:#a9b39b;
+  --paper:#f8f4ec;
+  --cream:#efe7d8;
+  --sand:#e4d8c3;
+  --gold:#c8a26a;
+  --gold-soft:#dcc196;
+  --clay:#b8683f;
+  --ink:#1d241f;
+  --ink-soft:#4d574e;
+  --line:rgba(29,36,31,.14);
+  --radius:22px;
+  --shadow:0 24px 60px -28px rgba(20,28,22,.45);
+  --serif:"Frank Ruhl Libre", "David", Georgia, serif;
+  --sans:"Assistant", "Segoe UI", Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;margin:0;letter-spacing:-.01em}
+p{margin:0}
+.wrap{width:min(1160px,100% - 32px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- textures ---------- */
+.grain::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.forest{position:relative;isolation:isolate;color:var(--cream);
+  background:
+    radial-gradient(60% 50% at 85% 10%, rgba(127,141,112,.28), transparent 70%),
+    radial-gradient(50% 45% at 10% 90%, rgba(200,162,106,.10), transparent 70%),
+    radial-gradient(80% 60% at 50% 50%, #2a382e, var(--forest) 75%);}
+.forest>*{position:relative;z-index:1}
+
+/* ---------- buttons ---------- */
+.btn{--bg:var(--forest);--fg:var(--paper);display:inline-flex;align-items:center;justify-content:center;gap:.7em;
+  min-height:58px;padding:.85em 2em;border:0;border-radius:999px;background:var(--bg);color:var(--fg);
+  font:700 1.06rem/1.2 var(--sans);text-decoration:none;cursor:pointer;
+  box-shadow:0 14px 30px -14px rgba(28,38,32,.8), inset 0 1px 0 rgba(255,255,255,.12);
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 20px 36px -14px rgba(28,38,32,.85)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn svg{width:20px;height:20px;transition:transform .25s ease}
+.btn:hover svg{transform:translateX(-4px)}
+.btn--gold{--bg:linear-gradient(135deg,#e3c99f,#c8a26a 55%,#b38a52);--fg:var(--forest);box-shadow:0 16px 34px -14px rgba(200,162,106,.7), inset 0 1px 0 rgba(255,255,255,.4)}
+.btn--block{width:100%}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.6em;font-size:.86rem;font-weight:600;letter-spacing:.06em;color:var(--sage)}
+.eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.section{padding:clamp(72px,10vw,128px) 0}
+.section-head{text-align:center;max-width:760px;margin:0 auto clamp(40px,6vw,64px)}
+.section-head h2{font-size:clamp(2rem,4.6vw,3.1rem);margin-top:.35em}
+.section-head p{margin-top:1rem;color:var(--ink-soft);font-size:1.08rem}
+.forest .section-head p{color:var(--sage-soft)}
+.forest .eyebrow{color:var(--gold-soft)}
+
+/* ---------- top bar ---------- */
+.topbar{position:absolute;inset:0 0 auto;z-index:5;padding:18px 0}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.25rem;color:var(--forest);text-decoration:none}
+.brand svg{width:34px;height:34px;color:var(--forest)}
+.topbar .btn{min-height:44px;padding:.55em 1.3em;font-size:.95rem;box-shadow:none}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;isolation:isolate;padding:110px 0 90px}
+.hero__bg{position:absolute;inset:0;z-index:-2}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;animation:drift 28s ease-in-out infinite alternate;transform-origin:60% 40%}
+@keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-1.5%,1%)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(55% 48% at 50% 46%, rgba(250,247,240,.78), rgba(250,247,240,.25) 70%, transparent),
+    linear-gradient(180deg, rgba(248,244,236,.35) 0%, transparent 30%, transparent 62%, var(--paper) 100%)}
+.motes{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.motes i{position:absolute;width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle, rgba(255,246,222,.95), rgba(255,240,205,0) 70%);
+  left:var(--x);top:var(--y);animation:float var(--d) ease-in-out infinite;animation-delay:var(--dl)}
+@keyframes float{0%,100%{transform:translate(0,0);opacity:.2}50%{transform:translate(14px,-26px);opacity:.95}}
+
+.hero__inner{text-align:center;max-width:860px;padding-inline:16px}
+.live{display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5em .9em;padding:.55em 1.2em;border-radius:999px;
+  background:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.7);
+  font-size:.95rem;font-weight:600;color:var(--forest)}
+.live__dot{position:relative;width:9px;height:9px;border-radius:50%;background:var(--clay)}
+.live__dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--clay);animation:ping 1.8s ease-out infinite}
+@keyframes ping{from{transform:scale(.5);opacity:1}to{transform:scale(1.6);opacity:0}}
+.live__sep{width:1px;height:14px;background:var(--line)}
+.hero h1{margin-top:28px;font-size:clamp(2.6rem,7.4vw,5.4rem);font-weight:500;color:var(--forest);text-wrap:balance}
+.hero h1 span{display:block;margin-top:.12em;font-size:.62em;color:var(--moss);font-weight:400}
+.hero__lead{max-width:640px;margin:26px auto 0;font-size:clamp(1.05rem,2.2vw,1.22rem);color:#2f3a31}
+.hero__lead strong{font-weight:700;color:var(--forest)}
+.hero__cta{margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.hero__note{font-size:.92rem;color:var(--ink-soft)}
+
+.countdown{display:flex;justify-content:center;gap:10px;margin-top:34px;direction:rtl}
+.countdown div{min-width:74px;padding:12px 8px 10px;border-radius:16px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.countdown b{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:500;line-height:1;color:var(--forest);font-variant-numeric:tabular-nums}
+.countdown small{display:block;margin-top:6px;font-size:.78rem;color:var(--ink-soft);letter-spacing:.04em}
+.scroll-cue{position:absolute;bottom:22px;left:50%;translate:-50% 0;width:26px;height:42px;border-radius:14px;border:1.5px solid rgba(28,38,32,.35)}
+.scroll-cue::after{content:"";position:absolute;top:8px;left:50%;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;background:var(--forest);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* ---------- questions ---------- */
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.q{position:relative;padding:38px 30px 32px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px -30px rgba(20,28,22,.35);transition:transform .35s ease, box-shadow .35s ease}
+.q:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.q__mark{font-family:var(--serif);font-size:4.2rem;line-height:.8;color:var(--gold);opacity:.55}
+.q h3{margin-top:14px;font-family:var(--sans);font-weight:600;font-size:1.22rem;line-height:1.5;color:var(--forest)}
+.goodnews{position:relative;margin-top:clamp(48px,7vw,80px);padding:clamp(36px,5vw,56px);border-radius:28px;background:var(--cream);text-align:center;overflow:hidden}
+.goodnews .sprig{width:72px;height:27px;margin:0 auto 16px;color:var(--sage)}
+.goodnews h3{font-size:clamp(1.6rem,3.4vw,2.3rem);color:var(--forest)}
+.goodnews p{max-width:620px;margin:14px auto 0;font-size:1.15rem;color:var(--ink-soft)}
+.goodnews p b{color:var(--forest)}
+
+/* ---------- journey (forest) ---------- */
+.journey{overflow:hidden}
+.journey .flow{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;opacity:.5}
+.jgrid{display:grid;grid-template-columns:1fr minmax(240px,300px) 1fr;grid-template-rows:auto auto;gap:28px 34px;align-items:stretch}
+.jgrid .medal{grid-column:2;grid-row:1 / span 2;align-self:center}
+.jcard{position:relative;padding:34px 32px 30px;border-radius:var(--radius);background:linear-gradient(160deg,#f5efe3,#ece3d2);color:var(--ink);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.jcard__top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.jcard__num{font-family:var(--serif);font-size:.95rem;color:var(--sage);letter-spacing:.08em}
+.jcard .ico{flex:none;width:52px;height:52px;color:var(--moss)}
+.jcard h3{margin-top:6px;font-size:1.5rem;font-weight:700;color:var(--forest)}
+.jcard p{margin-top:12px;color:var(--ink-soft);font-size:1.02rem}
+.jcard q{display:block;margin:2px 0 8px;font-family:var(--serif);font-size:1.12rem;color:var(--moss);quotes:"״" "״"}
+.medal{position:relative;aspect-ratio:1;width:100%}
+.medal svg{width:100%;height:100%;filter:drop-shadow(0 30px 50px rgba(0,0,0,.5))}
+.medal::before{content:"";position:absolute;inset:-10%;border-radius:50%;border:1px dashed rgba(220,193,150,.3);animation:spin 80s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.qa{display:flex;align-items:center;gap:26px;margin-top:40px;padding:28px 34px;border-radius:var(--radius);border:1px solid rgba(220,193,150,.35);background:rgba(255,255,255,.04)}
+.qa .ico{flex:none;width:58px;height:58px;color:var(--gold-soft)}
+.qa h3{font-size:1.6rem;color:var(--paper)}
+.qa p{margin-top:4px;color:var(--sage-soft)}
+.center-cta{display:flex;justify-content:center;margin-top:52px}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(36px,6vw,90px);align-items:center}
+.portrait{position:relative;aspect-ratio:4/5;border-radius:999px 999px 28px 28px;overflow:hidden;box-shadow:var(--shadow)}
+.portrait>img{width:100%;height:100%;object-fit:cover}
+.portrait .stones{position:absolute;inset:0;width:100%;height:100%}
+.about .eyebrow{color:var(--sage)}
+.about h2{margin-top:.25em;font-size:clamp(2.4rem,5vw,3.6rem);color:var(--forest)}
+.stat{display:flex;align-items:center;gap:18px;margin-top:26px;padding:18px 0;border-block:1px solid var(--line)}
+.stat b{font-family:var(--serif);font-weight:500;font-size:3.4rem;line-height:1;color:var(--gold)}
+.stat span{font-weight:600;font-size:1.12rem;line-height:1.45;color:var(--forest)}
+.about p.bio{margin-top:24px;font-size:1.12rem;color:var(--ink-soft)}
+
+/* ---------- testimonials ---------- */
+.testis{background:var(--cream)}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.t{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:36px 30px 28px;border-radius:var(--radius);background:var(--paper);border:1px solid rgba(29,36,31,.08)}
+.t__q{font-family:var(--serif);font-size:1.32rem;line-height:1.55;color:var(--forest)}
+.t__q::before{content:"״";display:block;font-size:3.6rem;line-height:.6;color:var(--gold);margin-bottom:10px}
+.t__who{display:flex;align-items:center;gap:12px;font-weight:600;color:var(--ink-soft)}
+.t__av{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--forest);color:var(--gold-soft);font-family:var(--serif);font-size:1.1rem}
+.shots{columns:3 260px;column-gap:18px;margin-top:40px}
+.shots img{width:100%;margin-bottom:18px;border-radius:16px;box-shadow:0 16px 40px -24px rgba(0,0,0,.4);break-inside:avoid}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin-inline:auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 4px;cursor:pointer;font-weight:600;font-size:1.18rem;color:var(--forest)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:8px}
+.faq .pm{position:relative;flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);transition:background .25s, border-color .25s}
+.faq .pm::before,.faq .pm::after{content:"";position:absolute;top:50%;left:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;background:var(--forest);transition:transform .3s ease}
+.faq .pm::after{transform:rotate(90deg)}
+.faq details[open] .pm{background:var(--forest);border-color:var(--forest)}
+.faq details[open] .pm::before,.faq details[open] .pm::after{background:var(--paper)}
+.faq details[open] .pm::after{transform:rotate(0)}
+.faq .ans{padding:0 4px 26px;color:var(--ink-soft);font-size:1.08rem}
+
+/* ---------- register ---------- */
+.register{overflow:hidden}
+.reg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(36px,6vw,80px);align-items:center}
+.reg__copy h2{font-size:clamp(2.2rem,4.8vw,3.4rem);color:var(--paper)}
+.reg__date{display:inline-flex;gap:14px;align-items:center;margin-top:22px;padding:12px 20px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(220,193,150,.3);font-family:var(--serif);font-size:1.35rem;color:var(--gold-soft)}
+.reg__date i{width:1px;height:20px;background:rgba(220,193,150,.4)}
+.reg__list{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:12px;color:var(--cream)}
+.reg__list li{display:flex;gap:12px;align-items:flex-start}
+.reg__list svg{flex:none;width:22px;height:22px;margin-top:4px;color:var(--gold-soft)}
+.form{position:relative;padding:clamp(28px,4vw,44px);border-radius:28px;background:var(--paper);color:var(--ink);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.scarce{display:flex;gap:10px;align-items:center;margin-bottom:24px;padding:12px 16px;border-radius:12px;background:#f6e9dc;color:#7a4022;font-size:.95rem;font-weight:600}
+.scarce svg{flex:none;width:20px;height:20px}
+.field{margin-bottom:16px}
+.field label{display:block;margin-bottom:6px;font-weight:600;font-size:.96rem;color:var(--forest)}
+.field label small{font-weight:400;color:var(--ink-soft)}
+.field input{width:100%;height:56px;padding:0 18px;border-radius:14px;border:1.5px solid rgba(29,36,31,.16);background:#fff;font:400 1.05rem var(--sans);color:var(--ink);transition:border-color .2s, box-shadow .2s}
+.field input::placeholder{color:#9aa197}
+.field input:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 4px rgba(127,141,112,.18)}
+.field input[type=tel],.field input[type=email]{direction:ltr;text-align:right}
+.field input[type=tel]::placeholder,.field input[type=email]::placeholder{text-align:right}
+.field.err input{border-color:#b4462d;box-shadow:0 0 0 4px rgba(180,70,45,.1)}
+.field .msg{display:none;margin-top:6px;font-size:.88rem;color:#a23d26}
+.field.err .msg{display:block}
+.consent{display:flex;gap:12px;align-items:flex-start;margin:8px 0 22px;font-size:.92rem;line-height:1.55;color:var(--ink-soft);cursor:pointer}
+.consent input{flex:none;appearance:none;-webkit-appearance:none;width:22px;height:22px;margin:1px 0 0;border-radius:6px;border:1.5px solid rgba(29,36,31,.3);background:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.consent input::after{content:"";width:6px;height:11px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px) scale(0);transition:transform .2s}
+.consent input:checked{background:var(--forest);border-color:var(--forest)}
+.consent input:checked::after{transform:rotate(45deg) translate(-1px,-1px) scale(1)}
+.consent input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.consent.err input{border-color:#b4462d}
+.consent a{color:var(--forest)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .btn[disabled]{opacity:.7;cursor:progress}
+.form__fail{display:none;margin-top:14px;font-size:.92rem;color:#a23d26;text-align:center}
+.done{display:none;text-align:center;padding:12px 0}
+.done svg.ok{width:76px;height:76px;margin:0 auto 18px;color:var(--sage)}
+.done h3{font-size:2rem;color:var(--forest)}
+.done p{margin-top:10px;color:var(--ink-soft)}
+.done .cal{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+.done .cal a{display:inline-flex;align-items:center;gap:8px;padding:.7em 1.3em;border-radius:999px;border:1.5px solid var(--forest);text-decoration:none;font-weight:600;color:var(--forest);transition:background .2s,color .2s}
+.done .cal a:hover{background:var(--forest);color:var(--paper)}
+.form.is-done form{display:none}
+.form.is-done .done{display:block}
+
+footer{background:#151c17;color:var(--sage-soft);padding:34px 0 calc(34px + env(safe-area-inset-bottom));font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--sage-soft)}
+
+/* ---------- sticky mobile CTA ---------- */
+.sticky{position:fixed;inset:auto 0 0;z-index:30;display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(248,244,236,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s ease}
+.sticky.show{transform:none}
+.sticky .btn{width:100%;min-height:52px}
+.devflag{position:fixed;top:10px;left:10px;z-index:99;padding:6px 12px;border-radius:8px;background:#7a4022;color:#fff;font:600 12px var(--sans)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}.rv[data-d="3"]{transition-delay:.3s}.rv[data-d="4"]{transition-delay:.4s}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .jgrid{grid-template-columns:1fr 1fr;gap:20px}
+  .jgrid .medal{grid-column:1 / -1;grid-row:1;width:min(280px,70%);margin:0 auto 18px}
+  .jgrid .jcard{grid-row:auto!important;grid-column:auto!important}
+  .about,.reg{grid-template-columns:1fr}
+  .portrait{max-width:420px;width:100%;margin-inline:auto}
+  .reg__copy{text-align:center}
+  .reg__list{justify-items:center}
+}
+@media (max-width:760px){
+  body{font-size:17px}
+  .qs,.tgrid{grid-template-columns:1fr}
+  .q{padding:26px 24px 24px}.q__mark{font-size:3rem}
+  .jgrid{grid-template-columns:1fr}
+  .qa{flex-direction:column;text-align:center;gap:12px;padding:26px 22px}
+  .topbar .btn{display:none}
+  .live{flex-direction:column;gap:2px;border-radius:22px;padding:.6em 1.4em}
+  .live__sep{display:none}
+  .live__dot{position:absolute;top:14px;right:16px}
+  .live{position:relative}
+  .hero h1{font-size:clamp(2.7rem,12vw,3.4rem)}
+  .countdown div{min-width:64px}
+  .countdown b{font-size:1.6rem}
+  .hero{padding-top:96px}
+  .hero__bg img{object-position:58% 50%}
+  .sticky{display:block}
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  .reg__list{justify-items:start;text-align:right}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-lotus" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 10c4.5 6 4.5 15 0 22-4.5-7-4.5-16 0-22z"/><path d="M24 32c-6-1.5-11-7-12.5-14.5 5.5 1 9.5 4.5 12.5 9M24 32c6-1.5 11-7 12.5-14.5-5.5 1-9.5 4.5-12.5 9"/><path d="M24 32c-8 1.5-14.5-1.5-18-7 5-1.2 10 0 14 3M24 32c8 1.5 14.5-1.5 18-7-5-1.2-10 0-14 3"/><path d="M13 37q11 3.5 22 0"/><circle cx="24" cy="6" r=".9" fill="currentColor"/><path d="M16 41.5h16"/></g></symbol>
+    <symbol id="i-branch" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 41C18 33 27 22 38 7"/><path d="M15 35.5c-5-.5-8-3.5-8.5-7.5 4.5 0 7.5 3 8.5 7.5zM15 35.5c.5-5 3.5-8 7.5-8.5 0 4.5-3 7.5-7.5 8.5z"/><path d="M22.5 27c-5-.5-8-3.5-8.5-7.5 4.5 0 7.5 3 8.5 7.5zM22.5 27c.5-5 3.5-8 7.5-8.5 0 4.5-3 7.5-7.5 8.5z"/><path d="M29.5 18c-4.5-.8-7-3.8-7-7.5 4.2.3 6.8 3.2 7 7.5zM29.5 18c1-4.5 4-7 7.8-7 -.3 4.2-3.4 6.8-7.8 7z"/><path d="M38 7c-2.2.2-3.6-.6-4.2-2.4 2-.4 3.6.4 4.2 2.4z"/></g></symbol>
+    <symbol id="i-stones" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 37c0-4 7-6.5 16-6.5S40 33 40 37s-7 5.5-16 5.5S8 41 8 37z"/><path d="M13.5 27.5c0-3 4.6-5 10.5-5s10.5 2 10.5 5-4.6 4.5-10.5 4.5-10.5-1.5-10.5-4.5z"/><path d="M18 19.5c0-2.3 2.7-3.7 6-3.7s6 1.4 6 3.7-2.7 3.3-6 3.3-6-1-6-3.3z"/><path d="M24 15.8c.2-3.6 1.8-6.4 5-8.3"/><path d="M27.2 9.6c-2.6-.6-4-2.4-4-4.6 2.5.2 4 1.9 4 4.6zM28.2 8.6c1.4-2.3 3.5-3.2 5.6-2.6-.8 2.3-2.8 3.2-5.6 2.6z"/></g></symbol>
+    <symbol id="i-sun" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="24" cy="24" r="7.5"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7M9.9 9.9l4.9 4.9M33.2 33.2l4.9 4.9M9.9 38.1l4.9-4.9M33.2 14.8l4.9-4.9"/><path d="M16.3 5.4l1.5 3.6M30.2 39l1.5 3.6M5.4 31.7l3.6-1.5M39 17.8l3.6-1.5M5.4 16.3l3.6 1.5M39 30.2l3.6 1.5M16.3 42.6l1.5-3.6M30.2 9l1.5-3.6" opacity=".55"/></g></symbol>
+    <symbol id="i-qa" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10.5A4.5 4.5 0 0 1 10.5 6h17A4.5 4.5 0 0 1 32 10.5v9a4.5 4.5 0 0 1-4.5 4.5H16l-6.5 5.5V24A4.5 4.5 0 0 1 6 19.5z"/><path d="M36 17h1.5a4.5 4.5 0 0 1 4.5 4.5v9a4.5 4.5 0 0 1-4.5 4.5v5.5L31 35H22a4.5 4.5 0 0 1-4.5-4.5V28"/><path d="M16.5 12.5a2.6 2.6 0 1 1 3.6 2.4c-.7.3-1.1 1-1.1 1.7v.7"/><circle cx="19" cy="20.2" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-sprig" viewBox="0 0 64 24"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M2 12h60"/><path d="M32 12c-3-4-3-8 0-10 3 2 3 6 0 10zM32 12c-3 4-3 8 0 10 3-2 3-6 0-10z"/><path d="M22 12c-2.5-3-6-3.8-8.5-2.5 1.8 2.8 5 3.6 8.5 2.5zM42 12c2.5-3 6-3.8 8.5-2.5-1.8 2.8-5 3.6-8.5 2.5z"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5m0 0l6-6m-6 6l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.3l3 3 6-6.3"/></g></symbol>
+    <symbol id="i-hourglass" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/><path d="M9.5 18.5h5" opacity=".6"/></g></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HERO ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="מיטל אברהמי">
+      <svg aria-hidden="true"><use href="#i-lotus"/></svg>
+      <span>מיטל אברהמי</span>
+    </a>
+    <a class="btn" href="#register">לשריון מקום</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true">
+    <img src="assets/hero.webp" srcset="assets/hero-960.webp 960w, assets/hero.webp 1672w" sizes="100vw" alt="" fetchpriority="high">
+  </div>
+  <div class="motes" aria-hidden="true">
+    <i style="--x:14%;--y:22%;--s:10px;--d:9s;--dl:0s"></i>
+    <i style="--x:22%;--y:40%;--s:6px;--d:11s;--dl:2s"></i>
+    <i style="--x:72%;--y:30%;--s:8px;--d:10s;--dl:1s"></i>
+    <i style="--x:84%;--y:56%;--s:12px;--d:13s;--dl:3s"></i>
+    <i style="--x:34%;--y:70%;--s:7px;--d:12s;--dl:4s"></i>
+    <i style="--x:60%;--y:16%;--s:5px;--d:8s;--dl:1.5s"></i>
+    <i style="--x:8%;--y:62%;--s:9px;--d:14s;--dl:5s"></i>
+  </div>
+
+  <div class="hero__inner">
+    <p class="live rv">
+      <span class="live__dot" aria-hidden="true"></span>
+      <span>וובינר חינמי בשידור חי</span>
+      <span class="live__sep" aria-hidden="true"></span>
+      <span>יום חמישי, 5 בנובמבר 2026 · 20:00</span>
+    </p>
+    <h1 id="hero-title" class="rv" data-d="1">העבר שלא חווית<span>ועדיין מנהל לך את החיים</span></h1>
+    <p class="hero__lead rv" data-d="2">
+      אם אתם מרגישים שאתם חוזרים שוב ושוב לאותם דפוסים, שהזוגיות, הביטחון העצמי או הגוף תקועים, הגיע הזמן להפסיק להילחם בסימפטום ולגעת בשורש.
+      בוובינר החינמי הקרוב נבין למה <strong>תקיעות היא לא תקלה, אלא פתרון הישרדותי ישן.</strong>
+    </p>
+    <div class="hero__cta rv" data-d="3">
+      <a class="btn" href="#register">אני רוצה להבטיח את מקומי בחינם!<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <span class="hero__note">ללא עלות · מספר המקומות בשידור החי מוגבל</span>
+    </div>
+    <div class="countdown rv" data-d="4" id="countdown" aria-label="הזמן שנותר עד תחילת השידור" role="timer">
+      <div><b data-u="d">--</b><small>ימים</small></div>
+      <div><b data-u="h">--</b><small>שעות</small></div>
+      <div><b data-u="m">--</b><small>דקות</small></div>
+      <div><b data-u="s">--</b><small>שניות</small></div>
+    </div>
+  </div>
+  <span class="scroll-cue" aria-hidden="true"></span>
+</section>
+
+<!-- ============ QUESTIONS ============ -->
+<section class="section" aria-labelledby="qs-title">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow">רגע לפני שמתחילים</span>
+      <h2 id="qs-title">האם אתם מוצאים את עצמכם שואלים...</h2>
+    </div>
+    <div class="qs">
+      <article class="q rv" data-d="1"><div class="q__mark" aria-hidden="true">?</div><h3>למה אני תמיד מגיב באותה צורה למרות שאני מנסה אחרת?</h3></article>
+      <article class="q rv" data-d="2"><div class="q__mark" aria-hidden="true">?</div><h3>למה הגוף שלי מאותת בעייפות, מתח או כאבים שלא ברור מאיפה הגיעו?</h3></article>
+      <article class="q rv" data-d="3"><div class="q__mark" aria-hidden="true">?</div><h3>מאיפה מגיעה תחושת התקיעות הזו בזוגיות, בקריירה או בביטחון העצמי?</h3></article>
+    </div>
+    <div class="goodnews rv">
+      <svg class="sprig" aria-hidden="true"><use href="#i-sprig"/></svg>
+      <h3>החדשות הטובות: זו לא אשמתכם.</h3>
+      <p>מה שלמדתם בעבר עובד היום על טייס אוטומטי. <b>בוובינר נבין איך לשחרר את זה מהשורש.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section class="section forest grain journey" aria-labelledby="journey-title">
+  <svg class="flow" viewBox="0 0 1440 1200" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="fl" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1200"><stop offset="0" stop-color="#dcc196" stop-opacity="0"/><stop offset=".3" stop-color="#dcc196" stop-opacity=".5"/><stop offset=".8" stop-color="#dcc196" stop-opacity=".35"/><stop offset="1" stop-color="#dcc196" stop-opacity="0"/></linearGradient></defs>
+    <path d="M1320 0 C1200 260 1420 420 1300 640 S1240 1000 1380 1200" fill="none" stroke="url(#fl)" stroke-width="1.2"/>
+    <path d="M120 0 C240 300 40 520 160 760 S220 1060 90 1200" fill="none" stroke="url(#fl)" stroke-width="1.2"/>
+    <circle cx="1300" cy="640" r="4" fill="#dcc196" opacity=".6"/><circle cx="160" cy="760" r="4" fill="#dcc196" opacity=".6"/>
+  </svg>
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow">על מה נדבר</span>
+      <h2 id="journey-title">ממה מורכב המסע שלנו בוובינר?</h2>
+      <p>ארבע תחנות, שיחה אחת עמוקה. מהסימפטום שבגוף, דרך הסיפור המשפחתי, ועד הצעד הראשון קדימה.</p>
+    </div>
+
+    <div class="jgrid">
+      <article class="jcard rv" style="grid-column:1;grid-row:1" data-d="1">
+        <div class="jcard__top"><div><span class="jcard__num">01</span><h3>מה הגוף שלנו בא להגיד לנו?</h3></div><svg class="ico" aria-hidden="true"><use href="#i-lotus"/></svg></div>
+        <p>נבין לעומק מה ההתנהגות או המחלות שלנו מסמלות לנו, מה הקשר בין סיפורי חיינו וחיי משפחתנו להתנהגות שלנו, ואיך אפשר לשחרר את העבר ולהתחיל להתרפא מהשורש.</p>
+      </article>
+
+      <div class="medal rv" aria-hidden="true">
+        <svg viewBox="0 0 300 300">
+          <defs>
+            <radialGradient id="mbg" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#34463a"/><stop offset=".6" stop-color="#1d2a22"/><stop offset="1" stop-color="#111914"/></radialGradient>
+            <radialGradient id="moon" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#f3dcb4"/><stop offset="1" stop-color="#c79a62"/></radialGradient>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e9cf9f" stop-opacity=".35"/><stop offset="1" stop-color="#e9cf9f" stop-opacity="0"/></radialGradient>
+            <clipPath id="mc"><circle cx="150" cy="150" r="140"/></clipPath>
+          </defs>
+          <circle cx="150" cy="150" r="146" fill="none" stroke="#dcc196" stroke-opacity=".45"/>
+          <circle cx="150" cy="150" r="140" fill="url(#mbg)"/>
+          <g clip-path="url(#mc)">
+            <g fill="#f4e7cf">
+              <circle cx="78" cy="70" r="1"/><circle cx="102" cy="44" r=".7"/><circle cx="210" cy="56" r="1.1"/><circle cx="232" cy="92" r=".7"/><circle cx="60" cy="118" r=".8"/><circle cx="246" cy="132" r="1"/><circle cx="122" cy="84" r=".6"/><circle cx="186" cy="34" r=".7"/><circle cx="90" cy="150" r=".6"/><circle cx="218" cy="160" r=".7"/>
+            </g>
+            <circle cx="150" cy="58" r="17" fill="url(#moon)"/>
+            <circle cx="150" cy="58" r="26" fill="none" stroke="#e9cf9f" stroke-opacity=".25"/>
+            <path d="M0 214 L48 186 L82 200 L128 166 L160 184 L204 158 L246 190 L300 176 V300 H0Z" fill="#26372c"/>
+            <path d="M0 238 L60 210 L112 230 L170 204 L226 228 L300 214 V300 H0Z" fill="#18231c"/>
+            <path d="M48 186 L82 200 L128 166 L160 184 L204 158 L246 190" fill="none" stroke="#dcc196" stroke-opacity=".25"/>
+            <circle cx="150" cy="182" r="78" fill="url(#glow)"/>
+          </g>
+          <g fill="#1b261f" stroke="#f1e6d2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M150 207c-26 0-48 9-60 21-4 4-1 9 5 9h110c6 0 9-5 5-9-12-12-34-21-60-21z"/>
+            <path d="M136 156c-3 15-2 34 4 50h20c6-16 7-35 4-50-4-4-9-6-14-6s-10 2-14 6z"/>
+            <path d="M136 157c-9 8-15 22-20 38-3 9-3 17 3 22l14-4M164 157c9 8 15 22 20 38 3 9 3 17-3 22l-14-4"/>
+            <circle cx="150" cy="131" r="12"/>
+            <path d="M146 143v6M154 143v6" fill="none"/>
+            <path d="M106 229c16-9 30-12 44-12s28 3 44 12" fill="none" stroke-opacity=".7"/>
+          </g>
+          <circle cx="150" cy="131" r="22" fill="none" stroke="#dcc196" stroke-opacity=".4" stroke-dasharray="1 4"/>
+        </svg>
+      </div>
+
+      <article class="jcard rv" style="grid-column:3;grid-row:1" data-d="2">
+        <div class="jcard__top"><div><span class="jcard__num">02</span><h3>איך העבר משפיע גם בלי שחווינו אותו?</h3></div><svg class="ico" aria-hidden="true"><use href="#i-branch"/></svg></div>
+        <p><q>אבות אכלו בוסר ושיני בנים תקהינה.</q>נבין כיצד אנו משחזרים את סיפורי המשפחה שהצילו את האבות שלנו בעבר, ונשאל את השאלה החשובה: האם זה עדיין מציל אותנו היום?</p>
+      </article>
+
+      <article class="jcard rv" style="grid-column:1;grid-row:2" data-d="1">
+        <div class="jcard__top"><div><span class="jcard__num">03</span><h3>הסיפור המשפחתי שחי בתוכנו ותקיעות כפתרון הישרדותי</h3></div><svg class="ico" aria-hidden="true"><use href="#i-stones"/></svg></div>
+        <p>מה שלא נאמר לא נעלם, הוא פשוט ממשיך להתבטא בדרך אחרת. נזכור שמטרת העל של התודעה היא לשרוד, ולכן מה שלמדנו בעבר עובד אוטומטית היום (גם אם זה לא תמיד לטובתנו). נבין את ההיגיון הפנימי שמחזיק אותנו במקום.</p>
+      </article>
+
+      <article class="jcard rv" style="grid-column:3;grid-row:2" data-d="2">
+        <div class="jcard__top"><div><span class="jcard__num">04</span><h3>איך מתחילים לשחרר ולנוע קדימה?</h3></div><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg></div>
+        <p>נקבל כלים ראשונים לשינוי עדין שמכבד את הקצב האישי שלכם, והכי חשוב: נלמד יחד איך לשחרר את רגש האשמה.</p>
+      </article>
+    </div>
+
+    <div class="qa rv">
+      <svg class="ico" aria-hidden="true"><use href="#i-qa"/></svg>
+      <div>
+        <h3>וגם: שאלות ותשובות בלייב</h3>
+        <p>זמן ייעודי בסוף השידור שבו מיטל תענה על השאלות שלכם ישירות.</p>
+      </div>
+    </div>
+
+    <div class="center-cta rv">
+      <a class="btn btn--gold" href="#register">אני רוצה להבטיח את מקומי בחינם!<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" aria-labelledby="about-title">
+  <div class="wrap about">
+    <div class="portrait rv">
+      <!-- להחלפה בצילום של מיטל: <img src="assets/meital.jpg" alt="מיטל אברהמי"> (ולמחוק את ה-SVG שמתחת) -->
+      <svg class="stones" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="pbg" cx="50%" cy="30%" r="80%"><stop offset="0" stop-color="#4a5c47"/><stop offset=".7" stop-color="#2a3a2e"/><stop offset="1" stop-color="#1c2620"/></radialGradient>
+          <linearGradient id="st1" gradientUnits="userSpaceOnUse" x1="120" y1="340" x2="290" y2="420"><stop offset="0" stop-color="#d9cdb8"/><stop offset=".6" stop-color="#b9ab92"/><stop offset="1" stop-color="#8f9a86"/></linearGradient>
+          <linearGradient id="st2" gradientUnits="userSpaceOnUse" x1="140" y1="280" x2="260" y2="330"><stop offset="0" stop-color="#e8dfcf"/><stop offset="1" stop-color="#b3a68f"/></linearGradient>
+          <linearGradient id="st3" gradientUnits="userSpaceOnUse" x1="165" y1="230" x2="235" y2="270"><stop offset="0" stop-color="#efe6d6"/><stop offset="1" stop-color="#c2b49b"/></linearGradient>
+          <filter id="spk"><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 .25 0 0 0 0 .22 0 0 0 0 .18 0 0 0 -3 1.5"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+        </defs>
+        <rect width="400" height="500" fill="url(#pbg)"/>
+        <path d="M200 30V470" stroke="#efe6d6" stroke-opacity=".7" stroke-width="1.2"/>
+        <path d="M200 110c90 20 110 90 60 150" fill="none" stroke="#efe6d6" stroke-opacity=".7" stroke-width="1.2"/>
+        <path d="M200 440c-90-20-110-90-60-150" fill="none" stroke="#efe6d6" stroke-opacity=".7" stroke-width="1.2"/>
+        <circle cx="200" cy="110" r="4" fill="#efe6d6"/><circle cx="200" cy="440" r="4" fill="#efe6d6"/>
+        <g>
+          <ellipse cx="200" cy="385" rx="92" ry="38" fill="url(#st1)"/>
+          <ellipse cx="200" cy="385" rx="92" ry="38" fill="#fff" filter="url(#spk)" opacity=".5"/>
+          <ellipse cx="202" cy="318" rx="70" ry="28" fill="url(#st2)"/>
+          <ellipse cx="202" cy="318" rx="70" ry="28" fill="#fff" filter="url(#spk)" opacity=".7"/>
+          <ellipse cx="198" cy="262" rx="40" ry="22" fill="url(#st3)"/>
+          <ellipse cx="198" cy="262" rx="40" ry="22" fill="#fff" filter="url(#spk)" opacity=".4"/>
+        </g>
+        <g fill="#c9c2a8" stroke="#8f8d72" stroke-width=".8">
+          <path d="M200 242c-2-26 4-52 20-74" fill="none" stroke="#7a6e55" stroke-width="2"/>
+          <path d="M206 214c-20-4-30-18-30-34 18 2 28 16 30 34z"/>
+          <path d="M209 200c10-18 26-24 42-20-6 16-22 24-42 20z"/>
+          <path d="M213 186c-16-10-20-26-14-40 14 8 18 22 14 40z"/>
+          <path d="M217 176c12-14 28-16 40-10-8 12-24 16-40 10z"/>
+          <path d="M220 168c-6-16 0-30 12-36 4 14-2 28-12 36z"/>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <span class="eyebrow rv">בהנחיית</span>
+      <h2 id="about-title" class="rv" data-d="1">מיטל אברהמי</h2>
+      <div class="stat rv" data-d="2"><b>20+</b><span>שנות ניסיון בריפוי<br>תודעתי ובין-דורי</span></div>
+      <p class="bio rv" data-d="3">מיטל מלווה מזה שני עשורים מטופלים, נשים ומשפחות בתהליכי עומק שמשנים את החיים מן הקצה אל הקצה. בוובינר הזה היא תעניק לכם זווית ראייה מרתקת, מבוססת ניסיון קליני רב, שתעשה לכם סדר מוחלט בראש וברגש.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section testis" aria-labelledby="t-title">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow">ממשתתפי וובינרים קודמים</span>
+      <h2 id="t-title">מה מספרים מי שכבר השתתפו?</h2>
+    </div>
+    <div class="tgrid">
+      <figure class="t rv" data-d="1" style="margin:0">
+        <blockquote class="t__q" style="margin:0">יצאתי עם תחושת הקלה בגוף והבנה ברורה למה אני מגיב כמו שאני מגיב.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ש</span>שרון, 38</figcaption>
+      </figure>
+      <figure class="t rv" data-d="2" style="margin:0">
+        <blockquote class="t__q" style="margin:0">בפעם הראשונה הרגשתי שמישהו רואה את השורש, ולא רק את הסימפטום.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ד</span>דנה, 42</figcaption>
+      </figure>
+      <figure class="t rv" data-d="3" style="margin:0">
+        <blockquote class="t__q" style="margin:0">הוובינר היה מרתק, קצר, ועשה לי סדר מדהים בראש בלי להציף.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ע</span>עדי, 35</figcaption>
+      </figure>
+    </div>
+    <!-- צילומי מסך של עדויות מוובינרים קודמים: לשים קבצים ב-assets/testimonials/ ולבטל את ההערה
+    <div class="shots">
+      <img src="assets/testimonials/1.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
+      <img src="assets/testimonials/2.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
+      <img src="assets/testimonials/3.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow">לפני שנרשמים</span>
+      <h2 id="faq-title">שאלות נפוצות</h2>
+    </div>
+    <div class="faq rv">
+      <details open><summary>האם הוובינר כרוך בתשלום?<span class="pm" aria-hidden="true"></span></summary><p class="ans">ממש לא! הוובינר הוא חינמי לחלוטין.</p></details>
+      <details><summary>האם תהיה הקלטה למי שלא יוכל להגיע בלייב?<span class="pm" aria-hidden="true"></span></summary><p class="ans">כן, אך ורק לנרשמים מראש.</p></details>
+      <details><summary>האם צריך רקע קודם בטיפול?<span class="pm" aria-hidden="true"></span></summary><p class="ans">ממש לא. הוובינר מותאם לכל מי שרוצה להבין את השורש של הדפוסים שלו.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REGISTER ============ -->
+<section class="section forest grain register" id="register" aria-labelledby="reg-title">
+  <div class="wrap reg">
+    <div class="reg__copy">
+      <span class="eyebrow rv">ההרשמה פתוחה</span>
+      <h2 id="reg-title" class="rv" data-d="1">שריון מקום חינם<br>לוובינר החי</h2>
+      <div class="reg__date rv" data-d="2"><span>5.11.26</span><i aria-hidden="true"></i><span>20:00</span></div>
+      <ul class="reg__list rv" data-d="3">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>שידור חי עם מיטל, ללא עלות</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>זמן ייעודי לשאלות ותשובות בלייב</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>הקלטה, אך ורק לנרשמים מראש</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>תזכורת וקישור לשידור ישירות לוואטסאפ</li>
+      </ul>
+    </div>
+
+    <div class="form rv" data-d="2" id="formCard">
+      <form id="regForm" novalidate>
+        <p class="scarce"><svg aria-hidden="true"><use href="#i-hourglass"/></svg>מספר המקומות בשידור החי מוגבל כדי לאפשר מענה לשאלות.</p>
+        <div class="field">
+          <label for="f-name">שם מלא</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="איך קוראים לך?">
+          <p class="msg">נשמח לדעת איך לפנות אליך</p>
+        </div>
+        <div class="field">
+          <label for="f-email">כתובת אימייל</label>
+          <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="name@example.com">
+          <p class="msg">נראה שכתובת האימייל לא תקינה</p>
+        </div>
+        <div class="field">
+          <label for="f-phone">מספר טלפון נייד <small>(לקבלת תזכורת וקישור בוואטסאפ)</small></label>
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="050-0000000">
+          <p class="msg">צריך מספר נייד ישראלי תקין</p>
+        </div>
+        <div class="hp" aria-hidden="true"><label>אתר<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent" id="consentWrap">
+          <input type="checkbox" name="consent" id="f-consent" required>
+          <span>אני מאשר/ת קבלת דיוור שיווקי ב-WhatsApp, ב-SMS ובמייל, בהתאם ל<a href="#" target="_blank" rel="noopener">מדיניות השימוש</a>.</span>
+        </label>
+        <button class="btn btn--block" type="submit" id="submitBtn">אני רוצה להבטיח את מקומי בחינם!<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <p class="form__fail" id="formFail" role="alert">משהו השתבש בשליחה. אפשר לנסות שוב בעוד רגע.</p>
+      </form>
+
+      <div class="done" role="status" aria-live="polite">
+        <svg class="ok" aria-hidden="true"><use href="#i-lotus"/></svg>
+        <h3>המקום שלך שמור</h3>
+        <p>נתראה ביום חמישי, 5 בנובמבר בשעה 20:00.<br>תזכורת וקישור לשידור יגיעו אליך בוואטסאפ ובמייל.</p>
+        <div class="cal">
+          <a id="gcal" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#i-cal"/></svg>הוספה ל-Google Calendar</a>
+          <a id="ics" download="meital-webinar.ics"><svg width="18" height="18" aria-hidden="true"><use href="#i-cal"/></svg>הוספה ליומן (iPhone / Outlook)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 מיטל אברהמי · ריפוי תודעתי ובין-דורי</span>
+    <a href="#" target="_blank" rel="noopener">מדיניות השימוש ופרטיות</a>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="btn" href="#register">אני רוצה להבטיח את מקומי בחינם!</a></div>
+
+<script>
+/* ===================== הגדרות ===================== */
+/* כתובת ה-webhook שמקבלת את הלידים (Make / Zapier / Google Apps Script / מערכת דיוור).
+   כל עוד היא ריקה, הטופס במצב תצוגה בלבד ולא שומר לידים. */
+const FORM_ENDPOINT = "";
+/* 5.11.2026 20:00 שעון ישראל (חורף, UTC+2) */
+const EVENT_START = new Date("2026-11-05T20:00:00+02:00");
+const EVENT_MINUTES = 90;
+const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העבר שלא חווית";
+/* ================================================== */
+
+(function(){
+  /* reveal */
+  const els = document.querySelectorAll(".rv");
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.14, rootMargin:"0px 0px -40px 0px"});
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add("in"));
+
+  /* countdown */
+  const cd = document.getElementById("countdown");
+  const pad = n => String(n).padStart(2,"0");
+  function tick(){
+    let s = Math.floor((EVENT_START - Date.now())/1000);
+    if (s <= 0){
+      const live = Date.now() < EVENT_START.getTime() + EVENT_MINUTES*60000;
+      cd.innerHTML = '<div style="padding:12px 22px"><b style="font-size:1.3rem">' + (live ? "השידור התחיל" : "השידור הסתיים") + '</b></div>';
+      return;
+    }
+    const d = Math.floor(s/86400); s%=86400;
+    const h = Math.floor(s/3600); s%=3600;
+    const m = Math.floor(s/60); s%=60;
+    cd.querySelector('[data-u="d"]').textContent = d;
+    cd.querySelector('[data-u="h"]').textContent = pad(h);
+    cd.querySelector('[data-u="m"]').textContent = pad(m);
+    cd.querySelector('[data-u="s"]').textContent = pad(s);
+    setTimeout(tick, 1000);
+  }
+  tick();
+
+  /* sticky CTA: visible after the hero, hidden while the form is on screen */
+  const sticky = document.getElementById("sticky");
+  const hero = document.querySelector(".hero"), reg = document.getElementById("register");
+  let heroOut = false, regIn = false;
+  const upd = () => sticky.classList.toggle("show", heroOut && !regIn);
+  new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; upd(); }, {threshold:.15}).observe(hero);
+  new IntersectionObserver(([e]) => { regIn = e.isIntersecting; upd(); }, {threshold:.05}).observe(reg);
+
+  /* calendar links */
+  const fmt = d => d.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+  const end = new Date(EVENT_START.getTime() + EVENT_MINUTES*60000);
+  const details = "הקישור לשידור יישלח בוואטסאפ ובמייל לפני תחילת הוובינר.";
+  document.getElementById("gcal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+    + "&text=" + encodeURIComponent(EVENT_TITLE) + "&dates=" + fmt(EVENT_START) + "/" + fmt(end)
+    + "&details=" + encodeURIComponent(details);
+  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//meital-avrahami//webinar//HE","BEGIN:VEVENT",
+    "UID:webinar-20261105@meital-avrahami","DTSTAMP:" + fmt(new Date()),"DTSTART:" + fmt(EVENT_START),"DTEND:" + fmt(end),
+    "SUMMARY:" + EVENT_TITLE,"DESCRIPTION:" + details,
+    "BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:הוובינר מתחיל בעוד חצי שעה","END:VALARM",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  document.getElementById("ics").href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+
+  /* form */
+  if (!FORM_ENDPOINT){
+    const f = document.createElement("div"); f.className = "devflag"; f.textContent = "טופס לא מחובר (מצב תצוגה)"; document.body.appendChild(f);
+  }
+  const form = document.getElementById("regForm"), card = document.getElementById("formCard");
+  const btn = document.getElementById("submitBtn"), fail = document.getElementById("formFail");
+  const rules = {
+    name: v => v.trim().length >= 2,
+    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+    phone: v => /^(?:972|0)?5\d{8}$/.test(v.replace(/\D/g,""))
+  };
+  const check = input => { const ok = rules[input.name](input.value); input.closest(".field").classList.toggle("err", !ok); input.setAttribute("aria-invalid", !ok); return ok; };
+  Object.keys(rules).forEach(n => {
+    const i = form.elements[n];
+    i.addEventListener("blur", () => i.value && check(i));
+    i.addEventListener("input", () => i.closest(".field").classList.contains("err") && check(i));
+  });
+  const consent = document.getElementById("f-consent"), consentWrap = document.getElementById("consentWrap");
+  consent.addEventListener("change", () => consentWrap.classList.toggle("err", !consent.checked));
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    fail.style.display = "none";
+    let first = null;
+    Object.keys(rules).forEach(n => { if (!check(form.elements[n]) && !first) first = form.elements[n]; });
+    consentWrap.classList.toggle("err", !consent.checked);
+    if (!first && !consent.checked) first = consent;
+    if (first){ first.focus(); return; }
+    if (form.elements.website.value) return; // honeypot
+
+    const data = new URLSearchParams({
+      name: form.elements.name.value.trim(),
+      email: form.elements.email.value.trim(),
+      phone: form.elements.phone.value.replace(/\D/g,""),
+      consent: "yes",
+      webinar: "2026-11-05",
+      page: location.href,
+      submitted_at: new Date().toISOString()
+    });
+    new URLSearchParams(location.search).forEach((v,k) => { if (/^utm_|^fbclid$|^gclid$/.test(k)) data.set(k,v); });
+
+    btn.disabled = true;
+    try{
+      if (FORM_ENDPOINT){
+        const r = await fetch(FORM_ENDPOINT, {method:"POST", body:data});
+        if (!r.ok) throw new Error(r.status);
+      } else {
+        console.warn("FORM_ENDPOINT is empty: lead was NOT saved", Object.fromEntries(data));
+      }
+      card.classList.add("is-done");
+      card.scrollIntoView({behavior:"smooth", block:"center"});
+      if (window.fbq) fbq("track","CompleteRegistration");
+      if (window.gtag) gtag("event","sign_up",{method:"webinar"});
+    } catch(err){
+      fail.style.display = "block";
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
