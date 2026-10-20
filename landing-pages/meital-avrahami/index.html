@@ -182,6 +182,12 @@ p{margin:0}
 .jlines.on .pulse{animation:jflow 3.2s linear calc(var(--i) * .28s + 1.6s) infinite}
 .jlines.is-drawn .ln{animation:none;stroke-dashoffset:0}
 .jlines.is-drawn .dot,.jlines.is-drawn .star{animation:jtwinkle 2.6s ease-in-out calc(var(--i) * .4s) infinite;opacity:1;transform:none}
+/* stacked layout: one thread from the figure down the right-hand rail, drawn by scrolling */
+.jlines.rail .ln{animation:none;transition:stroke-dashoffset .12s linear}
+.jlines.rail .pulse{animation:none;opacity:0}
+.jlines.rail.full .pulse{animation:jflow 3.6s linear infinite}
+.jlines.rail .star,.jlines.rail .dot{animation:none;opacity:0;transform:scale(0);transition:opacity .35s ease,transform .45s cubic-bezier(.3,1.6,.5,1)}
+.jlines.rail .star.lit,.jlines.rail .dot.lit{opacity:1;transform:none}
 @keyframes jdraw{to{stroke-dashoffset:0}}
 @keyframes jpop{to{opacity:1;transform:scale(1)}}
 @keyframes jtwinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.7)}}
@@ -310,9 +316,9 @@ footer a{color:var(--sage-soft)}
 
 /* ---------- responsive ---------- */
 @media (max-width:980px){
-  .jgrid{grid-template-columns:1fr 1fr;gap:20px}
+  .jgrid{grid-template-columns:1fr;gap:20px}
   .jgrid .medal{grid-column:1 / -1;grid-row:1;width:min(240px,60%);margin:0 auto 18px}
-  .jlines{display:none}
+  .jgrid .jcard{margin-inline-start:30px}
   .jgrid .jcard{grid-row:auto!important;grid-column:auto!important}
   .about,.reg{grid-template-columns:1fr}
   .reg__copy{text-align:center}
@@ -667,17 +673,26 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
   const jgrid = document.querySelector(".jgrid"), jsvg = jgrid && jgrid.querySelector(".jlines");
   const body = jgrid && jgrid.querySelector(".medal--body img");
   const GLOW = [.088, .413, .413, .671];           // card 01..04 -> head, chest, chest, belly
+  const star = (x,y,r) => `M${x} ${y-r}Q${x} ${y} ${x+r} ${y}Q${x} ${y} ${x} ${y+r}Q${x} ${y} ${x-r} ${y}Q${x} ${y} ${x} ${y-r}Z`;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let rail = null;                                   // geometry of the stacked-layout thread
+  // layout box relative to the grid, ignoring the cards' rise-in transform
+  const rel = el => { let x = 0, y = 0, n = el; while (n && n !== jgrid){ x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+    return {left:x, top:y, width:el.offsetWidth, height:el.offsetHeight, right:x+el.offsetWidth, bottom:y+el.offsetHeight}; };
   function drawLines(){
-    if (!jsvg || getComputedStyle(jsvg).display === "none" || !body.complete) return;
-    const g = jgrid.getBoundingClientRect(), b = body.getBoundingClientRect();
-    const cards = jgrid.querySelectorAll(".jcard");
-    const star = (x,y,r) => `M${x} ${y-r}Q${x} ${y} ${x+r} ${y}Q${x} ${y} ${x} ${y+r}Q${x} ${y} ${x-r} ${y}Q${x} ${y} ${x} ${y-r}Z`;
+    if (!jsvg || !body.complete) return;
+    const g = {width: jgrid.clientWidth}, b = rel(body);
+    const cards = [...jgrid.querySelectorAll(".jcard")];
+    const stacked = rel(cards[0]).top > b.bottom - 4;
+    jsvg.classList.toggle("rail", stacked);
+    if (stacked) return drawRail(g, b, cards);
+    rail = null;
     let out = "";
     cards.forEach((c, i) => {
-      const r = c.getBoundingClientRect();
-      const sx = b.left + b.width/2 - g.left, sy = b.top + b.height*GLOW[i] - g.top;
+      const r = rel(c);
+      const sx = b.left + b.width/2, sy = b.top + b.height*GLOW[i];
       const right = r.left > b.left;                // card sits to the right of the figure
-      const ex = (right ? r.left : r.right) - g.left, ey = r.top + r.height*.5 - g.top;
+      const ex = right ? r.left : r.right, ey = r.top + r.height*.5;
       const dx = ex - sx;
       const d = `M${sx} ${sy}C${sx+dx*.45} ${sy} ${ex-dx*.35} ${ey} ${ex} ${ey}`;
       out += `<g style="--i:${i}"><path class="ln" pathLength="1" d="${d}"/><path class="pulse" pathLength="1" d="${d}"/>`
@@ -686,6 +701,32 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
     });
     jsvg.innerHTML = out;
   }
+  // phones: the thread leaves the belly glow, swings to the right-hand rail and runs down past every card
+  function drawRail(g, b, cards){
+    const sx = b.left + b.width/2, sy = b.top + b.height*GLOW[3];
+    const x = g.width - 13;
+    const ys = cards.map(c => rel(c).top + 40);
+    const y1 = ys[0] - 26, yEnd = ys[ys.length-1];
+    const d = `M${sx} ${sy}C${sx} ${sy+(y1-sy)*.75} ${x} ${y1-(y1-sy)*.6} ${x} ${y1}L${x} ${yEnd}`;
+    jsvg.innerHTML = `<path class="ln" pathLength="1" d="${d}"/><path class="pulse" pathLength="1" d="${d}"/>`
+      + `<circle class="dot" cx="${sx}" cy="${sy}" r="3"/>`
+      + ys.map(y => `<path class="star" d="${star(x,y,8)}"/>`).join("");
+    const curve = jsvg.querySelector(".ln").getTotalLength() - (yEnd - y1);
+    rail = { sy, y1, yEnd, curve, total: curve + (yEnd - y1), ys, ln: jsvg.querySelector(".ln"),
+             stars: [...jsvg.querySelectorAll(".star")], dot: jsvg.querySelector(".dot") };
+    railProgress();
+  }
+  function railProgress(){
+    if (!rail) return;
+    const y = innerHeight * .72 - jgrid.getBoundingClientRect().top;   // how far down the grid the reader has scrolled
+    const lenAt = v => v <= rail.sy ? 0 : v < rail.y1 ? (v - rail.sy) / (rail.y1 - rail.sy) * rail.curve : rail.curve + (v - rail.y1);
+    const p = reduced ? 1 : Math.min(1, lenAt(y) / rail.total);
+    rail.ln.style.strokeDashoffset = 1 - p;
+    rail.dot.classList.toggle("lit", p > 0 || reduced);
+    rail.stars.forEach((st, i) => st.classList.toggle("lit", reduced || lenAt(y) >= lenAt(rail.ys[i])));
+    jsvg.classList.toggle("full", p >= 1 && !reduced);
+  }
+  addEventListener("scroll", railProgress, {passive:true});
   if (body){ body.complete ? drawLines() : body.addEventListener("load", drawLines); }
   if (jsvg && "IntersectionObserver" in window){
     const jio = new IntersectionObserver(([e]) => {
