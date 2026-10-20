@@ -99,7 +99,8 @@ p{margin:0}
 .topbar{position:absolute;inset:0 0 auto;z-index:5;padding:18px 0}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.25rem;color:var(--forest);text-decoration:none}
-.brand svg{width:34px;height:34px;color:var(--forest)}
+.brand{padding:8px 16px;border-radius:18px;background:rgba(255,255,255,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.7)}
+.brand img{height:64px;width:auto}
 .topbar .btn{min-height:44px;padding:.55em 1.3em;font-size:.95rem;box-shadow:none}
 
 /* ---------- hero ---------- */
@@ -302,6 +303,8 @@ p{margin:0}
 footer{background:#151c17;color:var(--sage-soft);padding:34px 0 calc(34px + env(safe-area-inset-bottom));font-size:.9rem}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 footer a{color:var(--sage-soft)}
+footer .ft-brand{display:inline-flex;align-items:center;gap:12px}
+footer .ft-brand img{width:auto;height:34px}
 footer .credit{flex-basis:100%;padding-top:14px;margin-top:4px;border-top:1px solid rgba(169,179,155,.18);text-align:center;font-size:.85rem;opacity:.85}
 footer .credit a{color:var(--gold-soft);text-decoration:none}
 footer .credit a:hover{text-decoration:underline}
@@ -336,6 +339,8 @@ footer .credit a:hover{text-decoration:underline}
   .jgrid{grid-template-columns:1fr}
   .qa{flex-direction:column;text-align:center;gap:12px;padding:26px 22px}
   .topbar .btn{display:none}
+  .brand{padding:6px 12px;border-radius:14px}
+  .brand img{height:38px}
   .live{flex-direction:column;gap:2px;border-radius:22px;padding:.6em 1.4em}
   .live__sep{display:none}
   .live__dot{position:absolute;top:14px;right:16px}
@@ -383,9 +388,13 @@ footer .credit a:hover{text-decoration:underline}
 <!-- ============ HERO ============ -->
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="מיטל אברהמי">
-      <svg aria-hidden="true"><use href="#i-lotus"/></svg>
-      <span>מיטל אברהמי</span>
+    <a class="brand" href="#top">
+      <picture>
+        <source media="(max-width:760px)" srcset="assets/logo-compact.webp" type="image/webp">
+        <source media="(max-width:760px)" srcset="assets/logo-compact.png">
+        <source srcset="assets/logo.webp" type="image/webp">
+        <img src="assets/logo.png" alt="מיטל אברהמי, רפואה שלמה ברפואה משלימה" width="800" height="223">
+      </picture>
     </a>
     <a class="btn" href="#register">לשריון מקום</a>
   </div>
@@ -626,7 +635,7 @@ footer .credit a:hover{text-decoration:underline}
 
 <footer>
   <div class="wrap">
-    <span>© 2026 מיטל אברהמי · ריפוי תודעתי ובין-דורי</span>
+    <span class="ft-brand"><img src="assets/logo-mark.webp" alt="" width="240" height="290">© 2026 מיטל אברהמי · ריפוי תודעתי ובין-דורי</span>
     <a href="#" target="_blank" rel="noopener">מדיניות השימוש ופרטיות</a>
     <span class="credit">עיצוב ובניית אתרים: <a href="https://celebrated-duckanoo-c56f2b.netlify.app/#contact" target="_blank" rel="noopener">שקמה אושרי אריה</a></span>
   </div>
