@@ -415,6 +415,14 @@ footer .credit a:hover{text-decoration:underline}
   .jlines .pulse{display:none}
 }
 </style>
+<script>
+// always open at the hero: no restored scroll position, no leftover #anchor
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+window.scrollTo(0, 0);
+addEventListener("load", function () { window.scrollTo(0, 0); });
+addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 0); });
+</script>
 </head>
 <body>
 
