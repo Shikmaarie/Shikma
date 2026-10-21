@@ -970,10 +970,11 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
       } else {
         console.warn("FORM_ENDPOINT is empty: lead was NOT saved", Object.fromEntries(data));
       }
-      card.classList.add("is-done");
-      card.scrollIntoView({behavior:"smooth", block:"center"});
       if (window.fbq) fbq("track","CompleteRegistration");
       if (window.gtag) gtag("event","sign_up",{method:"webinar"});
+      // thank-you page with the calendar buttons; the in-card state stays as a fallback
+      card.classList.add("is-done");
+      setTimeout(() => { location.href = "thanks.html"; }, 300);
     } catch(err){
       fail.style.display = "block";
     } finally { btn.disabled = false; }

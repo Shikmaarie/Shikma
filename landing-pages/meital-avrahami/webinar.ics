@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//meital-avrahami//webinar//HE
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:webinar-20261105@meital-avrahami
+DTSTAMP:20261021T080000Z
+DTSTART:20261105T180000Z
+DTEND:20261105T193000Z
+SUMMARY:וובינר חינמי עם מיטל אברהמי: העבר שלא חווית
+DESCRIPTION:הקישור לשידור יישלח בוואטסאפ ובמייל לפני תחילת הוובינר.
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:הוובינר מתחיל בעוד חצי שעה
+END:VALARM
+END:VEVENT
+END:VCALENDAR
