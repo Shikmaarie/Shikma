@@ -267,6 +267,7 @@ p{margin:0}
 .vid__tag{font-family:var(--head);font-stretch:75%;font-weight:700;font-size:1.3rem;color:var(--forest)}
 .vid__hint{font-size:.9rem;color:var(--ink-soft)}
 .vids figcaption{margin-top:10px;text-align:center;font-family:var(--head);font-stretch:75%;font-weight:600;font-size:1.1rem;color:var(--ink-soft)}
+@media (max-width:760px){.form .btn--clay{font-size:.92rem;padding-inline:20px;gap:8px}.field input::placeholder{font-size:.86rem}.field .field__hint{display:block}}
 @media (max-width:760px){.vids{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;justify-content:start;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}.vids figure{scroll-snap-align:center}}
 
 /* ---------- faq ---------- */
@@ -319,6 +320,7 @@ p{margin:0}
 .field input[type=tel],.field input[type=email]{direction:ltr;text-align:right}
 .field input[type=tel]::placeholder,.field input[type=email]::placeholder{direction:rtl}
 .field.err input{border-color:#b4462d;box-shadow:0 0 0 4px rgba(180,70,45,.1)}
+.field__hint{display:none;margin-top:5px;font-size:.85rem;color:var(--ink-soft)}
 .field .msg{display:none;margin-top:5px;font-size:.88rem;color:#a23d26}
 .field.err .msg{display:block}
 .consent{display:flex;gap:10px;align-items:flex-start;margin:6px 0 20px;text-align:right;font-size:.92rem;line-height:1.55;color:var(--b-ink-soft);cursor:pointer}
@@ -748,6 +750,7 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
         <div class="field">
           <label for="f-phone">מספר טלפון נייד</label><svg aria-hidden="true"><use href="#i-phone"/></svg>
           <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="מספר טלפון נייד (לקבלת תזכורת וקישור בוואטסאפ)">
+          <p class="field__hint">לקבלת תזכורת וקישור בוואטסאפ</p>
           <p class="msg">צריך מספר נייד ישראלי תקין</p>
         </div>
         <div class="hp" aria-hidden="true"><label>אתר<input name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -791,6 +794,8 @@ const FORM_ENDPOINT = "";
 /* 5.11.2026 20:00 שעון ישראל (חורף, UTC+2) */
 const EVENT_START = new Date("2026-11-05T20:00:00+02:00");
 const EVENT_MINUTES = 90;
+// phones: the phone placeholder is too long for the field, so its note moves under it
+if (matchMedia("(max-width:760px)").matches) document.getElementById("f-phone").placeholder = "מספר טלפון נייד";
 const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העבר שלא חווית";
 /* ================================================== */
 
