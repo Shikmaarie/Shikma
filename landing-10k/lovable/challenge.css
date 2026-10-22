@@ -26,7 +26,7 @@
 }
 .c10k, :where(.c10k) * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
-.c10k { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 18px; line-height: 1.75; font-weight: 400; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.c10k { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 1.125rem; line-height: 1.75; font-weight: 400; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 :where(.c10k) img, :where(.c10k) svg { display: block; max-width: 100%; }
 :where(.c10k) a { color: inherit; }
 :where(.c10k) p { margin: 0; }
@@ -237,7 +237,33 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip
 
 footer { background: #072a2e; color: rgba(240, 233, 221, .55); text-align: center; padding: 28px 16px; font-size: .88rem; line-height: 1.6; }
 footer b { color: rgba(240, 233, 221, .85); font-weight: 500; }
-footer small { display: block; margin-top: 10px; font-size: .78rem; opacity: .7; }
+footer small { display: block; margin-top: 10px; font-size: .78rem; color: rgba(240, 233, 221, .6); }
+footer a { color: rgba(240, 233, 221, .85); text-decoration: underline; text-underline-offset: 3px; }
+footer a:hover { color: var(--gold-soft); }
+footer a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+.foot__nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 16px; font-size: .88rem; }
+.foot__credit { margin-top: 14px !important; padding-top: 14px; border-top: 1px solid rgba(240, 233, 221, .12); font-size: .8rem; color: rgba(240, 233, 221, .6); }
+
+/* ---------- עמודי פרטיות ונגישות ---------- */
+.legal__top { background: var(--teal); color: #fff; padding: 40px 0 36px; }
+.legal__top h1 { color: #fff; font-size: clamp(2rem, 5vw, 2.6rem); margin-top: 18px; }
+.legal__back { color: rgba(255, 255, 255, .85); text-decoration: none; font-size: .92rem; }
+.legal__back:hover { text-decoration: underline; }
+.legal__meta { margin-top: 10px !important; color: rgba(255, 255, 255, .78); font-size: .92rem; }
+.legal__body { padding: 40px 0 64px; }
+.legal__body section { margin-top: 40px; scroll-margin-top: 20px; }
+.legal__body h2 { font-size: clamp(1.25rem, 3vw, 1.5rem); margin-bottom: 14px; }
+.legal__body p + p { margin-top: 10px; }
+.legal__body ul { margin: 10px 0; padding-inline-start: 1.4em; display: grid; gap: 6px; }
+.legal__body a:not(.btn) { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
+.legal__toc { background: var(--mist); border-radius: var(--radius); padding: 20px 24px; }
+.legal__toc p { font-weight: 600; color: var(--teal); margin-bottom: 8px; }
+.legal__toc ol { margin: 0; padding-inline-start: 1.4em; display: grid; gap: 4px; font-size: .95rem; }
+.legal__table { overflow-x: auto; margin: 14px 0; }
+.legal__table table { width: 100%; border-collapse: collapse; font-size: .92rem; text-align: right; }
+.legal__table th { background: var(--teal); color: #fff; font-weight: 500; }
+.legal__table th, .legal__table td { padding: 10px 12px; border: 1px solid var(--mist-2); vertical-align: top; }
+.legal__cta { margin-top: 48px !important; }
 
 
 /* ---------- תמונות ---------- */
@@ -368,7 +394,7 @@ footer small { display: block; margin-top: 10px; font-size: .78rem; opacity: .7;
     .tgrid { grid-template-columns: minmax(0, 460px); }
 }
 @media (max-width: 520px) {
-    .c10k { font-size: 17px; }
+    .c10k { font-size: 1.0625rem; }
     .live { font-size: .86rem; padding: .5em 1.1em; }
     .live { justify-content: center; text-align: center; }
     .live__sep { display: none; }

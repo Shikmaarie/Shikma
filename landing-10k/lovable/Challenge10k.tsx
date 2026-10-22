@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
+import Footer10k from "./Footer10k";
+
 // דף הנחיתה של אתגר ה-10,000 ₪ לשכירים (רחלי חדד).
 // הסגנון כולו ב-src/challenge.css תחת .c10k, התמונות ב-public/img.
 
@@ -524,11 +526,7 @@ export default function Challenge10k() {
           <a className="btn" href="#register" tabIndex={-1}>אני רוצה לשריין מקום בחינם</a>
       </div>
 
-      <footer>
-          <b>אתגר ה־10,000 ₪ לשכירים · רחלי חדד</b><br />
-          9, 10 ו־11 בנובמבר 2026 · אונליין ב־LIVE
-          <small>האתגר מציע ידע, כלים ומתודולוגיות עסקיות. הצלחה בעסקים דורשת יישום, התמדה ועבודה בפועל.</small>
-      </footer>
+      <Footer10k />
     </div>
   );
 }
