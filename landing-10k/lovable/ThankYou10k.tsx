@@ -3,10 +3,9 @@ import { useEffect } from "react";
 // דף התודה של אתגר ה-10,000 ₪ לשכירים. רב מסר מפנה לכאן אחרי הרשמה.
 // משתמש באותו src/challenge.css (תחת .c10k) ובאותן תמונות ב-public/img.
 
-// TODO: להחליף בקישור ההצטרפות האמיתי לקבוצת הוואטסאפ של האתגר
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/REPLACE_ME";
-// TODO: להחליף בקישור לעמוד הזמנת הספר
-const BOOK_URL = "https://REPLACE_ME/first-100k-book";
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/DbAcSR37Cj1BxN5JQGrguA";
+// TODO: קישור לעמוד הזמנת הספר. כל עוד ריק, חלק הספר לא מוצג.
+const BOOK_URL = "";
 
 const EVENINGS = [
   { n: 1, date: "20261109", label: "ערב ראשון · יום שני, 9 בנובמבר", title: "איתור היהלום" },
@@ -113,6 +112,7 @@ export default function ThankYou10k() {
         </div>
       </section>
 
+      {BOOK_URL && (
       <section className="ty__offer">
         <div className="wrap">
           <div className="ty__book">
@@ -131,6 +131,7 @@ export default function ThankYou10k() {
           </div>
         </div>
       </section>
+      )}
 
       <footer>
         <b>אתגר ה־10,000 ₪ לשכירים · רחלי חדד</b>
