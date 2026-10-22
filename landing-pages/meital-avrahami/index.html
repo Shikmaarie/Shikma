@@ -251,6 +251,8 @@ p{margin:0}
 /* ---------- testimonials ---------- */
 .testis{background:var(--cream)}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tgrid--2{grid-template-columns:repeat(2,1fr);margin-bottom:22px}
+.t__role{display:block;font-family:var(--sans);font-stretch:100%;font-weight:400;font-size:.88rem;color:var(--sage)}
 .t{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:36px 30px 28px;border-radius:var(--radius);background:var(--paper);border:1px solid rgba(29,36,31,.08)}
 .t__q{font-family:var(--head);font-stretch:75%;font-size:1.45rem;line-height:1.45;color:var(--forest)}
 .t__q::before{content:"״";display:block;font-size:3.6rem;line-height:.6;color:var(--gold);margin-bottom:10px}
@@ -654,20 +656,31 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
 <section class="section testis" aria-labelledby="t-title">
   <div class="wrap">
     <div class="section-head rv">
-      <span class="eyebrow">ממשתתפי וובינרים קודמים</span>
-      <h2 id="t-title">מה מספרים מי שכבר השתתפו?</h2>
+      <span class="eyebrow">עדויות</span>
+      <h2 id="t-title">מה מספרים מי שכבר עברו את הדרך איתי?</h2>
     </div>
     <!-- עדויות מצולמות: להחליף כל vid--slot ב-
       <figure class="vid"><video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none"></video><figcaption>שם</figcaption></figure> -->
     <div class="vids">
-      <figure class="vid vid--slot rv" data-d="1">
-        <div class="vid__frame"><span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="vid__tag">עדות מצולמת 1</span><span class="vid__hint">כאן יעלה הסרטון</span></div>
+      <figure class="vid rv" data-d="1">
+        <video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none" aria-label="עדויות מצולמות של בוגרות הקורס"></video>
+        <figcaption>בוגרות הקורס מספרות</figcaption>
       </figure>
       <figure class="vid vid--slot rv" data-d="2">
         <div class="vid__frame"><span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="vid__tag">עדות מצולמת 2</span><span class="vid__hint">כאן יעלה הסרטון</span></div>
       </figure>
       <figure class="vid vid--slot rv" data-d="3">
         <div class="vid__frame"><span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="vid__tag">עדות מצולמת 3</span><span class="vid__hint">כאן יעלה הסרטון</span></div>
+      </figure>
+    </div>
+    <div class="tgrid tgrid--2">
+      <figure class="t rv" data-d="1" style="margin:0">
+        <blockquote class="t__q" style="margin:0">רוצה לשתף שעשיתי טיפול עם גיל כרונולוגי, וזה היה מדהים ומדויק וכל כך יפה ומעצים. תודה על הכלים, מיטל.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">מ</span><span>מירב בוסקילה<small class="t__role">תלמידה, ריפוי בין-דורי</small></span></figcaption>
+      </figure>
+      <figure class="t rv" data-d="2" style="margin:0">
+        <blockquote class="t__q" style="margin:0">מטופלת עם פיברומיאלגיה, אחרי דרך של חמישה טיפולים, ניתוקים, רווח משני, פריקות וטעינות, הגיעה היום אחרי חמישה ימים רצופים ללא משככי כאבים! התרגשתי, והיא עדיין מתרגשת.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ט</span><span>טובי גדליה<small class="t__role">תלמידה, תרפיה</small></span></figcaption>
       </figure>
     </div>
     <div class="tgrid">
