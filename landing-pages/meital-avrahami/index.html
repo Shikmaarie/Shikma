@@ -535,6 +535,54 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
   </div>
 </section>
 
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section testis" aria-labelledby="t-title">
+  <div class="wrap">
+    <div class="section-head rv">
+      <span class="eyebrow">עדויות</span>
+      <h2 id="t-title">מה מספרים מי שכבר עברו את הדרך איתי?</h2>
+    </div>
+    <!-- עדויות מצולמות: להחליף כל vid--slot ב-
+      <figure class="vid"><video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none"></video><figcaption>שם</figcaption></figure> -->
+    <div class="vids">
+      <figure class="vid rv" data-d="1">
+        <video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none" aria-label="עדויות מצולמות של בוגרות הקורס"></video>
+        <figcaption>בוגרות הקורס מספרות</figcaption>
+      </figure>
+      <figure class="vid vid--slot rv" data-d="2">
+        <div class="vid__frame"><span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="vid__tag">עדות מצולמת 2</span><span class="vid__hint">כאן יעלה הסרטון</span></div>
+      </figure>
+      <figure class="vid vid--slot rv" data-d="3">
+        <div class="vid__frame"><span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="vid__tag">עדות מצולמת 3</span><span class="vid__hint">כאן יעלה הסרטון</span></div>
+      </figure>
+    </div>
+    <figure class="wa rv">
+      <img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות. אחת עשתה טיפול עם גיל כרונולוגי שהיה מדויק ומעצים, והשנייה מספרת על מטופלת עם פיברומיאלגיה שהגיעה אחרי חמישה ימים רצופים ללא משככי כאבים." width="748" height="1108" loading="lazy">
+    </figure>
+    <div class="tgrid">
+      <figure class="t rv" data-d="1" style="margin:0">
+        <blockquote class="t__q" style="margin:0">יצאתי עם תחושת הקלה בגוף והבנה ברורה למה אני מגיב כמו שאני מגיב.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ש</span>שרון, 38</figcaption>
+      </figure>
+      <figure class="t rv" data-d="2" style="margin:0">
+        <blockquote class="t__q" style="margin:0">בפעם הראשונה הרגשתי שמישהו רואה את השורש, ולא רק את הסימפטום.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ד</span>דנה, 42</figcaption>
+      </figure>
+      <figure class="t rv" data-d="3" style="margin:0">
+        <blockquote class="t__q" style="margin:0">הוובינר היה מרתק, קצר, ועשה לי סדר מדהים בראש בלי להציף.</blockquote>
+        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ע</span>עדי, 35</figcaption>
+      </figure>
+    </div>
+    <!-- צילומי מסך של עדויות מוובינרים קודמים: לשים קבצים ב-assets/testimonials/ ולבטל את ההערה
+    <div class="shots">
+      <img src="assets/testimonials/1.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
+      <img src="assets/testimonials/2.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
+      <img src="assets/testimonials/3.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
+    </div>
+    -->
+  </div>
+</section>
+
 <!-- ============ THE HIDDEN STORY ============ -->
 <section class="section story" aria-labelledby="story-title">
   <div class="wrap">
@@ -649,54 +697,6 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
       <p class="bio rv" data-d="4">מאז, כבר שני עשורים, אני מלווה מטופלים, נשים ומשפחות בתהליכי עומק שמשנים את החיים מן הקצה אל הקצה. בוובינר הזה אתן לכם זווית ראייה מרתקת, מבוססת ניסיון קליני רב, שתעשה לכם סדר מוחלט בראש וברגש.</p>
       <p class="mystory__note rv" data-d="4">הסיפור שלי הוא חוויה אישית, ואינו מחליף ייעוץ או טיפול רפואי.</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ TESTIMONIALS ============ -->
-<section class="section testis" aria-labelledby="t-title">
-  <div class="wrap">
-    <div class="section-head rv">
-      <span class="eyebrow">עדויות</span>
-      <h2 id="t-title">מה מספרים מי שכבר עברו את הדרך איתי?</h2>
-    </div>
-    <!-- עדויות מצולמות: להחליף כל vid--slot ב-
-      <figure class="vid"><video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none"></video><figcaption>שם</figcaption></figure> -->
-    <div class="vids">
-      <figure class="vid rv" data-d="1">
-        <video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none" aria-label="עדויות מצולמות של בוגרות הקורס"></video>
-        <figcaption>בוגרות הקורס מספרות</figcaption>
-      </figure>
-      <figure class="vid vid--slot rv" data-d="2">
-        <div class="vid__frame"><span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="vid__tag">עדות מצולמת 2</span><span class="vid__hint">כאן יעלה הסרטון</span></div>
-      </figure>
-      <figure class="vid vid--slot rv" data-d="3">
-        <div class="vid__frame"><span class="vid__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><span class="vid__tag">עדות מצולמת 3</span><span class="vid__hint">כאן יעלה הסרטון</span></div>
-      </figure>
-    </div>
-    <figure class="wa rv">
-      <img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות. אחת עשתה טיפול עם גיל כרונולוגי שהיה מדויק ומעצים, והשנייה מספרת על מטופלת עם פיברומיאלגיה שהגיעה אחרי חמישה ימים רצופים ללא משככי כאבים." width="748" height="1108" loading="lazy">
-    </figure>
-    <div class="tgrid">
-      <figure class="t rv" data-d="1" style="margin:0">
-        <blockquote class="t__q" style="margin:0">יצאתי עם תחושת הקלה בגוף והבנה ברורה למה אני מגיב כמו שאני מגיב.</blockquote>
-        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ש</span>שרון, 38</figcaption>
-      </figure>
-      <figure class="t rv" data-d="2" style="margin:0">
-        <blockquote class="t__q" style="margin:0">בפעם הראשונה הרגשתי שמישהו רואה את השורש, ולא רק את הסימפטום.</blockquote>
-        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ד</span>דנה, 42</figcaption>
-      </figure>
-      <figure class="t rv" data-d="3" style="margin:0">
-        <blockquote class="t__q" style="margin:0">הוובינר היה מרתק, קצר, ועשה לי סדר מדהים בראש בלי להציף.</blockquote>
-        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ע</span>עדי, 35</figcaption>
-      </figure>
-    </div>
-    <!-- צילומי מסך של עדויות מוובינרים קודמים: לשים קבצים ב-assets/testimonials/ ולבטל את ההערה
-    <div class="shots">
-      <img src="assets/testimonials/1.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
-      <img src="assets/testimonials/2.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
-      <img src="assets/testimonials/3.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
-    </div>
-    -->
   </div>
 </section>
 
