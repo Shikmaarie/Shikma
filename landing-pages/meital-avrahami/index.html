@@ -275,15 +275,24 @@ p{margin:0}
 /* ---------- testimonials ---------- */
 .testis{background:var(--cream)}
 .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.wa{max-width:420px;margin:0 auto 40px}
-.wa img{width:100%;height:auto;border-radius:var(--radius);box-shadow:0 22px 50px -28px rgba(0,0,0,.45)}
+
 .t{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:36px 30px 28px;border-radius:var(--radius);background:var(--paper);border:1px solid rgba(29,36,31,.08)}
 .t__q{font-family:var(--head);font-stretch:75%;font-size:1.45rem;line-height:1.45;color:var(--forest)}
 .t__q::before{content:"״";display:block;font-size:3.6rem;line-height:.6;color:var(--gold);margin-bottom:10px}
 .t__who{display:flex;align-items:center;gap:12px;font-family:var(--head);font-stretch:75%;font-weight:600;font-size:1.1rem;color:var(--ink-soft)}
 .t__av{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--forest);color:var(--gold-soft);font-family:var(--head);font-stretch:75%;font-weight:700;font-size:1.1rem}
-.shots{columns:3 260px;column-gap:18px;margin-top:40px}
-.shots img{width:100%;margin-bottom:18px;border-radius:16px;box-shadow:0 16px 40px -24px rgba(0,0,0,.4);break-inside:avoid}
+.shots{columns:3 260px;column-gap:18px;max-width:1040px;margin:0 auto 40px}
+.shots img{display:block;width:100%;height:auto;margin-bottom:18px;border-radius:16px;border:1px solid rgba(29,36,31,.08);box-shadow:0 16px 40px -24px rgba(0,0,0,.4);break-inside:avoid}
+@media (max-width:760px){
+  .shots{columns:auto;display:flex;align-items:center;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:4px 16px 14px}
+  .shots img{flex:none;width:78%;margin:0;scroll-snap-align:center;max-height:min(400px,56svh);object-fit:cover;object-position:top}
+}
+.shots img{cursor:zoom-in}
+.shots__hint{margin:-22px 0 40px;text-align:center;font-size:.9rem;color:var(--ink-soft)}
+.lb{width:min(640px,94vw);max-height:92svh;padding:0;border:0;border-radius:18px;background:#efe7d8;overflow:auto}
+.lb::backdrop{background:rgba(20,28,22,.72)}
+.lb img{display:block;width:100%;height:auto}
+.lb__x{position:sticky;top:8px;float:left;margin:8px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(28,38,32,.85);color:#fff;font-size:1.5rem;line-height:1;cursor:pointer}
 .vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,250px));justify-content:center;gap:22px;margin-bottom:40px}
 .vids figure{margin:0}
 .vids video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:var(--radius);background:var(--forest);box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
@@ -589,9 +598,19 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
         <figcaption>אורית אלמוג, בוגרת ריפוי בין-דורי</figcaption>
       </figure>
     </div>
-    <figure class="wa rv">
-      <img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות. אחת עשתה טיפול עם גיל כרונולוגי שהיה מדויק ומעצים, והשנייה מספרת על מטופלת עם פיברומיאלגיה שהגיעה אחרי חמישה ימים רצופים ללא משככי כאבים." width="748" height="1108" loading="lazy">
-    </figure>
+    <div class="shots rv">
+      <img src="assets/testimonials/whatsapp-2.jpg" alt="הודעת וואטסאפ ממשתתפת בוובינר קודם: נהניתי מאוד מהוובינר, השארת טעם של עוד" width="760" height="677" loading="lazy">
+      <img src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy">
+      <img src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy">
+      <img src="assets/testimonials/whatsapp-6.jpg" alt="הודעת וואטסאפ ממטופלת: הטיפולים שלך הם קסם אחד גדול, אני סוף סוף מרגישה שהתחלתי לחיות" width="700" height="1584" loading="lazy">
+      <img src="assets/testimonials/whatsapp-5.jpg" alt="הודעת וואטסאפ מבוגרת קורס: זה היה עבורי הרבה מעבר לקורס" width="640" height="1330" loading="lazy">
+      <img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות על טיפול עם גיל כרונולוגי ועל מטופלת עם פיברומיאלגיה" width="748" height="1108" loading="lazy">
+      <img src="assets/testimonials/whatsapp-7.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: תודה על שיעור מעולה בנושא מערכת הנשימה" width="625" height="1060" loading="lazy">
+      <img src="assets/testimonials/whatsapp-8.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: המאסטרקלאס על מערכת הנשימה, החומר פשוט שווה זהב" width="718" height="1265" loading="lazy">
+      <img src="assets/testimonials/whatsapp-9.jpg" alt="הודעת וואטסאפ מאמא: רציתי להגיד לך תודה רבה, אנחנו משתחררים היום" width="760" height="446" loading="lazy">
+    </div>
+    <p class="shots__hint">לחצו על הודעה כדי לקרוא אותה בגדול</p>
+    <dialog class="lb" id="lb" aria-label="הודעה בגודל מלא"><button class="lb__x" type="button" aria-label="סגירה">×</button><img alt=""></dialog>
     <div class="tgrid">
       <figure class="t rv" data-d="1" style="margin:0">
         <blockquote class="t__q" style="margin:0">יצאתי עם תחושת הקלה בגוף והבנה ברורה למה אני מגיב כמו שאני מגיב.</blockquote>
@@ -606,13 +625,6 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
         <figcaption class="t__who"><span class="t__av" aria-hidden="true">ע</span>עדי, 35</figcaption>
       </figure>
     </div>
-    <!-- צילומי מסך של עדויות מוובינרים קודמים: לשים קבצים ב-assets/testimonials/ ולבטל את ההערה
-    <div class="shots">
-      <img src="assets/testimonials/1.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
-      <img src="assets/testimonials/2.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
-      <img src="assets/testimonials/3.jpg" alt="עדות ממשתתפת בוובינר קודם" loading="lazy">
-    </div>
-    -->
   </div>
 </section>
 
@@ -1019,6 +1031,16 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
       fail.style.display = "block";
     } finally { btn.disabled = false; }
   });
+})();
+/* testimonial screenshots: tap to read full size */
+(function(){
+  const lb = document.getElementById("lb");
+  if (!lb || !lb.showModal) return;
+  const big = lb.querySelector("img");
+  document.querySelectorAll(".shots img").forEach(img => img.addEventListener("click", () => {
+    big.src = img.src; big.alt = img.alt; lb.showModal(); lb.scrollTop = 0;
+  }));
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".lb__x")) lb.close(); });
 })();
 </script>
 </body>
