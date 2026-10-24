@@ -274,18 +274,15 @@ p{margin:0}
 
 /* ---------- testimonials ---------- */
 .testis{background:var(--cream)}
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 
-.t{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:36px 30px 28px;border-radius:var(--radius);background:var(--paper);border:1px solid rgba(29,36,31,.08)}
-.t__q{font-family:var(--head);font-stretch:75%;font-size:1.45rem;line-height:1.45;color:var(--forest)}
-.t__q::before{content:"״";display:block;font-size:3.6rem;line-height:.6;color:var(--gold);margin-bottom:10px}
-.t__who{display:flex;align-items:center;gap:12px;font-family:var(--head);font-stretch:75%;font-weight:600;font-size:1.1rem;color:var(--ink-soft)}
-.t__av{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--forest);color:var(--gold-soft);font-family:var(--head);font-stretch:75%;font-weight:700;font-size:1.1rem}
 .shots{columns:3 260px;column-gap:18px;max-width:1040px;margin:0 auto 40px}
 .shots img{display:block;width:100%;height:auto;margin-bottom:18px;border-radius:16px;border:1px solid rgba(29,36,31,.08);box-shadow:0 16px 40px -24px rgba(0,0,0,.4);break-inside:avoid}
 @media (max-width:760px){
-  .shots{columns:auto;display:flex;align-items:center;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:4px 16px 14px}
-  .shots img{flex:none;width:78%;margin:0;scroll-snap-align:center;max-height:min(400px,56svh);object-fit:cover;object-position:top}
+  .shots{columns:auto;max-width:420px;padding-inline:6px}
+  .shots img{position:relative;z-index:calc(20 - var(--i));margin:0 0 22px;max-height:440px;object-fit:cover;object-position:top;
+    transform:rotate(var(--r));transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .6s ease}
+  .shots img.long{-webkit-mask-image:linear-gradient(180deg,#000 82%,transparent);mask-image:linear-gradient(180deg,#000 82%,transparent)}
+  .js .shots img:not(.open){transform:translateY(-58%) scale(.9) rotate(calc(var(--r) * -2));opacity:0}
 }
 .shots img{cursor:zoom-in}
 .shots__hint{margin:-22px 0 40px;text-align:center;font-size:.9rem;color:var(--ink-soft)}
@@ -415,7 +412,7 @@ footer .credit a:hover{text-decoration:underline}
 }
 @media (max-width:760px){
   body{font-size:17px}
-  .qs,.tgrid{grid-template-columns:1fr}
+  .qs{grid-template-columns:1fr}
   .q{padding:26px 24px 24px}
   .qs--4{gap:12px}
   /* phones: portrait photo pinned to the bottom; the cards stop where the soil starts (66% down the photo) */
@@ -599,32 +596,18 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
       </figure>
     </div>
     <div class="shots rv">
-      <img src="assets/testimonials/whatsapp-2.jpg" alt="הודעת וואטסאפ ממשתתפת בוובינר קודם: נהניתי מאוד מהוובינר, השארת טעם של עוד" width="760" height="677" loading="lazy">
-      <img src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy">
-      <img src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy">
-      <img src="assets/testimonials/whatsapp-6.jpg" alt="הודעת וואטסאפ ממטופלת: הטיפולים שלך הם קסם אחד גדול, אני סוף סוף מרגישה שהתחלתי לחיות" width="700" height="1584" loading="lazy">
-      <img src="assets/testimonials/whatsapp-5.jpg" alt="הודעת וואטסאפ מבוגרת קורס: זה היה עבורי הרבה מעבר לקורס" width="640" height="1330" loading="lazy">
-      <img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות על טיפול עם גיל כרונולוגי ועל מטופלת עם פיברומיאלגיה" width="748" height="1108" loading="lazy">
-      <img src="assets/testimonials/whatsapp-7.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: תודה על שיעור מעולה בנושא מערכת הנשימה" width="625" height="1060" loading="lazy">
-      <img src="assets/testimonials/whatsapp-8.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: המאסטרקלאס על מערכת הנשימה, החומר פשוט שווה זהב" width="718" height="1265" loading="lazy">
-      <img src="assets/testimonials/whatsapp-9.jpg" alt="הודעת וואטסאפ מאמא: רציתי להגיד לך תודה רבה, אנחנו משתחררים היום" width="760" height="446" loading="lazy">
+      <img style="--i:1;--r:-1.6deg" src="assets/testimonials/whatsapp-2.jpg" alt="הודעת וואטסאפ ממשתתפת בוובינר קודם: נהניתי מאוד מהוובינר, השארת טעם של עוד" width="760" height="677" loading="lazy">
+      <img style="--i:2;--r:1.4deg" src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy">
+      <img style="--i:3;--r:-.8deg" src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy">
+      <img style="--i:4;--r:1.8deg" src="assets/testimonials/whatsapp-6.jpg" alt="הודעת וואטסאפ ממטופלת: הטיפולים שלך הם קסם אחד גדול, אני סוף סוף מרגישה שהתחלתי לחיות" width="700" height="1584" loading="lazy">
+      <img style="--i:5;--r:-1.2deg" src="assets/testimonials/whatsapp-5.jpg" alt="הודעת וואטסאפ מבוגרת קורס: זה היה עבורי הרבה מעבר לקורס" width="640" height="1330" loading="lazy">
+      <img style="--i:6;--r:.9deg" src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות על טיפול עם גיל כרונולוגי ועל מטופלת עם פיברומיאלגיה" width="748" height="1108" loading="lazy">
+      <img style="--i:7;--r:-1.8deg" src="assets/testimonials/whatsapp-7.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: תודה על שיעור מעולה בנושא מערכת הנשימה" width="625" height="1060" loading="lazy">
+      <img style="--i:8;--r:1.2deg" src="assets/testimonials/whatsapp-8.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: המאסטרקלאס על מערכת הנשימה, החומר פשוט שווה זהב" width="718" height="1265" loading="lazy">
+      <img style="--i:9;--r:-.6deg" src="assets/testimonials/whatsapp-9.jpg" alt="הודעת וואטסאפ מאמא: רציתי להגיד לך תודה רבה, אנחנו משתחררים היום" width="760" height="446" loading="lazy">
     </div>
     <p class="shots__hint">לחצו על הודעה כדי לקרוא אותה בגדול</p>
     <dialog class="lb" id="lb" aria-label="הודעה בגודל מלא"><button class="lb__x" type="button" aria-label="סגירה">×</button><img alt=""></dialog>
-    <div class="tgrid">
-      <figure class="t rv" data-d="1" style="margin:0">
-        <blockquote class="t__q" style="margin:0">יצאתי עם תחושת הקלה בגוף והבנה ברורה למה אני מגיב כמו שאני מגיב.</blockquote>
-        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ש</span>שרון, 38</figcaption>
-      </figure>
-      <figure class="t rv" data-d="2" style="margin:0">
-        <blockquote class="t__q" style="margin:0">בפעם הראשונה הרגשתי שמישהו רואה את השורש, ולא רק את הסימפטום.</blockquote>
-        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ד</span>דנה, 42</figcaption>
-      </figure>
-      <figure class="t rv" data-d="3" style="margin:0">
-        <blockquote class="t__q" style="margin:0">הוובינר היה מרתק, קצר, ועשה לי סדר מדהים בראש בלי להציף.</blockquote>
-        <figcaption class="t__who"><span class="t__av" aria-hidden="true">ע</span>עדי, 35</figcaption>
-      </figure>
-    </div>
   </div>
 </section>
 
@@ -1041,6 +1024,18 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
     big.src = img.src; big.alt = img.alt; lb.showModal(); lb.scrollTop = 0;
   }));
   lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".lb__x")) lb.close(); });
+})();
+/* phones: each screenshot slides out from under the one above it as it scrolls into view */
+(function(){
+  const cards = document.querySelectorAll(".shots img");
+  const phone = matchMedia("(max-width:760px)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mark = img => { if (img.clientHeight >= 438) img.classList.add("long"); };
+  cards.forEach(img => img.complete ? mark(img) : img.addEventListener("load", () => mark(img)));
+  if (!phone || !("IntersectionObserver" in window)) { cards.forEach(c => c.classList.add("open")); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("open"); io.unobserve(e.target); }
+  }), {rootMargin:"0px 0px -18% 0px"});
+  cards.forEach(c => io.observe(c));
 })();
 </script>
 </body>
