@@ -284,7 +284,7 @@ p{margin:0}
 .shots img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid rgba(29,36,31,.08)}
 /* fine light-sage line that travels once around the card when it comes into view */
 .shot__line{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.shot__line rect{fill:none;stroke:#c2cfb5;stroke-width:1.2;stroke-dasharray:var(--len,4000);stroke-dashoffset:var(--len,4000);transition:stroke-dashoffset 2.4s cubic-bezier(.45,0,.25,1) .5s}
+.shot__line rect{fill:none;stroke:#c2cfb5;stroke-width:1.2;stroke-dasharray:var(--len,4000);stroke-dashoffset:var(--len,4000);transition:stroke-dashoffset 2.4s cubic-bezier(.45,0,.25,1) .15s}
 .drawn > .shot__line rect{stroke-dashoffset:0}
 .vbox{position:relative}
 @media (max-width:760px){
@@ -299,6 +299,10 @@ p{margin:0}
 }
 .shots img{cursor:zoom-in}
 .shots__more{display:none}
+@media (min-width:761px){
+  .shot{transition:opacity .7s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+  .js .shots .shot:not(.open){opacity:0;transform:translateY(34px)}
+}
 .shots__hint{margin:-22px 0 40px;text-align:center;font-size:.9rem;color:var(--ink-soft)}
 .lb{width:min(640px,94vw);max-height:92svh;padding:0;border:0;border-radius:18px;background:#efe7d8;overflow:auto}
 .lb::backdrop{background:rgba(20,28,22,.72)}
@@ -612,7 +616,7 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
         <figcaption>אורית אלמוג, בוגרת ריפוי בין-דורי</figcaption>
       </figure>
     </div>
-    <div class="shots rv">
+    <div class="shots">
       <figure class="shot" style="--i:1;--r:-1.6deg"><img src="assets/testimonials/whatsapp-2.jpg" alt="הודעת וואטסאפ ממשתתפת בוובינר קודם: נהניתי מאוד מהוובינר, השארת טעם של עוד" width="760" height="677" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
       <figure class="shot" style="--i:2;--r:1.4deg"><img src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
       <figure class="shot" style="--i:3;--r:-.8deg"><img src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
@@ -1040,34 +1044,39 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
   }));
   lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".lb__x")) lb.close(); });
 })();
-/* phones: each screenshot slides out from under the one above it as it scrolls into view */
+/* screenshots enter as they scroll into view: on phones each slides out from under the one above,
+   on wider screens they rise in one after another; then the fine line closes around each card */
 (function(){
-  const cards = document.querySelectorAll(".shots .shot"), pics = document.querySelectorAll(".shots img");
-  const phone = matchMedia("(max-width:760px)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cards = [...document.querySelectorAll(".shots .shot")], pics = document.querySelectorAll(".shots img");
+  const phone = matchMedia("(max-width:760px)").matches;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window);
   const mark = img => { const cap = parseFloat(getComputedStyle(img).maxHeight); if (cap && img.clientHeight >= cap - 2) img.classList.add("long"); };
   pics.forEach(img => img.complete ? mark(img) : img.addEventListener("load", () => mark(img)));
-  // the gold frame draws itself once the card or clip is on screen
-  const framed = document.querySelectorAll(".shots .shot, .vids .vbox");
-  if ("IntersectionObserver" in window) {
-    const lo = new IntersectionObserver(es => es.forEach(e => {
-      if (!e.isIntersecting) return;
-      const r = e.target.querySelector(".shot__line rect");
-      r.style.setProperty("--len", Math.ceil(r.getTotalLength()) + 1);
-      requestAnimationFrame(() => requestAnimationFrame(() => e.target.classList.add("drawn")));
-      lo.unobserve(e.target);
-    }), {threshold:.35});
-    framed.forEach(c => lo.observe(c));
-  } else framed.forEach(c => c.classList.add("drawn"));
+  const draw = el => {
+    const r = el.querySelector(".shot__line rect");
+    if (r) r.style.setProperty("--len", Math.ceil(r.getTotalLength()) + 1);
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("drawn")));
+  };
   // phones show four screenshots first; the button reveals the rest
   const more = document.getElementById("shotsMore"), wall = document.querySelector(".shots");
   if (more) more.addEventListener("click", () => { wall.classList.add("all"); more.remove(); pics.forEach(mark); });
   // phones: start the video row at its first (right-hand) clip
   const vids = document.querySelector(".vids");
   if (vids) addEventListener("load", () => { vids.scrollLeft = 0; });
-  if (!phone || !("IntersectionObserver" in window)) { cards.forEach(c => c.classList.add("open")); return; }
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add("open"); io.unobserve(e.target); }
-  }), {rootMargin:"0px 0px -18% 0px"});
+  const clips = document.querySelectorAll(".vids .vbox");
+  if (still) { cards.forEach(c => c.classList.add("open", "drawn")); clips.forEach(c => c.classList.add("drawn")); return; }
+  // video frames draw when the clip is on screen
+  const lo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { draw(e.target); lo.unobserve(e.target); } }), {threshold:.35});
+  clips.forEach(c => lo.observe(c));
+  // cards: the ones that arrive together come in one after another, in page order
+  const io = new IntersectionObserver(es => {
+    es.filter(e => e.isIntersecting).map(e => e.target)
+      .sort((x, y) => cards.indexOf(x) - cards.indexOf(y))
+      .forEach((c, i) => {
+        io.unobserve(c);
+        setTimeout(() => { c.classList.add("open"); setTimeout(() => draw(c), 450); }, phone ? 0 : i * 160);
+      });
+  }, {rootMargin: phone ? "0px 0px -18% 0px" : "0px 0px -8% 0px"});
   cards.forEach(c => io.observe(c));
 })();
 </script>
