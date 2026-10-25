@@ -282,7 +282,8 @@ p{margin:0}
 /* fine gold line that travels once around the card when it comes into view */
 .shot__line{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .shot__line rect{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-dasharray:var(--len,4000);stroke-dashoffset:var(--len,4000);transition:stroke-dashoffset 2.4s cubic-bezier(.45,0,.25,1) .5s}
-.shot.drawn .shot__line rect{stroke-dashoffset:0}
+.drawn > .shot__line rect{stroke-dashoffset:0}
+.vbox{position:relative}
 @media (max-width:760px){
   .shots{columns:auto;max-width:360px;padding-inline:6px}
   .shots:not(.all) .shot:nth-child(n+5){display:none}
@@ -594,32 +595,32 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
     </div>
     <div class="vids">
       <figure class="vid rv" data-d="1">
-        <video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none" aria-label="עדויות מצולמות של בוגרות הקורס"></video>
+        <div class="vbox"><video src="assets/testimonials/v1.mp4" poster="assets/testimonials/v1.jpg" controls playsinline preload="none" aria-label="עדויות מצולמות של בוגרות הקורס"></video><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="22"/></svg></div>
         <figcaption>בוגרות הקורס מספרות</figcaption>
       </figure>
       <figure class="vid rv" data-d="2">
-        <video src="assets/testimonials/v2.mp4" poster="assets/testimonials/v2.jpg" controls playsinline preload="none" aria-label="עדויות מצולמות של בוגרות ובוגרי קורס ריפוי בין-דורי"></video>
+        <div class="vbox"><video src="assets/testimonials/v2.mp4" poster="assets/testimonials/v2.jpg" controls playsinline preload="none" aria-label="עדויות מצולמות של בוגרות ובוגרי קורס ריפוי בין-דורי"></video><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="22"/></svg></div>
         <figcaption>בוגרי קורס ריפוי בין-דורי</figcaption>
       </figure>
       <figure class="vid rv" data-d="3">
-        <video src="assets/testimonials/v3.mp4" poster="assets/testimonials/v3.jpg" controls playsinline preload="none" aria-label="שיתוף מהשטח"></video>
+        <div class="vbox"><video src="assets/testimonials/v3.mp4" poster="assets/testimonials/v3.jpg" controls playsinline preload="none" aria-label="שיתוף מהשטח"></video><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="22"/></svg></div>
         <figcaption>שיתוף מהשטח</figcaption>
       </figure>
       <figure class="vid rv" data-d="4">
-        <video src="assets/testimonials/v4.mp4" poster="assets/testimonials/v4.jpg" controls playsinline preload="none" aria-label="אורית אלמוג, בוגרת ריפוי בין-דורי"></video>
+        <div class="vbox"><video src="assets/testimonials/v4.mp4" poster="assets/testimonials/v4.jpg" controls playsinline preload="none" aria-label="אורית אלמוג, בוגרת ריפוי בין-דורי"></video><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="22"/></svg></div>
         <figcaption>אורית אלמוג, בוגרת ריפוי בין-דורי</figcaption>
       </figure>
     </div>
     <div class="shots rv">
       <figure class="shot" style="--i:1;--r:-1.6deg"><img src="assets/testimonials/whatsapp-2.jpg" alt="הודעת וואטסאפ ממשתתפת בוובינר קודם: נהניתי מאוד מהוובינר, השארת טעם של עוד" width="760" height="677" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
-      <figure class="shot" style="--i:2;--r:1.4deg"><img src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy"></figure>
-      <figure class="shot" style="--i:3;--r:-.8deg"><img src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy"></figure>
-      <figure class="shot" style="--i:4;--r:1.8deg"><img src="assets/testimonials/whatsapp-6.jpg" alt="הודעת וואטסאפ ממטופלת: הטיפולים שלך הם קסם אחד גדול, אני סוף סוף מרגישה שהתחלתי לחיות" width="700" height="1584" loading="lazy"></figure>
-      <figure class="shot" style="--i:5;--r:-1.2deg"><img src="assets/testimonials/whatsapp-5.jpg" alt="הודעת וואטסאפ מבוגרת קורס: זה היה עבורי הרבה מעבר לקורס" width="640" height="1330" loading="lazy"></figure>
-      <figure class="shot" style="--i:6;--r:.9deg"><img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות על טיפול עם גיל כרונולוגי ועל מטופלת עם פיברומיאלגיה" width="748" height="1108" loading="lazy"></figure>
-      <figure class="shot" style="--i:7;--r:-1.8deg"><img src="assets/testimonials/whatsapp-7.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: תודה על שיעור מעולה בנושא מערכת הנשימה" width="625" height="1060" loading="lazy"></figure>
-      <figure class="shot" style="--i:8;--r:1.2deg"><img src="assets/testimonials/whatsapp-8.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: המאסטרקלאס על מערכת הנשימה, החומר פשוט שווה זהב" width="718" height="1265" loading="lazy"></figure>
-      <figure class="shot" style="--i:9;--r:-.6deg"><img src="assets/testimonials/whatsapp-9.jpg" alt="הודעת וואטסאפ מאמא: רציתי להגיד לך תודה רבה, אנחנו משתחררים היום" width="760" height="446" loading="lazy"></figure>
+      <figure class="shot" style="--i:2;--r:1.4deg"><img src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:3;--r:-.8deg"><img src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:4;--r:1.8deg"><img src="assets/testimonials/whatsapp-6.jpg" alt="הודעת וואטסאפ ממטופלת: הטיפולים שלך הם קסם אחד גדול, אני סוף סוף מרגישה שהתחלתי לחיות" width="700" height="1584" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:5;--r:-1.2deg"><img src="assets/testimonials/whatsapp-5.jpg" alt="הודעת וואטסאפ מבוגרת קורס: זה היה עבורי הרבה מעבר לקורס" width="640" height="1330" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:6;--r:.9deg"><img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות על טיפול עם גיל כרונולוגי ועל מטופלת עם פיברומיאלגיה" width="748" height="1108" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:7;--r:-1.8deg"><img src="assets/testimonials/whatsapp-7.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: תודה על שיעור מעולה בנושא מערכת הנשימה" width="625" height="1060" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:8;--r:1.2deg"><img src="assets/testimonials/whatsapp-8.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: המאסטרקלאס על מערכת הנשימה, החומר פשוט שווה זהב" width="718" height="1265" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:9;--r:-.6deg"><img src="assets/testimonials/whatsapp-9.jpg" alt="הודעת וואטסאפ מאמא: רציתי להגיד לך תודה רבה, אנחנו משתחררים היום" width="760" height="446" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
     </div>
     <button class="btn shots__more" type="button" id="shotsMore">לעוד עדויות</button>
     <p class="shots__hint">לחצו על הודעה כדי לקרוא אותה בגדול</p>
@@ -1046,7 +1047,8 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
   const phone = matchMedia("(max-width:760px)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches;
   const mark = img => { const cap = parseFloat(getComputedStyle(img).maxHeight); if (cap && img.clientHeight >= cap - 2) img.classList.add("long"); };
   pics.forEach(img => img.complete ? mark(img) : img.addEventListener("load", () => mark(img)));
-  // the gold frame draws itself once the card is on screen
+  // the gold frame draws itself once the card or clip is on screen
+  const framed = document.querySelectorAll(".shots .shot, .vids .vbox");
   if ("IntersectionObserver" in window) {
     const lo = new IntersectionObserver(es => es.forEach(e => {
       if (!e.isIntersecting) return;
@@ -1055,8 +1057,8 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
       requestAnimationFrame(() => requestAnimationFrame(() => e.target.classList.add("drawn")));
       lo.unobserve(e.target);
     }), {threshold:.35});
-    cards.forEach(c => c.querySelector(".shot__line") && lo.observe(c));
-  } else cards.forEach(c => c.classList.add("drawn"));
+    framed.forEach(c => lo.observe(c));
+  } else framed.forEach(c => c.classList.add("drawn"));
   // phones show four screenshots first; the button reveals the rest
   const more = document.getElementById("shotsMore"), wall = document.querySelector(".shots");
   if (more) more.addEventListener("click", () => { wall.classList.add("all"); more.remove(); pics.forEach(mark); });
