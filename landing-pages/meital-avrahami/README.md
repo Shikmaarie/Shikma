@@ -23,7 +23,7 @@
 1. **לחבר את הטופס.** בתחתית `index.html`, בתחילת ה-`<script>`:
    `const FORM_ENDPOINT = "";`
    צריך לשים כתובת webhook (Make, Zapier, Google Apps Script, CRM או מערכת דיוור).
-   כל עוד הערך ריק, הפרטים **לא נשמרים**, ובפינת הדף מופיע תג חום "טופס לא מחובר (מצב תצוגה)".
+   כל עוד הערך ריק, הפרטים **לא נשמרים**. אין לזה סימן בדף, רק אזהרה בקונסול, ולכן חשוב לבדוק לפני עלייה.
    - נשלח `POST` בפורמט `application/x-www-form-urlencoded`.
    - שדות: `name`, `email`, `phone` (ספרות בלבד), `consent`, `webinar` (`2026-11-05`), `variant`, `page`, `submitted_at`.
    - נשלחים גם `utm_*`, `fbclid`, `gclid` אם הם קיימים בכתובת.

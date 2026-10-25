@@ -406,7 +406,6 @@ footer .credit a:hover{text-decoration:underline}
   .btn{white-space:nowrap;font-size:clamp(.82rem,3.9vw,.98rem);padding-inline:clamp(14px,4.5vw,22px);gap:.5em}
   .btn svg{width:17px;height:17px}
 }
-.devflag{position:fixed;top:10px;left:10px;z-index:99;padding:6px 12px;border-radius:8px;background:#7a4022;color:#fff;font:600 12px var(--sans)}
 
 /* ---------- reveal ---------- */
 .js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -971,9 +970,7 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
   document.getElementById("ics").href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
 
   /* form */
-  if (!FORM_ENDPOINT){
-    const f = document.createElement("div"); f.className = "devflag"; f.textContent = "טופס לא מחובר (מצב תצוגה)"; document.body.appendChild(f);
-  }
+  if (!FORM_ENDPOINT) console.warn("FORM_ENDPOINT is empty: registrations are not saved");
   const form = document.getElementById("regForm"), card = document.getElementById("formCard");
   const btn = document.getElementById("submitBtn"), fail = document.getElementById("formFail");
   const rules = {
