@@ -267,7 +267,6 @@ p{margin:0}
 .mystory__label{display:block;font-family:var(--head);font-stretch:75%;font-weight:700;font-size:.95rem;letter-spacing:.04em;color:var(--gold)}
 .mystory p{margin-top:6px;font-family:var(--sans);font-size:1.4rem;line-height:1.45;color:var(--forest)}
 .mystory strong{font-weight:700}
-.about p.mystory__note{margin-top:14px;font-size:.84rem;color:var(--ink-soft);opacity:.8}
 
 .about-sec{padding-bottom:0;background:var(--paper) url(assets/about-bg.webp) center/cover no-repeat}
 @media (max-width:960px){.about-sec{background:linear-gradient(180deg,rgba(248,244,236,0) 0,rgba(248,244,236,0) 46vw,var(--paper) 64vw),var(--paper) url(assets/about-bg-960.webp) left top/220% auto no-repeat}}
@@ -302,7 +301,7 @@ p{margin:0}
 .vid__tag{font-family:var(--head);font-stretch:75%;font-weight:700;font-size:1.3rem;color:var(--forest)}
 .vid__hint{font-size:.9rem;color:var(--ink-soft)}
 .vids figcaption{margin-top:10px;text-align:center;font-family:var(--head);font-stretch:75%;font-weight:600;font-size:1.1rem;color:var(--ink-soft)}
-@media (max-width:760px){.form .btn--clay{font-size:.92rem;padding-inline:20px;gap:8px}.field input::placeholder{font-size:.86rem}.field .field__hint{display:block}}
+@media (max-width:760px){.field input::placeholder{font-size:.86rem}.field .field__hint{display:block}}
 @media (max-width:760px){.vids{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;justify-content:start;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}.vids figure{scroll-snap-align:start}}
 
 /* ---------- faq ---------- */
@@ -393,6 +392,11 @@ footer .credit a:hover{text-decoration:underline}
 .sticky{position:fixed;inset:auto 0 0;z-index:30;display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(248,244,236,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s ease}
 .sticky.show{transform:none}
 .sticky .btn{width:100%;min-height:52px}
+/* phones: every button keeps its sentence on one line, same size everywhere */
+@media (max-width:760px){
+  .btn{white-space:nowrap;font-size:clamp(.82rem,3.9vw,.98rem);padding-inline:clamp(14px,4.5vw,22px);gap:.5em}
+  .btn svg{width:17px;height:17px}
+}
 .devflag{position:fixed;top:10px;left:10px;z-index:99;padding:6px 12px;border-radius:8px;background:#7a4022;color:#fff;font:600 12px var(--sans)}
 
 /* ---------- reveal ---------- */
@@ -727,7 +731,6 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
         <p>הדרך שלי התחילה בגוף שלי. ריפאתי את עצמי מאפילפסיה ומאנדומטריוזיס, וכבר יותר מ-20 שנה אני חיה <strong>בלי אפילפסיה ובלי כדורים.</strong> הכל היה בזכות התודעה.</p>
       </div>
       <p class="bio rv" data-d="4">מאז, כבר שני עשורים, אני מלווה מטופלים, נשים ומשפחות בתהליכי עומק שמשנים את החיים מן הקצה אל הקצה. בוובינר הזה אתן לכם זווית ראייה מרתקת, מבוססת ניסיון קליני רב, שתעשה לכם סדר מוחלט בראש וברגש.</p>
-      <p class="mystory__note rv" data-d="4">הסיפור שלי הוא חוויה אישית, ואינו מחליף ייעוץ או טיפול רפואי.</p>
     </div>
   </div>
 </section>
