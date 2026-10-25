@@ -277,15 +277,21 @@ p{margin:0}
 @supports (overflow:clip){.testis{overflow:clip}}
 
 .shots{columns:3 260px;column-gap:18px;max-width:1040px;margin:0 auto 40px}
-.shots img{display:block;width:100%;height:auto;margin-bottom:18px;border-radius:16px;border:1px solid rgba(29,36,31,.08);box-shadow:0 16px 40px -24px rgba(0,0,0,.4);break-inside:avoid}
+.shot{position:relative;margin:0 0 18px;break-inside:avoid;border-radius:16px;box-shadow:0 16px 40px -24px rgba(0,0,0,.4)}
+.shots img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid rgba(29,36,31,.08)}
+/* fine gold line that travels once around the card when it comes into view */
+.shot__line{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.shot__line rect{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-dasharray:var(--len,4000);stroke-dashoffset:var(--len,4000);transition:stroke-dashoffset 2.4s cubic-bezier(.45,0,.25,1) .5s}
+.shot.drawn .shot__line rect{stroke-dashoffset:0}
 @media (max-width:760px){
   .shots{columns:auto;max-width:360px;padding-inline:6px}
-  .shots:not(.all) img:nth-child(n+5){display:none}
+  .shots:not(.all) .shot:nth-child(n+5){display:none}
   button.shots__more{display:flex;margin:-4px auto 34px}
-  .shots img{position:relative;z-index:calc(20 - var(--i));margin:0 0 22px;max-height:400px;object-fit:cover;object-position:top;
-    transform:rotate(var(--r));transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .6s ease}
+  .shot{z-index:calc(20 - var(--i));margin:0 0 22px;transform:rotate(var(--r));transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .6s ease}
+  .shots img{max-height:400px;object-fit:cover;object-position:top}
+  .shot:nth-child(4) img{max-height:300px}
   .shots img.long{-webkit-mask-image:linear-gradient(180deg,#000 82%,transparent);mask-image:linear-gradient(180deg,#000 82%,transparent)}
-  .js .shots img:not(.open){transform:translateY(-58%) scale(.9) rotate(calc(var(--r) * -2));opacity:0}
+  .js .shots .shot:not(.open){transform:translateY(-58%) scale(.9) rotate(calc(var(--r) * -2));opacity:0}
 }
 .shots img{cursor:zoom-in}
 .shots__more{display:none}
@@ -605,15 +611,15 @@ addEventListener("pageshow", function (e) { if (e.persisted) window.scrollTo(0, 
       </figure>
     </div>
     <div class="shots rv">
-      <img style="--i:1;--r:-1.6deg" src="assets/testimonials/whatsapp-2.jpg" alt="הודעת וואטסאפ ממשתתפת בוובינר קודם: נהניתי מאוד מהוובינר, השארת טעם של עוד" width="760" height="677" loading="lazy">
-      <img style="--i:2;--r:1.4deg" src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy">
-      <img style="--i:3;--r:-.8deg" src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy">
-      <img style="--i:4;--r:1.8deg" src="assets/testimonials/whatsapp-6.jpg" alt="הודעת וואטסאפ ממטופלת: הטיפולים שלך הם קסם אחד גדול, אני סוף סוף מרגישה שהתחלתי לחיות" width="700" height="1584" loading="lazy">
-      <img style="--i:5;--r:-1.2deg" src="assets/testimonials/whatsapp-5.jpg" alt="הודעת וואטסאפ מבוגרת קורס: זה היה עבורי הרבה מעבר לקורס" width="640" height="1330" loading="lazy">
-      <img style="--i:6;--r:.9deg" src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות על טיפול עם גיל כרונולוגי ועל מטופלת עם פיברומיאלגיה" width="748" height="1108" loading="lazy">
-      <img style="--i:7;--r:-1.8deg" src="assets/testimonials/whatsapp-7.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: תודה על שיעור מעולה בנושא מערכת הנשימה" width="625" height="1060" loading="lazy">
-      <img style="--i:8;--r:1.2deg" src="assets/testimonials/whatsapp-8.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: המאסטרקלאס על מערכת הנשימה, החומר פשוט שווה זהב" width="718" height="1265" loading="lazy">
-      <img style="--i:9;--r:-.6deg" src="assets/testimonials/whatsapp-9.jpg" alt="הודעת וואטסאפ מאמא: רציתי להגיד לך תודה רבה, אנחנו משתחררים היום" width="760" height="446" loading="lazy">
+      <figure class="shot" style="--i:1;--r:-1.6deg"><img src="assets/testimonials/whatsapp-2.jpg" alt="הודעת וואטסאפ ממשתתפת בוובינר קודם: נהניתי מאוד מהוובינר, השארת טעם של עוד" width="760" height="677" loading="lazy"><svg class="shot__line" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="16"/></svg></figure>
+      <figure class="shot" style="--i:2;--r:1.4deg"><img src="assets/testimonials/whatsapp-3.jpg" alt="הודעת וואטסאפ ממטופלת: יצאתי ממך בן אדם חדש, נעלמה לי תחושת החרדה התמידית" width="760" height="700" loading="lazy"></figure>
+      <figure class="shot" style="--i:3;--r:-.8deg"><img src="assets/testimonials/whatsapp-4.jpg" alt="הודעת וואטסאפ מאמא: אחרי טיפול אחד הילד שלי ישב ושיחק עם מחט ביד" width="760" height="1007" loading="lazy"></figure>
+      <figure class="shot" style="--i:4;--r:1.8deg"><img src="assets/testimonials/whatsapp-6.jpg" alt="הודעת וואטסאפ ממטופלת: הטיפולים שלך הם קסם אחד גדול, אני סוף סוף מרגישה שהתחלתי לחיות" width="700" height="1584" loading="lazy"></figure>
+      <figure class="shot" style="--i:5;--r:-1.2deg"><img src="assets/testimonials/whatsapp-5.jpg" alt="הודעת וואטסאפ מבוגרת קורס: זה היה עבורי הרבה מעבר לקורס" width="640" height="1330" loading="lazy"></figure>
+      <figure class="shot" style="--i:6;--r:.9deg"><img src="assets/testimonials/whatsapp-1.jpg" alt="צילום מסך מוואטסאפ: שתי תלמידות משתפות על טיפול עם גיל כרונולוגי ועל מטופלת עם פיברומיאלגיה" width="748" height="1108" loading="lazy"></figure>
+      <figure class="shot" style="--i:7;--r:-1.8deg"><img src="assets/testimonials/whatsapp-7.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: תודה על שיעור מעולה בנושא מערכת הנשימה" width="625" height="1060" loading="lazy"></figure>
+      <figure class="shot" style="--i:8;--r:1.2deg"><img src="assets/testimonials/whatsapp-8.jpg" alt="הודעות וואטסאפ מקבוצת המטפלים: המאסטרקלאס על מערכת הנשימה, החומר פשוט שווה זהב" width="718" height="1265" loading="lazy"></figure>
+      <figure class="shot" style="--i:9;--r:-.6deg"><img src="assets/testimonials/whatsapp-9.jpg" alt="הודעת וואטסאפ מאמא: רציתי להגיד לך תודה רבה, אנחנו משתחררים היום" width="760" height="446" loading="lazy"></figure>
     </div>
     <button class="btn shots__more" type="button" id="shotsMore">לעוד עדויות</button>
     <p class="shots__hint">לחצו על הודעה כדי לקרוא אותה בגדול</p>
@@ -1036,13 +1042,24 @@ const EVENT_TITLE = "וובינר חינמי עם מיטל אברהמי: העב�
 })();
 /* phones: each screenshot slides out from under the one above it as it scrolls into view */
 (function(){
-  const cards = document.querySelectorAll(".shots img");
+  const cards = document.querySelectorAll(".shots .shot"), pics = document.querySelectorAll(".shots img");
   const phone = matchMedia("(max-width:760px)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const mark = img => { if (img.clientHeight >= 398) img.classList.add("long"); };
-  cards.forEach(img => img.complete ? mark(img) : img.addEventListener("load", () => mark(img)));
+  const mark = img => { const cap = parseFloat(getComputedStyle(img).maxHeight); if (cap && img.clientHeight >= cap - 2) img.classList.add("long"); };
+  pics.forEach(img => img.complete ? mark(img) : img.addEventListener("load", () => mark(img)));
+  // the gold frame draws itself once the card is on screen
+  if ("IntersectionObserver" in window) {
+    const lo = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      const r = e.target.querySelector(".shot__line rect");
+      r.style.setProperty("--len", Math.ceil(r.getTotalLength()) + 1);
+      requestAnimationFrame(() => requestAnimationFrame(() => e.target.classList.add("drawn")));
+      lo.unobserve(e.target);
+    }), {threshold:.35});
+    cards.forEach(c => c.querySelector(".shot__line") && lo.observe(c));
+  } else cards.forEach(c => c.classList.add("drawn"));
   // phones show four screenshots first; the button reveals the rest
   const more = document.getElementById("shotsMore"), wall = document.querySelector(".shots");
-  if (more) more.addEventListener("click", () => { wall.classList.add("all"); more.remove(); cards.forEach(mark); });
+  if (more) more.addEventListener("click", () => { wall.classList.add("all"); more.remove(); pics.forEach(mark); });
   // phones: start the video row at its first (right-hand) clip
   const vids = document.querySelector(".vids");
   if (vids) addEventListener("load", () => { vids.scrollLeft = 0; });
