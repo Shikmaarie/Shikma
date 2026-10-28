@@ -54,7 +54,13 @@ Shikma Oshri Arie is the designer and builder. The client (the page owner) suppl
 Apply these from the first draft; do not ask again.
 
 **Look**
-- Palette from the client's logo; for Meital: forest ink, paper/cream, sage band, gold accents, clay form button.
+- Meital's five brand colours, independent of her logo (the logo is going to change, so never derive the palette from it):
+  - sage `#76866C`: primary
+  - forest `#1C2620`: dark, for headings, text, main button and footer
+  - paper `#F8F4EC`: light, for backgrounds
+  - gold `#C8A26A`: secondary, for small accents
+  - terracotta `#B5653F`: the registration button only
+  - Rough share on a page: 55% paper, 20% forest, 15% sage, 6% gold, 4% terracotta.
 - Headings in Open Sans Hebrew Condensed (`--head`, 75% width). Everything else in Open Sans.
 - Logo transparent with a soft glow, never on a white box. Compact logo (mark and name) on phones.
 - Favicon from the logo mark.
