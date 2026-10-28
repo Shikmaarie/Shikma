@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Racheli's palette: deep teal + gold, on a warm light surface for long forms.
+   Values sampled from the brand swatch sheet; verify against the brand book. */
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 187 70% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 187 70% 9%;
+    --primary: 186 66% 19%;
+    --primary-foreground: 37 28% 94%;
+    --secondary: 37 28% 91%;
+    --secondary-foreground: 186 66% 19%;
+    --muted: 40 20% 93%;
+    --muted-foreground: 186 15% 38%;
+    --accent: 36 55% 62%;
+    --accent-foreground: 187 70% 9%;
+    --gold: 36 55% 62%;
+    --gold-light: 40 66% 78%;
+    --gold-deep: 35 38% 50%;
+    --success: 168 45% 34%;
+    --success-foreground: 0 0% 100%;
+    --warning: 6 70% 56%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 37 22% 85%;
+    --input: 37 22% 80%;
+    --ring: 186 66% 19%;
+    --radius: 0.875rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+}
+
+/* Numbers and ₪ amounts stay LTR inside RTL text */
+.ltr-nums { direction: ltr; unicode-bidi: isolate; }
