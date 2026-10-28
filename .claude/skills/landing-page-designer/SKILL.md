@@ -48,3 +48,53 @@ Shikma Oshri Arie is the designer and builder. The client (the page owner) suppl
 - When something is ambiguous (which version, which section), make the most likely choice, do it, and say which choice was made.
 - Reply in Hebrew, short, no emoji, no em dash. Say what changed, where to see it, and anything she must decide.
 - Images she pastes mid-task are not saved as files. If you need the file (logo, photo), ask her to send it again as its own message.
+
+## Defaults Shikma already decided (Meital Avrahami page, Oct 2026)
+
+Apply these from the first draft; do not ask again.
+
+**Look**
+- Palette from the client's logo; for Meital: forest ink, paper/cream, sage band, gold accents, clay form button.
+- Headings in Open Sans Hebrew Condensed (`--head`, 75% width). Everything else in Open Sans.
+- Logo transparent with a soft glow, never on a white box. Compact logo (mark and name) on phones.
+- Favicon from the logo mark.
+
+**Order of sections**
+1. Hero
+2. Recognition ("זה מרגיש מוכר?"), ending with the "ובכל זאת..." box
+3. Testimonials, right after the recognition box
+4. The hidden story
+5. The approach
+6. What we will cover (glowing figure joined to four cards by animated lines)
+7. The host (textured background, cut-out photo standing on the bottom edge, first-person story box)
+8. FAQ (include the platform, e.g. Zoom)
+9. Registration (photo background, separate portrait image for phones, countdown only here: minutes, hours, days from right to left, no seconds)
+10. Footer (centred on phones, designer credit)
+
+**Hero**
+- Client's photo in the first screen.
+- Two-line H1 with the second line lighter.
+- Pill: field · "וובינר חינמי בזום" · date and time.
+- One supporting sentence, the client's invitation line, CTA, and "ללא עלות" note.
+
+**Copy**
+- The client speaks in first person and invites.
+- CTAs speak to the pain ("אני רוצה לדעת מה מעכב אותי בחיים").
+- The form button says what happens ("שמרו לי מקום בשידור").
+- Only real testimonials.
+- No medical disclaimer line on the page (Shikma removed it). Mention the ad risk of medical claims once, then leave it.
+
+**Phones**
+- One-line buttons.
+- No sideways page movement.
+- Video row starts at the right.
+- 4 WhatsApp screenshots, then "לעוד עדויות".
+- Smaller card before the button.
+- Sticky CTA.
+- Page always opens at the top.
+
+**Process**
+- Live Vercel link for the client (QR when Shikma wants to look on her phone).
+- Zip with README for the developer.
+- No on-page "form not connected" tag.
+- Figma only when she asks.
