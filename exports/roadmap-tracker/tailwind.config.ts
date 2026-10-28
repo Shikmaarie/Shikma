@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Heebo", "system-ui", "sans-serif"],
-        display: ['"Frank Ruhl Libre"', "Georgia", "serif"],
+        sans: ['"Open Sans"', "Arial", "system-ui", "sans-serif"],
+        display: ['"Open Sans"', "Arial", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

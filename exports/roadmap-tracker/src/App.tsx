@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <>
-      <div className="sticky top-0 z-50 flex flex-wrap items-center justify-center gap-2 border-b bg-foreground px-3 py-2 text-xs text-background">
+      <div className="sticky top-[env(safe-area-inset-top,0px)] z-50 flex flex-wrap items-center justify-center gap-2 border-b bg-foreground px-3 py-2 text-xs text-background">
         <span className="opacity-70">תצוגה מקדימה, צפייה בתור:</span>
         {views.map((v) => (
           <button
