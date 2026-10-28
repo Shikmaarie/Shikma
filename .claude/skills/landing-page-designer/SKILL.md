@@ -7,12 +7,13 @@ description: Design and build high-converting Hebrew (RTL) landing pages for web
 
 Builds landing pages the way the Meital Avrahami webinar page was built: a single static `index.html` plus an `assets/` folder, Hebrew RTL, mobile-first, with a working registration form, then a live URL and a Figma copy.
 
-The finished reference page is `template/reference-landing.html`. Read it before building; reuse its structure, tokens, components and scripts instead of starting from zero. Detailed rules live in:
+The finished reference pages are `template/reference-landing.html` and `template/reference-thanks.html` (the Meital Avrahami webinar, final version). Read it before building; reuse its structure, tokens, components and scripts instead of starting from zero. Detailed rules live in:
 
 - `references/design-system.md`: type scale, colours, spacing, header, footer, every section pattern
 - `references/rtl-and-mobile.md`: RTL rules, phone layout, animations
 - `references/assets.md`: photos, logos, transparency, backgrounds
-- `references/form-and-deploy.md`: form, countdown, calendar, Vercel, Figma, QA
+- `references/form-and-deploy.md`: form, countdown, calendar, thank-you page, Vercel, QA, developer hand-off, Figma
+- `references/testimonials.md`: video and WhatsApp testimonials (cutting, blurring, gallery, animated frames)
 
 ## Who is who
 
