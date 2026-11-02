@@ -3,7 +3,7 @@ import { useEffect } from "react";
 // דף התודה של אתגר ה-10,000 ₪ לשכירים. רב מסר מפנה לכאן אחרי הרשמה.
 // משתמש באותו src/challenge.css (תחת .c10k) ובאותן תמונות ב-public/img.
 
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/DbAcSR37Cj1BxN5JQGrguA";
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/FLAsCjJAxd56nfcwYyaZdy";
 // TODO: קישור לעמוד הזמנת הספר. כל עוד ריק, חלק הספר לא מוצג.
 const BOOK_URL = "";
 
