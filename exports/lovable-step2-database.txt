@@ -1,0 +1,20 @@
+STEP 2 — database and permissions (Lovable Cloud). Do this only after step 1 is done and the app renders.
+
+Read README-LOVABLE.md in the project root: it is the spec. Do not change any screen, text or design in this step.
+
+1. Enable Lovable Cloud (database, auth, file storage) for this project.
+
+2. Create these tables with the columns from README-LOVABLE.md: user_roles, mentors, participants, workbook_entries, month_entries. Use the enum types app_role ('admin','mentor','participant') and entry_status ('draft','submitted','returned','approved'). Add updated_at triggers where the spec has updated_at.
+
+3. Row Level Security on EVERY table, enabled, with these rules:
+   - Create a SECURITY DEFINER function has_role(_user_id uuid, _role app_role) that reads user_roles. Check roles ONLY through this function, never from the client and never from a profile column.
+   - admin: read and write everything.
+   - mentor: read participants where participants.mentor_id = her own mentors.id; read month_entries and workbook_entries of those participants; update ONLY status ('approved' or 'returned'), mentor_note, reviewed_at on month_entries. Mentors can read and write nothing else.
+   - participant: read her own participants row; read and write her own month_entries and workbook_entries, only for month <= her participants.open_month, and only while month_entries.status is 'draft' or 'returned'. She must NOT be able to change status to 'approved', change mentor_note, reviewed_at, open_month, mentor_id, or any other participant's rows. 'submitted' is allowed as a status change from 'draft' or 'returned'.
+   - Nobody can read another participant's rows.
+
+4. Storage: create a PRIVATE bucket "evidence". Files live under {participant_id}/{month}/. Storage policies mirror the table rules: the participant reads and uploads under her own participant_id folder, her mentor reads her folder, admin reads all.
+
+5. Seed: insert two mentors named "מלווה א׳" and "מלווה ב׳". Do not insert demo participants.
+
+6. Show me the final SQL/migrations and a short list of the policies. Run the security linter and fix anything it reports. Do not wire the frontend yet.

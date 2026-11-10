@@ -1,0 +1,23 @@
+STEP 3 — sign-in and connecting the app to the database. Do this only after step 2 is done and verified.
+
+Do not change any screen, text, colors or layout. The only code that changes is src/lib/tracker-store.ts internals, src/pages/Login.tsx behavior, and src/App.tsx routing.
+
+1. Sign-in methods (Lovable Cloud Auth):
+   - Google (the managed Google OAuth) on the login screen's "כניסה עם Google" button.
+   - Email + password on the login form. The "שם משתמש או מייל" field is the email. Add working "שכחתי סיסמה" (password reset by email) and keep email confirmation ON.
+   - Remove the dashed "חשבונות לתצוגה המקדימה" box and the demo accounts (student/mentor/admin) completely.
+
+2. Invite-only access. Anyone can authenticate, but data access is only for people the program manager added:
+   - Create a SECURITY DEFINER function claim_account() that runs after sign-in: it matches auth.users email (case-insensitive) to participants.email or mentors.email, sets participants.user_id / mentors.user_id, and inserts the matching row in user_roles ('participant' or 'mentor').
+   - If there is no match, show a friendly full-screen message in Hebrew: "המייל הזה עוד לא ברשימה של התוכנית. פני למנהלת התוכנית." with a sign-out button. That user sees no data (RLS already guarantees it).
+   - The program manager: insert the first admin role manually for the email [ADMIN_EMAIL] (I will give you the real address). Admins can add participants from the "ניהול" tab; that screen already has name + email + mentor fields.
+
+3. Replace the localStorage store with the database, keeping the SAME exported hooks and function signatures so no component changes: useTracker(), useSession(), emptyEntry, emptyWorkbook, entryProgress, workbookProgress, lastActivity, metricHints. Methods to wire: saveEntry, submitEntry, reviewEntry, setStartingPoint, setOpenMonth, openMonthForAll, addParticipant, saveWorkbook, signOut. Autosave with a short debounce (about 600 ms) on saveEntry/saveWorkbook. Show a small saved/saving indicator only if trivial; otherwise skip it.
+   - Remove resetDemo and the preview bar at the top of App.tsx ("תצוגה מקדימה · גרסה ב׳ ...").
+   - Routing by role after sign-in: participant -> ParticipantRoadmap (her own participants row), mentor -> ReviewDashboard role="mentor" with her mentorId, admin -> ReviewDashboard role="admin". Unauthenticated -> Login.
+
+4. Evidence file uploads (MonthForm and WorkbookView photo upload) must upload to the private "evidence" bucket under {participant_id}/{month}/ and store {name, path}. Show signed URLs only where files are displayed.
+
+5. Test as three different users (participant, her mentor, admin): a participant cannot read another participant's data, cannot approve her own month, and cannot open a month beyond open_month. Report the result of each check.
+
+6. Publish the app at its current URL when everything passes.
