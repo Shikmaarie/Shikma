@@ -1,0 +1,13 @@
+Project: "מפת הדרכים שלי | לצאת לעצמאות" — a Hebrew RTL tracker for participants of Racheli Hadad's program "לצאת לעצמאות" (monthly roadmap, monthly workbook, mentor review, program-manager dashboard).
+
+The attached file roadmap-tracker-source.md contains a COMPLETE, finished React + TypeScript + Tailwind + lucide-react implementation, already reviewed and approved by the client. Each section starts with "## FILE: <path>" followed by the file content.
+
+STEP 1 (this message) — integrate, do NOT redesign or rewrite:
+1. Create every file from the bundle at its path with its content as-is. Do not change any Hebrew text, layout, colors, icons or behavior. (README-LOVABLE.md is the spec for the next step; save it at the project root.)
+2. Design tokens: merge the CSS variables from the bundle's src/index.css into this project's global CSS (HSL tokens: --background, --primary, --gold, --gold-light, --gold-deep, --success, --warning, --bubble, etc.) and the color/font mappings from the bundle's tailwind.config.ts (gold, success, warning, bubble, fontFamily sans + display = "Open Sans"), adapted to however this project configures Tailwind. Load Open Sans (400,500,600,700,800) from Google Fonts. Keep the custom keyframes (confetti-fall, pop-in) and tailwindcss-animate classes (animate-in, fade-in, slide-in-from-bottom-2).
+3. The document must be RTL Hebrew: lang="he" dir="rtl", title "מפת הדרכים שלי | לצאת לעצמאות".
+4. UI primitives: the bundle imports Button, Card, Input, Textarea, Label, Badge, Progress, Checkbox from "@/components/ui/*". Use this project's existing shadcn components with these adaptations: (a) Button supports variant="gold" ("bg-gold text-accent-foreground hover:bg-gold-deep hover:text-primary-foreground"); (b) Badge supports variants "success", "warning", "gold" (bg-gold-light text-accent-foreground); (c) the code calls Checkbox with onCheckedChange={(v: boolean) => ...}; make sure it receives a boolean; (d) Card must forward refs.
+5. Render the bundle's App component as the app's main page (wire it into this project's routing). For now keep src/lib/tracker-store.ts exactly as in the bundle (a localStorage preview store with demo accounts student/mentor/admin, password 123456). The real backend and auth come in the next message — do not enable Cloud or auth yet.
+6. Responsive from 360px phones to desktop, no horizontal page scroll (only the wide table scrolls inside its own container).
+
+When done, list the files you created/changed and confirm the build passes. Do not add features.
