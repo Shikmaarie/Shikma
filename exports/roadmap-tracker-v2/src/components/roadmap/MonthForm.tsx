@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Check, FileText, Paperclip, PartyPopper, Send, Target, Trophy, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Check, FileText, Paperclip, PartyPopper, Send, Target, Trophy, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,8 @@ interface Props {
   readOnly?: boolean;
   onChange?: (patch: Partial<MonthEntry>) => void;
   onSubmit?: () => void;
+  /** Numbers the workbook already knows, shown as a suggestion under a metric. */
+  hints?: Record<string, { value: number; label: string }>;
 }
 
 const firstNumber = (s: string | undefined) => {
@@ -36,7 +38,7 @@ const reachedTarget = (metric: Metric, entry: MonthEntry) => {
   return target !== null && target > 0 && actual !== null && actual >= target;
 };
 
-export const MonthForm = ({ month, entry, readOnly, onChange, onSubmit }: Props) => {
+export const MonthForm = ({ month, entry, readOnly, onChange, onSubmit, hints }: Props) => {
   const [step, setStep] = useState(0);
   const [burst, setBurst] = useState(0);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -164,6 +166,23 @@ export const MonthForm = ({ month, entry, readOnly, onChange, onSubmit }: Props)
                   </div>
                 </div>
               </div>
+              {hints?.[metric.id] && (
+                <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-secondary/70 px-3 py-2 text-xs">
+                  <span className="flex items-center gap-1.5">
+                    <BookOpen className="h-3.5 w-3.5 text-gold-deep" aria-hidden />
+                    {hints[metric.id].label}: <span className="ltr-nums font-bold">{hints[metric.id].value}</span>
+                  </span>
+                  {!locked && String(hints[metric.id].value) !== (entry.actuals[metric.id] ?? "") && (
+                    <button
+                      type="button"
+                      onClick={() => set({ actuals: { ...entry.actuals, [metric.id]: String(hints[metric.id].value) } })}
+                      className="font-bold text-primary hover:underline"
+                    >
+                      להעביר למדד
+                    </button>
+                  )}
+                </div>
+              )}
               {hit && (
                 <p className="animate-pop-in flex items-center gap-1.5 text-sm font-bold text-success">
                   <Trophy className="h-4 w-4" aria-hidden />

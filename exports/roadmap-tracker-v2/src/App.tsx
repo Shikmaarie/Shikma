@@ -1,46 +1,28 @@
-import { useState } from "react";
 import { RotateCcw } from "lucide-react";
+import Login from "@/pages/Login";
 import ParticipantRoadmap from "@/pages/ParticipantRoadmap";
 import ReviewDashboard from "@/pages/ReviewDashboard";
-import { useTracker } from "@/lib/tracker-store";
-import { cn } from "@/lib/utils";
+import { useSession, useTracker } from "@/lib/tracker-store";
 
-// PREVIEW SHELL ONLY. In the real app each role reaches its own route after
-// login (/roadmap, /mentor, /admin) and this switcher does not exist.
-type View = "participant" | "mentor" | "admin";
-
-const views: { id: View; label: string }[] = [
-  { id: "participant", label: "משתתפת" },
-  { id: "mentor", label: "מלווה" },
-  { id: "admin", label: "מנהלת התוכנית" },
-];
-
+// In the real app each role lands on its own route after sign-in
+// (/roadmap, /mentor, /admin). The preview bar does not exist there.
 export default function App() {
-  const [view, setView] = useState<View>("participant");
+  const { session } = useSession();
   const tracker = useTracker();
 
   return (
     <>
-      <div className="sticky top-[env(safe-area-inset-top,0px)] z-50 flex flex-wrap items-center justify-center gap-2 border-b bg-foreground px-3 py-2 text-xs text-background">
-        <span className="opacity-70">גרסה ב׳ · צפייה בתור:</span>
-        {views.map((v) => (
-          <button
-            key={v.id}
-            type="button"
-            onClick={() => setView(v.id)}
-            className={cn("rounded-full px-3 py-1 font-semibold", view === v.id ? "bg-gold text-accent-foreground" : "hover:bg-background/10")}
-          >
-            {v.label}
-          </button>
-        ))}
-        <button type="button" onClick={tracker.resetDemo} className="inline-flex items-center gap-1 rounded-full px-3 py-1 opacity-70 hover:bg-background/10 hover:opacity-100">
+      <div className="flex flex-wrap items-center justify-center gap-2 bg-foreground px-3 py-1.5 text-xs text-background">
+        <span className="opacity-70">תצוגה מקדימה · גרסה ב׳ · הנתונים נשמרים רק בדפדפן הזה</span>
+        <button type="button" onClick={tracker.resetDemo} className="inline-flex items-center gap-1 rounded-full px-3 py-0.5 opacity-70 hover:bg-background/10 hover:opacity-100">
           <RotateCcw className="h-3 w-3" aria-hidden />
           איפוס נתוני דוגמה
         </button>
       </div>
-      {view === "participant" && <ParticipantRoadmap participantId="p1" />}
-      {view === "mentor" && <ReviewDashboard role="mentor" mentorId="mentor-1" />}
-      {view === "admin" && <ReviewDashboard role="admin" />}
+      {!session && <Login />}
+      {session?.role === "participant" && session.participantId && <ParticipantRoadmap participantId={session.participantId} />}
+      {session?.role === "mentor" && <ReviewDashboard role="mentor" mentorId={session.mentorId} />}
+      {session?.role === "admin" && <ReviewDashboard role="admin" />}
     </>
   );
 }

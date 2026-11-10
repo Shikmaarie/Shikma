@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { ChevronDown, Flag, Map as MapIcon, Info, UserRound } from "lucide-react";
+import { BookOpen, ChevronDown, Flag, Info, ListChecks, LogOut, Map as MapIcon, UserRound } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { WorkbookView } from "@/components/roadmap/WorkbookView";
 import * as copy from "@/data/copy";
 import { Card, CardContent } from "@/components/ui/card";
 import { BrandStar } from "@/components/roadmap/BrandStar";
@@ -14,7 +16,7 @@ import {
   roadmapTitle,
   startingPoints,
 } from "@/data/roadmap";
-import { useTracker } from "@/lib/tracker-store";
+import { metricHints, useSession, useTracker } from "@/lib/tracker-store";
 import { cn } from "@/lib/utils";
 
 export default function ParticipantRoadmap({ participantId }: { participantId: string }) {
@@ -22,6 +24,8 @@ export default function ParticipantRoadmap({ participantId }: { participantId: s
   const participant = tracker.participants.find((p) => p.id === participantId);
   const [selected, setSelected] = useState(participant?.openMonth ?? 1);
   const [guideOpen, setGuideOpen] = useState(false);
+  const [tab, setTab] = useState<"map" | "workbook">("map");
+  const { signOut } = useSession();
 
   if (!participant) return null;
   const mentor = tracker.mentors.find((m) => m.id === participant.mentorId);
@@ -33,10 +37,16 @@ export default function ParticipantRoadmap({ participantId }: { participantId: s
       <header className="relative overflow-hidden bg-primary text-primary-foreground">
         <BrandStar className="pointer-events-none absolute -left-10 -top-10 h-56 w-56 text-gold/15" />
         <div className="relative mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-          <p className="flex items-center gap-2 text-sm font-medium text-gold-light">
-            <BrandStar className="h-3.5 w-3.5 text-gold" />
-            {programName}
-          </p>
+          <div className="flex items-center justify-between gap-3">
+            <p className="flex items-center gap-2 text-sm font-medium text-gold-light">
+              <BrandStar className="h-3.5 w-3.5 text-gold" />
+              {programName}
+            </p>
+            <Button variant="ghost" size="sm" onClick={signOut} className="text-primary-foreground hover:bg-primary-foreground/10">
+              <LogOut />
+              יציאה
+            </Button>
+          </div>
           <h1 className="mt-2 text-[clamp(1.9rem,5vw,3rem)] font-extrabold leading-tight">{copy.greeting(participant.name.split(" ")[0])}</h1>
           <p className="mt-2 max-w-2xl text-primary-foreground/85">{copy.greetingSub}</p>
           <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-1 text-sm text-primary-foreground/85">
@@ -122,13 +132,45 @@ export default function ParticipantRoadmap({ participantId }: { participantId: s
           />
         </section>
 
+        <div role="tablist" aria-label="תוכן החודש" className="grid grid-cols-2 gap-1 rounded-2xl bg-secondary p-1">
+          {[
+            { id: "map" as const, label: "מפת החודש", Icon: ListChecks },
+            { id: "workbook" as const, label: "מחברת העבודה", Icon: BookOpen },
+          ].map(({ id, label, Icon }) => (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              aria-selected={tab === id}
+              onClick={() => setTab(id)}
+              className={cn(
+                "flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-bold transition-all",
+                tab === id ? "bg-card text-primary shadow-sm" : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <Icon className="h-4 w-4" aria-hidden />
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {tab === "workbook" ? (
+          <WorkbookView
+            key={`wb-${month.number}`}
+            month={month.number}
+            entry={tracker.getWorkbookEntry(participant.id, month.number)}
+            onChange={(patch) => tracker.saveWorkbook(participant.id, month.number, patch)}
+          />
+        ) : (
         <MonthForm
+          hints={metricHints(tracker.workbooks, participant.id)}
           key={month.number}
           month={month}
           entry={entry}
           onChange={(patch) => tracker.saveEntry(participant.id, month.number, { ...patch, status: entry.status === "returned" ? "returned" : "draft" })}
           onSubmit={() => tracker.submitEntry(participant.id, month.number)}
         />
+        )}
       </main>
     </div>
   );

@@ -9,7 +9,17 @@
 | --- | --- | --- |
 | משתתפת | המפה שלה בלבד | ממלאת את החודש הפתוח, מצרפת ראיות, שולחת לאישור |
 | מלווה | המשתתפות שלה בלבד | צופה, כותבת הערה, מאשרת או מחזירה להשלמה |
-| מנהלת התוכנית | כולן, עם סינון לפי מלווה | פותחת חודש לכל הקבוצה או למשתתפת אחת, מוסיפה משתתפות |
+| מנהלת התוכנית | כולן, עם סינון לפי מלווה | לוח התקדמות, פותחת חודשים, מוסיפה משתתפות |
+
+מלוות ומנהלת התוכנית רואות את כל ששת החודשים ואת כל מחברות העבודה,
+גם חודשים שעדיין נעולים למשתתפות (לשונית "כל חודשי התוכנית").
+
+## מחברת עבודה לכל חודש
+
+התוכן ב-`src/data/workbooks.ts`. כרגע יש מחברת לחודש 1 ("מתחילות לזוז").
+חודש בלי מחברת מציג "תעלה כאן לפני המפגש". המלווה רואה את המחברת לקריאה.
+רשימת ההזמנות ומשפטי הלקוחות מציעים מספרים למדדים של המפה (`metricHints`),
+המשתתפת מאשרת את ההעברה בלחיצה.
 
 ## חשיפה הדרגתית
 
@@ -51,6 +61,21 @@ create table participants (
   created_at timestamptz default now()
 );
 
+create table workbook_entries (
+  participant_id uuid references participants on delete cascade,
+  month int check (month between 1 and 6),
+  answers jsonb not null default '{}',
+  blanks jsonb not null default '{}',
+  yes text[] not null default '{}',
+  no text[] not null default '{}',
+  invites jsonb not null default '[]',  -- [{name, why, when, status}]
+  message text not null default '',
+  quotes jsonb not null default '[]',   -- [{text, consent}]
+  photos jsonb not null default '[]',   -- storage bucket "evidence"
+  updated_at timestamptz default now(),
+  primary key (participant_id, month)
+);
+
 create table month_entries (
   participant_id uuid references participants on delete cascade,
   month int check (month between 1 and 6),
@@ -85,8 +110,17 @@ create table month_entries (
 
 ### כניסה
 
-קישור קסם במייל (magic link), בלי סיסמאות. מנהלת התוכנית מוסיפה משתתפת
-עם מייל; בכניסה הראשונה `participants.user_id` מתמלא לפי המייל.
+שתי דרכים, ב-Lovable Cloud Auth:
+- **Google** (OAuth) למשתתפות.
+- **מייל וסיסמה** לכולן, כולל מלוות ומנהלת. מלוות ומנהלת נכנסות רק עם סיסמה.
+  כולל "שכחתי סיסמה" במייל.
+
+אין הרשמה פתוחה: רק מייל שמנהלת התוכנית הוסיפה יכול להיכנס. בכניסה הראשונה
+`participants.user_id` מתמלא לפי המייל, ומי שהמייל שלה לא ברשימה מקבלת
+הודעה לפנות למנהלת התוכנית.
+
+`workbook_entries`: המשתתפת קוראת וכותבת את שלה, רק עד `open_month`.
+מלווה קוראת את של המשתתפות שלה בלבד. מנהלת קוראת הכול.
 
 ## ניתוב
 
@@ -95,4 +129,8 @@ create table month_entries (
 - `/mentor` → `ReviewDashboard role="mentor"`
 - `/admin` → `ReviewDashboard role="admin"`
 
-`App.tsx` כאן הוא מעטפת תצוגה מקדימה עם מתג תפקידים, ולא עולה לפרודקשן.
+- `/login` → `Login`
+
+בתצוגה המקדימה הכניסה מדומה: חשבונות `student`, `mentor`, `admin` עם
+סיסמה 123456, וכפתור Google נכנס כמשתתפת לדוגמה. ב-Lovable כל זה מוחלף
+ב-Auth אמיתי, והקופסה של חשבונות הדוגמה בדף הכניסה נמחקת.
